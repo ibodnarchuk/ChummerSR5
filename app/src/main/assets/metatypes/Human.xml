@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metatype>
+    <race>Human</race>
+
+    <basebody>1</basebody>
+    <baseagi>1</baseagi>
+    <baserea>1</baserea>
+    <basestr>1</basestr>
+    <basewil>1</basewil>
+    <baselog>1</baselog>
+    <baseintu>1</baseintu>
+    <basecha>1</basecha>
+    <baseedge>2</baseedge>
+
+    <maxbody>6</maxbody>
+    <maxagi>6</maxagi>
+    <maxrea>6</maxrea>
+    <maxstr>6</maxstr>
+    <maxwil>6</maxwil>
+    <maxlog>6</maxlog>
+    <maxintu>6</maxintu>
+    <maxcha>6</maxcha>
+    <maxedge>7</maxedge>
+
+    <ess>6</ess>
+
+</metatype>

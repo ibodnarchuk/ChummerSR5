@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metatype>
+    <race>Dwarf</race>
+
+    <basebody>3</basebody>
+    <baseagi>1</baseagi>
+    <baserea>1</baserea>
+    <basestr>3</basestr>
+    <basewil>2</basewil>
+    <baselog>1</baselog>
+    <baseintu>1</baseintu>
+    <basecha>1</basecha>
+    <baseedge>1</baseedge>
+
+    <maxbody>8</maxbody>
+    <maxagi>6</maxagi>
+    <maxrea>5</maxrea>
+    <maxstr>8</maxstr>
+    <maxwil>7</maxwil>
+    <maxlog>6</maxlog>
+    <maxintu>6</maxintu>
+    <maxcha>6</maxcha>
+    <maxedge>6</maxedge>
+
+    <ess>6</ess>
+
+    <mod>
+        <name>positive_quality</name>
+        <amount></amount>
+        <displayText>Racial Bonus: +2 dice for pathogen resistance</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>pathogen_resistance</name>
+        <amount>2</amount>
+        <displayText>Racial Bonus: +2 dice for pathogen resistance</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>positive_quality</name>
+        <amount></amount>
+        <displayText>Racial Bonus: +2 dice for toxin resistance</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>toxin_resistance</name>
+        <amount>2</amount>
+        <displayText>Racial Bonus: +2 dice for toxin resistance</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>negative_quality</name>
+        <amount></amount>
+        <displayText>Racial disadvantage: 20% lifestyle increase</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>lifestyle</name>
+        <amount>20</amount>
+        <displayText>Racial disadvantage: 20% lifestyle increase</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+</metatype>

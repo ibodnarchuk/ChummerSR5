@@ -5,4 +5,40 @@
     <string name="new_char">New Character</string>
     <string name="load_char">Load Character</string>
     <string name="exit">exit</string>
+
+    <!-- New Character Table -->
+    <string name="priority">Priority</string>
+    <string name="metatype">Metatype</string>
+    <string name="attributes">Attributes</string>
+    <string name="magcol">Magic or Resonance</string>
+    <string name="skills">Skills</string>
+    <string name="resources">Resources</string>
+
+    <!-- Priorities -->
+    <string name="priorityA">A</string>
+    <string name="priorityB">B</string>
+    <string name="priorityC">C</string>
+    <string name="priorityD">D</string>
+    <string name="priorityE">E</string>
+    <string name="buttonDone">Done</string>
+
+    <!-- Stats -->
+    <string name="body">Body</string>
+    <string name="agility">Agility</string>
+    <string name="reaction">Reaction</string>
+    <string name="strength">Strength</string>
+    <string name="will">Will</string>
+    <string name="logic">Logic</string>
+    <string name="intuition">Intuition</string>
+    <string name="charisma">Charisma</string>
+    <string name="edge">Edge</string>
+    <string name="magic">Magic</string>
+    <string name="tech">Technomancer</string>
+
+    <string name="subtract">-</string>
+    <string name="addition">+</string>
+
+    <!-- XML Compare Strings -->
+    <!-- TODO Put xml compare strings here so that when in a different country people could make the xml files in their own language. -->
+    <string name="type">type</string>
 </resources>

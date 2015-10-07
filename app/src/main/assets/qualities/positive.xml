@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qualities>
+    <quality>
+        <name>Ambidextrous</name>
+        <costlist>4</costlist>
+
+        <mod>
+            <name>off_hand</name>
+            <amount>2</amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Analytical Mind</name>
+        <costlist>5</costlist>
+        <mod>
+            <name>logic_test</name>
+            <amount>2</amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Aptitude</name>
+        <costlist>14</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book>SR5</book>
+        <page>432</page>
+    </quality>
+
+    <quality>
+        <name>Astral Chameleon</name>
+        <costlist>10</costlist>
+
+        <magic>true</magic>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Bilingual</name>
+        <costlist>5</costlist>
+        <textinput>true</textinput>
+        <mod>
+            <name>language_skill</name>
+            <amount>6</amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Blandness</name>
+        <costlist>8</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Catlike</name>
+        <costlist>7</costlist>
+        <mod>
+            <name>sneaking_test</name>
+            <amount>2</amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Codeslinger</name>
+        <costlist>10</costlist>
+        <textinput>true</textinput>
+        <mod>
+            <name>matrix_action_(textinput)</name>
+            <amount>2</amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Double-Jointed</name>
+        <costlist>6</costlist>
+        <mod>
+            <name>escape_artist</name>
+            <amount>2</amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Exceptional Attribute</name>
+        <costlist>14</costlist>
+        <list>Attributes.xml</list>
+        <mod>
+            <name>max_attr_(list)</name>
+            <amount>1</amount>
+            <book>sr12</book>
+            <page>321</page>
+            <summary>Test summary</summary>
+        </mod>
+        <summary></summary>
+        <book>SR4</book>
+        <page>432</page>
+    </quality>
+
+    <quality>
+        <name>First Impression</name>
+        <costlist>11</costlist>
+        <mod>
+            <name>negotation_test</name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <mod>
+            <name>con_test</name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Focused Concentration</name>
+        <costlist>4</costlist>
+        <maxrating>6</maxrating>
+        <magic>true</magic>
+        <technomancer>true</technomancer>
+        <mod>
+            <name>sustain_form</name>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book>SR54</book>
+        <page>324</page>
+    </quality>
+
+    <quality>
+        <name>Gearhead</name>
+        <costlist>11</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Guts</name>
+        <costlist>10</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>High Pain Tolerance</name>
+        <costlist>7</costlist>
+        <maxrating>3</maxrating>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+    <quality>
+        <name>Home Ground</name>
+        <costlist>10</costlist>
+
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+    <quality>
+        <name>Human-looking</name>
+        <costlist>6</costlist>
+
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+    <quality>
+        <name>Indomitable</name>
+        <costlist>8</costlist>
+        <maxrating>3</maxrating>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Juryrigger</name>
+        <costlist>10</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Lucky</name>
+        <costlist>12</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Magic Resistance</name>
+        <costlist>6</costlist>
+        <maxrating>4</maxrating>
+        <mundane>true</mundane>
+        <mod>
+            <name>magic_resistance_modifier</name>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Mentor Spirit</name>
+        <costlist>5</costlist>
+        <magic>true</magic>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Natural Athlete</name>
+        <costlist>4</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Natural Athlete</name>
+        <costlist>10</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Photographic Memory</name>
+        <costlist>6</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Quick Healer</name>
+        <costlist>3</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Resistance to Pathogens</name>
+        <costlist>4</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Resistance to Toxins</name>
+        <costlist>4</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Spirit Affinity</name>
+        <costlist>7</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Toughness</name>
+        <costlist>9</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Will to Live</name>
+        <costlist>3</costlist>
+        <maxrating>3</maxrating>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+</qualities>

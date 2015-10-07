@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<magic>
+    <priority type="A">
+        <displaytext>Magician or Mystic Adept: Magic 6, two Rating 5 Magical skills, 10 spells
+        </displaytext>
+        <stats>6</stats>
+        <magictype>magic</magictype>
+
+        <mod>
+            <name>magical_skill</name>
+            <amount>5</amount>
+            <displayText>Free Magical Skill Level 5</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>magical_skill</name>
+            <amount>5</amount>
+            <displayText>Free Magical Skill Level 5</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>free_spells</name>
+            <amount>10</amount>
+            <displayText>10 Free Spells</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="A">
+        <displaytext>Technomancer: Resonance 6, two Rating 5 Resonance skills, 5 complex forms
+        </displaytext>
+        <stats>6</stats>
+        <magictype>technomancer</magictype>
+        <mod>
+            <name>resonance_skill</name>
+            <amount>5</amount>
+            <displayText>Free Resonance Skill Level 5</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>resonance_skill</name>
+            <amount>5</amount>
+            <displayText>Free Resonance Skill Level 5</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>complex_forms</name>
+            <amount>5</amount>
+            <displayText>5 complex forms</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="B">
+        <displaytext>Magician or Mystic Adept: Magic 4, two Rating 4 magical skills, 7 spells
+        </displaytext>
+        <stats>4</stats>
+        <magictype>magic</magictype>
+        <mod>
+            <name>magical_skill</name>
+            <amount>4</amount>
+            <displayText>Free Magical Skill Level 4</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>magical_skill</name>
+            <amount>4</amount>
+            <displayText>Free Magical Skill Level 4</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>free_spells</name>
+            <amount>7</amount>
+            <displayText>7 Free Spells</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="B">
+        <displaytext>Technomancer: Resonance 4, two Rating 4 Resonance skills, 2 complex forms
+        </displaytext>
+        <stats>4</stats>
+        <magictype>technomancer</magictype>
+        <mod>
+            <name>resonance_skill</name>
+            <amount>4</amount>
+            <displayText>Free Resonance Skill Level 4</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>resonance_skill</name>
+            <amount>4</amount>
+            <displayText>Free Resonance Skill Level 4</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>complex_forms</name>
+            <amount>2</amount>
+            <displayText>2 complex forms</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="B">
+        <displaytext>Adept: Magic 6, one Rating 4 Active skill</displaytext>
+        <stats>6</stats>
+        <magictype>magic</magictype>
+        <mod>
+            <name>active_skill</name>
+            <amount>4</amount>
+            <displayText>Free Active Skill Level 4</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="B">
+        <displaytext>Aspected Magician: Magic 5, one Rating 4 Magical skill group</displaytext>
+        <stats>5</stats>
+        <magictype>magic</magictype>
+        <mod>
+            <name>magical_skill_group</name>
+            <amount>4</amount>
+            <displayText>one Rating 4 Magical skill group</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="C">
+        <displaytext>Magician or Mystic Adept: Magic 3, 5 spells</displaytext>
+        <stats>3</stats>
+        <magictype>magic</magictype>
+        <mod>
+            <name>free_spells</name>
+            <amount>5</amount>
+            <displayText>5 Free Spells</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="C">
+        <displaytext>Technomancer: Resonance 3, 1 complex form</displaytext>
+        <stats>3</stats>
+        <magictype>technomancer</magictype>
+        <mod>
+            <name>complex_forms</name>
+            <amount>1</amount>
+            <displayText>1 complex form</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="C">
+        <displaytext>Adept: Magic 4, one Rating 2 Active skill</displaytext>
+        <stats>4</stats>
+        <magictype>magic</magictype>
+        <mod>
+            <name>active_skill</name>
+            <amount>2</amount>
+            <displayText>Free Active Skill Level 2</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="C">
+        <displaytext>Aspected Magician: Magic 3, one Rating 2 Magical skill group</displaytext>
+        <stats>3</stats>
+        <magictype>magic</magictype>
+        <mod>
+            <name>magical_skill_group</name>
+            <amount>2</amount>
+            <displayText>one Rating 2 Magical skill group</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="D">
+        <displaytext>Adept: Magic 2</displaytext>
+        <stats>2</stats>
+        <magictype>magic</magictype>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="D">
+        <displaytext>Aspected Magician: Magic 2</displaytext>
+        <stats>2</stats>
+        <magictype>magic</magictype>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="E">
+        <displaytext>-</displaytext>
+        <stats>0</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+</magic>

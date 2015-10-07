@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qualities>
+    <quality>
+        <name>Addiction</name>
+        <costlist></costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Allergy</name>
+        <costlist></costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Astral Beacon</name>
+        <costlist>-10</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Bad Luck</name>
+        <costlist>-12</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Bad Rep</name>
+        <costlist>-7</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Code of Honor</name>
+        <costlist>-15</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Codeblock</name>
+        <costlist>-10</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Combat Paralysis</name>
+        <costlist>-12</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Dependent(s)</name>
+        <costlist>-3,-6,-9</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Distinctive Style</name>
+        <costlist>-5</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Elf Poser</name>
+        <costlist>-6</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Gremlins</name>
+        <costlist>-4</costlist>
+        <maxrating>4</maxrating>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Incompetent</name>
+        <costlist>-5</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Insomnia</name>
+        <costlist>-10,-15</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Loss of Confidence</name>
+        <costlist>-10</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Low Pain Tolerance</name>
+        <costlist>-9</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Ork Poser</name>
+        <costlist>-6</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Prejudiced</name>
+        <costlist>0,2,5</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Scorched</name>
+        <costlist>-10</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Sensitive System</name>
+        <costlist>-12</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Simsense Vertigo</name>
+        <costlist>-5</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Sinner</name>
+        <costlist>-5,-10,-15,-25</costlist>
+        <costlistdata>National SIN,Criminal SIN,Corporate Limited SIN,Corporate SIN</costlistdata>
+        <textinput>true</textinput>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Social Stress</name>
+        <costlist>-8</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Spirit Bane</name>
+        <costlist>-7</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Uncouth</name>
+        <costlist>-14</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Uneducated</name>
+        <costlist>-8</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Unsteady Hands</name>
+        <costlist>-7</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+
+    <quality>
+        <name>Weak Immune System</name>
+        <costlist>-10</costlist>
+        <mod>
+            <name></name>
+            <amount></amount>
+            <displaytext></displaytext>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </quality>
+</qualities>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource>
+    <priority type="A">
+        <displayText>450,000</displayText>
+        <stats>450000</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="B">
+        <displayText>275,000</displayText>
+        <stats>275000</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="C">
+        <displayText>140,000</displayText>
+        <stats>140000</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="D">
+        <displayText>50,000</displayText>
+        <stats>50000</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="E">
+        <displayText>6,000</displayText>
+        <stats>6000</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+</resource>

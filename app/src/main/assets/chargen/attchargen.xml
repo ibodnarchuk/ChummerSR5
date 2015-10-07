@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<attributes>
+    <priority type="A">
+        <displayText>24</displayText>
+        <stats>24</stats>
+        <summary>General summary</summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="B">
+        <displayText>20</displayText>
+        <stats>20</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="C">
+        <displayText>16</displayText>
+        <stats>16</stats>
+        <summary></summary>
+        <book>SR5</book>
+        <page>23</page>
+    </priority>
+    <priority type="D">
+        <displayText>14</displayText>
+        <stats>14</stats>
+        <summary>432432432423</summary>
+        <book>whaaa</book>
+        <page></page>
+    </priority>
+    <priority type="E">
+        <displayText>12</displayText>
+        <stats>12</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+</attributes>

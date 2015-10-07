@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metatype>
+    <priority type="A">
+        <displayText>Human(9)</displayText>
+        <metatype>Human</metatype>
+        <stats>9</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="A">
+        <displayText>Elf(8)</displayText>
+        <metatype>Elf</metatype>
+        <stats>8</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="A">
+        <displayText>Dwarf(7)</displayText>
+        <metatype>Dwarf</metatype>
+        <stats>7</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="A">
+        <displayText>Ork(7)</displayText>
+        <metatype>Ork</metatype>
+        <stats>7</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="A">
+        <displayText>Troll(5)</displayText>
+        <metatype>Troll</metatype>
+        <stats>5</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="B">
+        <displayText>Human(7)</displayText>
+        <metatype>Human</metatype>
+        <stats>7</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="B">
+        <displayText>Elf(6)</displayText>
+        <metatype>Elf</metatype>
+        <stats>6</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="B">
+        <displayText>Dwarf(4)</displayText>
+        <metatype>Dwarf</metatype>
+        <stats>4</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="B">
+        <displayText>Ork(4)</displayText>
+        <metatype>Ork</metatype>
+        <stats>4</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="B">
+        <displayText>Troll(0)</displayText>
+        <metatype>Troll</metatype>
+        <stats>0</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="C">
+        <displayText>Human(5)</displayText>
+        <metatype>Human</metatype>
+        <stats>5</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="C">
+        <displayText>Elf(3)</displayText>
+        <metatype>Elf</metatype>
+        <stats>3</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="C">
+        <displayText>Dwarf(1)</displayText>
+        <metatype>Dwarf</metatype>
+        <stats>1</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="C">
+        <displayText>Ork(0)</displayText>
+        <metatype>Ork</metatype>
+        <stats>0</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="D">
+        <displayText>Human(3)</displayText>
+        <metatype>Human</metatype>
+        <stats>3</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+    <priority type="D">
+        <displayText>Elf(0)</displayText>
+        <metatype>Elf</metatype>
+        <stats>0</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="E">
+        <displayText>Human(1)</displayText>
+        <metatype>Human</metatype>
+        <stats>1</stats>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+</metatype>

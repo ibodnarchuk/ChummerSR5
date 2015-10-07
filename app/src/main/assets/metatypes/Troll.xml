@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metatype>
+    <race>Troll</race>
+
+    <basebody>3</basebody>
+    <baseagi>1</baseagi>
+    <baserea>1</baserea>
+    <basestr>3</basestr>
+    <basewil>2</basewil>
+    <baselog>1</baselog>
+    <baseintu>1</baseintu>
+    <basecha>1</basecha>
+    <baseedge>1</baseedge>
+
+    <maxbody>8</maxbody>
+    <maxagi>6</maxagi>
+    <maxrea>5</maxrea>
+    <maxstr>8</maxstr>
+    <maxwil>7</maxwil>
+    <maxlog>6</maxlog>
+    <maxintu>6</maxintu>
+    <maxcha>6</maxcha>
+    <maxedge>6</maxedge>
+
+    <ess>6</ess>
+
+    <mod>
+        <name>positive_quality</name>
+        <amount></amount>
+        <displayText>Racial bonus: Thermographic Vision</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>positive_quality</name>
+        <amount></amount>
+        <displayText>Racial bonus: +1 reach</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>positive_quality</name>
+        <amount></amount>
+        <displayText>Racial bonus: +1 dermal armor</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>negative_quality</name>
+        <amount></amount>
+        <displayText>Racial disadvantage: +100% increased lifestyle costs</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>reach</name>
+        <amount></amount>
+        <displayText>Racial bonus: +1 reach</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>armor</name>
+        <amount></amount>
+        <displayText>Racial bonus: +1 dermal armor</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+    <mod>
+        <name>lifestyle</name>
+        <amount></amount>
+        <displayText>Racial disadvantage: +100% increased lifestyle costs</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+</metatype>

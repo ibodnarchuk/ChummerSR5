@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skill>
+    <priority type="A">
+        <displayText>46/10</displayText>
+        <stats>0</stats>
+
+        <mod>
+            <name>skill</name>
+            <amount>46</amount>
+            <displayText>Free skills 46</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>skill_group</name>
+            <amount>10</amount>
+            <displayText>Free skill groups 10</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="B">
+        <displayText>36/5</displayText>
+        <stats>0</stats>
+
+        <mod>
+            <name>skill</name>
+            <amount>36</amount>
+            <displayText>Free skills 36</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>skill_group</name>
+            <amount>5</amount>
+            <displayText>Free skill groups 5</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="C">
+        <displayText>28/2</displayText>
+        <stats>0</stats>
+
+        <mod>
+            <name>skill</name>
+            <amount>28</amount>
+            <displayText>Free skills 28</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <mod>
+            <name>skill_group</name>
+            <amount>2</amount>
+            <displayText>Free skill groups 2</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="D">
+        <displayText>22/0</displayText>
+        <stats>0</stats>
+
+        <mod>
+            <name>skill</name>
+            <amount>22</amount>
+            <displayText>Free skills 22</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+    <priority type="E">
+        <displayText>18/0</displayText>
+        <stats>0</stats>
+
+        <mod>
+            <name>skill</name>
+            <amount>18</amount>
+            <displayText>Free skills 18</displayText>
+            <book></book>
+            <page></page>
+            <summary></summary>
+        </mod>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </priority>
+
+</skill>

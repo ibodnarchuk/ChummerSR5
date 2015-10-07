@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metatype>
+    <race>Elf</race>
+
+    <basebody>1</basebody>
+    <baseagi>2</baseagi>
+    <baserea>1</baserea>
+    <basestr>1</basestr>
+    <basewil>1</basewil>
+    <baselog>1</baselog>
+    <baseintu>1</baseintu>
+    <basecha>3</basecha>
+    <baseedge>1</baseedge>
+
+    <maxbody>6</maxbody>
+    <maxagi>7</maxagi>
+    <maxrea>6</maxrea>
+    <maxstr>6</maxstr>
+    <maxwil>6</maxwil>
+    <maxlog>6</maxlog>
+    <maxintu>6</maxintu>
+    <maxcha>8</maxcha>
+    <maxedge>6</maxedge>
+
+    <ess>6</ess>
+
+    <mod>
+        <name>positive_quality</name>
+        <amount></amount>
+        <displayText>Low-Light Vision</displayText>
+        <book></book>
+        <page></page>
+        <summary></summary>
+    </mod>
+
+</metatype>
