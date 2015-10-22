@@ -3,9 +3,6 @@ package com.iwan_b.chummersr5.data;
 import java.io.Serializable;
 
 public class Modifier implements Serializable {
-    /**
-     *
-     */
     private static final long serialVersionUID = 6680199387371957916L;
 
     // Amount to change. E.g. +2 for off_Hand
@@ -26,10 +23,6 @@ public class Modifier implements Serializable {
     // Summary of what the modifier is or does
     private String summary;
 
-    public Modifier() {
-        super();
-    }
-
     public Modifier(final Modifier copyModifier) {
         super();
         this.amount = copyModifier.amount;
@@ -38,6 +31,10 @@ public class Modifier implements Serializable {
         this.book = copyModifier.book;
         this.page = copyModifier.page;
         this.summary = copyModifier.summary;
+    }
+
+    public Modifier() {
+
     }
 
     public float getAmount() {

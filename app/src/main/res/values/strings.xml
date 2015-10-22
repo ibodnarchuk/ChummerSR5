@@ -36,9 +36,14 @@
     <string name="tech">Technomancer</string>
 
     <string name="subtract">-</string>
-    <string name="addition">+</string>
+    <string name="isAddition">+</string>
+
+    <string name="attrText">%1$s/%2$s</string>
 
     <!-- XML Compare Strings -->
     <!-- TODO Put xml compare strings here so that when in a different country people could make the xml files in their own language. -->
     <string name="type">type</string>
+
+    <string name="AddNewPositiveQuality">Add New Positive Quality</string>
+    <string name="AddNewNegativeQuality">Add New Negative Quality</string>
 </resources>

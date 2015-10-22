@@ -7,4 +7,7 @@ public class ChummerConstants {
 
     public final static int startingKarma = 25;
     public final static int maxKarmaUsed = 25;
+
+    public final static int baseStat = 1;
+    public final static int maxStat = 6;
 }

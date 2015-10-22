@@ -54,6 +54,7 @@
     <mod>
         <name>negative_quality</name>
         <amount></amount>
+        <!-- TODO Add lifestyle cost variable -->
         <displayText>Racial disadvantage: +100% increased lifestyle costs</displayText>
         <book></book>
         <page></page>
@@ -72,6 +73,7 @@
     <mod>
         <name>armor</name>
         <amount></amount>
+        <!-- TODO Add dermal armor variable -->
         <displayText>Racial bonus: +1 dermal armor</displayText>
         <book></book>
         <page></page>

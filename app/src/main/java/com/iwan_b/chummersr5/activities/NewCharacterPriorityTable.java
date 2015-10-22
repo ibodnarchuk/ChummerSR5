@@ -1,6 +1,7 @@
-package com.iwan_b.chummersr5;
+package com.iwan_b.chummersr5.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
+import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.PriorityTable;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
@@ -39,7 +41,7 @@ public class NewCharacterPriorityTable extends Activity {
         final ArrayList<PriorityTable> skillDataArray = readXML("chargen/skillchargen.xml");
         final ArrayList<PriorityTable> resourceDataArray = readXML("chargen/reschargen.xml");
 
-        RadioButton temp = null;
+        RadioButton temp;
 
         // All the columns and radio groups for the table
         final RadioGroup metaRadioGroupA = (RadioGroup) findViewById(R.id.MetaTypeRadioGroupA);
@@ -823,16 +825,11 @@ public class NewCharacterPriorityTable extends Activity {
 
                 // All the 5 priorities have been selected
                 if (a && b && c && d && e) {
-                    // Intent i = new Intent(NewCharacterPriorityTable.this,
-                    // NewCharacterInput.class);
-                    /*
-                    Intent i = new Intent(NewCharacterPriorityTable.this, SwipeFragmentHolder.class);
-
-					int metaIndex = 0;
-					int attrIndex = 0;
-					int magicIndex = 0;
-					int skillIndex = 0;
-					int resIndex = 0;
+					int metaIndex;
+					int attrIndex;
+					int magicIndex;
+					int skillIndex;
+					int resIndex;
 
 					RadioButton rb = null;
 					// get the selected metatype
@@ -936,6 +933,7 @@ public class NewCharacterPriorityTable extends Activity {
 
 					resIndex = findPriorityIndex(rb, resourceDataArray);
 
+                    Intent i = new Intent(NewCharacterPriorityTable.this, SwipeFragmentHolder.class);
 					// add all the different data
 					Bundle mBundle = new Bundle();
 
@@ -950,7 +948,6 @@ public class NewCharacterPriorityTable extends Activity {
 					i.putExtras(mBundle);
 
 					startActivity(i);
-					*/
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Please select all 5 priorities",
                             Toast.LENGTH_SHORT);
@@ -973,8 +970,6 @@ public class NewCharacterPriorityTable extends Activity {
     /**
      * @param fileLocation of the file to parse
      * @return an Array of PriorityTable data
-     * @throws XmlPullParserException
-     * @throws IOException
      */
     private ArrayList<PriorityTable> readXML(final String fileLocation) {
         ArrayList<PriorityTable> priorityData = null;
@@ -1000,7 +995,7 @@ public class NewCharacterPriorityTable extends Activity {
     }
 
     private ArrayList<PriorityTable> parseXML(XmlPullParser parser) throws XmlPullParserException, IOException {
-        ArrayList<PriorityTable> Attributes = new ArrayList<PriorityTable>();
+        ArrayList<PriorityTable> Attributes = new ArrayList<>();
 
         int eventType = parser.getEventType();
         PriorityTable currentAttribute = null;
@@ -1008,9 +1003,9 @@ public class NewCharacterPriorityTable extends Activity {
         Modifier m = null;
         boolean mod = false;
 
-        // TODO change all the hardcoded xml properities used further down
+        // TODO change all the hardcoded xml properties used further down
         while (eventType != XmlPullParser.END_DOCUMENT) {
-            String name = null;
+            String name;
             switch (eventType) {
                 case XmlPullParser.START_DOCUMENT:
                     name = parser.getName();
@@ -1038,39 +1033,52 @@ public class NewCharacterPriorityTable extends Activity {
                         }
 
                         if (mod) {
-                            if (name.equalsIgnoreCase("name")) {
-                                m.setName(parser.nextText());
-                            } else if (name.equalsIgnoreCase("amount")) {
-                                Integer i = Integer.valueOf(parser.nextText());
-                                m.setAmount(i);
-                            } else if (name.equalsIgnoreCase("displayText")) {
-                                m.setDisplayText(parser.nextText());
-                            } else if (name.equalsIgnoreCase("summary")) {
-                                m.setSummary(parser.nextText());
-                            } else if (name.equalsIgnoreCase("book")) {
-                                m.setBook(parser.nextText());
-                            } else if (name.equalsIgnoreCase("page")) {
-                                m.setPage(parser.nextText());
+                            switch(name.toLowerCase()) {
+                                case "name":
+                                    m.setName(parser.nextText());
+                                    break;
+                                case "amount":
+                                    Integer i = Integer.valueOf(parser.nextText());
+                                    m.setAmount(i);
+                                    break;
+                                case "displaytext":
+                                    m.setDisplayText(parser.nextText());
+                                    break;
+                                case "summary":
+                                    m.setSummary(parser.nextText());
+                                    break;
+                                case "book":
+                                    m.setBook(parser.nextText());
+                                    break;
+                                case "page":
+                                    m.setPage(parser.nextText());
+                                    break;
                             }
                         } else {
-
-                            if (name.equalsIgnoreCase("displayText")) {
-                                currentAttribute.setDisplayText(parser.nextText());
-                            } else if (name.equalsIgnoreCase("stats")) {
-                                Integer i = Integer.valueOf(parser.nextText());
-                                currentAttribute.setStats(i);
-                            } else if (name.equalsIgnoreCase("summary")) {
-                                currentAttribute.setSummary(parser.nextText());
-                            } else if (name.equalsIgnoreCase("book")) {
-                                currentAttribute.setBook(parser.nextText());
-                            } else if (name.equalsIgnoreCase("page")) {
-                                currentAttribute.setPage(parser.nextText());
-                            } else if (name.equalsIgnoreCase("metatype")) {
-                                currentAttribute.setMetaTypeName(parser.nextText());
-                            } else if (name.equalsIgnoreCase("magictype")) {
-                                currentAttribute.setMagicType(parser.nextText());
+                            switch(name.toLowerCase()){
+                                case "displaytext":
+                                    currentAttribute.setDisplayText(parser.nextText());
+                                    break;
+                                case "stats":
+                                    Integer i = Integer.valueOf(parser.nextText());
+                                    currentAttribute.setStats(i);
+                                    break;
+                                case "summary":
+                                    currentAttribute.setSummary(parser.nextText());
+                                    break;
+                                case "book":
+                                    currentAttribute.setBook(parser.nextText());
+                                    break;
+                                case "page":
+                                    currentAttribute.setPage(parser.nextText());
+                                    break;
+                                case "metatype":
+                                    currentAttribute.setMetaTypeName(parser.nextText());
+                                    break;
+                                case "magictype":
+                                    currentAttribute.setMagicType(parser.nextText());
+                                    break;
                             }
-
                         }
 
                     }
@@ -1081,7 +1089,7 @@ public class NewCharacterPriorityTable extends Activity {
 
                     if (name.equalsIgnoreCase("mod")) {
                         if (currentAttribute.getMods() == null) {
-                            ArrayList<Modifier> temp = new ArrayList<Modifier>();
+                            ArrayList<Modifier> temp = new ArrayList<>();
                             temp.add(m);
                             currentAttribute.setMods(temp);
                             m = null;

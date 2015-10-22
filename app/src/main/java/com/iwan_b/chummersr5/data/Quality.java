@@ -52,10 +52,6 @@ public class Quality {
     // Whether only mundane characters can take this quality
     private Boolean mundaneOnly = false;
 
-    public Quality() {
-        super();
-    }
-
     public Quality(final Quality copyQuality) {
         super();
         this.name = copyQuality.name;
@@ -77,11 +73,15 @@ public class Quality {
         this.technomancerOnly = copyQuality.technomancerOnly;
         this.mundaneOnly = copyQuality.mundaneOnly;
 
-        this.mods = new ArrayList<Modifier>(copyQuality.mods.size());
+        this.mods = new ArrayList<>(copyQuality.mods.size());
 
         for (Modifier m : copyQuality.mods) {
             this.mods.add(new Modifier(m));
         }
+
+    }
+
+    public Quality() {
 
     }
 

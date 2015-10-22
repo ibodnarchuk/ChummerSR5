@@ -16,11 +16,9 @@ public class ChummerXML {
     /**
      * @param fileLocation of the file to parse
      * @return an Array of PriorityTable data
-     * @throws XmlPullParserException
-     * @throws IOException
      */
     public static ArrayList<String> readStringXML(final Activity activity, final String fileLocation) {
-        ArrayList<String> attributes = new ArrayList<String>();
+        ArrayList<String> attributes = new ArrayList<>();
         try {
             XmlPullParserFactory pullParserFactory;
 
@@ -44,12 +42,12 @@ public class ChummerXML {
     }
 
     private static ArrayList<String> parseStringXML(final XmlPullParser parser) throws XmlPullParserException, IOException {
-        ArrayList<String> attributes = new ArrayList<String>();
+        ArrayList<String> attributes = new ArrayList<>();
 
         int eventType = parser.getEventType();
         // TODO change all the hardcoded xml properties used further down
         while (eventType != XmlPullParser.END_DOCUMENT) {
-            String name = null;
+            String name;
             switch (eventType) {
                 case XmlPullParser.START_DOCUMENT:
                     name = parser.getName();

@@ -15,6 +15,7 @@ public class Attribute {
     private int edge;
     private int res;
     private int magic;
+    private int ess;
 
     // Natural Max
     private int maxBody;
@@ -41,7 +42,7 @@ public class Attribute {
     private int baseEdge;
     private int baseRes;
     private int baseMagic;
-    private int ess;
+
 
     private int ini;
 
