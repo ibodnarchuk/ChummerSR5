@@ -125,105 +125,131 @@ public class SwipeFragmentHolder extends FragmentActivity {
 					}
 
 					if (mod) {
-						if (name.equalsIgnoreCase("name")) {
-							m.setName(parser.nextText());
-						} else if (name.equalsIgnoreCase("amount")) {
-							Integer i;
-							// TODO figure if this is the best place. Currently
-							// throws an error if the user doesn't put anything
-							// between the brackets in the xml file
-							try {
-								i = Integer.valueOf(parser.nextText());
-							} catch (NumberFormatException e) {
-								i = 0;
-							}
-							m.setAmount(i);
-						} else if (name.equalsIgnoreCase("displayText")) {
-							m.setDisplayText(parser.nextText());
-						} else if (name.equalsIgnoreCase("summary")) {
-							m.setSummary(parser.nextText());
-						} else if (name.equalsIgnoreCase("book")) {
-							m.setBook(parser.nextText());
-						} else if (name.equalsIgnoreCase("page")) {
-							m.setPage(parser.nextText());
+						switch(name.toLowerCase()) {
+							case "name":
+								m.setName(parser.nextText());
+								break;
+							case "amount":
+								Integer i;
+								// TODO figure if this is the best place. Currently
+								// throws an error if the user doesn't put anything
+								// between the brackets in the xml file
+								try {
+									i = Integer.valueOf(parser.nextText());
+								} catch (NumberFormatException e) {
+									i = 0;
+								}
+								m.setAmount(i);
+								break;
+							case "displaytext":
+								m.setDisplayText(parser.nextText());
+								break;
+							case "summary":
+								m.setSummary(parser.nextText());
+								break;
+							case "book":
+								m.setBook(parser.nextText());
+								break;
+							case "page":
+								m.setPage(parser.nextText());
+								break;
 						}
+
 					} else {
 						String s = parser.nextText();
 						Integer i;
-						// Super long else if statement because no switches
-						// allowed
-						if (name.equalsIgnoreCase("race")) {
-							attr.setRace(s);
-						}
-						/* Base stats and starting stats */
-						else if (name.equalsIgnoreCase("basebody")) {
-							i = Integer.valueOf(s);
-							attr.setBaseBody(i);
-							attr.setBody(i);
-						} else if (name.equalsIgnoreCase("baseagi")) {
-							i = Integer.valueOf(s);
-							attr.setBaseAgi(i);
-							attr.setAgi(i);
-						} else if (name.equalsIgnoreCase("baserea")) {
-							i = Integer.valueOf(s);
-							attr.setBaseRea(i);
-							attr.setRea(i);
-						} else if (name.equalsIgnoreCase("basestr")) {
-							i = Integer.valueOf(s);
-							attr.setBaseStr(i);
-							attr.setStr(i);
-						} else if (name.equalsIgnoreCase("basewil")) {
-							i = Integer.valueOf(s);
-							attr.setBaseWil(i);
-							attr.setWil(i);
-						} else if (name.equalsIgnoreCase("baselog")) {
-							i = Integer.valueOf(s);
-							attr.setBaseLog(i);
-							attr.setLog(i);
-						} else if (name.equalsIgnoreCase("baseintu")) {
-							i = Integer.valueOf(s);
-							attr.setBaseInt(i);
-							attr.setIntu(i);
-						} else if (name.equalsIgnoreCase("basecha")) {
-							i = Integer.valueOf(s);
-							attr.setBaseCha(i);
-							attr.setCha(i);
-						} else if (name.equalsIgnoreCase("baseedge")) {
-							i = Integer.valueOf(s);
-							attr.setBaseEdge(i);
-							attr.setEdge(i);
-						}
-						/* Max Stats here */
-						else if (name.equalsIgnoreCase("maxbody")) {
-							i = Integer.valueOf(s);
-							attr.setMaxBody(i);
-						} else if (name.equalsIgnoreCase("maxagi")) {
-							i = Integer.valueOf(s);
-							attr.setMaxAgi(i);
-						} else if (name.equalsIgnoreCase("maxrea")) {
-							i = Integer.valueOf(s);
-							attr.setMaxRea(i);
-						} else if (name.equalsIgnoreCase("maxstr")) {
-							i = Integer.valueOf(s);
-							attr.setMaxStr(i);
-						} else if (name.equalsIgnoreCase("maxwil")) {
-							i = Integer.valueOf(s);
-							attr.setMaxWil(i);
-						} else if (name.equalsIgnoreCase("maxlog")) {
-							i = Integer.valueOf(s);
-							attr.setMaxLog(i);
-						} else if (name.equalsIgnoreCase("maxintu")) {
-							i = Integer.valueOf(s);
-							attr.setMaxInt(i);
-						} else if (name.equalsIgnoreCase("maxcha")) {
-							i = Integer.valueOf(s);
-							attr.setMaxCha(i);
-						} else if (name.equalsIgnoreCase("maxedge")) {
-							i = Integer.valueOf(s);
-							attr.setMaxEdge(i);
-						} else if (name.equalsIgnoreCase("ess")) {
-							i = Integer.valueOf(s);
-							attr.setEss(i);
+
+						switch(name.toLowerCase()){
+							case "race":
+								attr.setRace(s);
+								break;
+							/* Base stats and starting stats */
+							case "basebody":
+								i = Integer.valueOf(s);
+								attr.setBaseBody(i);
+								attr.setBody(i);
+								break;
+							case "baseagi":
+								i = Integer.valueOf(s);
+								attr.setBaseAgi(i);
+								attr.setAgi(i);
+								break;
+							case "baserea":
+								i = Integer.valueOf(s);
+								attr.setBaseRea(i);
+								attr.setRea(i);
+								break;
+							case "basestr":
+								i = Integer.valueOf(s);
+								attr.setBaseStr(i);
+								attr.setStr(i);
+								break;
+							case "basewil":
+								i = Integer.valueOf(s);
+								attr.setBaseWil(i);
+								attr.setWil(i);
+								break;
+							case "baselog":
+								i = Integer.valueOf(s);
+								attr.setBaseLog(i);
+								attr.setLog(i);
+								break;
+							case "baseintu":
+								i = Integer.valueOf(s);
+								attr.setBaseInt(i);
+								attr.setIntu(i);
+								break;
+							case "basecha":
+								i = Integer.valueOf(s);
+								attr.setBaseCha(i);
+								attr.setCha(i);
+								break;
+							case "baseedge":
+								i = Integer.valueOf(s);
+								attr.setBaseEdge(i);
+								attr.setEdge(i);
+								break;
+							/* Max Stats here */
+							case "maxbody":
+								i = Integer.valueOf(s);
+								attr.setMaxBody(i);
+								break;
+							case "maxagi":
+								i = Integer.valueOf(s);
+								attr.setMaxAgi(i);
+								break;
+							case "maxrea":
+								i = Integer.valueOf(s);
+								attr.setMaxRea(i);
+								break;
+							case "maxstr":
+								i = Integer.valueOf(s);
+								attr.setMaxStr(i);
+								break;
+							case "maxwil":
+								i = Integer.valueOf(s);
+								attr.setMaxWil(i);
+								break;
+							case "maxlog":
+								i = Integer.valueOf(s);
+								attr.setMaxLog(i);
+								break;
+							case "maxintu":
+								i = Integer.valueOf(s);
+								attr.setMaxInt(i);
+								break;
+							case "maxcha":
+								i = Integer.valueOf(s);
+								attr.setMaxCha(i);
+								break;
+							case "maxedge":
+								i = Integer.valueOf(s);
+								attr.setMaxEdge(i);
+								break;
+							case "ess":
+								i = Integer.valueOf(s);
+								attr.setEss(i);
+								break;
 						}
 
 					}
