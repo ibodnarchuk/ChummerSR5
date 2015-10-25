@@ -1,10 +1,16 @@
 package com.iwan_b.chummersr5.data;
 
+import java.util.ArrayList;
+
 public class Skill {
     private String name;
     private int rating;
     // The string the user inputs
     private String userTextInputString;
+
+    private String attrName;
+
+    private ArrayList<String> spec;
 
     // Which book is it in
     private String book;
@@ -91,4 +97,19 @@ public class Skill {
         this.technomancerOnly = technomancerOnly;
     }
 
+    public String getAttrName() {
+        return attrName;
+    }
+
+    public void setAttrName(String attrName) {
+        this.attrName = attrName;
+    }
+
+    public ArrayList<String> getSpec() {
+        return spec;
+    }
+
+    public void setSpec(ArrayList<String> spec) {
+        this.spec = spec;
+    }
 }

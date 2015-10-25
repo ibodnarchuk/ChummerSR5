@@ -5,7 +5,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.iwan_b.chummersr5.fragments.MainStats.MainContainer"
+        android:name="com.iwan_b.chummersr5.fragments.Skill.MainContainer"
         android:id="@+id/fragmentwert" />
 
 </LinearLayout>

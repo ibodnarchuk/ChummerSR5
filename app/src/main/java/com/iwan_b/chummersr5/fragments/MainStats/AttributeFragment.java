@@ -165,6 +165,8 @@ public class AttributeFragment extends Fragment {
 			TableRow.LayoutParams lp3 = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 			lp3.setMargins(20, 20, 20, 20);
 			attrDisplayTxtView.setLayoutParams(lp3);
+			attrDisplayTxtView.setGravity(1);
+			attrDisplayTxtView.setMinWidth(50);
 			newTableRow.addView(attrDisplayTxtView);
 
 			// Addition Button
@@ -253,7 +255,7 @@ public class AttributeFragment extends Fragment {
 			}
 
 			// Current amount of karma left
-			Integer karmaCounter = ShadowrunCharacter.getKarma();
+			Integer karmaUnused = ShadowrunCharacter.getKarma();
 
 			int max_attr_mod = 0;
 
@@ -283,13 +285,12 @@ public class AttributeFragment extends Fragment {
 							attrCounter--;
 						} else {
 							// See if they have enough karma to buy the next rating
-							if ((currentRating + 1) * 5 <= karmaCounter) {
+							if ((currentRating + 1) * 5 <= karmaUnused) {
 								// How much karma is spent
 								karmaUsed += (currentRating + 1) * 5;
-								karmaCounter -= (currentRating + 1) * 5;
+								karmaUnused -= (currentRating + 1) * 5;
 
-								// Set the karma count for the subtraction
-								// button to know
+								// Set the karma count for the subtraction button to know
 								attrDisplayTxtView.setTag(karmaUsed);
 
 								currentRating++;
@@ -312,13 +313,12 @@ public class AttributeFragment extends Fragment {
 							} else {
 								// See if they have enough karma to buy the next
 								// rating
-								if ((currentRating + 1) * 5 <= karmaCounter) {
+								if ((currentRating + 1) * 5 <= karmaUnused) {
 									// How much karma is spent
 									karmaUsed += (currentRating + 1) * 5;
-									karmaCounter -= (currentRating + 1) * 5;
+									karmaUnused -= (currentRating + 1) * 5;
 
-									// Set the karma count for the subtraction
-									// button to know
+									// Set the karma count for the subtractionbutton to know
 									attrDisplayTxtView.setTag(karmaUsed);
 									currentRating++;
 								}
@@ -349,7 +349,7 @@ public class AttributeFragment extends Fragment {
 					// Test to see if karma was used to increase this attr.
 					if (karmaUsed > 0) {
 						karmaUsed -= currentRating * 5;
-						karmaCounter += currentRating * 5;
+						karmaUnused += currentRating * 5;
 						currentRating--;
 					} else {
 						// No karma was used
@@ -383,7 +383,7 @@ public class AttributeFragment extends Fragment {
 				displayAttrCounter = attrCounter;
 			}
 
-			ShadowrunCharacter.setKarma(karmaCounter);
+			ShadowrunCharacter.setKarma(karmaUnused);
 			updateCounters();
 		}
 	}

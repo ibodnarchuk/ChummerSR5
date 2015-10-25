@@ -835,10 +835,6 @@ public class QualitiesFragment extends Fragment {
 				name = parser.getName();
 				if (name.equalsIgnoreCase("quality")) {
 					q = new Quality();
-
-					// int attCount = parser.getAttributeCount();
-					// TODO example of how to get the string
-					// String p = getString(R.string.type);
 				} else if (q != null) {
 					if (name.equalsIgnoreCase("mod")) {
 						m = new Modifier();

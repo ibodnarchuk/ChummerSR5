@@ -1,65 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <skills>
-    <skill>
-        <name></name>
-        <attr></attr>
+    <!--<skill>-->
+        <!--<name></name>-->
+        <!--<attr></attr>-->
 
-        <defaultable></defaultable>
+        <!--<defaultable></defaultable>-->
         <!-- Default is true -->
-        <magiconly></magiconly>
+        <!--<magiconly></magiconly>-->
         <!-- Default is false -->
-        <techonly></techonly>
+        <!--<techonly></techonly>-->
         <!-- Default is false -->
+        <!--<spec></spec>-->
 
-        <spec></spec>
-
-    </skill>
+    <!--</skill>-->
 
     <skill>
         <name>Archery</name>
         <attr>Agility</attr>
-        <!--         <spec>
-                    <item>Bow</item>
-                    <item>Crossbow</item>
-                    <item>Non-Standard Ammunition</item>
-                    <item>Slingshot</item>
-                </spec> -->
+            <spec>
+                <item>Bow</item>
+                <item>Crossbow</item>
+                <item>Non-Standard Ammunition</item>
+                <item>Slingshot</item>
+            </spec>
     </skill>
 
     <skill>
         <name>Automatics</name>
         <attr>Agility</attr>
-        <!--         <spec>
-                    <item>Assult Rifles</item>
-                    <item>Cyber-Implant</item>
-                    <item>Machine Pistols</item>
-                    <item>Submachine Guns</item>
-                </spec> -->
+           <spec>
+                <item>Assult Rifles</item>
+                <item>Cyber-Implant</item>
+                <item>Machine Pistols</item>
+                <item>Submachine Guns</item>
+            </spec>
     </skill>
 
     <skill>
         <name>Blades</name>
         <attr>Agility</attr>
-        <!-- <spec>
+        <spec>
             <item>Axes</item>
             <item>Knives</item>
             <item>Swords</item>
             <item>Parrying</item>
         </spec>
- -->
+
     </skill>
 
     <skill>
         <name>Clubs</name>
         <attr>Agility</attr>
-        <!--         <spec>
+                <spec>
                     <item>Batons</item>
                     <item>Hammers</item>
                     <item>Saps</item>
                     <item>Staves</item>
                     <item>Parrying</item>
                 </spec>
-         -->
+
     </skill>
 
     <skill>
@@ -72,57 +71,57 @@
     <skill>
         <name>Heavy Weapons</name>
         <attr>Agility</attr>
-        <!-- 	<spec>
+        	<spec>
                 <item>Assault Cannons</item>
                 <item>Grenade Launchers</item>
                 <item>Guided Missiles</item>
                 <item>Machine Guns</item>
                 <item>Rocket Launchers</item>
             </spec>
-         -->
+
     </skill>
 
     <skill>
         <name>Longarms</name>
         <attr>Agility</attr>
-        <!-- <spec>
+        <spec>
             <item>Extended-Range Shots</item>
             <item>Long-Range Shots</item>
             <item>Shotguns</item>
             <item>Sniper Rifles</item>
         </spec>
-    -->
+
     </skill>
 
     <skill>
         <name>Pistols</name>
         <attr>Agility</attr>
-        <!-- <spec>
+        <spec>
             <item>Holdouts</item>
             <item>Revolvers</item>
             <item>Semi-Automatics</item>
             <item>Tasers</item>
         </spec>
-     -->
+
     </skill>
 
     <skill>
         <name>Throwing Weapons</name>
         <attr>Agility</attr>
-        <!-- <spec>
+        <spec>
             <item>Aerodynamic</item>
             <item>Blades</item>
             <item>Non-Aerodynamic</item>
-        </spec> -->
+        </spec>
     </skill>
 
     <skill>
         <name>Unarmed Combat</name>
         <attr>Agility</attr>
-        <!-- <spec>
+        <spec>
             <item>Blocking</item>
             <item>Cyber Implants</item>
             <item>Subduing Combat</item>
-        </spec> -->
+        </spec>
     </skill>
 </skills>

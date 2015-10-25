@@ -772,10 +772,10 @@ public class NewCharacterPriorityTable extends Activity {
         // **********************************************************************************
 
         // TODO remove this from the default selection
-        ((RadioButton) metaRadioGroupA.getChildAt(0)).setChecked(true);
+        ((RadioButton) metaRadioGroupD.getChildAt(0)).setChecked(true);
         ((RadioButton) attRadioGroupB.getChildAt(0)).setChecked(true);
         ((RadioButton) magRadioGroupC.getChildAt(0)).setChecked(true);
-        ((RadioButton) skillRadioGroupD.getChildAt(0)).setChecked(true);
+        ((RadioButton) skillRadioGroupA.getChildAt(0)).setChecked(true);
         ((RadioButton) resourceRadioGroupE.getChildAt(0)).setChecked(true);
 
         doneButton.setOnClickListener(new OnClickListener() {

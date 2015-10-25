@@ -29,7 +29,6 @@ public class SwipeFragmentHolder extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_test);
 
 		newCharacter = ShadowrunCharacter.getCharacter();
 
@@ -68,6 +67,9 @@ public class SwipeFragmentHolder extends FragmentActivity {
 		}
 
 		newCharacter.setAttributes(attrs);
+		Log.i(ChummerConstants.TAG, newCharacter.toString());
+
+		setContentView(R.layout.fragment_test);
 	}
 
 	/**
