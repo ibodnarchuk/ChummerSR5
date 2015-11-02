@@ -3,9 +3,10 @@
     <!--<skill>-->
         <!--<name></name>-->
         <!--<attr></attr>-->
-
-        <!--<defaultable></defaultable>-->
+        <!--<group></group>-->
         <!-- Default is true -->
+        <!--<defaultable></defaultable>-->
+
         <!--<magiconly></magiconly>-->
         <!-- Default is false -->
         <!--<techonly></techonly>-->
@@ -27,6 +28,7 @@
 
     <skill>
         <name>Automatics</name>
+        <group>Firearms</group>
         <attr>Agility</attr>
            <spec>
                 <item>Assult Rifles</item>
@@ -38,6 +40,7 @@
 
     <skill>
         <name>Blades</name>
+        <group>Close Combat</group>
         <attr>Agility</attr>
         <spec>
             <item>Axes</item>
@@ -50,6 +53,7 @@
 
     <skill>
         <name>Clubs</name>
+        <group>Close Combat</group>
         <attr>Agility</attr>
                 <spec>
                     <item>Batons</item>
@@ -70,6 +74,7 @@
 
     <skill>
         <name>Heavy Weapons</name>
+        <group>Firearms</group>
         <attr>Agility</attr>
         	<spec>
                 <item>Assault Cannons</item>
@@ -83,6 +88,7 @@
 
     <skill>
         <name>Longarms</name>
+        <group>Firearms</group>
         <attr>Agility</attr>
         <spec>
             <item>Extended-Range Shots</item>
@@ -95,6 +101,7 @@
 
     <skill>
         <name>Pistols</name>
+        <group>Firearms</group>
         <attr>Agility</attr>
         <spec>
             <item>Holdouts</item>
@@ -117,11 +124,76 @@
 
     <skill>
         <name>Unarmed Combat</name>
+        <group>Close Combat</group>
         <attr>Agility</attr>
         <spec>
             <item>Blocking</item>
             <item>Cyber Implants</item>
             <item>Subduing Combat</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Disguise</name>
+        <group>Stealth</group>
+        <attr>Intuition</attr>
+        <spec>
+            <item>Camouflage</item>
+            <item>Cosmetic</item>
+            <item>Theatrical</item>
+            <item>Trideo &amp; Video</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Running</name>
+        <group>Athletics</group>
+        <attr>Strength</attr>
+        <spec>
+            <item>Distance</item>
+            <item>Sprinting</item>
+            <item>Desert</item>
+            <item>Urban</item>
+            <item>By other terrain</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Survival</name>
+        <group>Outdoors</group>
+        <attr>willpower</attr>
+        <spec>
+            <item>Desert</item>
+            <item>Forset</item>
+            <item>Jungle</item>
+            <item>Mountain</item>
+            <item>Polar</item>
+            <item>Urban</item>
+            <item>Or other terrain</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Alchemy</name>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <group>Enchanting</group>
+        <attr>Magic</attr>
+        <spec>
+            <item>By Trigger</item>
+            <item>By Spell type</item>
+        </spec>
+    </skill>
+
+
+    <skill>
+        <name>Compiling</name>
+        <defaultable>false</defaultable>
+        <techonly>true</techonly>
+        <group>Tasking</group>
+        <attr>Resonance</attr>
+        <spec>
+            <item>By Sprite type</item>
         </spec>
     </skill>
 </skills>
