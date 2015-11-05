@@ -15,12 +15,18 @@ import android.widget.Toast;
 import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
+import com.iwan_b.chummersr5.utility.ChummerConstants;
+
+import java.util.ArrayList;
 
 public class SkillTableRow {
+    // TODO maybe make this into a method that they can call and get...
+    private static ArrayList<Skill> skillsAvailable;
     private final View rootView;
 
-    public SkillTableRow(final View rootView) {
+    public SkillTableRow(final View rootView, final ArrayList<Skill> skillsAvailable) {
         this.rootView = rootView;
+        SkillTableRow.skillsAvailable = skillsAvailable;
     }
 
     public void updateKarma() {
@@ -30,15 +36,13 @@ public class SkillTableRow {
         }
     }
 
-    private void updateCounters(final Integer skillCounter, final Integer groupSkillCounter) {
-        TextView freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeSkills);
-        freeSkillsTxtView.setText(String.valueOf(skillCounter));
-
-        TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroups);
-        freeSkillGroupTxt.setText(String.valueOf(groupSkillCounter));
-
-        updateKarma();
+    private void updateSkillCounter(final Integer skillCounter) {
+        if (rootView != null) {
+            TextView freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeSkills);
+            freeSkillsTxtView.setText(String.valueOf(skillCounter));
+        }
     }
+
 
     public TableRow createRow(final Skill currentSkill) {
         TableRow newTableRow = new TableRow(rootView.getContext());
@@ -247,6 +251,8 @@ public class SkillTableRow {
         private LinearLayout extraInfo;
 
         private TableRow skillGroup;
+        private ArrayList<TableRow> skillsTableRowGroup;
+
 
         public SkillOnClickListener(final Skill skill, final TextView skillValueTxtView, final LinearLayout extraInfo,
                                     final boolean isAddition) {
@@ -287,124 +293,184 @@ public class SkillTableRow {
             }
         }
 
-        private void toggleSkillGroup(final int currentRating) {
-            if (skillGroup != null) {
-                // TODO find out how to disable only if the other skills are not at the same level...
-                Button add = (Button) skillGroup.getChildAt(3);
-                TextView valueTxtView = (TextView) skillGroup.getChildAt(2);
-                Button sub = (Button) skillGroup.getChildAt(1);
+        private boolean wasKarmaUsed() {
+            ArrayList<Integer> pointHistory = new ArrayList<>();
 
-                int iValue =  Integer.valueOf(valueTxtView.getText().toString());
+            if (skillValueTxtView != null && skillValueTxtView.getTag() != null) {
+                pointHistory = (ArrayList<Integer>) skillValueTxtView.getTag();
+            }
 
-//                valueTxtView.setText(String.valueOf(iValue+1));
+            for (int i : pointHistory) {
+                if (i > 0) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-                // TODO change this because this is only used for chargen
-//                if (isAddition) {
-//                    add.setEnabled(false);
-//                    sub.setEnabled(false);
-//                } else {
-//                    if (currentRating == 0) {
-//                        add.setEnabled(true);
-//                        sub.setEnabled(true);
-//                    }
-//                }
+        private void toggleSkillGroup(int currentRating) {
+            if (skillsTableRowGroup == null && skill.getGroupName() != null) {
+                findSkillsByGroup(skill.getGroupName());
+            }
+
+            // Find all the relevant skills, then see if they are all the same level... then increase the group counter and tag
+            if (skillGroup != null && skillsTableRowGroup != null) {
+                if (isAddition) {
+                    for (TableRow temp : skillsTableRowGroup) {
+                        // TODO change the hardcode 2 to an enum
+
+                        int tempValue = Integer.valueOf(((TextView) temp.getChildAt(2)).getText().toString());
+                        if (currentRating != tempValue) {
+                            // If they aren't the same value then we don't toggle the skillGroup
+                            return;
+                        }
+                    }
+
+                    TextView valueTxtView = (TextView) skillGroup.getChildAt(2);
+
+                    int iValue = Integer.valueOf(valueTxtView.getText().toString());
+
+                    ArrayList<Integer> pointHistory = new ArrayList<>();
+
+                    // Get the history of the skills
+                    if (valueTxtView.getTag() != null) {
+                        pointHistory = (ArrayList<Integer>) valueTxtView.getTag();
+                    }
+
+                    pointHistory.add(ChummerConstants.freeSkillGroupLevel);
+                    valueTxtView.setText(String.valueOf(iValue + 1));
+
+                    valueTxtView.setTag(pointHistory);
+
+                } else {
+                    // Subtraction
+                    TextView valueTxtView = (TextView) skillGroup.getChildAt(2);
+                    int iValue = Integer.valueOf(valueTxtView.getText().toString());
+                    ArrayList<Integer> pointHistory = new ArrayList<>();
+
+                    // Get the history of the skills
+                    if (valueTxtView.getTag() != null) {
+                        pointHistory = (ArrayList<Integer>) valueTxtView.getTag();
+                    }
+
+                    if (!pointHistory.isEmpty() && pointHistory.get(pointHistory.size() - 1) == ChummerConstants.freeSkillGroupLevel) {
+                        valueTxtView.setText(String.valueOf(iValue - 1));
+                        pointHistory.remove(pointHistory.size() - 1);
+                    }
+
+                    valueTxtView.setTag(pointHistory);
+                }
+            }
+        }
+
+        private void findSkillsByGroup(final String skillGroupName) {
+            ArrayList<String> skillNameArray = new ArrayList<>();
+            // Grab the name of the skill that has the same groupname
+            for (final Skill s : skillsAvailable) {
+                if (s.getGroupName() != null && s.getGroupName().compareToIgnoreCase(skillGroupName) == 0 && s.getSkillName() != skill.getSkillName()) {
+                    skillNameArray.add(s.getSkillName().toLowerCase());
+                }
+            }
+
+            // Find the skills highlighted earlier
+            TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillsTableLayout);
+            for (int i = 0; i < SkillsTableLayout.getChildCount(); i++) {
+                TableRow temp = (TableRow) SkillsTableLayout.getChildAt(i);
+
+                TextView skillName = (TextView) temp.getChildAt(0);
+
+                if (skillNameArray.contains(skillName.getText().toString().toLowerCase())) {
+                    if (skillsTableRowGroup == null) {
+                        skillsTableRowGroup = new ArrayList<>();
+                    }
+                    skillsTableRowGroup.add(temp);
+                }
             }
         }
 
         @Override
         public void onClick(View v) {
             findSkillGroup();
-            int groupRating = getGroupRating();
 
             // Current rating of the skill
             int currentRating = Integer.valueOf(skillValueTxtView.getText().toString());
 
             // Current value left for attributes
-            Integer skillCounter, groupSkillCounter;
             TextView freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeSkills);
-            TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroups);
-            skillCounter = Integer.valueOf(freeSkillsTxtView.getText().toString());
-            groupSkillCounter = Integer.valueOf(freeSkillGroupTxt.getText().toString());
+            Integer skillCounter = Integer.valueOf(freeSkillsTxtView.getText().toString());
 
             // Current amount of karma left
             Integer karmaUnused = ShadowrunCharacter.getKarma();
-            Integer karmaUsed = 0;
+            ArrayList<Integer> pointHistory = new ArrayList<>();
 
-            // Get the karma count for this attribute
+            // Get the history of the skills
             if (skillValueTxtView.getTag() != null) {
-                karmaUsed = (Integer) skillValueTxtView.getTag();
+                pointHistory = (ArrayList<Integer>) skillValueTxtView.getTag();
             }
 
             int max_skill_mod = 0;
 
             if (isAddition) {
                 if (currentRating < maxSkill + max_skill_mod) {
-                    // If the group rating is not 0 then they can only increase the skill with karma.
-                    if(groupRating == 0) {
-                        // Use the free skills first, then karma
-                        if (skillCounter > 0) {
-                            // Test if they used karma on this specific skill before
-                            if (karmaUsed > 0) {
-                                Toast toast = Toast.makeText(rootView.getContext(),
-                                        "You already used karma on this. Can't use points afterwards.",
-                                        Toast.LENGTH_SHORT);
-                                toast.show();
-                            } else {
-                                currentRating++;
-                                skillCounter--;
-                            }
+                    // Use the free skills first, then karma
+                    if (skillCounter > 0 && getGroupRating() == 0) {
+                        // Test if they used karma on this specific skill before
+                        if (wasKarmaUsed()) {
+                            Toast toast = Toast.makeText(rootView.getContext(),
+                                    "You already used karma on this. Can't use points afterwards.",
+                                    Toast.LENGTH_SHORT);
+                            toast.show();
                         } else {
-                            // Forumula for karma needed to advance to next level is: (New Rating x 2)
-                            if ((currentRating + 1) * 2 <= karmaUnused) {
-                                karmaUsed += (currentRating + 1) * 2;
-                                karmaUnused -= (currentRating + 1) * 2;
-
-                                // Set the karma count for the subtraction button to know
-                                skillValueTxtView.setTag(karmaUsed);
-
-                                currentRating++;
-                            }
+                            currentRating++;
+                            skillCounter--;
+                            pointHistory.add(ChummerConstants.freeSkillPointUsed);
+                            toggleSkillGroup(currentRating);
                         }
                     } else {
                         // Forumula for karma needed to advance to next level is: (New Rating x 2)
                         if ((currentRating + 1) * 2 <= karmaUnused) {
-                            karmaUsed += (currentRating + 1) * 2;
+                            pointHistory.add((currentRating + 1) * 2);
                             karmaUnused -= (currentRating + 1) * 2;
-
-                            // Set the karma count for the subtraction button to know
-                            skillValueTxtView.setTag(karmaUsed);
-
                             currentRating++;
-                            // Fine to toggle group
-
                             toggleSkillGroup(currentRating);
                         }
                     }
                 }
                 // Subtraction
             } else {
-                // TODO maybe remove baseSkill. When will this var actually matter?
-                if (currentRating > baseSkill + groupRating) {
-                    // Forumula for karma needed to advance to next level is: (New Rating x 2)
-                    if (karmaUsed > 0) {
-                        karmaUsed -= (currentRating) * 2;
-                        karmaUnused += (currentRating) * 2;
+                if (currentRating > baseSkill) {
+                    if (!pointHistory.isEmpty() && pointHistory.get(pointHistory.size() - 1) != ChummerConstants.freeSkillLevel) {
+                        if (wasKarmaUsed()) {
+                            // Forumula for karma needed to advance to next level is: (New Rating x 2)
+                            karmaUnused += (currentRating) * 2;
+                        } else {
+                            // No karma was used
+                            skillCounter++;
+                        }
                         currentRating--;
-                    } else {
-                        // No karma was used
-                        currentRating--;
-                        skillCounter++;
+                        toggleSkillGroup(currentRating);
+                        pointHistory.remove(pointHistory.size() - 1);
                     }
-
-                    skillValueTxtView.setTag(karmaUsed);
                 }
             }
+
+//            Log.i(ChummerConstants.TAG, "-----SKILL KARMA START-----");
+//            if (pointHistory != null) {
+//                Log.i(ChummerConstants.TAG, pointHistory.toString());
+//            } else {
+//                Log.i(ChummerConstants.TAG, "Karma is null");
+//            }
+//            Log.i(ChummerConstants.TAG, "-----SKILL KARMA END-------");
+
+            // Set the karma count for the subtraction button to know
+            skillValueTxtView.setTag(pointHistory);
 
             // Update the displays with all the new stuff.
             skillValueTxtView.setText(String.valueOf(currentRating));
 
             ShadowrunCharacter.setKarma(karmaUnused);
-            updateCounters(skillCounter, groupSkillCounter);
+            updateSkillCounter(skillCounter);
+            updateKarma();
         }
     }
 

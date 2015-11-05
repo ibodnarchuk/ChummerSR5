@@ -75,7 +75,7 @@ public class MainContainer extends Fragment {
 		Collections.sort(skillsAvailable);
 
 		TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillsTableLayout);
-		SkillTableRow genSkillTableRow = new SkillTableRow(rootView);
+		SkillTableRow genSkillTableRow = new SkillTableRow(rootView, skillsAvailable);
 
 		ArrayList<String> skillGroup = new ArrayList<>();
 
