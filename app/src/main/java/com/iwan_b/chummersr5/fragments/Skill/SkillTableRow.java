@@ -32,7 +32,7 @@ public class SkillTableRow {
     public void updateKarma() {
         if (rootView != null) {
             TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karmaCounter);
-            karmaCounterTxtView.setText(ShadowrunCharacter.getKarma() + " Karma");
+            karmaCounterTxtView.setText(String.valueOf(ShadowrunCharacter.getKarma()));
         }
     }
 
@@ -42,7 +42,6 @@ public class SkillTableRow {
             freeSkillsTxtView.setText(String.valueOf(skillCounter));
         }
     }
-
 
     public TableRow createRow(final Skill currentSkill) {
         TableRow newTableRow = new TableRow(rootView.getContext());
@@ -221,12 +220,13 @@ public class SkillTableRow {
             spinner.setLayoutParams(lp5);
         }
 
-        newTableRow.addView(titleTxtView);
-        newTableRow.addView(subButton);
-        newTableRow.addView(skillValueTxtView);
-        newTableRow.addView(addButton);
-        newTableRow.addView(extraInfo);
-        newTableRow.addView(spinner);
+
+        newTableRow.addView(titleTxtView, ChummerConstants.tableLayout.title.ordinal());
+        newTableRow.addView(subButton, ChummerConstants.tableLayout.sub.ordinal());
+        newTableRow.addView(skillValueTxtView, ChummerConstants.tableLayout.lvl.ordinal());
+        newTableRow.addView(addButton, ChummerConstants.tableLayout.add.ordinal());
+        newTableRow.addView(extraInfo, ChummerConstants.tableLayout.extra.ordinal());
+        newTableRow.addView(spinner, ChummerConstants.tableLayout.spinner.ordinal());
 
         subButton.setOnClickListener(new SkillOnClickListener(currentSkill, skillValueTxtView, extraInfo, false));
         addButton.setOnClickListener(new SkillOnClickListener(currentSkill, skillValueTxtView, extraInfo, true));
@@ -236,7 +236,7 @@ public class SkillTableRow {
 
     private class SkillOnClickListener implements View.OnClickListener {
         // Which textfield to modify
-        private TextView skillValueTxtView;
+        private TextView skillLvlTxtView;
         // Whether to add or subtract
         private boolean isAddition;
 
@@ -245,7 +245,7 @@ public class SkillTableRow {
         // TODO raise this to 12 after chargen
         private int maxSkill = 6;
 
-        private Skill skill;
+        private Skill skillData;
 
         // Display all the modifiers that affect the attribute
         private LinearLayout extraInfo;
@@ -254,10 +254,10 @@ public class SkillTableRow {
         private ArrayList<TableRow> skillsTableRowGroup;
 
 
-        public SkillOnClickListener(final Skill skill, final TextView skillValueTxtView, final LinearLayout extraInfo,
+        public SkillOnClickListener(final Skill skillData, final TextView skillLvlTxtView, final LinearLayout extraInfo,
                                     final boolean isAddition) {
-            this.skill = skill;
-            this.skillValueTxtView = skillValueTxtView;
+            this.skillData = skillData;
+            this.skillLvlTxtView = skillLvlTxtView;
             this.extraInfo = extraInfo;
             this.isAddition = isAddition;
 
@@ -266,16 +266,16 @@ public class SkillTableRow {
 
         private void findSkillGroup() {
             // Only find it once
-            if (skill.getGroupName() != null && skillGroup == null) {
+            if (skillData.getGroupName() != null && skillGroup == null) {
                 // Grab and find all the skillsgroups
                 TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillGroupsTableLayout);
                 // Loop through all the skills and either disable or enable
                 for (int i = 0; i < SkillsTableLayout.getChildCount(); i++) {
                     TableRow temp = (TableRow) SkillsTableLayout.getChildAt(i);
 
-                    TextView name = (TextView) temp.getChildAt(0);
+                    TextView name = (TextView) temp.getChildAt(ChummerConstants.tableLayout.title.ordinal());
 
-                    if (skill.getGroupName().toLowerCase().contains(name.getText().toString().toLowerCase())) {
+                    if (skillData.getGroupName().toLowerCase().contains(name.getText().toString().toLowerCase())) {
                         skillGroup = temp;
                         // Break since we found the only skillgroup
                         break;
@@ -284,82 +284,75 @@ public class SkillTableRow {
             }
         }
 
-        private int getGroupRating() {
-            if (skillGroup != null) {
-                TextView valueTxtView = (TextView) skillGroup.getChildAt(2);
-                return Integer.valueOf(valueTxtView.getText().toString());
-            } else {
-                return 0;
+        private boolean werePointUsed(TextView txtView) {
+            if (txtView != null && txtView.getTag() != null) {
+                ArrayList<Integer> pointHistory = (ArrayList<Integer>) txtView.getTag();
+                for (int i : pointHistory) {
+                    if (i == ChummerConstants.skillGroupPointUsed || i == ChummerConstants.skillPointUsed) {
+                        return true;
+                    }
+                }
             }
+            return false;
         }
 
-        private boolean wasKarmaUsed() {
-            ArrayList<Integer> pointHistory = new ArrayList<>();
 
-            if (skillValueTxtView != null && skillValueTxtView.getTag() != null) {
-                pointHistory = (ArrayList<Integer>) skillValueTxtView.getTag();
-            }
+        private boolean wasKarmaUsed(TextView txtView) {
+            if (txtView != null && txtView.getTag() != null) {
+                ArrayList<Integer> pointHistory = (ArrayList<Integer>) txtView.getTag();
 
-            for (int i : pointHistory) {
-                if (i > 0) {
-                    return true;
+                for (int i : pointHistory) {
+                    if (i > 0) {
+                        return true;
+                    }
                 }
             }
             return false;
         }
 
         private void toggleSkillGroup(int currentRating) {
-            if (skillsTableRowGroup == null && skill.getGroupName() != null) {
-                findSkillsByGroup(skill.getGroupName());
+            if (skillsTableRowGroup == null && skillData.getGroupName() != null) {
+                findSkillsByGroup(skillData.getGroupName());
             }
 
-            // Find all the relevant skills, then see if they are all the same level... then increase the group counter and tag
             if (skillGroup != null && skillsTableRowGroup != null) {
+                // Loop through and find the min value of this group. Then if the skillgroup is less then the min value increase skill group
+                int lowestValue = currentRating;
+
+                for (int i = 0; i < skillsTableRowGroup.size(); i++) {
+                    TextView temp = (TextView) skillsTableRowGroup.get(i).getChildAt(ChummerConstants.tableLayout.lvl.ordinal());
+
+                    int iSkillValue = Integer.valueOf(temp.getText().toString());
+
+                    if (iSkillValue < lowestValue) {
+                        lowestValue = iSkillValue;
+                    }
+                }
+                TextView groupLevelTxtView = (TextView) skillGroup.getChildAt(ChummerConstants.tableLayout.lvl.ordinal());
+                int groupLevel = Integer.valueOf(groupLevelTxtView.getText().toString());
+
+                ArrayList<Integer> pointHistory = new ArrayList<>();
+                // Get the history of the skills
+                if (groupLevelTxtView.getTag() != null) {
+                    pointHistory = (ArrayList<Integer>) groupLevelTxtView.getTag();
+                }
+
                 if (isAddition) {
-                    for (TableRow temp : skillsTableRowGroup) {
-                        // TODO change the hardcode 2 to an enum
-
-                        int tempValue = Integer.valueOf(((TextView) temp.getChildAt(2)).getText().toString());
-                        if (currentRating != tempValue) {
-                            // If they aren't the same value then we don't toggle the skillGroup
-                            return;
-                        }
+                    while (groupLevel < lowestValue) {
+                        pointHistory.add(ChummerConstants.freeSkillGroupLevel);
+                        groupLevelTxtView.setText(String.valueOf(groupLevel + 1));
+                        groupLevel++;
                     }
-
-                    TextView valueTxtView = (TextView) skillGroup.getChildAt(2);
-
-                    int iValue = Integer.valueOf(valueTxtView.getText().toString());
-
-                    ArrayList<Integer> pointHistory = new ArrayList<>();
-
-                    // Get the history of the skills
-                    if (valueTxtView.getTag() != null) {
-                        pointHistory = (ArrayList<Integer>) valueTxtView.getTag();
-                    }
-
-                    pointHistory.add(ChummerConstants.freeSkillGroupLevel);
-                    valueTxtView.setText(String.valueOf(iValue + 1));
-
-                    valueTxtView.setTag(pointHistory);
-
                 } else {
                     // Subtraction
-                    TextView valueTxtView = (TextView) skillGroup.getChildAt(2);
-                    int iValue = Integer.valueOf(valueTxtView.getText().toString());
-                    ArrayList<Integer> pointHistory = new ArrayList<>();
-
-                    // Get the history of the skills
-                    if (valueTxtView.getTag() != null) {
-                        pointHistory = (ArrayList<Integer>) valueTxtView.getTag();
-                    }
-
-                    if (!pointHistory.isEmpty() && pointHistory.get(pointHistory.size() - 1) == ChummerConstants.freeSkillGroupLevel) {
-                        valueTxtView.setText(String.valueOf(iValue - 1));
+                    while (groupLevel > lowestValue && !pointHistory.isEmpty() && pointHistory.get(pointHistory.size() - 1) == ChummerConstants.freeSkillGroupLevel) {
+                        groupLevelTxtView.setText(String.valueOf(groupLevel - 1));
                         pointHistory.remove(pointHistory.size() - 1);
+                        groupLevel--;
                     }
-
-                    valueTxtView.setTag(pointHistory);
                 }
+
+                groupLevelTxtView.setTag(pointHistory);
             }
         }
 
@@ -367,7 +360,7 @@ public class SkillTableRow {
             ArrayList<String> skillNameArray = new ArrayList<>();
             // Grab the name of the skill that has the same groupname
             for (final Skill s : skillsAvailable) {
-                if (s.getGroupName() != null && s.getGroupName().compareToIgnoreCase(skillGroupName) == 0 && s.getSkillName() != skill.getSkillName()) {
+                if (s.getGroupName() != null && s.getGroupName().compareToIgnoreCase(skillGroupName) == 0 && s.getSkillName() != skillData.getSkillName()) {
                     skillNameArray.add(s.getSkillName().toLowerCase());
                 }
             }
@@ -377,7 +370,7 @@ public class SkillTableRow {
             for (int i = 0; i < SkillsTableLayout.getChildCount(); i++) {
                 TableRow temp = (TableRow) SkillsTableLayout.getChildAt(i);
 
-                TextView skillName = (TextView) temp.getChildAt(0);
+                TextView skillName = (TextView) temp.getChildAt(ChummerConstants.tableLayout.title.ordinal());
 
                 if (skillNameArray.contains(skillName.getText().toString().toLowerCase())) {
                     if (skillsTableRowGroup == null) {
@@ -393,7 +386,7 @@ public class SkillTableRow {
             findSkillGroup();
 
             // Current rating of the skill
-            int currentRating = Integer.valueOf(skillValueTxtView.getText().toString());
+            int currentRating = Integer.valueOf(skillLvlTxtView.getText().toString());
 
             // Current value left for attributes
             TextView freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeSkills);
@@ -404,8 +397,8 @@ public class SkillTableRow {
             ArrayList<Integer> pointHistory = new ArrayList<>();
 
             // Get the history of the skills
-            if (skillValueTxtView.getTag() != null) {
-                pointHistory = (ArrayList<Integer>) skillValueTxtView.getTag();
+            if (skillLvlTxtView.getTag() != null) {
+                pointHistory = (ArrayList<Integer>) skillLvlTxtView.getTag();
             }
 
             int max_skill_mod = 0;
@@ -413,9 +406,15 @@ public class SkillTableRow {
             if (isAddition) {
                 if (currentRating < maxSkill + max_skill_mod) {
                     // Use the free skills first, then karma
-                    if (skillCounter > 0 && getGroupRating() == 0) {
+
+                    TextView skillGroupTxtView = null;
+                    if (skillGroup != null) {
+                        skillGroupTxtView = (TextView) skillGroup.getChildAt(ChummerConstants.tableLayout.lvl.ordinal());
+                    }
+
+                    if (skillCounter > 0 && !wasKarmaUsed(skillGroupTxtView) && !werePointUsed(skillGroupTxtView)) {
                         // Test if they used karma on this specific skill before
-                        if (wasKarmaUsed()) {
+                        if (wasKarmaUsed(skillLvlTxtView)) {
                             Toast toast = Toast.makeText(rootView.getContext(),
                                     "You already used karma on this. Can't use points afterwards.",
                                     Toast.LENGTH_SHORT);
@@ -423,7 +422,7 @@ public class SkillTableRow {
                         } else {
                             currentRating++;
                             skillCounter--;
-                            pointHistory.add(ChummerConstants.freeSkillPointUsed);
+                            pointHistory.add(ChummerConstants.skillPointUsed);
                             toggleSkillGroup(currentRating);
                         }
                     } else {
@@ -440,7 +439,7 @@ public class SkillTableRow {
             } else {
                 if (currentRating > baseSkill) {
                     if (!pointHistory.isEmpty() && pointHistory.get(pointHistory.size() - 1) != ChummerConstants.freeSkillLevel) {
-                        if (wasKarmaUsed()) {
+                        if (wasKarmaUsed(skillLvlTxtView)) {
                             // Forumula for karma needed to advance to next level is: (New Rating x 2)
                             karmaUnused += (currentRating) * 2;
                         } else {
@@ -454,19 +453,15 @@ public class SkillTableRow {
                 }
             }
 
-//            Log.i(ChummerConstants.TAG, "-----SKILL KARMA START-----");
 //            if (pointHistory != null) {
 //                Log.i(ChummerConstants.TAG, pointHistory.toString());
-//            } else {
-//                Log.i(ChummerConstants.TAG, "Karma is null");
 //            }
-//            Log.i(ChummerConstants.TAG, "-----SKILL KARMA END-------");
 
             // Set the karma count for the subtraction button to know
-            skillValueTxtView.setTag(pointHistory);
+            skillLvlTxtView.setTag(pointHistory);
 
             // Update the displays with all the new stuff.
-            skillValueTxtView.setText(String.valueOf(currentRating));
+            skillLvlTxtView.setText(String.valueOf(currentRating));
 
             ShadowrunCharacter.setKarma(karmaUnused);
             updateSkillCounter(skillCounter);
