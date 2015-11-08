@@ -77,13 +77,18 @@ public class MainContainer extends Fragment {
         ArrayList<String> skillGroup = new ArrayList<>();
 
 
-        // TODO Make this into a scrollview.
         for (final Skill currentSkill : skillsAvailable) {
             // Add the skill group listed
             if (currentSkill.getGroupName() != null && !currentSkill.getGroupName().isEmpty()) {
                 // Don't allow duplicates
                 if (!skillGroup.contains(currentSkill.getGroupName())) {
-                    skillGroup.add(currentSkill.getGroupName());
+                    if (currentSkill.getMagicOnly() && ShadowrunCharacter.getCharacter().getAttributes().getBaseMagic() > 0) {
+                        skillGroup.add(currentSkill.getGroupName());
+                    } else if (currentSkill.getTechnomancerOnly() && ShadowrunCharacter.getCharacter().getAttributes().getBaseRes() > 0) {
+                        skillGroup.add(currentSkill.getGroupName());
+                    } else if (!currentSkill.getMagicOnly() && !currentSkill.getTechnomancerOnly()) {
+                        skillGroup.add(currentSkill.getGroupName());
+                    }
                 }
             }
 

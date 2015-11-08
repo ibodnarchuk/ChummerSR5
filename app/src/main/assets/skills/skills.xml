@@ -185,7 +185,6 @@
         </spec>
     </skill>
 
-
     <skill>
         <name>Compiling</name>
         <defaultable>false</defaultable>
@@ -196,4 +195,744 @@
             <item>By Sprite type</item>
         </spec>
     </skill>
+
+    <skill>
+        <name>Diving</name>
+        <attr>Body</attr>
+        <spec>
+            <item>Liquid Breathing Apparatus</item>
+            <item>Mixed Gas</item>
+            <item>Oxygen Extraction</item>
+            <item>SCUBA</item>
+            <item>Arctic</item>
+            <item>Cave</item>
+            <item>Commercial</item>
+            <item>Military</item>
+            <item>Controlled Hyperventilation</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Escape Artist</name>
+        <attr>Agility</attr>
+        <spec>
+            <item>Cuffs</item>
+            <item>Ropes</item>
+            <item>Zip Ties</item>
+            <item>Contortionism</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Free-Fall</name>
+        <attr>Body</attr>
+        <spec>
+            <item>BASE jumping</item>
+            <item>Break-Fall</item>
+            <item>Bungee</item>
+            <item>HALO</item>
+            <item>Low Altitude</item>
+            <item>Parachute</item>
+            <item>Static line</item>
+            <item>Wingsuit</item>
+            <item>Zipline</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Gymnastics</name>
+        <attr>Agility</attr>
+        <group>Athletics</group>
+        <spec>
+            <item>Balance</item>
+            <item>Climbing</item>
+            <item>Dance</item>
+            <item>Leaping</item>
+            <item>Parkour</item>
+            <item>Rolling</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Palming</name>
+        <attr>Agility</attr>
+        <group>Stealth</group>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Legerdemain</item>
+            <item>Pickpocket</item>
+            <item>Pilfering</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Perception</name>
+        <attr>Intuition</attr>
+        <spec>
+            <item>Hearing</item>
+            <item>Scent</item>
+            <item>Searching</item>
+            <item>Taste</item>
+            <item>Touch</item>
+            <item>Visual</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Running</name>
+        <attr>Strength</attr>
+        <group>Athletics</group>
+        <spec>
+            <item>Distance</item>
+            <item>Sprinting</item>
+            <item>Desert</item>
+            <item>Urban</item>
+            <item>Wilderness</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Sneaking</name>
+        <attr>Agility</attr>
+        <group>Stealth</group>
+        <spec>
+            <item>Jungle</item>
+            <item>Urban</item>
+            <item>Desert</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Survival</name>
+        <attr>Willpower</attr>
+        <group>Outdoors</group>
+        <spec>
+            <item>Desert</item>
+            <item>Forest</item>
+            <item>Jungle</item>
+            <item>Mountain</item>
+            <item>Polar</item>
+            <item>Urban</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Swimming</name>
+        <attr>Strength</attr>
+        <group>Athletics</group>
+        <spec>
+            <item>Dash</item>
+            <item>Long Distance</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Tracking</name>
+        <attr>Intuition</attr>
+        <group>Outdoors</group>
+        <spec>
+            <item>Desert</item>
+            <item>Forest</item>
+            <item>Jungle</item>
+            <item>Mountain</item>
+            <item>Polar</item>
+            <item>Urban</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Con</name>
+        <attr>Charisma</attr>
+        <group>Acting</group>
+        <spec>
+            <item>Fast Talking</item>
+            <item>Seduction</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Etiquette</name>
+        <attr>Charisma</attr>
+        <group>Influence</group>
+        <spec>
+            <item>Corporate</item>
+            <item>High Society</item>
+            <item>Media</item>
+            <item>Mercenary</item>
+            <item>Street</item>
+            <item>Yakuza</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Impresonation</name>
+        <attr>Charisma</attr>
+        <group>Acting</group>
+        <spec>
+            <item>Dwarf</item>
+            <item>Elf</item>
+            <item>Human</item>
+            <item>Ork</item>
+            <item>Troll</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Instruction</name>
+        <attr>Charisma</attr>
+        <spec>
+            <item>By Active or Knowledge Skill</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Intimidation</name>
+        <attr>Charisma</attr>
+        <spec>
+            <item>Interrogation</item>
+            <item>Mental</item>
+            <item>Physical</item>
+            <item>Torture</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Leadership</name>
+        <attr>Charisma</attr>
+        <group>Influence</group>
+        <spec>
+            <item>Command</item>
+            <item>Direct</item>
+            <item>Inspire</item>
+            <item>Rally</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Negotiation</name>
+        <attr>Charisma</attr>
+        <group>Influence</group>
+        <spec>
+            <item>Bargaining</item>
+            <item>Contracts</item>
+            <item>Diplomacy</item>
+        </spec>
+    </skill>
+
+
+    <skill>
+        <name>Performance</name>
+        <attr>Charisma</attr>
+        <group>Acting</group>
+        <spec>
+            <item>Presentation</item>
+            <item>Acting</item>
+            <item>Comedy</item>
+            <item>Specific Musical Instrument</item>
+        </spec>
+    </skill>
+
+
+    <skill>
+        <name>Arcana</name>
+        <attr>Logic</attr>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>Spell Design</item>
+            <item>Focus Design</item>
+            <item>Spirit Formula</item>
+        </spec>
+    </skill>
+
+
+    <skill>
+        <name>Artificing</name>
+        <attr>Magic</attr>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>Focus Analysis</item>
+            <item>Crafting (by focus type)</item>
+        </spec>
+    </skill>
+
+
+    <skill>
+        <name>Assensing</name>
+        <attr>Intuition</attr>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>Aura Reading</item>
+            <item>Astral Signatures</item>
+            <item>By Aurora Type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Astral Combat</name>
+        <attr>Willpower</attr>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>By specific weapon focus type</item>
+            <item>By opponents</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Banishing</name>
+        <attr>Magic</attr>
+        <group>Conjuring</group>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>By Spirit Type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Binding</name>
+        <attr>Magic</attr>
+        <group>Conjuring</group>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>By spirit type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Counterspelling</name>
+        <attr>Magic</attr>
+        <group>Sorcery</group>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>By Spell Type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Disenchanting</name>
+        <attr>Magic</attr>
+        <group>Enchanting</group>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>By type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Ritual Spellcasting</name>
+        <attr>Magic</attr>
+        <group>Sorcery</group>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>By keyword</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Spellcasting</name>
+        <attr>Magic</attr>
+        <group>Sorcery</group>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>By Spell Type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Summoning</name>
+        <attr>Magic</attr>
+        <group>Conjuring</group>
+        <defaultable>false</defaultable>
+        <magiconly>true</magiconly>
+        <spec>
+            <item>By spirit type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Compiling</name>
+        <attr>Resonance</attr>
+        <group>Tasking</group>
+        <defaultable>false</defaultable>
+        <techonly>true</techonly>
+        <spec>
+            <item>By Sprite type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Decompiling</name>
+        <attr>Resonance</attr>
+        <group>Tasking</group>
+        <defaultable>false</defaultable>
+        <techonly>true</techonly>
+        <spec>
+            <item>By Sprite Type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Registering</name>
+        <attr>Resonance</attr>
+        <group>Tasking</group>
+        <defaultable>false</defaultable>
+        <techonly>true</techonly>
+        <spec>
+            <item>By Sprite Type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Aeronautics Mechanic</name>
+        <attr>Logic</attr>
+        <group>Engineering</group>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Aerospace</item>
+            <item>Fixed Wing</item>
+            <item>LTA(blimp)</item>
+            <item>Rotary Wing</item>
+            <item>Tilt Wing</item>
+            <item>Vector Thrust</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Animal Handling</name>
+        <attr>Charisma</attr>
+        <spec>
+            <item>By animal</item>
+            <item>Herding</item>
+            <item>Riding</item>
+            <item>Training</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Armorer</name>
+        <attr>Logic</attr>
+        <spec>
+            <item>Armor</item>
+            <item>Artillery</item>
+            <item>Explosives</item>
+            <item>Firearms</item>
+            <item>Melee Weapons</item>
+            <item>Heavy Weapons</item>
+            <item>Weapon Accessories</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Artisan</name>
+        <attr>Intuition</attr>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>By Discipline</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Automotive Mechanic</name>
+        <attr>Logic</attr>
+        <group>Engineering</group>
+        <defaultable>False</defaultable>
+        <spec>
+            <item>Walker</item>
+            <item>Hover</item>
+            <item>Tracked</item>
+            <item>Wheeled</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Biotechnology</name>
+        <attr>Logic</attr>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Bioinformatics</item>
+            <item>Bioware</item>
+            <item>Cloning</item>
+            <item>Gene Therapy</item>
+            <item>Vat Maintenance</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Chemistry</name>
+        <attr>Logic</attr>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Analytical</item>
+            <item>Biochemistry</item>
+            <item>Inorganic</item>
+            <item>Organic</item>
+            <item>Physical</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Computer</name>
+        <attr>Logic</attr>
+        <group>Electronics</group>
+        <spec>
+            <item>By Action</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Cybercombat</name>
+        <attr>Logic</attr>
+        <group>Cracking</group>
+        <spec>
+            <item>By Target Type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Cybertechnology</name>
+        <attr>Logic</attr>
+        <group>Biotech</group>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Bodyware</item>
+            <item>Cyberlimbs</item>
+            <item>Headware</item>
+            <item>Repair</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Demolitions</name>
+        <attr>Logic</attr>
+        <spec>
+            <item>Commercial Explosives</item>
+            <item>Defusing</item>
+            <item>Improvised Explosives</item>
+            <item>Plastic Explosives</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Electronic Warefare</name>
+        <attr>Logic</attr>
+        <group>Cracking</group>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Communications</item>
+            <item>Encryption</item>
+            <item>Jamming</item>
+            <item>Sensor Operations</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>First Aid</name>
+        <attr>Logic</attr>
+        <group>Biotech</group>
+        <spec>
+            <item>By treatment</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Forgery</name>
+        <attr>Logic</attr>
+        <spec>
+            <item>Counterfeiting</item>
+            <item>Credstick Forgery</item>
+            <item>False ID</item>
+            <item>Image Doctoring</item>
+            <item>Paper Forgery</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Hacking</name>
+        <attr>Logic</attr>
+        <group>Cracking</group>
+        <spec>
+            <item>Devices</item>
+            <item>Files</item>
+            <item>Hosts</item>
+            <item>Personas</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Hardware</name>
+        <attr>Logic</attr>
+        <group>Electronics</group>
+        <defaultable>False</defaultable>
+        <spec>
+            <item>By hardware Type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Industrial Mechanic</name>
+        <attr>Logic</attr>
+        <group>Engineering</group>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Electrical Power Systems</item>
+            <item>Hydraulics</item>
+            <item>HVAC</item>
+            <item>Industrial Robotics</item>
+            <item>Structural Welding</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Locksmith</name>
+        <attr>Agility</attr>
+        <defaultable>False</defaultable>
+        <spec>
+            <item>By Type</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Medicine</name>
+        <attr>Logic</attr>
+        <group>Biotech</group>
+        <defaultable>False</defaultable>
+        <spec>
+            <item>Cosmetic Surgery</item>
+            <item>Extended Care</item>
+            <item>Implant Surgery</item>
+            <item>Magical Health</item>
+            <item>Organ Culture</item>
+            <item>Trauma Surgery</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Nautical Mechanic</name>
+        <attr>Logic</attr>
+        <group>Engineering</group>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>motorboat</item>
+            <item>sailboat</item>
+            <item>ship</item>
+            <item>submarine</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Navigation</name>
+        <attr>Intuition</attr>
+        <group>Outdoors</group>
+        <spec>
+            <item>Augmented Reality Markers</item>
+            <item>Celestial</item>
+            <item>Compass</item>
+            <item>Maps</item>
+            <item>GPS</item>
+        </spec>
+    </skill>
+
+
+    <skill>
+        <name>Software</name>
+        <attr>Logic</attr>
+        <group>Electronics</group>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Data Bombs</item>
+            <item>Complex Form</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Gunnery</name>
+        <attr>Agility</attr>
+        <spec>
+            <item>Artillery</item>
+            <item>Ballistic</item>
+            <item>Energy</item>
+            <item>Guided Missile</item>
+            <item>Rocket</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Pilot Aerospace</name>
+        <attr>Reaction</attr>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Deep Space</item>
+            <item>Launch Craft</item>
+            <item>Remote Operation</item>
+            <item>Semiballistic</item>
+            <item>Suborbital</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Pilot Aircraft</name>
+        <attr>Reaction</attr>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Fixed-Wing</item>
+            <item>Lighter-Than-Air</item>
+            <item>Remote Operation</item>
+            <item>Rotary Wing</item>
+            <item>Tilt Wing</item>
+            <item>Vectored Thrust</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Pilot Walker</name>
+        <attr>Reaction</attr>
+        <defaultable>false</defaultable>
+        <spec>
+            <item>Biped</item>
+            <item>Multiped</item>
+            <item>Quadruped</item>
+            <item>Remote</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Pilot Exotic Vehicle(Specific)</name>
+        <attr>Reaction</attr>
+        <defaultable>false</defaultable>
+    </skill>
+
+    <skill>
+        <name>Pilot Ground Craft</name>
+        <attr>Reaction</attr>
+        <spec>
+            <item>Bike</item>
+            <item>Hovercraft</item>
+            <item>Remote Operation</item>
+            <item>Tracked</item>
+            <item>Wheeled</item>
+        </spec>
+    </skill>
+
+    <skill>
+        <name>Pilot Watercraft</name>
+        <attr>Reaction</attr>
+        <spec>
+            <item>Hydrofoil</item>
+            <item>Motorboat</item>
+            <item>Remote Operation</item>
+            <item>Sail</item>
+            <item>Ship</item>
+            <item>Submarine</item>
+        </spec>
+    </skill>
+
 </skills>

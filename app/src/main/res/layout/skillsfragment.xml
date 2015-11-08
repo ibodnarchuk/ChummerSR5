@@ -2,48 +2,61 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
-    <TableLayout
-        android:id="@+id/SkillGroupsTableLayout"
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" >
-    </TableLayout>
+        android:layout_height="match_parent">
 
-    <TableLayout
-        android:id="@+id/SkillsTableLayout"
+        <TableLayout
+            android:id="@+id/SkillGroupsTableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/SkillGroupsTableLayout"
-        android:layout_toEndOf="@+id/SkillGroupsTableLayout">
-    </TableLayout>
+        android:layout_toEndOf="@+id/scrollView"
+        android:layout_toRightOf="@+id/scrollView"
+        android:layout_alignParentTop="true">
+
+        <TableLayout
+            android:id="@+id/SkillsTableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </ScrollView>
+
 
     <TextView
         android:id="@+id/freeSkills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true"
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/freeSkillGroups"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:layout_below="@+id/freeSkills"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/freeSkills"
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/karmaCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:layout_below="@+id/freeSkillGroups"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/freeSkillGroups"
+        android:textSize="50sp" />
 
 </RelativeLayout>
