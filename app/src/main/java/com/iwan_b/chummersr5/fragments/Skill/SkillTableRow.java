@@ -167,16 +167,16 @@ public class SkillTableRow {
         }
 
         public void buildAddButton(final AlertDialog.Builder builder, final AdapterView<ArrayAdapter<String>> parent, final int position, final EditText userInput) {
-            final String customStringOutput;
-            if (userInput != null) {
-                customStringOutput = "Custom: " + userInput.getText().toString();
-            } else {
-                customStringOutput = parent.getItemAtPosition(position).toString();
-            }
-
             builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    final String customStringOutput;
+                    if (userInput != null) {
+                        customStringOutput = "Custom: " + userInput.getText().toString();
+                    } else {
+                        customStringOutput = parent.getItemAtPosition(position).toString();
+                    }
+
                     // Current amount of karma left
                     Integer karmaUnused = ShadowrunCharacter.getKarma();
 
@@ -212,13 +212,9 @@ public class SkillTableRow {
 
                         ShadowrunCharacter.setKarma(karmaUnused);
                         updateKarma();
-
-
                     } else {
                         Toast.makeText(rootView.getContext(), "You don't have enough karma to purchase this spec", Toast.LENGTH_SHORT).show();
                     }
-
-
                     parent.setSelection(0);
                 }
             });
@@ -242,7 +238,7 @@ public class SkillTableRow {
                     } else {
                         // Add
                         builder.setTitle("Remove Specialization");
-                        builder.setMessage("Do you want to remove: " + customStringOutput);
+                        builder.setMessage("Do you want to remove: " + customStringOutput.replace("Custom: ",""));
                         buildRemoveButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position);
                         // Remove/Delete
                     }
