@@ -84,23 +84,26 @@ public class SkillTableRow {
         TableRow.LayoutParams lp4 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         addButton.setLayoutParams(lp4);
 
+
+        //selected item will look like a spinner set from XML
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_spinner_item);
         if (currentSkill.getSpec() != null) {
-            //selected item will look like a spinner set from XML
-            final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_spinner_item, currentSkill.getSpec());
-            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            // TODO change this hardcode
-            spinnerArrayAdapter.insert("Specialization", 0);
-            // TODO change this hardcode
-            // TODO figure out how to add user input as well
-            spinnerArrayAdapter.add("Custom Spec");
-
-            spinner.setAdapter(spinnerArrayAdapter);
-            spinner.setOnItemSelectedListener(new SpecOnClickListener(extraInfo));
-
-            TableRow.LayoutParams lp5 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-
-            spinner.setLayoutParams(lp5);
+            spinnerArrayAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_spinner_item, currentSkill.getSpec());
         }
+
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // TODO change this hardcode
+        spinnerArrayAdapter.insert("Specialization", 0);
+        // TODO change this hardcode
+        // TODO figure out how to add user input as well
+        spinnerArrayAdapter.add("Custom Spec");
+
+        spinner.setAdapter(spinnerArrayAdapter);
+        spinner.setOnItemSelectedListener(new SpecOnClickListener(extraInfo));
+
+        TableRow.LayoutParams lp5 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+
+        spinner.setLayoutParams(lp5);
 
         newTableRow.addView(titleTxtView, ChummerConstants.tableLayout.title.ordinal());
         newTableRow.addView(subButton, ChummerConstants.tableLayout.sub.ordinal());
@@ -124,15 +127,13 @@ public class SkillTableRow {
         }
 
         private void buildRemoveButton(final AlertDialog.Builder builder, final AdapterView<ArrayAdapter<String>> parent, final int position) {
-            builder.setTitle("Remove Specialization");
-            builder.setMessage("Do you want to Remove: " + parent.getItemAtPosition(position).toString());
+            final String customStringOutput = parent.getItemAtPosition(position).toString();
+
             builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Current amount of karma left
                     Integer karmaUnused = ShadowrunCharacter.getKarma();
-
-                    String customStringOutput = parent.getItemAtPosition(position).toString();
 
                     TextView temp2 = (TextView) extraInfo.getChildAt(0);
                     if (temp2.getText().toString().contains(customStringOutput)) {
@@ -166,19 +167,18 @@ public class SkillTableRow {
         }
 
         public void buildAddButton(final AlertDialog.Builder builder, final AdapterView<ArrayAdapter<String>> parent, final int position, final EditText userInput) {
-            builder.setTitle("Buy Custom Specialization");
+            final String customStringOutput;
+            if (userInput != null) {
+                customStringOutput = "Custom: " + userInput.getText().toString();
+            } else {
+                customStringOutput = parent.getItemAtPosition(position).toString();
+            }
+
             builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Current amount of karma left
                     Integer karmaUnused = ShadowrunCharacter.getKarma();
-
-                    String customStringOutput;
-                    if (userInput != null) {
-                        customStringOutput = "Custom: " + userInput.getText().toString();
-                    } else {
-                        customStringOutput = parent.getItemAtPosition(position).toString();
-                    }
 
                     // TODO change the hardcoded 7 value for karma expenditure
                     // 1 at char gen, 7 after
@@ -230,17 +230,26 @@ public class SkillTableRow {
             if (position != 0 && position != parent.getCount() - 1) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
 
+                final String customStringOutput = parent.getItemAtPosition(position).toString();
+
                 if (extraInfo.getChildCount() != 0) {
                     TextView temp2 = (TextView) extraInfo.getChildAt(0);
-                    if (!temp2.getText().toString().contains(parent.getItemAtPosition(position).toString())) {
+                    if (!temp2.getText().toString().contains(customStringOutput)) {
                         // Add
+                        builder.setTitle("Buy Specialization");
+                        builder.setMessage("Do you want to purchase: " + customStringOutput);
                         buildAddButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position, null);
                     } else {
+                        // Add
+                        builder.setTitle("Remove Specialization");
+                        builder.setMessage("Do you want to remove: " + customStringOutput);
                         buildRemoveButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position);
                         // Remove/Delete
                     }
                 } else {
                     // Add
+                    builder.setTitle("Buy Specialization");
+                    builder.setMessage("Do you want to purchase: " + customStringOutput);
                     buildAddButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position, null);
                 }
 
