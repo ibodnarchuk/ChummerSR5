@@ -1,10 +1,15 @@
 package com.iwan_b.chummersr5.fragments.Skill;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
@@ -79,147 +84,23 @@ public class SkillTableRow {
         TableRow.LayoutParams lp4 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         addButton.setLayoutParams(lp4);
 
-        // TODO figure out the spec
         if (currentSkill.getSpec() != null) {
             //selected item will look like a spinner set from XML
             final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_spinner_item, currentSkill.getSpec());
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            // TODO decide if the empty tag should be here or in the XML
+            // TODO change this hardcode
             spinnerArrayAdapter.insert("Specialization", 0);
+            // TODO change this hardcode
             // TODO figure out how to add user input as well
             spinnerArrayAdapter.add("Custom Spec");
 
             spinner.setAdapter(spinnerArrayAdapter);
-
-
-//            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//
-//                @Override
-//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                    final int selected = position;
-//
-//
-//                    if (position != 0 && position != parent.getCount() - 1) {
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
-//
-//                        builder.setTitle("Buy Specialization");
-//
-//                        builder.setMessage("Do you want to purchase: " + parent.getItemAtPosition(position).toString());
-//
-//                        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                // Current amount of karma left
-//                                Integer karmaUnused = ShadowrunCharacter.getKarma();
-//
-//                                // TODO change the hardcoded 7 value for karma expenditure
-//                                // 1 at char gen, 7 after
-//                                if (karmaUnused >= 1) {
-//                                    karmaUnused -= 1;
-//
-//                                    ShadowrunCharacter.setKarma(karmaUnused);
-//                                    updateCounters();
-//
-//
-//                                    TextView temp = new TextView(rootView.getContext());
-//                                    Log.i(ChummerConstants.TAG, String.valueOf(extraInfo.getChildCount()));
-//                                    if (extraInfo.getChildCount() == 0) {
-//                                        temp.setText(currentSkill.getSpec().get(selected));
-//                                    } else {
-//                                        temp.setText(((TextView) extraInfo.getChildAt(0)).getText() + ", " + currentSkill.getSpec().get(selected));
-//                                        extraInfo.removeAllViews();
-//                                    }
-//
-//                                    extraInfo.addView(temp);
-//
-//                                    spinner.setSelection(0);
-//                                } else {
-//                                    Toast.makeText(rootView.getContext(), "You don't have enough karma to purchase this spec", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-//
-//                        builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                Toast.makeText(rootView.getContext(), "Negative button called", Toast.LENGTH_SHORT).show();
-//                                spinner.setSelection(0);
-//                            }
-//                        });
-//
-//                        builder.show();
-//
-//                    } else if (position == parent.getCount() - 1) {
-//                        // Unique Specialization
-//
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
-//
-//                        builder.setTitle("Buy Specialization");
-//
-//                        // Set up the input
-//                        final EditText userInput = new EditText(parent.getContext());
-//                        userInput.setHint("Enter your specialization");
-//                        // Specify the type of input expected
-//                        userInput.setInputType(InputType.TYPE_CLASS_TEXT);
-//                        builder.setView(userInput);
-//
-//                        // Set up the buttons
-//                        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                // Current amount of karma left
-//                                Integer karmaUnused = ShadowrunCharacter.getKarma();
-//
-//                                // TODO change the hardcoded 7 value for karma expenditure
-//                                // 1 at char gen, 7 after
-//                                if (karmaUnused >= 1) {
-//                                    karmaUnused -= 1;
-//
-//                                    ShadowrunCharacter.setKarma(karmaUnused);
-//                                    updateCounters();
-//
-//                                    TextView temp = new TextView(rootView.getContext());
-//
-//                                    // Insert at the second to last. The last should always be adding custom spec
-//                                    spinnerArrayAdapter.insert(userInput.getText().toString(), spinnerArrayAdapter.getCount() - 1);
-//                                    spinnerArrayAdapter.notifyDataSetChanged();
-//
-//                                    if (extraInfo.getChildCount() == 0) {
-//                                        temp.setText(userInput.getText().toString());
-//                                    } else {
-//                                        temp.setText(((TextView) extraInfo.getChildAt(0)).getText() + ", " + userInput.getText().toString());
-//                                        extraInfo.removeAllViews();
-//                                    }
-//                                    extraInfo.addView(temp);
-//                                }
-//                            }
-//                        });
-//
-//                        builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener()
-//
-//                                {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialog, int which) {
-//                                        dialog.cancel();
-//                                    }
-//                                }
-//
-//                        );
-//
-//                        builder.show();
-//                    }
-//                }
-//
-//                @Override
-//                public void onNothingSelected(AdapterView<?> parent) {
-//
-//                }
-//            });
+            spinner.setOnItemSelectedListener(new SpecOnClickListener(extraInfo));
 
             TableRow.LayoutParams lp5 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+
             spinner.setLayoutParams(lp5);
         }
-
 
         newTableRow.addView(titleTxtView, ChummerConstants.tableLayout.title.ordinal());
         newTableRow.addView(subButton, ChummerConstants.tableLayout.sub.ordinal());
@@ -232,6 +113,196 @@ public class SkillTableRow {
         addButton.setOnClickListener(new SkillOnClickListener(currentSkill, skillValueTxtView, extraInfo, true));
 
         return newTableRow;
+    }
+
+
+    private class SpecOnClickListener implements AdapterView.OnItemSelectedListener {
+        private LinearLayout extraInfo;
+
+        public SpecOnClickListener(LinearLayout extraInfo) {
+            this.extraInfo = extraInfo;
+        }
+
+        private void buildRemoveButton(final AlertDialog.Builder builder, final AdapterView<ArrayAdapter<String>> parent, final int position) {
+            builder.setTitle("Remove Specialization");
+            builder.setMessage("Do you want to Remove: " + parent.getItemAtPosition(position).toString());
+            builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Current amount of karma left
+                    Integer karmaUnused = ShadowrunCharacter.getKarma();
+
+                    String customStringOutput = parent.getItemAtPosition(position).toString();
+
+                    TextView temp2 = (TextView) extraInfo.getChildAt(0);
+                    if (temp2.getText().toString().contains(customStringOutput)) {
+                        // TODO change the hardcoded 7 value for karma expenditure
+                        // 1 at char gen, 7 after
+                        karmaUnused += 1;
+
+                        extraInfo.removeAllViews();
+                        String allStrings = temp2.getText().toString();
+                        // Remove the string. It can either have a line separator + string, or just the string by itself
+                        allStrings = allStrings.replace(System.getProperty("line.separator") + customStringOutput, "").replace(customStringOutput, "");
+                        temp2.setText(allStrings);
+                        extraInfo.addView(temp2);
+
+                        if (customStringOutput.contains("Custom:")) {
+                            // Add the custom string to the list of possible outputs
+                            final ArrayAdapter<String> spinnerArrayAdapter = parent.getAdapter();
+                            spinnerArrayAdapter.remove(customStringOutput);
+                            parent.setAdapter(spinnerArrayAdapter);
+                        }
+                    } else {
+                        Toast.makeText(rootView.getContext(), "Cannot find the spec to remove", Toast.LENGTH_SHORT).show();
+                    }
+
+                    ShadowrunCharacter.setKarma(karmaUnused);
+                    updateKarma();
+
+                    parent.setSelection(0);
+                }
+            });
+        }
+
+        public void buildAddButton(final AlertDialog.Builder builder, final AdapterView<ArrayAdapter<String>> parent, final int position, final EditText userInput) {
+            builder.setTitle("Buy Custom Specialization");
+            builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Current amount of karma left
+                    Integer karmaUnused = ShadowrunCharacter.getKarma();
+
+                    String customStringOutput;
+                    if (userInput != null) {
+                        customStringOutput = "Custom: " + userInput.getText().toString();
+                    } else {
+                        customStringOutput = parent.getItemAtPosition(position).toString();
+                    }
+
+                    // TODO change the hardcoded 7 value for karma expenditure
+                    // 1 at char gen, 7 after
+                    if (karmaUnused >= 1) {
+                        TextView temp = new TextView(rootView.getContext());
+
+                        if (extraInfo.getChildCount() == 0) {
+                            temp.setText(customStringOutput);
+                            karmaUnused -= 1;
+                            extraInfo.removeAllViews();
+                            extraInfo.addView(temp);
+                        } else {
+                            TextView temp2 = (TextView) extraInfo.getChildAt(0);
+                            if (!temp2.getText().toString().contains(customStringOutput)) {
+                                temp.setText(temp2.getText().toString() + System.getProperty("line.separator") + customStringOutput);
+                                karmaUnused -= 1;
+
+                                extraInfo.removeAllViews();
+                                extraInfo.addView(temp);
+                            } else {
+                                Toast.makeText(rootView.getContext(), "You already bought this", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        if (userInput != null) {
+                            // Add the custom string to the list of possible outputs
+                            final ArrayAdapter<String> spinnerArrayAdapter = parent.getAdapter();
+                            spinnerArrayAdapter.insert(customStringOutput, spinnerArrayAdapter.getCount() - 1);
+                            parent.setAdapter(spinnerArrayAdapter);
+                        }
+
+                        ShadowrunCharacter.setKarma(karmaUnused);
+                        updateKarma();
+
+
+                    } else {
+                        Toast.makeText(rootView.getContext(), "You don't have enough karma to purchase this spec", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                    parent.setSelection(0);
+                }
+            });
+        }
+
+        @Override
+        public void onItemSelected(final AdapterView<?> parent, View view, final int position, long id) {
+            // Skip the first one, and the last one.
+            if (position != 0 && position != parent.getCount() - 1) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+
+                if (extraInfo.getChildCount() != 0) {
+                    TextView temp2 = (TextView) extraInfo.getChildAt(0);
+                    if (!temp2.getText().toString().contains(parent.getItemAtPosition(position).toString())) {
+                        // Add
+                        buildAddButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position, null);
+                    } else {
+                        buildRemoveButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position);
+                        // Remove/Delete
+                    }
+                } else {
+                    // Add
+                    buildAddButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position, null);
+                }
+
+                builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(rootView.getContext(), "Negative button called", Toast.LENGTH_SHORT).show();
+                        parent.setSelection(0);
+                    }
+                });
+
+                // Clicked outside the dialog
+                builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        Toast.makeText(rootView.getContext(), "OnCancelListener was called", Toast.LENGTH_SHORT).show();
+                        parent.setSelection(0);
+                    }
+                });
+
+                builder.show();
+            } else if (position == parent.getCount() - 1) {
+                // Custom Specialization
+                AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+
+                builder.setTitle("Buy Custom Specialization");
+
+                final EditText userInput = new EditText(parent.getContext());
+                userInput.setInputType(InputType.TYPE_CLASS_TEXT);
+                userInput.setHint("Enter your specialization");
+                builder.setView(userInput);
+
+                // Add
+                buildAddButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position, userInput);
+
+                builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(rootView.getContext(), "Negative button called", Toast.LENGTH_SHORT).show();
+                        parent.setSelection(0);
+                    }
+                });
+
+                // Clicked outside the dialog
+                builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        Toast.makeText(rootView.getContext(), "OnCancelListener was called", Toast.LENGTH_SHORT).show();
+                        parent.setSelection(0);
+                    }
+                });
+
+                builder.show();
+
+            }
+        }
+
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
     }
 
     private class SkillOnClickListener implements View.OnClickListener {

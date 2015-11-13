@@ -193,12 +193,15 @@ public class SkillGroupTableRow {
 
         private boolean skillRowsHaveSpec() {
             if (skillsTableRow != null) {
-                ArrayList<Integer> values = new ArrayList<>();
                 for (TableRow temp : skillsTableRow) {
                     LinearLayout specTxtView = (LinearLayout) temp.getChildAt(ChummerConstants.tableLayout.extra.ordinal());
 
                     if (specTxtView.getChildCount() != 0) {
-                        return true;
+                        // TODO change the 0 to an enum
+                        TextView allSpecs = (TextView) specTxtView.getChildAt(0);
+                        if(!allSpecs.getText().equals("")){
+                            return true;
+                        }
                     }
                 }
             }
@@ -352,7 +355,13 @@ public class SkillGroupTableRow {
                 updateGroupSkillCounter(groupSkillCounter);
                 updateKarma();
             } else {
-                Toast.makeText(rootView.getContext(), "Make the individual skills the same level.", Toast.LENGTH_SHORT).show();
+                if (!areSkillRowsEqual()){
+                    Toast.makeText(rootView.getContext(), "Make the individual skills the same level.", Toast.LENGTH_SHORT).show();
+                }
+
+                if(skillRowsHaveSpec()){
+                    Toast.makeText(rootView.getContext(), "A skill contains a specialization.", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
