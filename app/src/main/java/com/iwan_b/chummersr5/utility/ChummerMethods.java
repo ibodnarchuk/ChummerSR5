@@ -9,4 +9,30 @@ public class ChummerMethods {
         Toast toast = Toast.makeText(activity.getApplicationContext(), message, Toast.LENGTH_SHORT);
         toast.show();
     }
+
+    public final static int formulaAttrCost(final int rating) {
+        return rating * 5;
+    }
+
+    public final static int formulaSkillCost(final int rating) {
+        return rating * 2;
+    }
+
+    public final static int formulaSkillGroupCost(final int rating) {
+        return rating * 5;
+    }
+
+    public final static int formulaKnowledgeCost(final int rating) {
+        return rating;
+    }
+
+    public final static int formulaLanguageCost(final int rating) {
+        return rating;
+    }
+
+    public final static int formulaFreeKnowledgeSkill(final int intu, final int log) {
+        return (intu + log) * 2;
+    }
+
+
 }

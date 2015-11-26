@@ -1,4 +1,4 @@
-package com.iwan_b.chummersr5.fragments.Skill;
+package com.iwan_b.chummersr5.fragments.ActiveSkill;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -21,6 +21,7 @@ import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
+import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import java.util.ArrayList;
 
@@ -28,10 +29,15 @@ public class SkillTableRow {
     // TODO maybe make this into a method that they can call and get...
     private static ArrayList<Skill> skillsAvailable;
     private final View rootView;
+    private final int counterID;
+    private final boolean isActiveSkill;
 
-    public SkillTableRow(final View rootView, final ArrayList<Skill> skillsAvailable) {
+
+    public SkillTableRow(final View rootView, final ArrayList<Skill> skillsAvailable, int counterID, boolean isSkill) {
         this.rootView = rootView;
         SkillTableRow.skillsAvailable = skillsAvailable;
+        this.counterID = counterID;
+        this.isActiveSkill = isSkill;
     }
 
     public void updateKarma() {
@@ -43,16 +49,18 @@ public class SkillTableRow {
 
     private void updateSkillCounter(final Integer skillCounter) {
         if (rootView != null) {
-            TextView freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeSkills);
+            TextView freeSkillsTxtView = (TextView) rootView.findViewById(counterID);
             freeSkillsTxtView.setText(String.valueOf(skillCounter));
         }
     }
 
-    public TableRow createRow(final Skill currentSkill) {
+    public TableRow createRow(final Skill skill) {
         TableRow newTableRow = new TableRow(rootView.getContext());
         newTableRow.setGravity(Gravity.CENTER_VERTICAL);
 
+        // TODO maybe change this to a layout xml file
         final TextView titleTxtView = new TextView(rootView.getContext());
+        final TextView attrTxtView = new TextView(rootView.getContext());
         final Button subButton = new Button(rootView.getContext());
         final TextView skillValueTxtView = new TextView(rootView.getContext());
         final Button addButton = new Button(rootView.getContext());
@@ -60,10 +68,14 @@ public class SkillTableRow {
         final Spinner spinner = new Spinner(rootView.getContext());
 
         // Title of the attribute
-        titleTxtView.setText(currentSkill.getSkillName());
+        titleTxtView.setText(skill.getSkillName());
         TableRow.LayoutParams lp = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         lp.setMargins(0, 0, 5, 0);
         titleTxtView.setLayoutParams(lp);
+
+        // Title of the attribute
+        attrTxtView.setText(skill.getAttrName());
+//        attrTxtView.setLayoutParams(lp);
 
         // Subtract Button
         subButton.setText("-");
@@ -75,7 +87,7 @@ public class SkillTableRow {
         lp3.setMargins(20, 20, 20, 20);
         skillValueTxtView.setLayoutParams(lp3);
         // TODO change the hardcoded values
-        skillValueTxtView.setText("0");
+        skillValueTxtView.setText(String.valueOf(skill.getRating()));
         skillValueTxtView.setGravity(1);
         skillValueTxtView.setMinWidth(50);
 
@@ -87,8 +99,8 @@ public class SkillTableRow {
 
         //selected item will look like a spinner set from XML
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_spinner_item);
-        if (currentSkill.getSpec() != null) {
-            spinnerArrayAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_spinner_item, currentSkill.getSpec());
+        if (skill.getSpec() != null) {
+            spinnerArrayAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_spinner_item, skill.getSpec());
         }
 
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -106,18 +118,18 @@ public class SkillTableRow {
         spinner.setLayoutParams(lp5);
 
         newTableRow.addView(titleTxtView, ChummerConstants.tableLayout.title.ordinal());
+        newTableRow.addView(attrTxtView, ChummerConstants.tableLayout.attr.ordinal());
         newTableRow.addView(subButton, ChummerConstants.tableLayout.sub.ordinal());
         newTableRow.addView(skillValueTxtView, ChummerConstants.tableLayout.lvl.ordinal());
         newTableRow.addView(addButton, ChummerConstants.tableLayout.add.ordinal());
         newTableRow.addView(extraInfo, ChummerConstants.tableLayout.extra.ordinal());
         newTableRow.addView(spinner, ChummerConstants.tableLayout.spinner.ordinal());
 
-        subButton.setOnClickListener(new SkillOnClickListener(currentSkill, skillValueTxtView, extraInfo, false));
-        addButton.setOnClickListener(new SkillOnClickListener(currentSkill, skillValueTxtView, extraInfo, true));
+        subButton.setOnClickListener(new SkillOnClickListener(skill, skillValueTxtView, extraInfo, false));
+        addButton.setOnClickListener(new SkillOnClickListener(skill, skillValueTxtView, extraInfo, true));
 
         return newTableRow;
     }
-
 
     private class SpecOnClickListener implements AdapterView.OnItemSelectedListener {
         private LinearLayout extraInfo;
@@ -135,32 +147,52 @@ public class SkillTableRow {
                     // Current amount of karma left
                     Integer karmaUnused = ShadowrunCharacter.getKarma();
 
-                    TextView temp2 = (TextView) extraInfo.getChildAt(0);
-                    if (temp2.getText().toString().contains(customStringOutput)) {
-                        // TODO change the hardcoded 7 value for karma expenditure
-                        // 1 at char gen, 7 after
-                        karmaUnused += 1;
+                    TextView freeCounters = (TextView) rootView.findViewById(counterID);
+                    Integer skillCounter = Integer.valueOf(freeCounters.getText().toString());
 
-                        extraInfo.removeAllViews();
-                        String allStrings = temp2.getText().toString();
-                        // Remove the string. It can either have a line separator + string, or just the string by itself
-                        allStrings = allStrings.replace(System.getProperty("line.separator") + customStringOutput, "").replace(customStringOutput, "");
-                        temp2.setText(allStrings);
-                        extraInfo.addView(temp2);
+                    TextView specTxtView = (TextView) extraInfo.getChildAt(0);
+                    String allStrings = specTxtView.getText().toString();
 
-                        if (customStringOutput.contains("Custom:")) {
-                            // Add the custom string to the list of possible outputs
-                            final ArrayAdapter<String> spinnerArrayAdapter = parent.getAdapter();
-                            spinnerArrayAdapter.remove(customStringOutput);
-                            parent.setAdapter(spinnerArrayAdapter);
+                    ArrayList<Integer> pointHistory = new ArrayList<>();
+                    // Get the history of the skills
+                    if (specTxtView.getTag() != null) {
+                        pointHistory = (ArrayList<Integer>) specTxtView.getTag();
+                    }
+
+                    int i = 0;
+                    for (final String eachSpec : allStrings.split(System.getProperty("line.separator"))) {
+                        if (eachSpec.equalsIgnoreCase(customStringOutput)) {
+                            int cost = pointHistory.get(i);
+                            if (cost == ChummerConstants.freeSkillLevel) {
+                                skillCounter++;
+                            } else {
+                                karmaUnused += cost;
+                            }
+                            pointHistory.remove(i);
+                            break;
                         }
-                    } else {
-                        Toast.makeText(rootView.getContext(), "Cannot find the spec to remove", Toast.LENGTH_SHORT).show();
+                        i++;
+                    }
+
+                    // Remove the string. It can either have a line separator + string, or just the string by itself
+                    allStrings = allStrings.replace(customStringOutput + System.getProperty("line.separator"), "").replace(customStringOutput, "");
+                    allStrings = allStrings.trim();
+
+                    specTxtView.setTag(pointHistory);
+                    extraInfo.removeAllViews();
+                    specTxtView.setText(allStrings);
+                    extraInfo.addView(specTxtView);
+
+                    if (customStringOutput.contains("Custom:")) {
+                        // Add the custom string to the list of possible outputs
+                        final ArrayAdapter<String> spinnerArrayAdapter = parent.getAdapter();
+                        spinnerArrayAdapter.remove(customStringOutput);
+                        parent.setAdapter(spinnerArrayAdapter);
                     }
 
                     ShadowrunCharacter.setKarma(karmaUnused);
                     updateKarma();
-
+                    updateSkillCounter(skillCounter);
                     parent.setSelection(0);
                 }
             });
@@ -180,44 +212,102 @@ public class SkillTableRow {
                     // Current amount of karma left
                     Integer karmaUnused = ShadowrunCharacter.getKarma();
 
-                    // TODO change the hardcoded 7 value for karma expenditure
-                    // 1 at char gen, 7 after
-                    if (karmaUnused >= 1) {
-                        TextView temp = new TextView(rootView.getContext());
+                    TextView freeCounters = (TextView) rootView.findViewById(counterID);
+                    Integer skillCounter = Integer.valueOf(freeCounters.getText().toString());
 
-                        if (extraInfo.getChildCount() == 0) {
-                            temp.setText(customStringOutput);
-                            karmaUnused -= 1;
-                            extraInfo.removeAllViews();
-                            extraInfo.addView(temp);
-                        } else {
-                            TextView temp2 = (TextView) extraInfo.getChildAt(0);
-                            if (!temp2.getText().toString().contains(customStringOutput)) {
-                                temp.setText(temp2.getText().toString() + System.getProperty("line.separator") + customStringOutput);
-                                karmaUnused -= 1;
+                    TextView specTxtView = new TextView(rootView.getContext());
+                    if (extraInfo.getChildCount() != 0) {
+                        specTxtView = (TextView) extraInfo.getChildAt(0);
+                    }
 
-                                extraInfo.removeAllViews();
-                                extraInfo.addView(temp);
+                    TextView newOutput = new TextView(rootView.getContext());
+
+                    ArrayList<Integer> pointHistory = new ArrayList<>();
+                    // Get the history of the skills
+                    if (specTxtView.getTag() != null) {
+                        pointHistory = (ArrayList<Integer>) specTxtView.getTag();
+                    }
+
+                    if (!specTxtView.getText().toString().contains(customStringOutput)) {
+                        // Use the free skills first, then karma
+                        if (skillCounter > 0 && !wasKarmaUsed(specTxtView) && !werePointUsed(specTxtView)) {
+                            skillCounter--;
+                            pointHistory.add(ChummerConstants.freeSkillLevel);
+
+                            if (extraInfo.getChildCount() == 0) {
+                                newOutput.setText(customStringOutput);
                             } else {
-                                Toast.makeText(rootView.getContext(), "You already bought this", Toast.LENGTH_SHORT).show();
+                                newOutput.setText(specTxtView.getText().toString() + System.getProperty("line.separator") + customStringOutput);
+                            }
+
+                            if (userInput != null) {
+                                // Add the custom string to the list of possible outputs
+                                final ArrayAdapter<String> spinnerArrayAdapter = parent.getAdapter();
+                                spinnerArrayAdapter.insert(customStringOutput, spinnerArrayAdapter.getCount() - 1);
+                                parent.setAdapter(spinnerArrayAdapter);
+                            }
+
+                            extraInfo.removeAllViews();
+                            extraInfo.addView(newOutput);
+                        } else {
+                            if (karmaUnused >= 7) {
+                                karmaUnused -= 7;
+                                pointHistory.add(7);
+                                if (extraInfo.getChildCount() == 0) {
+                                    newOutput.setText(customStringOutput);
+                                } else {
+                                    newOutput.setText(specTxtView.getText().toString() + System.getProperty("line.separator") + customStringOutput);
+                                }
+
+                                if (userInput != null) {
+                                    // Add the custom string to the list of possible outputs
+                                    final ArrayAdapter<String> spinnerArrayAdapter = parent.getAdapter();
+                                    spinnerArrayAdapter.insert(customStringOutput, spinnerArrayAdapter.getCount() - 1);
+                                    parent.setAdapter(spinnerArrayAdapter);
+                                }
+
+                            } else {
+                                Toast.makeText(rootView.getContext(), "You don't have enough karma to purchase this spec", Toast.LENGTH_SHORT).show();
                             }
                         }
 
-                        if (userInput != null) {
-                            // Add the custom string to the list of possible outputs
-                            final ArrayAdapter<String> spinnerArrayAdapter = parent.getAdapter();
-                            spinnerArrayAdapter.insert(customStringOutput, spinnerArrayAdapter.getCount() - 1);
-                            parent.setAdapter(spinnerArrayAdapter);
-                        }
-
+                        newOutput.setTag(pointHistory);
+                        extraInfo.removeAllViews();
+                        extraInfo.addView(newOutput);
                         ShadowrunCharacter.setKarma(karmaUnused);
                         updateKarma();
+                        updateSkillCounter(skillCounter);
                     } else {
-                        Toast.makeText(rootView.getContext(), "You don't have enough karma to purchase this spec", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(rootView.getContext(), "You already bought this", Toast.LENGTH_SHORT).show();
                     }
                     parent.setSelection(0);
                 }
             });
+        }
+
+        private boolean werePointUsed(TextView txtView) {
+            if (txtView != null && txtView.getTag() != null) {
+                ArrayList<Integer> pointHistory = (ArrayList<Integer>) txtView.getTag();
+                for (int i : pointHistory) {
+                    if (i == ChummerConstants.skillPointUsed) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private boolean wasKarmaUsed(TextView txtView) {
+            if (txtView != null && txtView.getTag() != null) {
+                ArrayList<Integer> pointHistory = (ArrayList<Integer>) txtView.getTag();
+
+                for (int i : pointHistory) {
+                    if (i > 0) {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         @Override
@@ -228,25 +318,21 @@ public class SkillTableRow {
 
                 final String customStringOutput = parent.getItemAtPosition(position).toString();
 
+                TextView temp2 = null;
                 if (extraInfo.getChildCount() != 0) {
-                    TextView temp2 = (TextView) extraInfo.getChildAt(0);
-                    if (!temp2.getText().toString().contains(customStringOutput)) {
-                        // Add
-                        builder.setTitle("Buy Specialization");
-                        builder.setMessage("Do you want to purchase: " + customStringOutput);
-                        buildAddButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position, null);
-                    } else {
-                        // Add
-                        builder.setTitle("Remove Specialization");
-                        builder.setMessage("Do you want to remove: " + customStringOutput.replace("Custom: ",""));
-                        buildRemoveButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position);
-                        // Remove/Delete
-                    }
-                } else {
+                    temp2 = (TextView) extraInfo.getChildAt(0);
+                }
+
+                if (temp2 == null && !temp2.getText().toString().contains(customStringOutput)) {
                     // Add
                     builder.setTitle("Buy Specialization");
                     builder.setMessage("Do you want to purchase: " + customStringOutput);
                     buildAddButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position, null);
+                } else {
+                    // Remove/Delete
+                    builder.setTitle("Remove Specialization");
+                    builder.setMessage("Do you want to remove: " + customStringOutput.replace("Custom: ", ""));
+                    buildRemoveButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position);
                 }
 
                 builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -433,26 +519,28 @@ public class SkillTableRow {
         }
 
         private void findSkillsByGroup(final String skillGroupName) {
-            ArrayList<String> skillNameArray = new ArrayList<>();
-            // Grab the name of the skill that has the same groupname
-            for (final Skill s : skillsAvailable) {
-                if (s.getGroupName() != null && s.getGroupName().compareToIgnoreCase(skillGroupName) == 0 && s.getSkillName() != skillData.getSkillName()) {
-                    skillNameArray.add(s.getSkillName().toLowerCase());
-                }
-            }
-
-            // Find the skills highlighted earlier
-            TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillsTableLayout);
-            for (int i = 0; i < SkillsTableLayout.getChildCount(); i++) {
-                TableRow temp = (TableRow) SkillsTableLayout.getChildAt(i);
-
-                TextView skillName = (TextView) temp.getChildAt(ChummerConstants.tableLayout.title.ordinal());
-
-                if (skillNameArray.contains(skillName.getText().toString().toLowerCase())) {
-                    if (skillsTableRowGroup == null) {
-                        skillsTableRowGroup = new ArrayList<>();
+            if (skillsAvailable != null) {
+                ArrayList<String> skillNameArray = new ArrayList<>();
+                // Grab the name of the skill that has the same groupname
+                for (final Skill s : skillsAvailable) {
+                    if (s.getGroupName() != null && s.getGroupName().compareToIgnoreCase(skillGroupName) == 0 && s.getSkillName() != skillData.getSkillName()) {
+                        skillNameArray.add(s.getSkillName().toLowerCase());
                     }
-                    skillsTableRowGroup.add(temp);
+                }
+
+                // Find the skills highlighted earlier
+                TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillsTableLayout);
+                for (int i = 0; i < SkillsTableLayout.getChildCount(); i++) {
+                    TableRow temp = (TableRow) SkillsTableLayout.getChildAt(i);
+
+                    TextView skillName = (TextView) temp.getChildAt(ChummerConstants.tableLayout.title.ordinal());
+
+                    if (skillNameArray.contains(skillName.getText().toString().toLowerCase())) {
+                        if (skillsTableRowGroup == null) {
+                            skillsTableRowGroup = new ArrayList<>();
+                        }
+                        skillsTableRowGroup.add(temp);
+                    }
                 }
             }
         }
@@ -465,8 +553,8 @@ public class SkillTableRow {
             int currentRating = Integer.valueOf(skillLvlTxtView.getText().toString());
 
             // Current value left for attributes
-            TextView freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeSkills);
-            Integer skillCounter = Integer.valueOf(freeSkillsTxtView.getText().toString());
+            TextView freeCounters = (TextView) rootView.findViewById(counterID);
+            Integer skillCounter = Integer.valueOf(freeCounters.getText().toString());
 
             // Current amount of karma left
             Integer karmaUnused = ShadowrunCharacter.getKarma();
@@ -488,24 +576,23 @@ public class SkillTableRow {
                         skillGroupTxtView = (TextView) skillGroup.getChildAt(ChummerConstants.tableLayout.lvl.ordinal());
                     }
 
-                    if (skillCounter > 0 && !wasKarmaUsed(skillGroupTxtView) && !werePointUsed(skillGroupTxtView)) {
-                        // Test if they used karma on this specific skill before
-                        if (wasKarmaUsed(skillLvlTxtView)) {
-                            Toast toast = Toast.makeText(rootView.getContext(),
-                                    "You already used karma on this. Can't use points afterwards.",
-                                    Toast.LENGTH_SHORT);
-                            toast.show();
-                        } else {
-                            currentRating++;
-                            skillCounter--;
-                            pointHistory.add(ChummerConstants.skillPointUsed);
-                            toggleSkillGroup(currentRating);
-                        }
+                    // Use the free skills first, then karma
+                    if (skillCounter > 0 && !wasKarmaUsed(skillGroupTxtView) && !werePointUsed(skillGroupTxtView) && !wasKarmaUsed(skillLvlTxtView)) {
+                        currentRating++;
+                        skillCounter--;
+                        pointHistory.add(ChummerConstants.skillPointUsed);
+                        toggleSkillGroup(currentRating);
                     } else {
-                        // Forumula for karma needed to advance to next level is: (New Rating x 2)
-                        if ((currentRating + 1) * 2 <= karmaUnused) {
-                            pointHistory.add((currentRating + 1) * 2);
-                            karmaUnused -= (currentRating + 1) * 2;
+                        int karmaCost;
+                        if (isActiveSkill) {
+                            karmaCost = ChummerMethods.formulaSkillCost(currentRating + 1);
+                        } else {
+                            karmaCost = ChummerMethods.formulaKnowledgeCost(currentRating + 1);
+                        }
+
+                        if (karmaCost <= karmaUnused) {
+                            pointHistory.add(karmaCost);
+                            karmaUnused -= karmaCost;
                             currentRating++;
                             toggleSkillGroup(currentRating);
                         }
@@ -516,8 +603,14 @@ public class SkillTableRow {
                 if (currentRating > baseSkill) {
                     if (!pointHistory.isEmpty() && pointHistory.get(pointHistory.size() - 1) != ChummerConstants.freeSkillLevel) {
                         if (wasKarmaUsed(skillLvlTxtView)) {
-                            // Forumula for karma needed to advance to next level is: (New Rating x 2)
-                            karmaUnused += (currentRating) * 2;
+                            int karmaCost;
+                            if (isActiveSkill) {
+                                karmaCost = ChummerMethods.formulaSkillCost(currentRating);
+                            } else {
+                                karmaCost = ChummerMethods.formulaKnowledgeCost(currentRating);
+                            }
+
+                            karmaUnused += karmaCost;
                         } else {
                             // No karma was used
                             skillCounter++;

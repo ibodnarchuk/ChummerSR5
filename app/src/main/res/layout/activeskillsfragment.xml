@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:id="@+id/SkillGroupsTableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/scrollView"
+        android:layout_toRightOf="@+id/scrollView"
+        android:layout_alignParentTop="true">
+
+        <TableLayout
+            android:id="@+id/SkillsTableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/freeSkillsCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/freeSkillGroupsCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/freeSkillsCounter"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/karmaCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/freeSkillGroupsCounter"
+        android:textSize="50sp" />
+
+</RelativeLayout>

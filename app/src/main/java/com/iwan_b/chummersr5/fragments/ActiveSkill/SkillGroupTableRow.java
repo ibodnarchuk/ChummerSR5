@@ -1,4 +1,4 @@
-package com.iwan_b.chummersr5.fragments.Skill;
+package com.iwan_b.chummersr5.fragments.ActiveSkill;
 
 import android.app.ActionBar;
 import android.view.Gravity;
@@ -35,7 +35,7 @@ public class SkillGroupTableRow {
 
     private void updateGroupSkillCounter(final Integer groupSkillCounter) {
         if (rootView != null) {
-            TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroups);
+            TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroupsCounter);
             freeSkillGroupTxt.setText(String.valueOf(groupSkillCounter));
         }
     }
@@ -77,6 +77,7 @@ public class SkillGroupTableRow {
         addButton.setLayoutParams(lp4);
 
         newTableRow.addView(titleTxtView, ChummerConstants.tableLayout.title.ordinal());
+        newTableRow.addView(new TextView(rootView.getContext()), ChummerConstants.tableLayout.attr.ordinal());
         newTableRow.addView(subButton, ChummerConstants.tableLayout.sub.ordinal());
         newTableRow.addView(skillGroupLvlTxtView, ChummerConstants.tableLayout.lvl.ordinal());
         newTableRow.addView(addButton, ChummerConstants.tableLayout.add.ordinal());
@@ -278,7 +279,7 @@ public class SkillGroupTableRow {
                 int currentRating = Integer.valueOf(skillGroupDisplayTxtView.getText().toString());
 
                 // Current value left for attributes
-                TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroups);
+                TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroupsCounter);
                 Integer groupSkillCounter = Integer.valueOf(freeSkillGroupTxt.getText().toString());
 
                 // Current amount of karma left
@@ -295,20 +296,13 @@ public class SkillGroupTableRow {
 
                 if (isAddition) {
                     if (currentRating < maxSkillRating + max_skill_mod) {
+
                         // Use the free skills first, then karma
-                        if (groupSkillCounter > 0 && !skillRowsUsedKarma() && !pointHistory.contains(ChummerConstants.freeSkillGroupLevel)) {
-                            // Test if they used karma on this specific item before or not
-                            if (wasKarmaUsed(skillGroupDisplayTxtView)) {
-                                Toast toast = Toast.makeText(rootView.getContext(),
-                                        "You already used karma on this. Can't use points afterwards.",
-                                        Toast.LENGTH_SHORT);
-                                toast.show();
-                            } else {
+                        if (groupSkillCounter > 0 && !skillRowsUsedKarma() && !pointHistory.contains(ChummerConstants.freeSkillGroupLevel) && !wasKarmaUsed(skillGroupDisplayTxtView)) {
                                 currentRating++;
                                 groupSkillCounter--;
                                 pointHistory.add(ChummerConstants.skillGroupPointUsed);
                                 toggleSkillsByGroup(currentRating);
-                            }
                         } else {
                             // Forumula for karma needed to advance to next level is: (New Rating x 5)
                             if ((currentRating + 1) * 5 <= karmaUnused) {

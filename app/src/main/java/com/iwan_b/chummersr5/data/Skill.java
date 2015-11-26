@@ -37,8 +37,6 @@ public class Skill implements Comparable<Skill>{
     // Whether only technomancers can take this quality
     private Boolean technomancerOnly = false;
 
-
-
     @Override
     public String toString() {
         return "Skill{" +
