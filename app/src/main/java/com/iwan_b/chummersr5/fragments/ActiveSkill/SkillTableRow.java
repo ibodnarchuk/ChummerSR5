@@ -3,7 +3,9 @@ package com.iwan_b.chummersr5.fragments.ActiveSkill;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -133,6 +135,7 @@ public class SkillTableRow {
 
     private class SpecOnClickListener implements AdapterView.OnItemSelectedListener {
         private LinearLayout extraInfo;
+        private AlertDialog dialog;
 
         public SpecOnClickListener(LinearLayout extraInfo) {
             this.extraInfo = extraInfo;
@@ -323,16 +326,16 @@ public class SkillTableRow {
                     temp2 = (TextView) extraInfo.getChildAt(0);
                 }
 
-                if (temp2 == null && !temp2.getText().toString().contains(customStringOutput)) {
-                    // Add
-                    builder.setTitle("Buy Specialization");
-                    builder.setMessage("Do you want to purchase: " + customStringOutput);
-                    buildAddButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position, null);
-                } else {
+                if (temp2 != null && temp2.getText().toString().contains(customStringOutput)) {
                     // Remove/Delete
                     builder.setTitle("Remove Specialization");
                     builder.setMessage("Do you want to remove: " + customStringOutput.replace("Custom: ", ""));
                     buildRemoveButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position);
+                } else {
+                    // Add
+                    builder.setTitle("Buy Specialization");
+                    builder.setMessage("Do you want to purchase: " + customStringOutput);
+                    buildAddButton(builder, (AdapterView<ArrayAdapter<String>>) parent, position, null);
                 }
 
                 builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -356,12 +359,30 @@ public class SkillTableRow {
             } else if (position == parent.getCount() - 1) {
                 // Custom Specialization
                 AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
-
                 builder.setTitle("Buy Custom Specialization");
 
                 final EditText userInput = new EditText(parent.getContext());
                 userInput.setInputType(InputType.TYPE_CLASS_TEXT);
                 userInput.setHint("Enter your specialization");
+                userInput.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        if (s.length() > 0) {
+                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                        } else {
+                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                        }
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
                 builder.setView(userInput);
 
                 // Add
@@ -370,7 +391,6 @@ public class SkillTableRow {
                 builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(rootView.getContext(), "Negative button called", Toast.LENGTH_SHORT).show();
                         parent.setSelection(0);
                     }
                 });
@@ -379,13 +399,13 @@ public class SkillTableRow {
                 builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
-                        Toast.makeText(rootView.getContext(), "OnCancelListener was called", Toast.LENGTH_SHORT).show();
                         parent.setSelection(0);
                     }
                 });
 
-                builder.show();
-
+                dialog  = builder.create();
+                dialog.show();
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
             }
         }
 

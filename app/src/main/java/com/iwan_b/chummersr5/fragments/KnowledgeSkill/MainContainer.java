@@ -5,7 +5,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,6 +82,7 @@ public class MainContainer  extends Fragment {
         return rootView;
     }
     private class addKnowledgeSkillButtonListener implements View.OnClickListener {
+        private AlertDialog dialog;
 
         @Override
         public void onClick(View v) {
@@ -94,6 +97,22 @@ public class MainContainer  extends Fragment {
             TableRow.LayoutParams usernameParams = new TableRow.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
             usernameParams.weight = 1;
             knowledgeName.setLayoutParams(usernameParams);
+            knowledgeName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (s.length() > 0) {
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                    } else {
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {}
+            });
             linearLayoutContainer.addView(knowledgeName);
 
             ArrayList<String> knowledgeType = new ArrayList<>();
@@ -157,7 +176,9 @@ public class MainContainer  extends Fragment {
             });
 
             builder.setView(linearLayoutContainer);
-            builder.show();
+            dialog = builder.create();
+            dialog.show();
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
         }
     }
 }
