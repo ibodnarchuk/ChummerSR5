@@ -1,7 +1,7 @@
 package com.iwan_b.chummersr5.data;
 
-public class Counters {
-    private static Counters instance;
+public class PriorityCounters {
+    private static PriorityCounters instance;
     private PriorityTable meta;
     private PriorityTable attr;
     private PriorityTable magic;
@@ -9,12 +9,12 @@ public class Counters {
 
     private PriorityTable res;
 
-    private Counters() {
+    private PriorityCounters() {
     }
 
-    public static Counters getCounters() {
+    public static PriorityCounters getCounters() {
         if (instance == null) {
-            instance = new Counters();
+            instance = new PriorityCounters();
         }
         return instance;
     }
