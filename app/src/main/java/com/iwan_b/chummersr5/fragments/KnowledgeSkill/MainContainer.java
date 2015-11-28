@@ -22,9 +22,11 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.iwan_b.chummersr5.R;
+import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
 import com.iwan_b.chummersr5.fragments.ActiveSkill.SkillTableRow;
+import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import java.util.ArrayList;
@@ -33,9 +35,14 @@ import java.util.ArrayList;
 public class MainContainer  extends Fragment {
     private static View rootView;
 
-    private void updateFreeKnowledgeCounter(final Integer knowledgeCounter) {
+    private void updateFreeKnowledgeCounter() {
         TextView freeKnowledgeSkillTxt = (TextView) rootView.findViewById(R.id.freeKnowledgeCounter);
-        freeKnowledgeSkillTxt.setText(String.valueOf(knowledgeCounter));
+        freeKnowledgeSkillTxt.setText(String.valueOf(FreeCounters.getCounters().getFreeKnowledgeSkills()));
+    }
+
+    private void updateFreeLanguageCounter() {
+        TextView freeLanguageSkillTxt = (TextView) rootView.findViewById(R.id.freeLanguageCounter);
+        freeLanguageSkillTxt.setText(String.valueOf(FreeCounters.getCounters().getFreeLanguageSkills()));
     }
 
     public static void updateKarma() {
@@ -45,8 +52,9 @@ public class MainContainer  extends Fragment {
         }
     }
 
-    private void updateCounters(final Integer knowledgeSkillCounter) {
-        updateFreeKnowledgeCounter(knowledgeSkillCounter);
+    private void updateCounters() {
+        updateFreeKnowledgeCounter();
+        updateFreeLanguageCounter();
         updateKarma();
     }
 
@@ -59,9 +67,11 @@ public class MainContainer  extends Fragment {
 
         int freeKnowledge = ChummerMethods.formulaFreeKnowledgeSkill(intu, log);
 
-        updateCounters(freeKnowledge);
+        FreeCounters.getCounters().setFreeKnowledgeSkills(freeKnowledge);
+        // TODO hardcoded needs to be changed.
+        FreeCounters.getCounters().setFreeLanguageSkills(6);
 
-
+        updateCounters();
         TableLayout knowledgeSkillLayout = (TableLayout) rootView.findViewById(R.id.knowledgeSkillsTableLayout);
 
         TableRow newTableRow = new TableRow(rootView.getContext());
@@ -79,8 +89,94 @@ public class MainContainer  extends Fragment {
         newTableRow.addView(addKnowledgeSkillButtonListener);
         knowledgeSkillLayout.addView(newTableRow);
 
+        TableLayout languageSkillLayout = (TableLayout) rootView.findViewById(R.id.languageSkillsTableLayout);
+
+        newTableRow = new TableRow(rootView.getContext());
+        newTableRow.setGravity(Gravity.CENTER_VERTICAL);
+        newTableRow = new TableRow(rootView.getContext());
+        newTableRow.setGravity(Gravity.CENTER_VERTICAL);
+
+        final Button addLanguageSkillButtonListener = new Button(rootView.getContext());
+        addLanguageSkillButtonListener.setText("Add Langauge Skill");
+        params2 = new TableRow.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
+        // Span the entire Row
+//        params2.span = ChummerConstants.tableLayout.values().length;
+        addLanguageSkillButtonListener.setLayoutParams(params2);
+        addLanguageSkillButtonListener.setOnClickListener(new addLanguageSkillButtonListener());
+        newTableRow.addView(addLanguageSkillButtonListener);
+        languageSkillLayout.addView(newTableRow);
+
+
         return rootView;
     }
+
+    private class addLanguageSkillButtonListener implements View.OnClickListener {
+        private AlertDialog dialog;
+        
+        @Override
+        public void onClick(View v) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+            builder.setTitle("Language skill");
+
+            final EditText LanguageName = new EditText(v.getContext());
+            LanguageName.setInputType(InputType.TYPE_CLASS_TEXT);
+            LanguageName.setHint("Enter your Language skill");
+            LanguageName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (s.length() > 0) {
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                    } else {
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {}
+            });
+
+            builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Skill newSkill = new Skill();
+
+                    newSkill.setSkillName(LanguageName.getText().toString());
+                    newSkill.setAttrName("Intuition");
+
+                    newSkill.setIsDefaultable(false);
+                    newSkill.setRating(0);
+
+                    SkillTableRow genSkillTableRow = new SkillTableRow(rootView, null, ChummerConstants.counters.languageSkills, false);
+
+                    TableLayout knowledgeSkillLayout = (TableLayout) rootView.findViewById(R.id.languageSkillsTableLayout);
+
+                    knowledgeSkillLayout.addView(genSkillTableRow.createRow(newSkill), knowledgeSkillLayout.getChildCount() - 1);
+                }
+            });
+
+            builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+
+            // Clicked outside the dialog
+            builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                }
+            });
+
+            builder.setView(LanguageName);
+            dialog = builder.create();
+            dialog.show();
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+        }
+    }
+
     private class addKnowledgeSkillButtonListener implements View.OnClickListener {
         private AlertDialog dialog;
 
@@ -154,7 +250,7 @@ public class MainContainer  extends Fragment {
                     newSkill.setIsDefaultable(false);
                     newSkill.setRating(0);
 
-                    SkillTableRow genSkillTableRow = new SkillTableRow(rootView, null, R.id.freeKnowledgeCounter, false);
+                    SkillTableRow genSkillTableRow = new SkillTableRow(rootView, null, ChummerConstants.counters.knowledgeSkills, false);
 
                     TableLayout knowledgeSkillLayout = (TableLayout) rootView.findViewById(R.id.knowledgeSkillsTableLayout);
 

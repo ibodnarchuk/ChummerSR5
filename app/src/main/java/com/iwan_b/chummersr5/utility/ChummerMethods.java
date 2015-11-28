@@ -14,11 +14,11 @@ public class ChummerMethods {
         return rating * 5;
     }
 
-    public final static int formulaSkillCost(final int rating) {
+    public final static int formulaActiveSkillCost(final int rating) {
         return rating * 2;
     }
 
-    public final static int formulaSkillGroupCost(final int rating) {
+    public final static int formulaActiveSkillGroupCost(final int rating) {
         return rating * 5;
     }
 

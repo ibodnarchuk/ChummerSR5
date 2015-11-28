@@ -19,9 +19,9 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.iwan_b.chummersr5.R;
+import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
@@ -57,9 +57,9 @@ public class MainContainer extends Fragment {
         freeSkillGroupTxt.setText(String.valueOf(groupSkillCounter));
     }
 
-    private void updateCounters(final Integer skillCounter, final Integer groupSkillCounter) {
-        updateFreeSkillCounter(skillCounter);
-        updateFreeSkillGroupCounter(groupSkillCounter);
+    private void updateCounters() {
+        updateFreeSkillCounter(FreeCounters.getCounters().getFreeActiveSkills());
+        updateFreeSkillGroupCounter(FreeCounters.getCounters().getFreeActiveGroupSkills());
 
         updateKarma();
     }
@@ -86,14 +86,17 @@ public class MainContainer extends Fragment {
             }
         }
 
-        updateCounters(freeSkill, freeSkillGroup);
+        FreeCounters.getCounters().setFreeActiveSkills(freeSkill);
+        FreeCounters.getCounters().setFreeActiveGroupSkills(freeSkillGroup);
+
+        updateCounters();
 
         ArrayList<Skill> allSkills = readSkillsXML("skills/skills.xml");
 
         Collections.sort(allSkills);
 
         TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillsTableLayout);
-        SkillTableRow genSkillTableRow = new SkillTableRow(SkillsTableLayout.getRootView(), allSkills, R.id.freeSkillsCounter, true);
+        SkillTableRow genSkillTableRow = new SkillTableRow(SkillsTableLayout.getRootView(), allSkills, ChummerConstants.counters.activeSkills, true);
 
         ArrayList<String> skillGroup = new ArrayList<>();
 
@@ -311,39 +314,7 @@ public class MainContainer extends Fragment {
             builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // Current amount of karma left
-                    Integer karmaUnused = ShadowrunCharacter.getKarma();
-
-                    // TODO change after chargen.
-                    if (karmaUnused > 2) {
-                        karmaUnused -= 2;
-
-                        Skill newSkill = new Skill();
-
-                        newSkill.setSkillName("Custom: " + userNameInput.getText().toString());
-                        newSkill.setAttrName(attrSpinner.getSelectedItem().toString());
-                        newSkill.setIsDefaultable(false);
-                        newSkill.setRating(1);
-
-                        SkillTableRow genSkillTableRow = new SkillTableRow(rootView, null, R.id.freeSkillsCounter, true);
-
-                        TableRow output = genSkillTableRow.createRow(newSkill);
-
-                        // Prevent the user from entering a value lower than 1 for buying this skill.
-                        TextView skillValueTxtView = (TextView) output.getChildAt(ChummerConstants.tableLayout.lvl.ordinal());
-                        ArrayList<Integer> pointHistory = new ArrayList<>();
-                        pointHistory.add(2);
-                        pointHistory.add(ChummerConstants.freeSkillLevel);
-                        skillValueTxtView.setTag(pointHistory);
-
-                        skillsTableLayout.addView(output, skillsTableLayout.getChildCount() - 1);
-
-                        ShadowrunCharacter.setKarma(karmaUnused);
-                        updateKarma();
-                    } else {
-                        Toast.makeText(rootView.getContext(), "You don't have enough karma to buy this", Toast.LENGTH_SHORT).show();
-                    }
-
+                        createActiveSkillRow(userNameInput, attrSpinner);
                 }
             });
 
@@ -360,9 +331,20 @@ public class MainContainer extends Fragment {
                 }
             });
             builder.show();
-//            TableRow newTableRow = new TableRow(rootView.getContext());
-//            newTableRow.setGravity(Gravity.CENTER_VERTICAL);
-//            skillsTableLayout.addView(newTableRow);
         }
+
+        private void createActiveSkillRow(EditText userNameInput, Spinner attrSpinner){
+            Skill newSkill = new Skill();
+
+            newSkill.setSkillName("Custom: " + userNameInput.getText().toString());
+            newSkill.setAttrName(attrSpinner.getSelectedItem().toString());
+            newSkill.setIsDefaultable(false);
+            newSkill.setRating(0);
+
+            SkillTableRow genSkillTableRow = new SkillTableRow(rootView, null, ChummerConstants.counters.activeSkills, true);
+
+            skillsTableLayout.addView(genSkillTableRow.createRow(newSkill), skillsTableLayout.getChildCount() - 1);
+        }
+
     }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iwan_b.chummersr5.R;
+import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
@@ -33,10 +34,10 @@ public class SkillGroupTableRow {
         }
     }
 
-    private void updateGroupSkillCounter(final Integer groupSkillCounter) {
+    private void updateGroupSkillCounter() {
         if (rootView != null) {
             TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroupsCounter);
-            freeSkillGroupTxt.setText(String.valueOf(groupSkillCounter));
+            freeSkillGroupTxt.setText(String.valueOf(FreeCounters.getCounters().getFreeActiveGroupSkills()));
         }
     }
 
@@ -279,8 +280,7 @@ public class SkillGroupTableRow {
                 int currentRating = Integer.valueOf(skillGroupDisplayTxtView.getText().toString());
 
                 // Current value left for attributes
-                TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroupsCounter);
-                Integer groupSkillCounter = Integer.valueOf(freeSkillGroupTxt.getText().toString());
+                Integer groupSkillCounter = FreeCounters.getCounters().getFreeActiveGroupSkills();
 
                 // Current amount of karma left
                 Integer karmaUnused = ShadowrunCharacter.getKarma();
@@ -346,7 +346,8 @@ public class SkillGroupTableRow {
                 skillGroupDisplayTxtView.setText(String.valueOf(currentRating));
 
                 ShadowrunCharacter.setKarma(karmaUnused);
-                updateGroupSkillCounter(groupSkillCounter);
+                FreeCounters.getCounters().setFreeActiveGroupSkills(groupSkillCounter);
+                updateGroupSkillCounter();
                 updateKarma();
             } else {
                 if (!areSkillRowsEqual()){

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iwan_b.chummersr5.R;
+import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
@@ -31,15 +32,15 @@ public class SkillTableRow {
     // TODO maybe make this into a method that they can call and get...
     private static ArrayList<Skill> skillsAvailable;
     private final View rootView;
-    private final int counterID;
+    private final ChummerConstants.counters counterID;
     private final boolean isActiveSkill;
 
 
-    public SkillTableRow(final View rootView, final ArrayList<Skill> skillsAvailable, int counterID, boolean isSkill) {
+    public SkillTableRow(final View rootView, final ArrayList<Skill> skillsAvailable, ChummerConstants.counters counterID, boolean isActiveSkill) {
         this.rootView = rootView;
         SkillTableRow.skillsAvailable = skillsAvailable;
         this.counterID = counterID;
-        this.isActiveSkill = isSkill;
+        this.isActiveSkill = isActiveSkill;
     }
 
     public void updateKarma() {
@@ -49,10 +50,39 @@ public class SkillTableRow {
         }
     }
 
-    private void updateSkillCounter(final Integer skillCounter) {
+    private void updateSkillCounter() {
         if (rootView != null) {
-            TextView freeSkillsTxtView = (TextView) rootView.findViewById(counterID);
-            freeSkillsTxtView.setText(String.valueOf(skillCounter));
+            TextView freeSkillsTxtView = null;
+            if (counterID == ChummerConstants.counters.activeSkills) {
+                freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeSkillsCounter);
+            } else if (counterID == ChummerConstants.counters.knowledgeSkills) {
+                freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeKnowledgeCounter);
+            } else if (counterID == ChummerConstants.counters.languageSkills) {
+                freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeLanguageCounter);
+            }
+
+            freeSkillsTxtView.setText(String.valueOf(getSkillCounter()));
+        }
+    }
+
+    public int getSkillCounter() {
+        if (counterID == ChummerConstants.counters.activeSkills) {
+            return FreeCounters.getCounters().getFreeActiveSkills();
+        } else if (counterID == ChummerConstants.counters.knowledgeSkills) {
+            return FreeCounters.getCounters().getFreeKnowledgeSkills();
+        } else if (counterID == ChummerConstants.counters.languageSkills) {
+            return FreeCounters.getCounters().getFreeLanguageSkills();
+        }
+        return 0;
+    }
+
+    public void setSkillCounter(Integer skillCounter) {
+        if (counterID == ChummerConstants.counters.activeSkills) {
+            FreeCounters.getCounters().setFreeActiveSkills(skillCounter);
+        } else if (counterID == ChummerConstants.counters.knowledgeSkills) {
+            FreeCounters.getCounters().setFreeKnowledgeSkills(skillCounter);
+        } else if (counterID == ChummerConstants.counters.languageSkills) {
+            FreeCounters.getCounters().setFreeLanguageSkills(skillCounter);
         }
     }
 
@@ -150,8 +180,7 @@ public class SkillTableRow {
                     // Current amount of karma left
                     Integer karmaUnused = ShadowrunCharacter.getKarma();
 
-                    TextView freeCounters = (TextView) rootView.findViewById(counterID);
-                    Integer skillCounter = Integer.valueOf(freeCounters.getText().toString());
+                    Integer skillCounter = getSkillCounter();
 
                     TextView specTxtView = (TextView) extraInfo.getChildAt(0);
                     String allStrings = specTxtView.getText().toString();
@@ -195,7 +224,8 @@ public class SkillTableRow {
 
                     ShadowrunCharacter.setKarma(karmaUnused);
                     updateKarma();
-                    updateSkillCounter(skillCounter);
+                    setSkillCounter(skillCounter);
+                    updateSkillCounter();
                     parent.setSelection(0);
                 }
             });
@@ -215,8 +245,7 @@ public class SkillTableRow {
                     // Current amount of karma left
                     Integer karmaUnused = ShadowrunCharacter.getKarma();
 
-                    TextView freeCounters = (TextView) rootView.findViewById(counterID);
-                    Integer skillCounter = Integer.valueOf(freeCounters.getText().toString());
+                    Integer skillCounter = getSkillCounter();
 
                     TextView specTxtView = new TextView(rootView.getContext());
                     if (extraInfo.getChildCount() != 0) {
@@ -279,7 +308,8 @@ public class SkillTableRow {
                         extraInfo.addView(newOutput);
                         ShadowrunCharacter.setKarma(karmaUnused);
                         updateKarma();
-                        updateSkillCounter(skillCounter);
+                        setSkillCounter(skillCounter);
+                        updateSkillCounter();
                     } else {
                         Toast.makeText(rootView.getContext(), "You already bought this", Toast.LENGTH_SHORT).show();
                     }
@@ -403,7 +433,7 @@ public class SkillTableRow {
                     }
                 });
 
-                dialog  = builder.create();
+                dialog = builder.create();
                 dialog.show();
                 dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
             }
@@ -573,8 +603,7 @@ public class SkillTableRow {
             int currentRating = Integer.valueOf(skillLvlTxtView.getText().toString());
 
             // Current value left for attributes
-            TextView freeCounters = (TextView) rootView.findViewById(counterID);
-            Integer skillCounter = Integer.valueOf(freeCounters.getText().toString());
+            Integer skillCounter = getSkillCounter();
 
             // Current amount of karma left
             Integer karmaUnused = ShadowrunCharacter.getKarma();
@@ -605,7 +634,7 @@ public class SkillTableRow {
                     } else {
                         int karmaCost;
                         if (isActiveSkill) {
-                            karmaCost = ChummerMethods.formulaSkillCost(currentRating + 1);
+                            karmaCost = ChummerMethods.formulaActiveSkillCost(currentRating + 1);
                         } else {
                             karmaCost = ChummerMethods.formulaKnowledgeCost(currentRating + 1);
                         }
@@ -625,7 +654,7 @@ public class SkillTableRow {
                         if (wasKarmaUsed(skillLvlTxtView)) {
                             int karmaCost;
                             if (isActiveSkill) {
-                                karmaCost = ChummerMethods.formulaSkillCost(currentRating);
+                                karmaCost = ChummerMethods.formulaActiveSkillCost(currentRating);
                             } else {
                                 karmaCost = ChummerMethods.formulaKnowledgeCost(currentRating);
                             }
@@ -653,7 +682,8 @@ public class SkillTableRow {
             skillLvlTxtView.setText(String.valueOf(currentRating));
 
             ShadowrunCharacter.setKarma(karmaUnused);
-            updateSkillCounter(skillCounter);
+            setSkillCounter(skillCounter);
+            updateSkillCounter();
             updateKarma();
         }
     }

@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iwan_b.chummersr5.R;
+import com.iwan_b.chummersr5.data.Counters;
+import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.Quality;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
@@ -24,22 +26,17 @@ import com.iwan_b.chummersr5.utility.ChummerXML;
 
 import java.util.ArrayList;
 
-import static com.iwan_b.chummersr5.data.Counters.getCounters;
-
 public class AttributeFragment extends Fragment {
 	// Whether the max attribute was used
 	private boolean maxAttributeUsed = false;
 	private View rootView;
 
-	private int displayAttrCounter;
-	private int displayAttrSpecCounter;
-
 	private void updateCounters() {
 		TextView attrTextViewCounter = (TextView) rootView.findViewById(R.id.PriorityCounter);
 		TextView attrTextViewSpecCounter = (TextView) rootView.findViewById(R.id.attrSpecCounter);
 
-		attrTextViewCounter.setText(displayAttrCounter + " Attr Counter");
-		attrTextViewSpecCounter.setText(displayAttrSpecCounter + " Spec Counter");
+		attrTextViewCounter.setText(FreeCounters.getCounters().getFreeAttributes() + " Attr Counter");
+		attrTextViewSpecCounter.setText(FreeCounters.getCounters().getFreeSpecAttributes() + " Spec Counter");
 
 		MainContainer.updateKarma();
 	}
@@ -49,8 +46,8 @@ public class AttributeFragment extends Fragment {
 		rootView = inflater.inflate(R.layout.attributefragment, container, false);
 
 		// Set the initial display counters
-		displayAttrCounter = (int) getCounters().getAttr().getStats();
-		displayAttrSpecCounter = (int) getCounters().getMeta().getStats();
+		FreeCounters.getCounters().setFreeAttributes((int) Counters.getCounters().getAttr().getStats());
+		FreeCounters.getCounters().setFreeSpecAttributes((int) Counters.getCounters().getMeta().getStats());
 
 		// Display the counters
 		updateCounters();
@@ -244,9 +241,9 @@ public class AttributeFragment extends Fragment {
 			Integer attrCounter;
 
 			if (isSpec) {
-				attrCounter = displayAttrSpecCounter;
+				attrCounter = FreeCounters.getCounters().getFreeAttributes();
 			} else {
-				attrCounter = displayAttrCounter;
+				attrCounter = FreeCounters.getCounters().getFreeSpecAttributes();
 			}
 
 			// Get the karma count for this attribute
@@ -378,9 +375,9 @@ public class AttributeFragment extends Fragment {
 			attrDisplayTxtView.setText(getResources().getString(R.string.attrText, currentRating.toString(), (maxAttr + max_attr_mod)) + karmaUsedDisplay);
 
 			if (isSpec) {
-				displayAttrSpecCounter = attrCounter;
+				FreeCounters.getCounters().setFreeSpecAttributes(attrCounter);
 			} else {
-				displayAttrCounter = attrCounter;
+				FreeCounters.getCounters().setFreeAttributes(attrCounter);
 			}
 
 			ShadowrunCharacter.setKarma(karmaUnused);

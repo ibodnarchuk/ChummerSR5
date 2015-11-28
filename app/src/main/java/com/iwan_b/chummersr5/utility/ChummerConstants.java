@@ -19,4 +19,8 @@ public class ChummerConstants {
     public enum tableLayout{
         title,attr,sub,lvl,add,extra,spinner
     }
+
+    public enum counters{
+        activeSkills,activeGroupSkills,knowledgeSkills,languageSkills
+    }
 }

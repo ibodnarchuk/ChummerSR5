@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    >
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -38,7 +39,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/freeSkillGroupsCounter"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/freeLanguageCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/freeKnowledgeCounter"
         android:textSize="50sp" />
 
     <TextView
@@ -47,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/freeKnowledgeCounter"
+        android:layout_below="@+id/freeLanguageCounter"
         android:textSize="50sp" />
 
 </RelativeLayout>

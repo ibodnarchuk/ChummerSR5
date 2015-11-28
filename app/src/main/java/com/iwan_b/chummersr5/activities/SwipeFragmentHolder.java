@@ -32,13 +32,14 @@ public class SwipeFragmentHolder extends FragmentActivity {
 
 		newCharacter = ShadowrunCharacter.getCharacter();
 
-		Intent i = getIntent();
+		Intent intent = getIntent();
 
-		getCounters().setMeta((PriorityTable) i.getSerializableExtra("meta"));
-		getCounters().setAttr((PriorityTable) i.getSerializableExtra("attr"));
-		getCounters().setMagic((PriorityTable) i.getSerializableExtra("magic"));
-		getCounters().setSkill((PriorityTable) i.getSerializableExtra("skill"));
-		getCounters().setRes((PriorityTable) i.getSerializableExtra("res"));
+		// TODO Why pass this as an intent when  the getCounters should be a singleton...
+		getCounters().setMeta((PriorityTable) intent.getSerializableExtra("meta"));
+		getCounters().setAttr((PriorityTable) intent.getSerializableExtra("attr"));
+		getCounters().setMagic((PriorityTable) intent.getSerializableExtra("magic"));
+		getCounters().setSkill((PriorityTable) intent.getSerializableExtra("skill"));
+		getCounters().setRes((PriorityTable) intent.getSerializableExtra("res"));
 
 		addModstoChar(getCounters().getMeta().getMods());
 		addModstoChar(getCounters().getAttr().getMods());
