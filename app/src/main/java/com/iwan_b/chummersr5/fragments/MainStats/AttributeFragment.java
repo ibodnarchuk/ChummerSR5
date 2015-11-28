@@ -241,9 +241,9 @@ public class AttributeFragment extends Fragment {
 			Integer attrCounter;
 
 			if (isSpec) {
-				attrCounter = FreeCounters.getCounters().getFreeAttributes();
-			} else {
 				attrCounter = FreeCounters.getCounters().getFreeSpecAttributes();
+			} else {
+				attrCounter = FreeCounters.getCounters().getFreeAttributes();
 			}
 
 			// Get the karma count for this attribute
