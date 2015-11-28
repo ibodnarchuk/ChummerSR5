@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import static com.iwan_b.chummersr5.data.Counters.getCounters;
+import static com.iwan_b.chummersr5.data.CountersTest.getCounters;
 
 public class SwipeFragmentHolder extends FragmentActivity {
 

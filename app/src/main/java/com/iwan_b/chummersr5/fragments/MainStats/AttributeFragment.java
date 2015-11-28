@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iwan_b.chummersr5.R;
-import com.iwan_b.chummersr5.data.Counters;
+import com.iwan_b.chummersr5.data.CountersTest;
 import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.Quality;
@@ -46,8 +46,8 @@ public class AttributeFragment extends Fragment {
 		rootView = inflater.inflate(R.layout.attributefragment, container, false);
 
 		// Set the initial display counters
-		FreeCounters.getCounters().setFreeAttributes((int) Counters.getCounters().getAttr().getStats());
-		FreeCounters.getCounters().setFreeSpecAttributes((int) Counters.getCounters().getMeta().getStats());
+		FreeCounters.getCounters().setFreeAttributes((int) CountersTest.getCounters().getAttr().getStats());
+		FreeCounters.getCounters().setFreeSpecAttributes((int) CountersTest.getCounters().getMeta().getStats());
 
 		// Display the counters
 		updateCounters();
