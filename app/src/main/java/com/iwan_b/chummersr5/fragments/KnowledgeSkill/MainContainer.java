@@ -35,6 +35,14 @@ import java.util.ArrayList;
 public class MainContainer  extends Fragment {
     private static View rootView;
 
+    public static Fragment newInstance(int index) {
+        MainContainer main = new MainContainer();
+        Bundle args = new Bundle();
+        args.putInt("index", index);
+        main.setArguments(args);
+        return main;
+    }
+
     private void updateFreeKnowledgeCounter() {
         TextView freeKnowledgeSkillTxt = (TextView) rootView.findViewById(R.id.freeKnowledgeCounter);
         freeKnowledgeSkillTxt.setText(String.valueOf(FreeCounters.getCounters().getFreeKnowledgeSkills()));

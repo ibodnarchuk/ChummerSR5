@@ -40,6 +40,14 @@ import java.util.Collections;
 public class MainContainer extends Fragment {
     private static View rootView;
 
+    public static Fragment newInstance(int index) {
+        MainContainer main = new MainContainer();
+        Bundle args = new Bundle();
+        args.putInt("index", index);
+        main.setArguments(args);
+        return main;
+    }
+
     public static void updateKarma() {
         if (rootView != null) {
             TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karmaCounter);
@@ -271,8 +279,6 @@ public class MainContainer extends Fragment {
 
         return skills;
     }
-
-
 
     private class addCustomSkillButtonListener implements View.OnClickListener {
         private TableLayout skillsTableLayout;

@@ -22,6 +22,14 @@ public class MainContainer extends Fragment {
 		}
 	}
 
+	public static Fragment newInstance(int index) {
+		MainContainer main = new MainContainer();
+		Bundle args = new Bundle();
+		args.putInt("index", index);
+		main.setArguments(args);
+		return main;
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		rootView = inflater.inflate(R.layout.newcharacterinput, container, false);
