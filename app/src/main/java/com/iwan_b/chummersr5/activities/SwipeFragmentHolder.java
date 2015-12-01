@@ -2,6 +2,7 @@ package com.iwan_b.chummersr5.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -36,9 +37,13 @@ public class SwipeFragmentHolder extends AppCompatActivity {
 
         setContentView(R.layout.swippystart);
 
-        TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
+        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
+
         pager.setAdapter(adapter);
+        tabs.setupWithViewPager(pager);
+
     }
 
 
@@ -47,7 +52,7 @@ public class SwipeFragmentHolder extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        // TODO Why pass this as an intent when  the getCounters should be a singleton...
+        // TODO Why pass this as an intent when the getCounters should be a singleton...
         getCounters().setMeta((PriorityTable) intent.getSerializableExtra("meta"));
         getCounters().setAttr((PriorityTable) intent.getSerializableExtra("attr"));
         getCounters().setMagic((PriorityTable) intent.getSerializableExtra("magic"));

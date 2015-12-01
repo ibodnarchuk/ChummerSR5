@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
 	// Tab titles
-	public static final String[] tabs = { "Attributes", "Active Skills", "Knowledge Skills" };
+	public static final String[] tabs = { "Attributes", "Active Skills", "Knowledge Skills"};
 
 	public TabsPagerAdapter(FragmentManager fm) {
 		super(fm);
