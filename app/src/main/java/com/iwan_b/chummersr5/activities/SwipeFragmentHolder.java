@@ -35,7 +35,7 @@ public class SwipeFragmentHolder extends AppCompatActivity {
 
         buildChar();
 
-        setContentView(R.layout.swippystart);
+        setContentView(R.layout.activity_swipe_fragmentholder);
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
