@@ -26,7 +26,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class NewCharacterPriorityTable extends Activity {
-
+    private ArrayList<PriorityTable> metaTable;
+    private ArrayList<PriorityTable> attrTable;
+    private ArrayList<PriorityTable> magicTable;
+    private ArrayList<PriorityTable> skillTable;
+    private ArrayList<PriorityTable> resTable;
     private boolean radioButtonLock = true;
 
     @Override
@@ -34,748 +38,64 @@ public class NewCharacterPriorityTable extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newcharacterselection);
 
-        // Get all the table data
-        final ArrayList<PriorityTable> metaDataArray = readXML("chargen/metachargen.xml");
-        final ArrayList<PriorityTable> attDataArray = readXML("chargen/attchargen.xml");
-        final ArrayList<PriorityTable> magDataArray = readXML("chargen/magicchargen.xml");
-        final ArrayList<PriorityTable> skillDataArray = readXML("chargen/skillchargen.xml");
-        final ArrayList<PriorityTable> resourceDataArray = readXML("chargen/reschargen.xml");
-
-        RadioButton temp;
-
-        // All the columns and radio groups for the table
-        final RadioGroup metaRadioGroupA = (RadioGroup) findViewById(R.id.MetaTypeRadioGroupA);
-        final RadioGroup metaRadioGroupB = (RadioGroup) findViewById(R.id.MetaTypeRadioGroupB);
-        final RadioGroup metaRadioGroupC = (RadioGroup) findViewById(R.id.MetaTypeRadioGroupC);
-        final RadioGroup metaRadioGroupD = (RadioGroup) findViewById(R.id.MetaTypeRadioGroupD);
-        final RadioGroup metaRadioGroupE = (RadioGroup) findViewById(R.id.MetaTypeRadioGroupE);
-
-        final RadioGroup attRadioGroupA = (RadioGroup) findViewById(R.id.AttributeRadioGroupA);
-        final RadioGroup attRadioGroupB = (RadioGroup) findViewById(R.id.AttributeRadioGroupB);
-        final RadioGroup attRadioGroupC = (RadioGroup) findViewById(R.id.AttributeRadioGroupC);
-        final RadioGroup attRadioGroupD = (RadioGroup) findViewById(R.id.AttributeRadioGroupD);
-        final RadioGroup attRadioGroupE = (RadioGroup) findViewById(R.id.AttributeRadioGroupE);
-
-        final RadioGroup magRadioGroupA = (RadioGroup) findViewById(R.id.MagicRadioGroupA);
-        final RadioGroup magRadioGroupB = (RadioGroup) findViewById(R.id.MagicRadioGroupB);
-        final RadioGroup magRadioGroupC = (RadioGroup) findViewById(R.id.MagicRadioGroupC);
-        final RadioGroup magRadioGroupD = (RadioGroup) findViewById(R.id.MagicRadioGroupD);
-        final RadioGroup magRadioGroupE = (RadioGroup) findViewById(R.id.MagicRadioGroupE);
-
-        final RadioGroup skillRadioGroupA = (RadioGroup) findViewById(R.id.SkillRadioGroupA);
-        final RadioGroup skillRadioGroupB = (RadioGroup) findViewById(R.id.SkillRadioGroupB);
-        final RadioGroup skillRadioGroupC = (RadioGroup) findViewById(R.id.SkillRadioGroupC);
-        final RadioGroup skillRadioGroupD = (RadioGroup) findViewById(R.id.SkillRadioGroupD);
-        final RadioGroup skillRadioGroupE = (RadioGroup) findViewById(R.id.SkillRadioGroupE);
-
-        final RadioGroup resourceRadioGroupA = (RadioGroup) findViewById(R.id.ResourceRadioGroupA);
-        final RadioGroup resourceRadioGroupB = (RadioGroup) findViewById(R.id.ResourceRadioGroupB);
-        final RadioGroup resourceRadioGroupC = (RadioGroup) findViewById(R.id.ResourceRadioGroupC);
-        final RadioGroup resourceRadioGroupD = (RadioGroup) findViewById(R.id.ResourceRadioGroupD);
-        final RadioGroup resourceRadioGroupE = (RadioGroup) findViewById(R.id.ResourceRadioGroupE);
-
-        // The priorities selection
-        final String priorityA = getResources().getString(R.string.priorityA);
-        final String priorityB = getResources().getString(R.string.priorityB);
-        final String priorityC = getResources().getString(R.string.priorityC);
-        final String priorityD = getResources().getString(R.string.priorityD);
-        final String priorityE = getResources().getString(R.string.priorityE);
-
+        metaTable = readXML("chargen/metachargen.xml");
+        attrTable = readXML("chargen/attchargen.xml");
+        magicTable = readXML("chargen/magicchargen.xml");
+        skillTable = readXML("chargen/skillchargen.xml");
+        resTable = readXML("chargen/reschargen.xml");
         // Done button
         final Button doneButton = (Button) findViewById(R.id.NewCharacterButtonDone);
 
         // **********************************************************************************
-        // Metatype Section
-        if (metaDataArray != null) {
-            for (PriorityTable p : metaDataArray) {
-                temp = new RadioButton(this);
-                temp.setText(p.getDisplayText());
+        // Meta Section
+        createSection(metaTable, R.id.MetaTypeRadioGroupA, R.id.MetaTypeRadioGroupB,
+                R.id.MetaTypeRadioGroupC, R.id.MetaTypeRadioGroupD, R.id.MetaTypeRadioGroupE);
 
-                if (p.getPriority().equalsIgnoreCase(priorityA)) {
-                    metaRadioGroupA.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityB)) {
-                    metaRadioGroupB.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityC)) {
-                    metaRadioGroupC.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityD)) {
-                    metaRadioGroupD.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityE)) {
-                    metaRadioGroupE.addView(temp);
-                }
-
-            }
-        }
-
-        metaRadioGroupA.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-
-                    attRadioGroupA.check(-1);
-                    magRadioGroupA.check(-1);
-                    skillRadioGroupA.check(-1);
-                    resourceRadioGroupA.check(-1);
-
-                    metaRadioGroupB.check(-1);
-                    metaRadioGroupC.check(-1);
-                    metaRadioGroupD.check(-1);
-                    metaRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        metaRadioGroupB.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    metaRadioGroupA.check(-1);
-
-                    attRadioGroupB.check(-1);
-                    magRadioGroupB.check(-1);
-                    skillRadioGroupB.check(-1);
-                    resourceRadioGroupB.check(-1);
-
-                    metaRadioGroupC.check(-1);
-                    metaRadioGroupD.check(-1);
-                    metaRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        metaRadioGroupC.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    metaRadioGroupA.check(-1);
-                    metaRadioGroupB.check(-1);
-
-                    attRadioGroupC.check(-1);
-                    magRadioGroupC.check(-1);
-                    skillRadioGroupC.check(-1);
-                    resourceRadioGroupC.check(-1);
-
-                    metaRadioGroupD.check(-1);
-                    metaRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        metaRadioGroupD.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    metaRadioGroupA.check(-1);
-                    metaRadioGroupB.check(-1);
-                    metaRadioGroupC.check(-1);
-
-                    attRadioGroupD.check(-1);
-                    magRadioGroupD.check(-1);
-                    skillRadioGroupD.check(-1);
-                    resourceRadioGroupD.check(-1);
-
-                    metaRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        metaRadioGroupE.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    metaRadioGroupA.check(-1);
-                    metaRadioGroupB.check(-1);
-                    metaRadioGroupC.check(-1);
-                    metaRadioGroupD.check(-1);
-
-                    attRadioGroupE.check(-1);
-                    magRadioGroupE.check(-1);
-                    skillRadioGroupE.check(-1);
-                    resourceRadioGroupE.check(-1);
-
-                    radioButtonLock = true;
-                }
-            }
-        });
-
+        createMetaOnClickListeners();
         // **********************************************************************************
         // Attribute section
+        createSection(attrTable, R.id.AttributeRadioGroupA, R.id.AttributeRadioGroupB,
+                R.id.AttributeRadioGroupC, R.id.AttributeRadioGroupD, R.id.AttributeRadioGroupE);
 
-        if (attDataArray != null) {
-            for (PriorityTable p : attDataArray) {
-                temp = new RadioButton(this);
-                temp.setText(p.getDisplayText());
-
-                if (p.getPriority().equalsIgnoreCase(priorityA)) {
-                    attRadioGroupA.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityB)) {
-                    attRadioGroupB.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityC)) {
-                    attRadioGroupC.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityD)) {
-                    attRadioGroupD.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityE)) {
-                    attRadioGroupE.addView(temp);
-                }
-
-            }
-        }
-
-        attRadioGroupA.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-
-                    metaRadioGroupA.check(-1);
-                    magRadioGroupA.check(-1);
-                    skillRadioGroupA.check(-1);
-                    resourceRadioGroupA.check(-1);
-
-                    attRadioGroupB.check(-1);
-                    attRadioGroupC.check(-1);
-                    attRadioGroupD.check(-1);
-                    attRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        attRadioGroupB.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    attRadioGroupA.check(-1);
-
-                    metaRadioGroupB.check(-1);
-                    magRadioGroupB.check(-1);
-                    skillRadioGroupB.check(-1);
-                    resourceRadioGroupB.check(-1);
-
-                    attRadioGroupC.check(-1);
-                    attRadioGroupD.check(-1);
-                    attRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        attRadioGroupC.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    attRadioGroupA.check(-1);
-                    attRadioGroupB.check(-1);
-
-                    metaRadioGroupC.check(-1);
-                    magRadioGroupC.check(-1);
-                    skillRadioGroupC.check(-1);
-                    resourceRadioGroupC.check(-1);
-
-                    attRadioGroupD.check(-1);
-                    attRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        attRadioGroupD.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    attRadioGroupA.check(-1);
-                    attRadioGroupB.check(-1);
-                    attRadioGroupC.check(-1);
-
-                    metaRadioGroupD.check(-1);
-                    magRadioGroupD.check(-1);
-                    skillRadioGroupD.check(-1);
-                    resourceRadioGroupD.check(-1);
-
-                    attRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        attRadioGroupE.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    attRadioGroupA.check(-1);
-                    attRadioGroupB.check(-1);
-                    attRadioGroupC.check(-1);
-                    attRadioGroupD.check(-1);
-
-                    metaRadioGroupE.check(-1);
-                    magRadioGroupE.check(-1);
-                    skillRadioGroupE.check(-1);
-                    resourceRadioGroupE.check(-1);
-
-                    radioButtonLock = true;
-                }
-            }
-        });
+        createAttrOnClickListeners();
 
         // **********************************************************************************
         // Magic Selection
+        createSection(magicTable, R.id.MagicRadioGroupA, R.id.MagicRadioGroupB,
+                R.id.MagicRadioGroupC, R.id.MagicRadioGroupD, R.id.MagicRadioGroupE);
 
-        if (magDataArray != null) {
-            for (PriorityTable p : magDataArray) {
-                temp = new RadioButton(this);
-                temp.setText(p.getDisplayText());
+        createMagicOnClickListeners();
 
-                if (p.getPriority().equalsIgnoreCase(priorityA)) {
-                    magRadioGroupA.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityB)) {
-                    magRadioGroupB.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityC)) {
-                    magRadioGroupC.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityD)) {
-                    magRadioGroupD.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityE)) {
-                    magRadioGroupE.addView(temp);
-                }
-
-            }
-        }
-
-        magRadioGroupA.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-
-                    metaRadioGroupA.check(-1);
-                    attRadioGroupA.check(-1);
-                    skillRadioGroupA.check(-1);
-                    resourceRadioGroupA.check(-1);
-
-                    magRadioGroupB.check(-1);
-                    magRadioGroupC.check(-1);
-                    magRadioGroupD.check(-1);
-                    magRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        magRadioGroupB.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    magRadioGroupA.check(-1);
-
-                    metaRadioGroupB.check(-1);
-                    attRadioGroupB.check(-1);
-                    skillRadioGroupB.check(-1);
-                    resourceRadioGroupB.check(-1);
-
-                    magRadioGroupC.check(-1);
-                    magRadioGroupD.check(-1);
-                    magRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        magRadioGroupC.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    magRadioGroupA.check(-1);
-                    magRadioGroupB.check(-1);
-
-                    metaRadioGroupC.check(-1);
-                    attRadioGroupC.check(-1);
-                    skillRadioGroupC.check(-1);
-                    resourceRadioGroupC.check(-1);
-
-                    magRadioGroupD.check(-1);
-                    magRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        magRadioGroupD.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    magRadioGroupA.check(-1);
-                    magRadioGroupB.check(-1);
-                    magRadioGroupC.check(-1);
-
-                    metaRadioGroupD.check(-1);
-                    attRadioGroupD.check(-1);
-                    skillRadioGroupD.check(-1);
-                    resourceRadioGroupD.check(-1);
-
-                    magRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        magRadioGroupE.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    magRadioGroupA.check(-1);
-                    magRadioGroupB.check(-1);
-                    magRadioGroupC.check(-1);
-                    magRadioGroupD.check(-1);
-
-                    metaRadioGroupE.check(-1);
-                    attRadioGroupE.check(-1);
-                    skillRadioGroupE.check(-1);
-                    resourceRadioGroupE.check(-1);
-
-                    radioButtonLock = true;
-                }
-            }
-        });
         // **********************************************************************************
-        // skill Selection
+        // Skill Selection
+        createSection(skillTable, R.id.SkillRadioGroupA, R.id.SkillRadioGroupB,
+                R.id.SkillRadioGroupC, R.id.SkillRadioGroupD, R.id.SkillRadioGroupE);
 
-        if (skillDataArray != null) {
-            for (PriorityTable p : skillDataArray) {
-                temp = new RadioButton(this);
-                temp.setText(p.getDisplayText());
+        createSkillOnClickListeners();
 
-                if (p.getPriority().equalsIgnoreCase(priorityA)) {
-                    skillRadioGroupA.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityB)) {
-                    skillRadioGroupB.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityC)) {
-                    skillRadioGroupC.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityD)) {
-                    skillRadioGroupD.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityE)) {
-                    skillRadioGroupE.addView(temp);
-                }
-
-            }
-        }
-
-        skillRadioGroupA.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-
-                    metaRadioGroupA.check(-1);
-                    attRadioGroupA.check(-1);
-                    magRadioGroupA.check(-1);
-                    resourceRadioGroupA.check(-1);
-
-                    skillRadioGroupB.check(-1);
-                    skillRadioGroupC.check(-1);
-                    skillRadioGroupD.check(-1);
-                    skillRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        skillRadioGroupB.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    skillRadioGroupA.check(-1);
-
-                    metaRadioGroupB.check(-1);
-                    attRadioGroupB.check(-1);
-                    magRadioGroupB.check(-1);
-                    resourceRadioGroupB.check(-1);
-
-                    skillRadioGroupC.check(-1);
-                    skillRadioGroupD.check(-1);
-                    skillRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        skillRadioGroupC.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    skillRadioGroupA.check(-1);
-                    skillRadioGroupB.check(-1);
-
-                    metaRadioGroupC.check(-1);
-                    attRadioGroupC.check(-1);
-                    magRadioGroupC.check(-1);
-                    resourceRadioGroupC.check(-1);
-
-                    skillRadioGroupD.check(-1);
-                    skillRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        skillRadioGroupD.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    skillRadioGroupA.check(-1);
-                    skillRadioGroupB.check(-1);
-                    skillRadioGroupC.check(-1);
-
-                    metaRadioGroupD.check(-1);
-                    attRadioGroupD.check(-1);
-                    magRadioGroupD.check(-1);
-                    resourceRadioGroupD.check(-1);
-
-                    skillRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        skillRadioGroupE.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    skillRadioGroupA.check(-1);
-                    skillRadioGroupB.check(-1);
-                    skillRadioGroupC.check(-1);
-                    skillRadioGroupD.check(-1);
-
-                    metaRadioGroupE.check(-1);
-                    attRadioGroupE.check(-1);
-                    magRadioGroupE.check(-1);
-                    resourceRadioGroupE.check(-1);
-
-                    radioButtonLock = true;
-                }
-            }
-        });
         // **********************************************************************************
+        // Resource Selection
+        createSection(resTable, R.id.ResourceRadioGroupA, R.id.ResourceRadioGroupB,
+                R.id.ResourceRadioGroupC, R.id.ResourceRadioGroupD, R.id.ResourceRadioGroupE);
 
-        if (resourceDataArray != null) {
-            for (PriorityTable p : resourceDataArray) {
-                temp = new RadioButton(this);
-                temp.setText(p.getDisplayText());
+        createResourceOnClickListeners();
 
-                if (p.getPriority().equalsIgnoreCase(priorityA)) {
-                    resourceRadioGroupA.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityB)) {
-                    resourceRadioGroupB.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityC)) {
-                    resourceRadioGroupC.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityD)) {
-                    resourceRadioGroupD.addView(temp);
-                } else if (p.getPriority().equalsIgnoreCase(priorityE)) {
-                    resourceRadioGroupE.addView(temp);
-                }
-
-            }
-        }
-
-        resourceRadioGroupA.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-
-                    metaRadioGroupA.check(-1);
-                    attRadioGroupA.check(-1);
-                    magRadioGroupA.check(-1);
-                    skillRadioGroupA.check(-1);
-
-                    resourceRadioGroupB.check(-1);
-                    resourceRadioGroupC.check(-1);
-                    resourceRadioGroupD.check(-1);
-                    resourceRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        resourceRadioGroupB.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    resourceRadioGroupA.check(-1);
-
-                    metaRadioGroupB.check(-1);
-                    attRadioGroupB.check(-1);
-                    magRadioGroupB.check(-1);
-                    skillRadioGroupB.check(-1);
-
-                    resourceRadioGroupC.check(-1);
-                    resourceRadioGroupD.check(-1);
-                    resourceRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        resourceRadioGroupC.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    resourceRadioGroupA.check(-1);
-                    resourceRadioGroupB.check(-1);
-
-                    metaRadioGroupC.check(-1);
-                    attRadioGroupC.check(-1);
-                    magRadioGroupC.check(-1);
-                    skillRadioGroupC.check(-1);
-
-                    resourceRadioGroupD.check(-1);
-                    resourceRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        resourceRadioGroupD.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    resourceRadioGroupA.check(-1);
-                    resourceRadioGroupB.check(-1);
-                    resourceRadioGroupC.check(-1);
-
-                    metaRadioGroupD.check(-1);
-                    attRadioGroupD.check(-1);
-                    magRadioGroupD.check(-1);
-                    skillRadioGroupD.check(-1);
-
-                    resourceRadioGroupE.check(-1);
-                    radioButtonLock = true;
-                }
-            }
-        });
-
-        resourceRadioGroupE.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (radioButtonLock) {
-                    // isFirst acts as a lock making sure no-one else
-                    // thinks
-                    // they are the first button being changed
-                    radioButtonLock = false;
-                    resourceRadioGroupA.check(-1);
-                    resourceRadioGroupB.check(-1);
-                    resourceRadioGroupC.check(-1);
-                    resourceRadioGroupD.check(-1);
-
-                    metaRadioGroupE.check(-1);
-                    attRadioGroupE.check(-1);
-                    magRadioGroupE.check(-1);
-                    skillRadioGroupE.check(-1);
-
-                    radioButtonLock = true;
-                }
-            }
-        });
         // **********************************************************************************
 
         // TODO remove this from the default selection
+        RadioGroup metaRadioGroupD = (RadioGroup) findViewById(R.id.MetaTypeRadioGroupD);
         ((RadioButton) metaRadioGroupD.getChildAt(0)).setChecked(true);
+
+        RadioGroup attRadioGroupB = (RadioGroup) findViewById(R.id.AttributeRadioGroupB);
         ((RadioButton) attRadioGroupB.getChildAt(0)).setChecked(true);
+
+        RadioGroup magRadioGroupC = (RadioGroup) findViewById(R.id.MagicRadioGroupC);
         ((RadioButton) magRadioGroupC.getChildAt(0)).setChecked(true);
+
+        RadioGroup skillRadioGroupA = (RadioGroup) findViewById(R.id.SkillRadioGroupA);
         ((RadioButton) skillRadioGroupA.getChildAt(0)).setChecked(true);
+
+        RadioGroup resourceRadioGroupE = (RadioGroup) findViewById(R.id.ResourceRadioGroupE);
         ((RadioButton) resourceRadioGroupE.getChildAt(0)).setChecked(true);
 
         doneButton.setOnClickListener(new OnClickListener() {
@@ -788,166 +108,67 @@ public class NewCharacterPriorityTable extends Activity {
                 boolean d = false;
                 boolean e = false;
 
-                if (metaRadioGroupA.getCheckedRadioButtonId() != -1 || attRadioGroupA.getCheckedRadioButtonId() != -1
-                        || skillRadioGroupA.getCheckedRadioButtonId() != -1
-                        || magRadioGroupA.getCheckedRadioButtonId() != -1
-                        || resourceRadioGroupA.getCheckedRadioButtonId() != -1) {
+                // Test to make sure that all priority items have been selected
+                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupA, R.id.AttributeRadioGroupA, R.id.MagicRadioGroupA, R.id.SkillRadioGroupA, R.id.ResourceRadioGroupA)) {
                     a = true;
                 }
 
-                if (metaRadioGroupB.getCheckedRadioButtonId() != -1 || attRadioGroupB.getCheckedRadioButtonId() != -1
-                        || skillRadioGroupB.getCheckedRadioButtonId() != -1
-                        || magRadioGroupB.getCheckedRadioButtonId() != -1
-                        || resourceRadioGroupB.getCheckedRadioButtonId() != -1) {
+                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupB, R.id.AttributeRadioGroupB, R.id.MagicRadioGroupB, R.id.SkillRadioGroupB, R.id.ResourceRadioGroupB)) {
                     b = true;
                 }
 
-                if (metaRadioGroupC.getCheckedRadioButtonId() != -1 || attRadioGroupC.getCheckedRadioButtonId() != -1
-                        || skillRadioGroupC.getCheckedRadioButtonId() != -1
-                        || magRadioGroupC.getCheckedRadioButtonId() != -1
-                        || resourceRadioGroupC.getCheckedRadioButtonId() != -1) {
+                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupC, R.id.AttributeRadioGroupC, R.id.MagicRadioGroupC, R.id.SkillRadioGroupC, R.id.ResourceRadioGroupC)) {
                     c = true;
                 }
 
-                if (metaRadioGroupD.getCheckedRadioButtonId() != -1 || attRadioGroupD.getCheckedRadioButtonId() != -1
-                        || skillRadioGroupD.getCheckedRadioButtonId() != -1
-                        || magRadioGroupD.getCheckedRadioButtonId() != -1
-                        || resourceRadioGroupD.getCheckedRadioButtonId() != -1) {
+                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupD, R.id.AttributeRadioGroupD, R.id.MagicRadioGroupD, R.id.SkillRadioGroupD, R.id.ResourceRadioGroupD)) {
                     d = true;
                 }
 
-                if (metaRadioGroupE.getCheckedRadioButtonId() != -1 || attRadioGroupE.getCheckedRadioButtonId() != -1
-                        || skillRadioGroupE.getCheckedRadioButtonId() != -1
-                        || magRadioGroupE.getCheckedRadioButtonId() != -1
-                        || resourceRadioGroupE.getCheckedRadioButtonId() != -1) {
+
+                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupE, R.id.AttributeRadioGroupE, R.id.MagicRadioGroupE, R.id.SkillRadioGroupE, R.id.ResourceRadioGroupE)) {
                     e = true;
                 }
 
+
                 // All the 5 priorities have been selected
                 if (a && b && c && d && e) {
-					int metaIndex;
-					int attrIndex;
-					int magicIndex;
-					int skillIndex;
-					int resIndex;
+                    int metaIndex;
+                    int attrIndex;
+                    int magicIndex;
+                    int skillIndex;
+                    int resIndex;
 
-					RadioButton rb = null;
-					// get the selected metatype
-					if (metaRadioGroupA.getCheckedRadioButtonId() != -1) {
-						int selectedId = metaRadioGroupA.getCheckedRadioButtonId();
-						rb = (RadioButton) metaRadioGroupA.findViewById(selectedId);
-					} else if (metaRadioGroupB.getCheckedRadioButtonId() != -1) {
-						int selectedId = metaRadioGroupB.getCheckedRadioButtonId();
-						rb = (RadioButton) metaRadioGroupB.findViewById(selectedId);
-					} else if (metaRadioGroupC.getCheckedRadioButtonId() != -1) {
-						int selectedId = metaRadioGroupC.getCheckedRadioButtonId();
-						rb = (RadioButton) metaRadioGroupC.findViewById(selectedId);
-					} else if (metaRadioGroupD.getCheckedRadioButtonId() != -1) {
-						int selectedId = metaRadioGroupD.getCheckedRadioButtonId();
-						rb = (RadioButton) metaRadioGroupD.findViewById(selectedId);
-					} else if (metaRadioGroupE.getCheckedRadioButtonId() != -1) {
-						int selectedId = metaRadioGroupE.getCheckedRadioButtonId();
-						rb = (RadioButton) metaRadioGroupE.findViewById(selectedId);
-					}
+                    metaIndex = getIndex(metaTable, R.id.MetaTypeRadioGroupA, R.id.MetaTypeRadioGroupB,
+                            R.id.MetaTypeRadioGroupC, R.id.MetaTypeRadioGroupD, R.id.MetaTypeRadioGroupE);
 
-					metaIndex = findPriorityIndex(rb, metaDataArray);
-					// get the selected attribute
-					rb = null;
-					if (attRadioGroupA.getCheckedRadioButtonId() != -1) {
-						int selectedId = attRadioGroupA.getCheckedRadioButtonId();
-						rb = (RadioButton) attRadioGroupA.findViewById(selectedId);
-					} else if (attRadioGroupB.getCheckedRadioButtonId() != -1) {
-						int selectedId = attRadioGroupB.getCheckedRadioButtonId();
-						rb = (RadioButton) attRadioGroupB.findViewById(selectedId);
-					} else if (attRadioGroupC.getCheckedRadioButtonId() != -1) {
-						int selectedId = attRadioGroupC.getCheckedRadioButtonId();
-						rb = (RadioButton) attRadioGroupC.findViewById(selectedId);
-					} else if (attRadioGroupD.getCheckedRadioButtonId() != -1) {
-						int selectedId = attRadioGroupD.getCheckedRadioButtonId();
-						rb = (RadioButton) attRadioGroupD.findViewById(selectedId);
-					} else if (attRadioGroupE.getCheckedRadioButtonId() != -1) {
-						int selectedId = attRadioGroupE.getCheckedRadioButtonId();
-						rb = (RadioButton) attRadioGroupE.findViewById(selectedId);
-					}
+                    attrIndex = getIndex(attrTable, R.id.AttributeRadioGroupA, R.id.AttributeRadioGroupB,
+                            R.id.AttributeRadioGroupC, R.id.AttributeRadioGroupD, R.id.AttributeRadioGroupE);
 
-					attrIndex = findPriorityIndex(rb, attDataArray);
-					// get the selected magic
-					rb = null;
-					if (magRadioGroupA.getCheckedRadioButtonId() != -1) {
-						int selectedId = magRadioGroupA.getCheckedRadioButtonId();
-						rb = (RadioButton) magRadioGroupA.findViewById(selectedId);
-					} else if (magRadioGroupB.getCheckedRadioButtonId() != -1) {
-						int selectedId = magRadioGroupB.getCheckedRadioButtonId();
-						rb = (RadioButton) magRadioGroupB.findViewById(selectedId);
-					} else if (magRadioGroupC.getCheckedRadioButtonId() != -1) {
-						int selectedId = magRadioGroupC.getCheckedRadioButtonId();
-						rb = (RadioButton) magRadioGroupC.findViewById(selectedId);
-					} else if (magRadioGroupD.getCheckedRadioButtonId() != -1) {
-						int selectedId = magRadioGroupD.getCheckedRadioButtonId();
-						rb = (RadioButton) magRadioGroupD.findViewById(selectedId);
-					} else if (magRadioGroupE.getCheckedRadioButtonId() != -1) {
-						int selectedId = magRadioGroupE.getCheckedRadioButtonId();
-						rb = (RadioButton) magRadioGroupE.findViewById(selectedId);
-					}
+                    magicIndex = getIndex(magicTable, R.id.MagicRadioGroupA, R.id.MagicRadioGroupB,
+                            R.id.MagicRadioGroupC, R.id.MagicRadioGroupD, R.id.MagicRadioGroupE);
 
-					magicIndex = findPriorityIndex(rb, magDataArray);
-					// get the selected skill
-					rb = null;
-					if (skillRadioGroupA.getCheckedRadioButtonId() != -1) {
-						int selectedId = skillRadioGroupA.getCheckedRadioButtonId();
-						rb = (RadioButton) skillRadioGroupA.findViewById(selectedId);
-					} else if (skillRadioGroupB.getCheckedRadioButtonId() != -1) {
-						int selectedId = skillRadioGroupB.getCheckedRadioButtonId();
-						rb = (RadioButton) skillRadioGroupB.findViewById(selectedId);
-					} else if (skillRadioGroupC.getCheckedRadioButtonId() != -1) {
-						int selectedId = skillRadioGroupC.getCheckedRadioButtonId();
-						rb = (RadioButton) skillRadioGroupC.findViewById(selectedId);
-					} else if (skillRadioGroupD.getCheckedRadioButtonId() != -1) {
-						int selectedId = skillRadioGroupD.getCheckedRadioButtonId();
-						rb = (RadioButton) skillRadioGroupD.findViewById(selectedId);
-					} else if (skillRadioGroupE.getCheckedRadioButtonId() != -1) {
-						int selectedId = skillRadioGroupE.getCheckedRadioButtonId();
-						rb = (RadioButton) skillRadioGroupE.findViewById(selectedId);
-					}
+                    skillIndex = getIndex(skillTable, R.id.SkillRadioGroupA, R.id.SkillRadioGroupB,
+                            R.id.SkillRadioGroupC, R.id.SkillRadioGroupD, R.id.SkillRadioGroupE);
 
-					skillIndex = findPriorityIndex(rb, skillDataArray);
-
-					// Get the selected resource
-					rb = null;
-					if (resourceRadioGroupA.getCheckedRadioButtonId() != -1) {
-						int selectedId = resourceRadioGroupA.getCheckedRadioButtonId();
-						rb = (RadioButton) resourceRadioGroupA.findViewById(selectedId);
-					} else if (resourceRadioGroupB.getCheckedRadioButtonId() != -1) {
-						int selectedId = resourceRadioGroupB.getCheckedRadioButtonId();
-						rb = (RadioButton) resourceRadioGroupB.findViewById(selectedId);
-					} else if (resourceRadioGroupC.getCheckedRadioButtonId() != -1) {
-						int selectedId = resourceRadioGroupC.getCheckedRadioButtonId();
-						rb = (RadioButton) resourceRadioGroupC.findViewById(selectedId);
-					} else if (resourceRadioGroupD.getCheckedRadioButtonId() != -1) {
-						int selectedId = resourceRadioGroupD.getCheckedRadioButtonId();
-						rb = (RadioButton) resourceRadioGroupD.findViewById(selectedId);
-					} else if (resourceRadioGroupE.getCheckedRadioButtonId() != -1) {
-						int selectedId = resourceRadioGroupE.getCheckedRadioButtonId();
-						rb = (RadioButton) resourceRadioGroupE.findViewById(selectedId);
-					}
-
-					resIndex = findPriorityIndex(rb, resourceDataArray);
+                    resIndex = getIndex(resTable, R.id.ResourceRadioGroupA, R.id.ResourceRadioGroupB,
+                            R.id.ResourceRadioGroupC, R.id.ResourceRadioGroupD, R.id.ResourceRadioGroupE);
 
                     Intent i = new Intent(NewCharacterPriorityTable.this, SwipeFragmentHolder.class);
-					// add all the different data
-					Bundle mBundle = new Bundle();
+                    // add all the different data
+                    Bundle mBundle = new Bundle();
 
-					mBundle.putSerializable("meta", metaDataArray.get(metaIndex));
-					mBundle.putSerializable("attr", attDataArray.get(attrIndex));
-					mBundle.putSerializable("magic", magDataArray.get(magicIndex));
-					mBundle.putSerializable("skill", skillDataArray.get(skillIndex));
-					mBundle.putSerializable("res", resourceDataArray.get(resIndex));
-					// TODO get the karma from an xml file.
-					mBundle.putInt("karma", ChummerConstants.startingKarma);
+                    mBundle.putSerializable("meta", metaTable.get(metaIndex));
+                    mBundle.putSerializable("attr", attrTable.get(attrIndex));
+                    mBundle.putSerializable("magic", magicTable.get(magicIndex));
+                    mBundle.putSerializable("skill", skillTable.get(skillIndex));
+                    mBundle.putSerializable("res", resTable.get(resIndex));
+                    // TODO get the karma from an xml file.
+                    mBundle.putInt("karma", ChummerConstants.startingKarma);
 
-					i.putExtras(mBundle);
+                    i.putExtras(mBundle);
 
-					startActivity(i);
+                    startActivity(i);
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Please select all 5 priorities",
                             Toast.LENGTH_SHORT);
@@ -958,9 +179,443 @@ public class NewCharacterPriorityTable extends Activity {
 
     }
 
-    private int findPriorityIndex(final Button rb, final ArrayList<PriorityTable> priorityList) {
+    private int getIndex(final ArrayList<PriorityTable> priorityTables, final int radioGroupAID, final int radioGroupBID,
+                         final int radioGroupCID, final int radioGroupDID, final int radioGroupEID) {
+        RadioButton rb = null;
+
+        final RadioGroup radioGroupA = (RadioGroup) findViewById(radioGroupAID);
+        final RadioGroup radioGroupB = (RadioGroup) findViewById(radioGroupBID);
+        final RadioGroup radioGroupC = (RadioGroup) findViewById(radioGroupCID);
+        final RadioGroup radioGroupD = (RadioGroup) findViewById(radioGroupDID);
+        final RadioGroup radioGroupE = (RadioGroup) findViewById(radioGroupEID);
+
+        if (radioGroupA.getCheckedRadioButtonId() != -1) {
+            int selectedId = radioGroupA.getCheckedRadioButtonId();
+            rb = (RadioButton) radioGroupA.findViewById(selectedId);
+        } else if (radioGroupB.getCheckedRadioButtonId() != -1) {
+            int selectedId = radioGroupB.getCheckedRadioButtonId();
+            rb = (RadioButton) radioGroupB.findViewById(selectedId);
+        } else if (radioGroupC.getCheckedRadioButtonId() != -1) {
+            int selectedId = radioGroupC.getCheckedRadioButtonId();
+            rb = (RadioButton) radioGroupC.findViewById(selectedId);
+        } else if (radioGroupD.getCheckedRadioButtonId() != -1) {
+            int selectedId = radioGroupD.getCheckedRadioButtonId();
+            rb = (RadioButton) radioGroupD.findViewById(selectedId);
+        } else if (radioGroupE.getCheckedRadioButtonId() != -1) {
+            int selectedId = radioGroupE.getCheckedRadioButtonId();
+            rb = (RadioButton) radioGroupE.findViewById(selectedId);
+        }
+
+        return findPriorityIndex(rb, priorityTables);
+    }
+
+    private boolean isRadioGroupSelected(final int metaTypeRadioGroupID, final int attributeRadioGroupID,
+                                         final int magicRadioGroupID, final int skillRadioGroupID, final int resourceRadioGroupID) {
+        final RadioGroup metaRadioGroup = (RadioGroup) findViewById(metaTypeRadioGroupID);
+        final RadioGroup attributeRadioGroup = (RadioGroup) findViewById(attributeRadioGroupID);
+        final RadioGroup magicRadioGroup = (RadioGroup) findViewById(magicRadioGroupID);
+        final RadioGroup skillRadioGroup = (RadioGroup) findViewById(skillRadioGroupID);
+        final RadioGroup resourceRadioGroup = (RadioGroup) findViewById(resourceRadioGroupID);
+
+        return metaRadioGroup.getCheckedRadioButtonId() != -1 || attributeRadioGroup.getCheckedRadioButtonId() != -1
+                || magicRadioGroup.getCheckedRadioButtonId() != -1
+                || skillRadioGroup.getCheckedRadioButtonId() != -1
+                || resourceRadioGroup.getCheckedRadioButtonId() != -1;
+    }
+
+    private void createSection(ArrayList<PriorityTable> metaDataArray, final int groupAID, final int groupBID,
+                               final int groupCID, final int groupDID, final int groupEID) {
+        // All the columns and radio groups for the table
+        final RadioGroup radioGroupA = (RadioGroup) findViewById(groupAID);
+        final RadioGroup radioGroupB = (RadioGroup) findViewById(groupBID);
+        final RadioGroup radioGroupC = (RadioGroup) findViewById(groupCID);
+        final RadioGroup radioGroupD = (RadioGroup) findViewById(groupDID);
+        final RadioGroup radioGroupE = (RadioGroup) findViewById(groupEID);
+
+        // The priorities selection
+        final String priorityA = getResources().getString(R.string.priorityA);
+        final String priorityB = getResources().getString(R.string.priorityB);
+        final String priorityC = getResources().getString(R.string.priorityC);
+        final String priorityD = getResources().getString(R.string.priorityD);
+        final String priorityE = getResources().getString(R.string.priorityE);
+
+
+        RadioButton temp;
+        // Metatype Section
+        if (metaDataArray != null) {
+            for (PriorityTable p : metaDataArray) {
+                temp = new RadioButton(this);
+                temp.setText(p.getDisplayText());
+
+                if (p.getPriority().equalsIgnoreCase(priorityA)) {
+                    radioGroupA.addView(temp);
+                } else if (p.getPriority().equalsIgnoreCase(priorityB)) {
+                    radioGroupB.addView(temp);
+                } else if (p.getPriority().equalsIgnoreCase(priorityC)) {
+                    radioGroupC.addView(temp);
+                } else if (p.getPriority().equalsIgnoreCase(priorityD)) {
+                    radioGroupD.addView(temp);
+                } else if (p.getPriority().equalsIgnoreCase(priorityE)) {
+                    radioGroupE.addView(temp);
+                }
+            }
+        }
+    }
+
+    private void addOnClickListeners(final int mainRadioGroupID, ArrayList<Integer> sameRankGroupID, ArrayList<Integer> sameRadioGroupID) {
+        final RadioGroup radioGroup = (RadioGroup) findViewById(mainRadioGroupID);
+
+        final ArrayList<Integer> sameGroup = (ArrayList<Integer>) sameRadioGroupID.clone();
+        final ArrayList<Integer> sameRankGroup = (ArrayList<Integer>) sameRankGroupID.clone();
+
+        radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (radioButtonLock) {
+                    // isFirst acts as a lock making sure no-one else thinks
+                    // they are the first button being changed
+                    radioButtonLock = false;
+
+                    // Uncheck all the other checkboxes that are the same level.
+                    for (int id : sameRankGroup) {
+                        RadioGroup tempRadioGroup = (RadioGroup) findViewById(id);
+                        tempRadioGroup.check(-1);
+                    }
+
+                    // Uncheck all the checkboxes that are the same group
+                    for (int id : sameGroup) {
+                        RadioGroup tempRadioGroup = (RadioGroup) findViewById(id);
+                        tempRadioGroup.check(-1);
+                    }
+
+                    radioButtonLock = true;
+                }
+            }
+        });
+    }
+
+    private void createMetaOnClickListeners() {
+        ArrayList<Integer> sameRankGroupID = new ArrayList<>();
+        ArrayList<Integer> sameGroupID = new ArrayList<>();
+
+        sameGroupID.add(R.id.MetaTypeRadioGroupB);
+        sameGroupID.add(R.id.MetaTypeRadioGroupC);
+        sameGroupID.add(R.id.MetaTypeRadioGroupD);
+        sameGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.AttributeRadioGroupA);
+        sameRankGroupID.add(R.id.MagicRadioGroupA);
+        sameRankGroupID.add(R.id.SkillRadioGroupA);
+        sameRankGroupID.add(R.id.ResourceRadioGroupA);
+        addOnClickListeners(R.id.MetaTypeRadioGroupA, sameRankGroupID, sameGroupID);
+
+        sameGroupID.clear();
+        sameGroupID.add(R.id.MetaTypeRadioGroupA);
+        sameGroupID.add(R.id.MetaTypeRadioGroupC);
+        sameGroupID.add(R.id.MetaTypeRadioGroupD);
+        sameGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.AttributeRadioGroupB);
+        sameRankGroupID.add(R.id.MagicRadioGroupB);
+        sameRankGroupID.add(R.id.SkillRadioGroupB);
+        sameRankGroupID.add(R.id.ResourceRadioGroupB);
+        addOnClickListeners(R.id.MetaTypeRadioGroupB, sameRankGroupID, sameGroupID);
+
+        sameGroupID.clear();
+        sameGroupID.add(R.id.MetaTypeRadioGroupA);
+        sameGroupID.add(R.id.MetaTypeRadioGroupB);
+        sameGroupID.add(R.id.MetaTypeRadioGroupD);
+        sameGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.AttributeRadioGroupC);
+        sameRankGroupID.add(R.id.MagicRadioGroupC);
+        sameRankGroupID.add(R.id.SkillRadioGroupC);
+        sameRankGroupID.add(R.id.ResourceRadioGroupC);
+        addOnClickListeners(R.id.MetaTypeRadioGroupC, sameRankGroupID, sameGroupID);
+
+        sameGroupID.clear();
+        sameGroupID.add(R.id.MetaTypeRadioGroupA);
+        sameGroupID.add(R.id.MetaTypeRadioGroupB);
+        sameGroupID.add(R.id.MetaTypeRadioGroupC);
+        sameGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.AttributeRadioGroupD);
+        sameRankGroupID.add(R.id.MagicRadioGroupD);
+        sameRankGroupID.add(R.id.SkillRadioGroupD);
+        sameRankGroupID.add(R.id.ResourceRadioGroupD);
+        addOnClickListeners(R.id.MetaTypeRadioGroupD, sameRankGroupID, sameGroupID);
+
+        sameGroupID.clear();
+        sameGroupID.add(R.id.MetaTypeRadioGroupA);
+        sameGroupID.add(R.id.MetaTypeRadioGroupB);
+        sameGroupID.add(R.id.MetaTypeRadioGroupC);
+        sameGroupID.add(R.id.MetaTypeRadioGroupD);
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.AttributeRadioGroupE);
+        sameRankGroupID.add(R.id.MagicRadioGroupE);
+        sameRankGroupID.add(R.id.SkillRadioGroupE);
+        sameRankGroupID.add(R.id.ResourceRadioGroupE);
+        addOnClickListeners(R.id.MetaTypeRadioGroupE, sameRankGroupID, sameGroupID);
+    }
+
+    private void createResourceOnClickListeners() {
+        ArrayList<Integer> sameRankGroupID = new ArrayList<>();
+        ArrayList<Integer> sameGroupID = new ArrayList<>();
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupA);
+        sameRankGroupID.add(R.id.AttributeRadioGroupA);
+        sameRankGroupID.add(R.id.MagicRadioGroupA);
+        sameRankGroupID.add(R.id.SkillRadioGroupA);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.ResourceRadioGroupB);
+        sameGroupID.add(R.id.ResourceRadioGroupC);
+        sameGroupID.add(R.id.ResourceRadioGroupD);
+        sameGroupID.add(R.id.ResourceRadioGroupE);
+        addOnClickListeners(R.id.ResourceRadioGroupA, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupB);
+        sameRankGroupID.add(R.id.AttributeRadioGroupB);
+        sameRankGroupID.add(R.id.MagicRadioGroupB);
+        sameRankGroupID.add(R.id.SkillRadioGroupB);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.ResourceRadioGroupA);
+        sameGroupID.add(R.id.ResourceRadioGroupC);
+        sameGroupID.add(R.id.ResourceRadioGroupD);
+        sameGroupID.add(R.id.ResourceRadioGroupE);
+        addOnClickListeners(R.id.ResourceRadioGroupB, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupC);
+        sameRankGroupID.add(R.id.AttributeRadioGroupC);
+        sameRankGroupID.add(R.id.MagicRadioGroupC);
+        sameRankGroupID.add(R.id.SkillRadioGroupC);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.ResourceRadioGroupA);
+        sameGroupID.add(R.id.ResourceRadioGroupB);
+        sameGroupID.add(R.id.ResourceRadioGroupD);
+        sameGroupID.add(R.id.ResourceRadioGroupE);
+        addOnClickListeners(R.id.ResourceRadioGroupC, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupD);
+        sameRankGroupID.add(R.id.AttributeRadioGroupD);
+        sameRankGroupID.add(R.id.MagicRadioGroupD);
+        sameRankGroupID.add(R.id.SkillRadioGroupD);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.ResourceRadioGroupA);
+        sameGroupID.add(R.id.ResourceRadioGroupB);
+        sameGroupID.add(R.id.ResourceRadioGroupC);
+        sameGroupID.add(R.id.ResourceRadioGroupE);
+        addOnClickListeners(R.id.ResourceRadioGroupD, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.AttributeRadioGroupE);
+        sameRankGroupID.add(R.id.MagicRadioGroupE);
+        sameRankGroupID.add(R.id.SkillRadioGroupE);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.ResourceRadioGroupA);
+        sameGroupID.add(R.id.ResourceRadioGroupB);
+        sameGroupID.add(R.id.ResourceRadioGroupC);
+        sameGroupID.add(R.id.ResourceRadioGroupD);
+        addOnClickListeners(R.id.ResourceRadioGroupE, sameRankGroupID, sameGroupID);
+    }
+
+    private void createSkillOnClickListeners() {
+        ArrayList<Integer> sameRankGroupID = new ArrayList<>();
+        ArrayList<Integer> sameGroupID = new ArrayList<>();
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupA);
+        sameRankGroupID.add(R.id.AttributeRadioGroupA);
+        sameRankGroupID.add(R.id.MagicRadioGroupA);
+        sameRankGroupID.add(R.id.ResourceRadioGroupA);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.SkillRadioGroupB);
+        sameGroupID.add(R.id.SkillRadioGroupC);
+        sameGroupID.add(R.id.SkillRadioGroupD);
+        sameGroupID.add(R.id.SkillRadioGroupE);
+        addOnClickListeners(R.id.SkillRadioGroupA, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupB);
+        sameRankGroupID.add(R.id.AttributeRadioGroupB);
+        sameRankGroupID.add(R.id.MagicRadioGroupB);
+        sameRankGroupID.add(R.id.ResourceRadioGroupB);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.SkillRadioGroupA);
+        sameGroupID.add(R.id.SkillRadioGroupC);
+        sameGroupID.add(R.id.SkillRadioGroupD);
+        sameGroupID.add(R.id.SkillRadioGroupE);
+        addOnClickListeners(R.id.SkillRadioGroupB, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupC);
+        sameRankGroupID.add(R.id.AttributeRadioGroupC);
+        sameRankGroupID.add(R.id.MagicRadioGroupC);
+        sameRankGroupID.add(R.id.ResourceRadioGroupC);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.SkillRadioGroupA);
+        sameGroupID.add(R.id.SkillRadioGroupB);
+        sameGroupID.add(R.id.SkillRadioGroupD);
+        sameGroupID.add(R.id.SkillRadioGroupE);
+        addOnClickListeners(R.id.SkillRadioGroupC, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupD);
+        sameRankGroupID.add(R.id.AttributeRadioGroupD);
+        sameRankGroupID.add(R.id.MagicRadioGroupD);
+        sameRankGroupID.add(R.id.ResourceRadioGroupD);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.SkillRadioGroupA);
+        sameGroupID.add(R.id.SkillRadioGroupB);
+        sameGroupID.add(R.id.SkillRadioGroupC);
+        sameGroupID.add(R.id.SkillRadioGroupE);
+        addOnClickListeners(R.id.SkillRadioGroupD, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.AttributeRadioGroupE);
+        sameRankGroupID.add(R.id.MagicRadioGroupE);
+        sameRankGroupID.add(R.id.ResourceRadioGroupE);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.SkillRadioGroupA);
+        sameGroupID.add(R.id.SkillRadioGroupB);
+        sameGroupID.add(R.id.SkillRadioGroupC);
+        sameGroupID.add(R.id.SkillRadioGroupD);
+        addOnClickListeners(R.id.SkillRadioGroupE, sameRankGroupID, sameGroupID);
+    }
+
+    private void createMagicOnClickListeners() {
+        ArrayList<Integer> sameRankGroupID = new ArrayList<>();
+        ArrayList<Integer> sameGroupID = new ArrayList<>();
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupA);
+        sameRankGroupID.add(R.id.AttributeRadioGroupA);
+        sameRankGroupID.add(R.id.SkillRadioGroupA);
+        sameRankGroupID.add(R.id.ResourceRadioGroupA);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.MagicRadioGroupB);
+        sameGroupID.add(R.id.MagicRadioGroupC);
+        sameGroupID.add(R.id.MagicRadioGroupD);
+        sameGroupID.add(R.id.MagicRadioGroupE);
+        addOnClickListeners(R.id.MagicRadioGroupA, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupB);
+        sameRankGroupID.add(R.id.AttributeRadioGroupB);
+        sameRankGroupID.add(R.id.SkillRadioGroupB);
+        sameRankGroupID.add(R.id.ResourceRadioGroupB);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.MagicRadioGroupA);
+        sameGroupID.add(R.id.MagicRadioGroupC);
+        sameGroupID.add(R.id.MagicRadioGroupD);
+        sameGroupID.add(R.id.MagicRadioGroupE);
+        addOnClickListeners(R.id.MagicRadioGroupB, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupC);
+        sameRankGroupID.add(R.id.AttributeRadioGroupC);
+        sameRankGroupID.add(R.id.SkillRadioGroupC);
+        sameRankGroupID.add(R.id.ResourceRadioGroupC);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.MagicRadioGroupA);
+        sameGroupID.add(R.id.MagicRadioGroupB);
+        sameGroupID.add(R.id.MagicRadioGroupD);
+        sameGroupID.add(R.id.MagicRadioGroupE);
+        addOnClickListeners(R.id.MagicRadioGroupC, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupD);
+        sameRankGroupID.add(R.id.AttributeRadioGroupD);
+        sameRankGroupID.add(R.id.SkillRadioGroupD);
+        sameRankGroupID.add(R.id.ResourceRadioGroupD);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.MagicRadioGroupA);
+        sameGroupID.add(R.id.MagicRadioGroupB);
+        sameGroupID.add(R.id.MagicRadioGroupC);
+        sameGroupID.add(R.id.MagicRadioGroupE);
+        addOnClickListeners(R.id.MagicRadioGroupD, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.AttributeRadioGroupE);
+        sameRankGroupID.add(R.id.SkillRadioGroupE);
+        sameRankGroupID.add(R.id.ResourceRadioGroupE);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.MagicRadioGroupA);
+        sameGroupID.add(R.id.MagicRadioGroupB);
+        sameGroupID.add(R.id.MagicRadioGroupC);
+        sameGroupID.add(R.id.MagicRadioGroupD);
+        addOnClickListeners(R.id.MagicRadioGroupE, sameRankGroupID, sameGroupID);
+    }
+
+    private void createAttrOnClickListeners() {
+        ArrayList<Integer> sameRankGroupID = new ArrayList<>();
+        ArrayList<Integer> sameGroupID = new ArrayList<>();
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupA);
+        sameRankGroupID.add(R.id.MagicRadioGroupA);
+        sameRankGroupID.add(R.id.SkillRadioGroupA);
+        sameRankGroupID.add(R.id.ResourceRadioGroupA);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.AttributeRadioGroupB);
+        sameGroupID.add(R.id.AttributeRadioGroupC);
+        sameGroupID.add(R.id.AttributeRadioGroupD);
+        sameGroupID.add(R.id.AttributeRadioGroupE);
+        addOnClickListeners(R.id.AttributeRadioGroupA, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupB);
+        sameRankGroupID.add(R.id.MagicRadioGroupB);
+        sameRankGroupID.add(R.id.SkillRadioGroupB);
+        sameRankGroupID.add(R.id.ResourceRadioGroupB);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.AttributeRadioGroupA);
+        sameGroupID.add(R.id.AttributeRadioGroupC);
+        sameGroupID.add(R.id.AttributeRadioGroupD);
+        sameGroupID.add(R.id.AttributeRadioGroupE);
+        addOnClickListeners(R.id.AttributeRadioGroupB, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupC);
+        sameRankGroupID.add(R.id.MagicRadioGroupC);
+        sameRankGroupID.add(R.id.SkillRadioGroupC);
+        sameRankGroupID.add(R.id.ResourceRadioGroupC);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.AttributeRadioGroupA);
+        sameGroupID.add(R.id.AttributeRadioGroupB);
+        sameGroupID.add(R.id.AttributeRadioGroupD);
+        sameGroupID.add(R.id.AttributeRadioGroupE);
+        addOnClickListeners(R.id.AttributeRadioGroupC, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupD);
+        sameRankGroupID.add(R.id.MagicRadioGroupD);
+        sameRankGroupID.add(R.id.SkillRadioGroupD);
+        sameRankGroupID.add(R.id.ResourceRadioGroupD);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.AttributeRadioGroupA);
+        sameGroupID.add(R.id.AttributeRadioGroupB);
+        sameGroupID.add(R.id.AttributeRadioGroupC);
+        sameGroupID.add(R.id.AttributeRadioGroupE);
+        addOnClickListeners(R.id.AttributeRadioGroupD, sameRankGroupID, sameGroupID);
+
+        sameRankGroupID.clear();
+        sameRankGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.MagicRadioGroupE);
+        sameRankGroupID.add(R.id.SkillRadioGroupE);
+        sameRankGroupID.add(R.id.ResourceRadioGroupE);
+        sameGroupID.clear();
+        sameGroupID.add(R.id.AttributeRadioGroupA);
+        sameGroupID.add(R.id.AttributeRadioGroupB);
+        sameGroupID.add(R.id.AttributeRadioGroupC);
+        sameGroupID.add(R.id.AttributeRadioGroupD);
+        addOnClickListeners(R.id.AttributeRadioGroupE, sameRankGroupID, sameGroupID);
+    }
+
+    private int findPriorityIndex(final Button radioButton, final ArrayList<PriorityTable> priorityList) {
         for (int x = 0; x < priorityList.size(); x++) {
-            if (rb.getText().toString().compareToIgnoreCase(priorityList.get(x).getDisplayText()) == 0) {
+            if (radioButton.getText().toString().compareToIgnoreCase(priorityList.get(x).getDisplayText()) == 0) {
                 return x;
             }
         }
@@ -1033,7 +688,7 @@ public class NewCharacterPriorityTable extends Activity {
                         }
 
                         if (mod) {
-                            switch(name.toLowerCase()) {
+                            switch (name.toLowerCase()) {
                                 case "name":
                                     m.setName(parser.nextText());
                                     break;
@@ -1055,7 +710,7 @@ public class NewCharacterPriorityTable extends Activity {
                                     break;
                             }
                         } else {
-                            switch(name.toLowerCase()){
+                            switch (name.toLowerCase()) {
                                 case "displaytext":
                                     currentAttribute.setDisplayText(parser.nextText());
                                     break;
