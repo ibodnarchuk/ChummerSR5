@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/linearQualitiesContainer"
+        android:id="@+id/fragment_mainstats_main_linearQualities_Container"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -13,30 +13,30 @@
         >
 
         <FrameLayout
-            android:id="@+id/positiveQualitiesFragment"
+            android:id="@+id/fragment_mainstats_main_positiveQualities_Fragment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight=".5"
             android:orientation="vertical" />
 
         <FrameLayout
-            android:id="@+id/NegativeQualitiesFragment"
+            android:id="@+id/fragment_mainstats_main_NegativeQualities_Fragment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight=".5" />
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/attributeFragment"
+        android:id="@+id/fragment_mainstats_main_attribute_Fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/linearQualitiesContainer"
-        android:layout_toEndOf="@+id/linearQualitiesContainer"
+        android:layout_toRightOf="@+id/fragment_mainstats_main_linearQualities_Container"
+        android:layout_toEndOf="@+id/fragment_mainstats_main_linearQualities_Container"
         android:orientation="vertical"
         />
 
     <TextView
-        android:id="@+id/karmaCounter"
+        android:id="@+id/karma_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

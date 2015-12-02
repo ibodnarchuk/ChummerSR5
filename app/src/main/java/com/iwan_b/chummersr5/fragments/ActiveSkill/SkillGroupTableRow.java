@@ -29,14 +29,14 @@ public class SkillGroupTableRow {
 
     public void updateKarma() {
         if (rootView != null) {
-            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karmaCounter);
+            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
             karmaCounterTxtView.setText(String.valueOf(ShadowrunCharacter.getKarma()));
         }
     }
 
     private void updateGroupSkillCounter() {
         if (rootView != null) {
-            TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroupsCounter);
+            TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.fragment_activeskill_freeSkillGroups_counter);
             freeSkillGroupTxt.setText(String.valueOf(FreeCounters.getCounters().getFreeActiveGroupSkills()));
         }
     }
@@ -132,7 +132,7 @@ public class SkillGroupTableRow {
             }
 
             // Find the skills highlighted earlier
-            TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillsTableLayout);
+            TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.fragment_activeskill_Skills_TableLayout);
             for (int i = 0; i < SkillsTableLayout.getChildCount(); i++) {
                 TableRow temp = (TableRow) SkillsTableLayout.getChildAt(i);
 

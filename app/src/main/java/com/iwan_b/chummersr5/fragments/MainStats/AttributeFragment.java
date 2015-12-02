@@ -32,8 +32,8 @@ public class AttributeFragment extends Fragment {
 	private View rootView;
 
 	private void updateCounters() {
-		TextView attrTextViewCounter = (TextView) rootView.findViewById(R.id.PriorityCounter);
-		TextView attrTextViewSpecCounter = (TextView) rootView.findViewById(R.id.attrSpecCounter);
+		TextView attrTextViewCounter = (TextView) rootView.findViewById(R.id.fragment_mainstats_attribute_Priority_Counter);
+		TextView attrTextViewSpecCounter = (TextView) rootView.findViewById(R.id.fragment_mainstats_attribute_attrSpec_Counter);
 
 		attrTextViewCounter.setText(FreeCounters.getCounters().getFreeAttributes() + " Attr Counter");
 		attrTextViewSpecCounter.setText(FreeCounters.getCounters().getFreeSpecAttributes() + " Spec Counter");
@@ -43,7 +43,7 @@ public class AttributeFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		rootView = inflater.inflate(R.layout.attributefragment, container, false);
+		rootView = inflater.inflate(R.layout.fragment_mainstats_attribute, container, false);
 
 		// Set the initial display counters
 		FreeCounters.getCounters().setFreeAttributes((int) PriorityCounters.getCounters().getAttr().getStats());
@@ -54,7 +54,7 @@ public class AttributeFragment extends Fragment {
 
 		ArrayList<String> attributes = ChummerXML.readStringXML(getActivity(), "data/AttributesFull.xml");
 
-		TableLayout attrTableLayout = (TableLayout) rootView.findViewById(R.id.attributeTableLayout);
+		TableLayout attrTableLayout = (TableLayout) rootView.findViewById(R.id.fragment_mainstats_attribute_attribute_TableLayout);
 
 		// Loop through each attribute and create a row for them
 		for (final String attrName : attributes) {

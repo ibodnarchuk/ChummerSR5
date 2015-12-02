@@ -2,60 +2,61 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-
-        <TableLayout
-            android:id="@+id/SkillGroupsTableLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-    </ScrollView>
-
+    android:orientation="horizontal"
+    >
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollview1"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_toEndOf="@+id/scrollView"
-        android:layout_toRightOf="@+id/scrollView"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        >
 
         <TableLayout
-            android:id="@+id/SkillsTableLayout"
+            android:id="@+id/fragment_knowledgeskill_knowledgeSkillsGroup_TableLayout"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollview2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/scrollview1"
+        android:layout_toRightOf="@+id/scrollview1"
+        android:layout_alignParentTop="true"
+        >
+
+        <TableLayout
+            android:id="@+id/fragment_knowledgeskill_languageSkills_TableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </ScrollView>
 
     <TextView
-        android:id="@+id/freeSkillsCounter"
+        android:id="@+id/fragment_knowledgeskill_freeKnowledge_Counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:textSize="50sp" />
 
     <TextView
-        android:id="@+id/freeSkillGroupsCounter"
+        android:id="@+id/fragment_knowledgeskill_freeLanguage_Counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/freeSkillsCounter"
+        android:layout_below="@+id/fragment_knowledgeskill_freeKnowledge_Counter"
         android:textSize="50sp" />
 
     <TextView
-        android:id="@+id/karmaCounter"
+        android:id="@+id/karma_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/freeSkillGroupsCounter"
+        android:layout_below="@+id/fragment_knowledgeskill_freeLanguage_Counter"
         android:textSize="50sp" />
 
 </RelativeLayout>

@@ -36,7 +36,7 @@ public class NewCharacterPriorityTable extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.newcharacterselection);
+        setContentView(R.layout.activity_priority_table);
 
         metaTable = readXML("chargen/metachargen.xml");
         attrTable = readXML("chargen/attchargen.xml");
@@ -44,58 +44,58 @@ public class NewCharacterPriorityTable extends Activity {
         skillTable = readXML("chargen/skillchargen.xml");
         resTable = readXML("chargen/reschargen.xml");
         // Done button
-        final Button doneButton = (Button) findViewById(R.id.NewCharacterButtonDone);
+        final Button doneButton = (Button) findViewById(R.id.activity_priority_table_NewCharacter_Button_Done);
 
         // **********************************************************************************
         // Meta Section
-        createSection(metaTable, R.id.MetaTypeRadioGroupA, R.id.MetaTypeRadioGroupB,
-                R.id.MetaTypeRadioGroupC, R.id.MetaTypeRadioGroupD, R.id.MetaTypeRadioGroupE);
+        createSection(metaTable, R.id.activity_priority_table_MetaTypeRadioGroupA, R.id.activity_priority_table_MetaTypeRadioGroupB,
+                R.id.activity_priority_table_MetaTypeRadioGroupC, R.id.activity_priority_table_MetaTypeRadioGroupD, R.id.activity_priority_table_MetaTypeRadioGroupE);
 
         createMetaOnClickListeners();
         // **********************************************************************************
         // Attribute section
-        createSection(attrTable, R.id.AttributeRadioGroupA, R.id.AttributeRadioGroupB,
-                R.id.AttributeRadioGroupC, R.id.AttributeRadioGroupD, R.id.AttributeRadioGroupE);
+        createSection(attrTable, R.id.activity_priority_table_AttributeRadioGroupA, R.id.activity_priority_table_AttributeRadioGroupB,
+                R.id.activity_priority_table_AttributeRadioGroupC, R.id.activity_priority_table_AttributeRadioGroupD, R.id.activity_priority_table_AttributeRadioGroupE);
 
         createAttrOnClickListeners();
 
         // **********************************************************************************
         // Magic Selection
-        createSection(magicTable, R.id.MagicRadioGroupA, R.id.MagicRadioGroupB,
-                R.id.MagicRadioGroupC, R.id.MagicRadioGroupD, R.id.MagicRadioGroupE);
+        createSection(magicTable, R.id.activity_priority_table_MagicRadioGroupA, R.id.activity_priority_table_MagicRadioGroupB,
+                R.id.activity_priority_table_MagicRadioGroupC, R.id.activity_priority_table_MagicRadioGroupD, R.id.activity_priority_table_MagicRadioGroupE);
 
         createMagicOnClickListeners();
 
         // **********************************************************************************
         // Skill Selection
-        createSection(skillTable, R.id.SkillRadioGroupA, R.id.SkillRadioGroupB,
-                R.id.SkillRadioGroupC, R.id.SkillRadioGroupD, R.id.SkillRadioGroupE);
+        createSection(skillTable, R.id.activity_priority_table_SkillRadioGroupA, R.id.activity_priority_table_SkillRadioGroupB,
+                R.id.activity_priority_table_SkillRadioGroupC, R.id.activity_priority_table_SkillRadioGroupD, R.id.activity_priority_table_SkillRadioGroupE);
 
         createSkillOnClickListeners();
 
         // **********************************************************************************
         // Resource Selection
-        createSection(resTable, R.id.ResourceRadioGroupA, R.id.ResourceRadioGroupB,
-                R.id.ResourceRadioGroupC, R.id.ResourceRadioGroupD, R.id.ResourceRadioGroupE);
+        createSection(resTable, R.id.activity_priority_table_ResourceRadioGroupA, R.id.activity_priority_table_ResourceRadioGroupB,
+                R.id.activity_priority_table_ResourceRadioGroupC, R.id.activity_priority_table_ResourceRadioGroupD, R.id.activity_priority_table_ResourceRadioGroupE);
 
         createResourceOnClickListeners();
 
         // **********************************************************************************
 
         // TODO remove this from the default selection
-        RadioGroup metaRadioGroupD = (RadioGroup) findViewById(R.id.MetaTypeRadioGroupD);
+        RadioGroup metaRadioGroupD = (RadioGroup) findViewById(R.id.activity_priority_table_MetaTypeRadioGroupD);
         ((RadioButton) metaRadioGroupD.getChildAt(0)).setChecked(true);
 
-        RadioGroup attRadioGroupB = (RadioGroup) findViewById(R.id.AttributeRadioGroupB);
+        RadioGroup attRadioGroupB = (RadioGroup) findViewById(R.id.activity_priority_table_AttributeRadioGroupB);
         ((RadioButton) attRadioGroupB.getChildAt(0)).setChecked(true);
 
-        RadioGroup magRadioGroupC = (RadioGroup) findViewById(R.id.MagicRadioGroupC);
+        RadioGroup magRadioGroupC = (RadioGroup) findViewById(R.id.activity_priority_table_MagicRadioGroupC);
         ((RadioButton) magRadioGroupC.getChildAt(0)).setChecked(true);
 
-        RadioGroup skillRadioGroupA = (RadioGroup) findViewById(R.id.SkillRadioGroupA);
+        RadioGroup skillRadioGroupA = (RadioGroup) findViewById(R.id.activity_priority_table_SkillRadioGroupA);
         ((RadioButton) skillRadioGroupA.getChildAt(0)).setChecked(true);
 
-        RadioGroup resourceRadioGroupE = (RadioGroup) findViewById(R.id.ResourceRadioGroupE);
+        RadioGroup resourceRadioGroupE = (RadioGroup) findViewById(R.id.activity_priority_table_ResourceRadioGroupE);
         ((RadioButton) resourceRadioGroupE.getChildAt(0)).setChecked(true);
 
         doneButton.setOnClickListener(new OnClickListener() {
@@ -109,24 +109,24 @@ public class NewCharacterPriorityTable extends Activity {
                 boolean e = false;
 
                 // Test to make sure that all priority items have been selected
-                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupA, R.id.AttributeRadioGroupA, R.id.MagicRadioGroupA, R.id.SkillRadioGroupA, R.id.ResourceRadioGroupA)) {
+                if (isRadioGroupSelected(R.id.activity_priority_table_MetaTypeRadioGroupA, R.id.activity_priority_table_AttributeRadioGroupA, R.id.activity_priority_table_MagicRadioGroupA, R.id.activity_priority_table_SkillRadioGroupA, R.id.activity_priority_table_ResourceRadioGroupA)) {
                     a = true;
                 }
 
-                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupB, R.id.AttributeRadioGroupB, R.id.MagicRadioGroupB, R.id.SkillRadioGroupB, R.id.ResourceRadioGroupB)) {
+                if (isRadioGroupSelected(R.id.activity_priority_table_MetaTypeRadioGroupB, R.id.activity_priority_table_AttributeRadioGroupB, R.id.activity_priority_table_MagicRadioGroupB, R.id.activity_priority_table_SkillRadioGroupB, R.id.activity_priority_table_ResourceRadioGroupB)) {
                     b = true;
                 }
 
-                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupC, R.id.AttributeRadioGroupC, R.id.MagicRadioGroupC, R.id.SkillRadioGroupC, R.id.ResourceRadioGroupC)) {
+                if (isRadioGroupSelected(R.id.activity_priority_table_MetaTypeRadioGroupC, R.id.activity_priority_table_AttributeRadioGroupC, R.id.activity_priority_table_MagicRadioGroupC, R.id.activity_priority_table_SkillRadioGroupC, R.id.activity_priority_table_ResourceRadioGroupC)) {
                     c = true;
                 }
 
-                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupD, R.id.AttributeRadioGroupD, R.id.MagicRadioGroupD, R.id.SkillRadioGroupD, R.id.ResourceRadioGroupD)) {
+                if (isRadioGroupSelected(R.id.activity_priority_table_MetaTypeRadioGroupD, R.id.activity_priority_table_AttributeRadioGroupD, R.id.activity_priority_table_MagicRadioGroupD, R.id.activity_priority_table_SkillRadioGroupD, R.id.activity_priority_table_ResourceRadioGroupD)) {
                     d = true;
                 }
 
 
-                if (isRadioGroupSelected(R.id.MetaTypeRadioGroupE, R.id.AttributeRadioGroupE, R.id.MagicRadioGroupE, R.id.SkillRadioGroupE, R.id.ResourceRadioGroupE)) {
+                if (isRadioGroupSelected(R.id.activity_priority_table_MetaTypeRadioGroupE, R.id.activity_priority_table_AttributeRadioGroupE, R.id.activity_priority_table_MagicRadioGroupE, R.id.activity_priority_table_SkillRadioGroupE, R.id.activity_priority_table_ResourceRadioGroupE)) {
                     e = true;
                 }
 
@@ -139,20 +139,20 @@ public class NewCharacterPriorityTable extends Activity {
                     int skillIndex;
                     int resIndex;
 
-                    metaIndex = getIndex(metaTable, R.id.MetaTypeRadioGroupA, R.id.MetaTypeRadioGroupB,
-                            R.id.MetaTypeRadioGroupC, R.id.MetaTypeRadioGroupD, R.id.MetaTypeRadioGroupE);
+                    metaIndex = getIndex(metaTable, R.id.activity_priority_table_MetaTypeRadioGroupA, R.id.activity_priority_table_MetaTypeRadioGroupB,
+                            R.id.activity_priority_table_MetaTypeRadioGroupC, R.id.activity_priority_table_MetaTypeRadioGroupD, R.id.activity_priority_table_MetaTypeRadioGroupE);
 
-                    attrIndex = getIndex(attrTable, R.id.AttributeRadioGroupA, R.id.AttributeRadioGroupB,
-                            R.id.AttributeRadioGroupC, R.id.AttributeRadioGroupD, R.id.AttributeRadioGroupE);
+                    attrIndex = getIndex(attrTable, R.id.activity_priority_table_AttributeRadioGroupA, R.id.activity_priority_table_AttributeRadioGroupB,
+                            R.id.activity_priority_table_AttributeRadioGroupC, R.id.activity_priority_table_AttributeRadioGroupD, R.id.activity_priority_table_AttributeRadioGroupE);
 
-                    magicIndex = getIndex(magicTable, R.id.MagicRadioGroupA, R.id.MagicRadioGroupB,
-                            R.id.MagicRadioGroupC, R.id.MagicRadioGroupD, R.id.MagicRadioGroupE);
+                    magicIndex = getIndex(magicTable, R.id.activity_priority_table_MagicRadioGroupA, R.id.activity_priority_table_MagicRadioGroupB,
+                            R.id.activity_priority_table_MagicRadioGroupC, R.id.activity_priority_table_MagicRadioGroupD, R.id.activity_priority_table_MagicRadioGroupE);
 
-                    skillIndex = getIndex(skillTable, R.id.SkillRadioGroupA, R.id.SkillRadioGroupB,
-                            R.id.SkillRadioGroupC, R.id.SkillRadioGroupD, R.id.SkillRadioGroupE);
+                    skillIndex = getIndex(skillTable, R.id.activity_priority_table_SkillRadioGroupA, R.id.activity_priority_table_SkillRadioGroupB,
+                            R.id.activity_priority_table_SkillRadioGroupC, R.id.activity_priority_table_SkillRadioGroupD, R.id.activity_priority_table_SkillRadioGroupE);
 
-                    resIndex = getIndex(resTable, R.id.ResourceRadioGroupA, R.id.ResourceRadioGroupB,
-                            R.id.ResourceRadioGroupC, R.id.ResourceRadioGroupD, R.id.ResourceRadioGroupE);
+                    resIndex = getIndex(resTable, R.id.activity_priority_table_ResourceRadioGroupA, R.id.activity_priority_table_ResourceRadioGroupB,
+                            R.id.activity_priority_table_ResourceRadioGroupC, R.id.activity_priority_table_ResourceRadioGroupD, R.id.activity_priority_table_ResourceRadioGroupE);
 
                     Intent i = new Intent(NewCharacterPriorityTable.this, SwipeFragmentHolder.class);
                     // add all the different data
@@ -298,319 +298,319 @@ public class NewCharacterPriorityTable extends Activity {
         ArrayList<Integer> sameRankGroupID = new ArrayList<>();
         ArrayList<Integer> sameGroupID = new ArrayList<>();
 
-        sameGroupID.add(R.id.MetaTypeRadioGroupB);
-        sameGroupID.add(R.id.MetaTypeRadioGroupC);
-        sameGroupID.add(R.id.MetaTypeRadioGroupD);
-        sameGroupID.add(R.id.MetaTypeRadioGroupE);
-        sameRankGroupID.add(R.id.AttributeRadioGroupA);
-        sameRankGroupID.add(R.id.MagicRadioGroupA);
-        sameRankGroupID.add(R.id.SkillRadioGroupA);
-        sameRankGroupID.add(R.id.ResourceRadioGroupA);
-        addOnClickListeners(R.id.MetaTypeRadioGroupA, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupA);
+        addOnClickListeners(R.id.activity_priority_table_MetaTypeRadioGroupA, sameRankGroupID, sameGroupID);
 
         sameGroupID.clear();
-        sameGroupID.add(R.id.MetaTypeRadioGroupA);
-        sameGroupID.add(R.id.MetaTypeRadioGroupC);
-        sameGroupID.add(R.id.MetaTypeRadioGroupD);
-        sameGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupE);
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.AttributeRadioGroupB);
-        sameRankGroupID.add(R.id.MagicRadioGroupB);
-        sameRankGroupID.add(R.id.SkillRadioGroupB);
-        sameRankGroupID.add(R.id.ResourceRadioGroupB);
-        addOnClickListeners(R.id.MetaTypeRadioGroupB, sameRankGroupID, sameGroupID);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupB);
+        addOnClickListeners(R.id.activity_priority_table_MetaTypeRadioGroupB, sameRankGroupID, sameGroupID);
 
         sameGroupID.clear();
-        sameGroupID.add(R.id.MetaTypeRadioGroupA);
-        sameGroupID.add(R.id.MetaTypeRadioGroupB);
-        sameGroupID.add(R.id.MetaTypeRadioGroupD);
-        sameGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupE);
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.AttributeRadioGroupC);
-        sameRankGroupID.add(R.id.MagicRadioGroupC);
-        sameRankGroupID.add(R.id.SkillRadioGroupC);
-        sameRankGroupID.add(R.id.ResourceRadioGroupC);
-        addOnClickListeners(R.id.MetaTypeRadioGroupC, sameRankGroupID, sameGroupID);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupC);
+        addOnClickListeners(R.id.activity_priority_table_MetaTypeRadioGroupC, sameRankGroupID, sameGroupID);
 
         sameGroupID.clear();
-        sameGroupID.add(R.id.MetaTypeRadioGroupA);
-        sameGroupID.add(R.id.MetaTypeRadioGroupB);
-        sameGroupID.add(R.id.MetaTypeRadioGroupC);
-        sameGroupID.add(R.id.MetaTypeRadioGroupE);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupE);
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.AttributeRadioGroupD);
-        sameRankGroupID.add(R.id.MagicRadioGroupD);
-        sameRankGroupID.add(R.id.SkillRadioGroupD);
-        sameRankGroupID.add(R.id.ResourceRadioGroupD);
-        addOnClickListeners(R.id.MetaTypeRadioGroupD, sameRankGroupID, sameGroupID);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupD);
+        addOnClickListeners(R.id.activity_priority_table_MetaTypeRadioGroupD, sameRankGroupID, sameGroupID);
 
         sameGroupID.clear();
-        sameGroupID.add(R.id.MetaTypeRadioGroupA);
-        sameGroupID.add(R.id.MetaTypeRadioGroupB);
-        sameGroupID.add(R.id.MetaTypeRadioGroupC);
-        sameGroupID.add(R.id.MetaTypeRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupD);
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.AttributeRadioGroupE);
-        sameRankGroupID.add(R.id.MagicRadioGroupE);
-        sameRankGroupID.add(R.id.SkillRadioGroupE);
-        sameRankGroupID.add(R.id.ResourceRadioGroupE);
-        addOnClickListeners(R.id.MetaTypeRadioGroupE, sameRankGroupID, sameGroupID);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_MetaTypeRadioGroupE, sameRankGroupID, sameGroupID);
     }
 
     private void createResourceOnClickListeners() {
         ArrayList<Integer> sameRankGroupID = new ArrayList<>();
         ArrayList<Integer> sameGroupID = new ArrayList<>();
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupA);
-        sameRankGroupID.add(R.id.AttributeRadioGroupA);
-        sameRankGroupID.add(R.id.MagicRadioGroupA);
-        sameRankGroupID.add(R.id.SkillRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupA);
         sameGroupID.clear();
-        sameGroupID.add(R.id.ResourceRadioGroupB);
-        sameGroupID.add(R.id.ResourceRadioGroupC);
-        sameGroupID.add(R.id.ResourceRadioGroupD);
-        sameGroupID.add(R.id.ResourceRadioGroupE);
-        addOnClickListeners(R.id.ResourceRadioGroupA, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_ResourceRadioGroupA, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupB);
-        sameRankGroupID.add(R.id.AttributeRadioGroupB);
-        sameRankGroupID.add(R.id.MagicRadioGroupB);
-        sameRankGroupID.add(R.id.SkillRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupB);
         sameGroupID.clear();
-        sameGroupID.add(R.id.ResourceRadioGroupA);
-        sameGroupID.add(R.id.ResourceRadioGroupC);
-        sameGroupID.add(R.id.ResourceRadioGroupD);
-        sameGroupID.add(R.id.ResourceRadioGroupE);
-        addOnClickListeners(R.id.ResourceRadioGroupB, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_ResourceRadioGroupB, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupC);
-        sameRankGroupID.add(R.id.AttributeRadioGroupC);
-        sameRankGroupID.add(R.id.MagicRadioGroupC);
-        sameRankGroupID.add(R.id.SkillRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupC);
         sameGroupID.clear();
-        sameGroupID.add(R.id.ResourceRadioGroupA);
-        sameGroupID.add(R.id.ResourceRadioGroupB);
-        sameGroupID.add(R.id.ResourceRadioGroupD);
-        sameGroupID.add(R.id.ResourceRadioGroupE);
-        addOnClickListeners(R.id.ResourceRadioGroupC, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_ResourceRadioGroupC, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupD);
-        sameRankGroupID.add(R.id.AttributeRadioGroupD);
-        sameRankGroupID.add(R.id.MagicRadioGroupD);
-        sameRankGroupID.add(R.id.SkillRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupD);
         sameGroupID.clear();
-        sameGroupID.add(R.id.ResourceRadioGroupA);
-        sameGroupID.add(R.id.ResourceRadioGroupB);
-        sameGroupID.add(R.id.ResourceRadioGroupC);
-        sameGroupID.add(R.id.ResourceRadioGroupE);
-        addOnClickListeners(R.id.ResourceRadioGroupD, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_ResourceRadioGroupD, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupE);
-        sameRankGroupID.add(R.id.AttributeRadioGroupE);
-        sameRankGroupID.add(R.id.MagicRadioGroupE);
-        sameRankGroupID.add(R.id.SkillRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupE);
         sameGroupID.clear();
-        sameGroupID.add(R.id.ResourceRadioGroupA);
-        sameGroupID.add(R.id.ResourceRadioGroupB);
-        sameGroupID.add(R.id.ResourceRadioGroupC);
-        sameGroupID.add(R.id.ResourceRadioGroupD);
-        addOnClickListeners(R.id.ResourceRadioGroupE, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_ResourceRadioGroupD);
+        addOnClickListeners(R.id.activity_priority_table_ResourceRadioGroupE, sameRankGroupID, sameGroupID);
     }
 
     private void createSkillOnClickListeners() {
         ArrayList<Integer> sameRankGroupID = new ArrayList<>();
         ArrayList<Integer> sameGroupID = new ArrayList<>();
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupA);
-        sameRankGroupID.add(R.id.AttributeRadioGroupA);
-        sameRankGroupID.add(R.id.MagicRadioGroupA);
-        sameRankGroupID.add(R.id.ResourceRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupA);
         sameGroupID.clear();
-        sameGroupID.add(R.id.SkillRadioGroupB);
-        sameGroupID.add(R.id.SkillRadioGroupC);
-        sameGroupID.add(R.id.SkillRadioGroupD);
-        sameGroupID.add(R.id.SkillRadioGroupE);
-        addOnClickListeners(R.id.SkillRadioGroupA, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_SkillRadioGroupA, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupB);
-        sameRankGroupID.add(R.id.AttributeRadioGroupB);
-        sameRankGroupID.add(R.id.MagicRadioGroupB);
-        sameRankGroupID.add(R.id.ResourceRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupB);
         sameGroupID.clear();
-        sameGroupID.add(R.id.SkillRadioGroupA);
-        sameGroupID.add(R.id.SkillRadioGroupC);
-        sameGroupID.add(R.id.SkillRadioGroupD);
-        sameGroupID.add(R.id.SkillRadioGroupE);
-        addOnClickListeners(R.id.SkillRadioGroupB, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_SkillRadioGroupB, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupC);
-        sameRankGroupID.add(R.id.AttributeRadioGroupC);
-        sameRankGroupID.add(R.id.MagicRadioGroupC);
-        sameRankGroupID.add(R.id.ResourceRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupC);
         sameGroupID.clear();
-        sameGroupID.add(R.id.SkillRadioGroupA);
-        sameGroupID.add(R.id.SkillRadioGroupB);
-        sameGroupID.add(R.id.SkillRadioGroupD);
-        sameGroupID.add(R.id.SkillRadioGroupE);
-        addOnClickListeners(R.id.SkillRadioGroupC, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_SkillRadioGroupC, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupD);
-        sameRankGroupID.add(R.id.AttributeRadioGroupD);
-        sameRankGroupID.add(R.id.MagicRadioGroupD);
-        sameRankGroupID.add(R.id.ResourceRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupD);
         sameGroupID.clear();
-        sameGroupID.add(R.id.SkillRadioGroupA);
-        sameGroupID.add(R.id.SkillRadioGroupB);
-        sameGroupID.add(R.id.SkillRadioGroupC);
-        sameGroupID.add(R.id.SkillRadioGroupE);
-        addOnClickListeners(R.id.SkillRadioGroupD, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_SkillRadioGroupD, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupE);
-        sameRankGroupID.add(R.id.AttributeRadioGroupE);
-        sameRankGroupID.add(R.id.MagicRadioGroupE);
-        sameRankGroupID.add(R.id.ResourceRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupE);
         sameGroupID.clear();
-        sameGroupID.add(R.id.SkillRadioGroupA);
-        sameGroupID.add(R.id.SkillRadioGroupB);
-        sameGroupID.add(R.id.SkillRadioGroupC);
-        sameGroupID.add(R.id.SkillRadioGroupD);
-        addOnClickListeners(R.id.SkillRadioGroupE, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_SkillRadioGroupD);
+        addOnClickListeners(R.id.activity_priority_table_SkillRadioGroupE, sameRankGroupID, sameGroupID);
     }
 
     private void createMagicOnClickListeners() {
         ArrayList<Integer> sameRankGroupID = new ArrayList<>();
         ArrayList<Integer> sameGroupID = new ArrayList<>();
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupA);
-        sameRankGroupID.add(R.id.AttributeRadioGroupA);
-        sameRankGroupID.add(R.id.SkillRadioGroupA);
-        sameRankGroupID.add(R.id.ResourceRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupA);
         sameGroupID.clear();
-        sameGroupID.add(R.id.MagicRadioGroupB);
-        sameGroupID.add(R.id.MagicRadioGroupC);
-        sameGroupID.add(R.id.MagicRadioGroupD);
-        sameGroupID.add(R.id.MagicRadioGroupE);
-        addOnClickListeners(R.id.MagicRadioGroupA, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_MagicRadioGroupA, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupB);
-        sameRankGroupID.add(R.id.AttributeRadioGroupB);
-        sameRankGroupID.add(R.id.SkillRadioGroupB);
-        sameRankGroupID.add(R.id.ResourceRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupB);
         sameGroupID.clear();
-        sameGroupID.add(R.id.MagicRadioGroupA);
-        sameGroupID.add(R.id.MagicRadioGroupC);
-        sameGroupID.add(R.id.MagicRadioGroupD);
-        sameGroupID.add(R.id.MagicRadioGroupE);
-        addOnClickListeners(R.id.MagicRadioGroupB, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_MagicRadioGroupB, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupC);
-        sameRankGroupID.add(R.id.AttributeRadioGroupC);
-        sameRankGroupID.add(R.id.SkillRadioGroupC);
-        sameRankGroupID.add(R.id.ResourceRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupC);
         sameGroupID.clear();
-        sameGroupID.add(R.id.MagicRadioGroupA);
-        sameGroupID.add(R.id.MagicRadioGroupB);
-        sameGroupID.add(R.id.MagicRadioGroupD);
-        sameGroupID.add(R.id.MagicRadioGroupE);
-        addOnClickListeners(R.id.MagicRadioGroupC, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_MagicRadioGroupC, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupD);
-        sameRankGroupID.add(R.id.AttributeRadioGroupD);
-        sameRankGroupID.add(R.id.SkillRadioGroupD);
-        sameRankGroupID.add(R.id.ResourceRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupD);
         sameGroupID.clear();
-        sameGroupID.add(R.id.MagicRadioGroupA);
-        sameGroupID.add(R.id.MagicRadioGroupB);
-        sameGroupID.add(R.id.MagicRadioGroupC);
-        sameGroupID.add(R.id.MagicRadioGroupE);
-        addOnClickListeners(R.id.MagicRadioGroupD, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_MagicRadioGroupD, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupE);
-        sameRankGroupID.add(R.id.AttributeRadioGroupE);
-        sameRankGroupID.add(R.id.SkillRadioGroupE);
-        sameRankGroupID.add(R.id.ResourceRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_AttributeRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupE);
         sameGroupID.clear();
-        sameGroupID.add(R.id.MagicRadioGroupA);
-        sameGroupID.add(R.id.MagicRadioGroupB);
-        sameGroupID.add(R.id.MagicRadioGroupC);
-        sameGroupID.add(R.id.MagicRadioGroupD);
-        addOnClickListeners(R.id.MagicRadioGroupE, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_MagicRadioGroupD);
+        addOnClickListeners(R.id.activity_priority_table_MagicRadioGroupE, sameRankGroupID, sameGroupID);
     }
 
     private void createAttrOnClickListeners() {
         ArrayList<Integer> sameRankGroupID = new ArrayList<>();
         ArrayList<Integer> sameGroupID = new ArrayList<>();
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupA);
-        sameRankGroupID.add(R.id.MagicRadioGroupA);
-        sameRankGroupID.add(R.id.SkillRadioGroupA);
-        sameRankGroupID.add(R.id.ResourceRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupA);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupA);
         sameGroupID.clear();
-        sameGroupID.add(R.id.AttributeRadioGroupB);
-        sameGroupID.add(R.id.AttributeRadioGroupC);
-        sameGroupID.add(R.id.AttributeRadioGroupD);
-        sameGroupID.add(R.id.AttributeRadioGroupE);
-        addOnClickListeners(R.id.AttributeRadioGroupA, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_AttributeRadioGroupA, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupB);
-        sameRankGroupID.add(R.id.MagicRadioGroupB);
-        sameRankGroupID.add(R.id.SkillRadioGroupB);
-        sameRankGroupID.add(R.id.ResourceRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupB);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupB);
         sameGroupID.clear();
-        sameGroupID.add(R.id.AttributeRadioGroupA);
-        sameGroupID.add(R.id.AttributeRadioGroupC);
-        sameGroupID.add(R.id.AttributeRadioGroupD);
-        sameGroupID.add(R.id.AttributeRadioGroupE);
-        addOnClickListeners(R.id.AttributeRadioGroupB, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_AttributeRadioGroupB, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupC);
-        sameRankGroupID.add(R.id.MagicRadioGroupC);
-        sameRankGroupID.add(R.id.SkillRadioGroupC);
-        sameRankGroupID.add(R.id.ResourceRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupC);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupC);
         sameGroupID.clear();
-        sameGroupID.add(R.id.AttributeRadioGroupA);
-        sameGroupID.add(R.id.AttributeRadioGroupB);
-        sameGroupID.add(R.id.AttributeRadioGroupD);
-        sameGroupID.add(R.id.AttributeRadioGroupE);
-        addOnClickListeners(R.id.AttributeRadioGroupC, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupD);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_AttributeRadioGroupC, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupD);
-        sameRankGroupID.add(R.id.MagicRadioGroupD);
-        sameRankGroupID.add(R.id.SkillRadioGroupD);
-        sameRankGroupID.add(R.id.ResourceRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupD);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupD);
         sameGroupID.clear();
-        sameGroupID.add(R.id.AttributeRadioGroupA);
-        sameGroupID.add(R.id.AttributeRadioGroupB);
-        sameGroupID.add(R.id.AttributeRadioGroupC);
-        sameGroupID.add(R.id.AttributeRadioGroupE);
-        addOnClickListeners(R.id.AttributeRadioGroupD, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupE);
+        addOnClickListeners(R.id.activity_priority_table_AttributeRadioGroupD, sameRankGroupID, sameGroupID);
 
         sameRankGroupID.clear();
-        sameRankGroupID.add(R.id.MetaTypeRadioGroupE);
-        sameRankGroupID.add(R.id.MagicRadioGroupE);
-        sameRankGroupID.add(R.id.SkillRadioGroupE);
-        sameRankGroupID.add(R.id.ResourceRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_MetaTypeRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_MagicRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_SkillRadioGroupE);
+        sameRankGroupID.add(R.id.activity_priority_table_ResourceRadioGroupE);
         sameGroupID.clear();
-        sameGroupID.add(R.id.AttributeRadioGroupA);
-        sameGroupID.add(R.id.AttributeRadioGroupB);
-        sameGroupID.add(R.id.AttributeRadioGroupC);
-        sameGroupID.add(R.id.AttributeRadioGroupD);
-        addOnClickListeners(R.id.AttributeRadioGroupE, sameRankGroupID, sameGroupID);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupA);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupB);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupC);
+        sameGroupID.add(R.id.activity_priority_table_AttributeRadioGroupD);
+        addOnClickListeners(R.id.activity_priority_table_AttributeRadioGroupE, sameRankGroupID, sameGroupID);
     }
 
     private int findPriorityIndex(final Button radioButton, final ArrayList<PriorityTable> priorityList) {

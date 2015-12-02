@@ -50,18 +50,18 @@ public class MainContainer extends Fragment {
 
     public static void updateKarma() {
         if (rootView != null) {
-            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karmaCounter);
+            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
             karmaCounterTxtView.setText(String.valueOf(ShadowrunCharacter.getKarma()));
         }
     }
 
     private void updateFreeSkillCounter(final Integer skillCounter) {
-        TextView freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeSkillsCounter);
+        TextView freeSkillsTxtView = (TextView) rootView.findViewById(R.id.fragment_activeskill_freeSkills_Counter);
         freeSkillsTxtView.setText(String.valueOf(skillCounter));
     }
 
     private void updateFreeSkillGroupCounter(final Integer groupSkillCounter) {
-        TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.freeSkillGroupsCounter);
+        TextView freeSkillGroupTxt = (TextView) rootView.findViewById(R.id.fragment_activeskill_freeSkillGroups_counter);
         freeSkillGroupTxt.setText(String.valueOf(groupSkillCounter));
     }
 
@@ -74,7 +74,7 @@ public class MainContainer extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.activeskillsfragment, container, false);
+        rootView = inflater.inflate(R.layout.fragment_activeskill, container, false);
 
         int freeSkill = 0;
         int freeSkillGroup = 0;
@@ -103,7 +103,7 @@ public class MainContainer extends Fragment {
 
         Collections.sort(allSkills);
 
-        TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillsTableLayout);
+        TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.fragment_activeskill_Skills_TableLayout);
         SkillTableRow genSkillTableRow = new SkillTableRow(SkillsTableLayout.getRootView(), allSkills, ChummerConstants.counters.activeSkills, true);
 
         ArrayList<String> skillGroup = new ArrayList<>();
@@ -148,7 +148,7 @@ public class MainContainer extends Fragment {
         SkillsTableLayout.addView(newTableRow);
 
         // Create the skill group now since we have the data from all the skills
-        TableLayout SkillsGroupTableLayout = (TableLayout) rootView.findViewById(R.id.SkillGroupsTableLayout);
+        TableLayout SkillsGroupTableLayout = (TableLayout) rootView.findViewById(R.id.fragment_activeskill_SkillGroups_TableLayout);
 
         SkillGroupTableRow genSkillGroupTableRow = new SkillGroupTableRow(SkillsGroupTableLayout.getRootView(), allSkills);
         // Add skill groups

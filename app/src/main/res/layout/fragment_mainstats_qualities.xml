@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/qualityListView"
+        android:id="@+id/fragment_mainstats_qualities_quality_ListView"
         android:layout_width="200dp"
         android:layout_height="match_parent"
         />

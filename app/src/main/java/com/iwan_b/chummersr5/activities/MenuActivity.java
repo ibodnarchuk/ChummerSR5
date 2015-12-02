@@ -18,9 +18,9 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button newCharButton = (Button) findViewById(R.id.new_char_button);
-        Button loadCharButton = (Button) findViewById(R.id.load_char_button);
-        Button exitButton = (Button) findViewById(R.id.exit_button);
+        Button newCharButton = (Button) findViewById(R.id.activity_main_new_char_button);
+        Button loadCharButton = (Button) findViewById(R.id.activity_main_load_char_button);
+        Button exitButton = (Button) findViewById(R.id.activity_main_exit_button);
 
         newCharButton.setOnClickListener(new View.OnClickListener() {
             @Override

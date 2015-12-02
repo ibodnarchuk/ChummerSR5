@@ -46,4 +46,9 @@
 
     <string name="AddNewPositiveQuality">Add New Positive Quality</string>
     <string name="AddNewNegativeQuality">Add New Negative Quality</string>
+    <string name="Quality_Name">Quality Name</string>
+    <string name="Karma_Cost">Karma Cost</string>
+    <string name="Quality_Summary">Quality Summary</string>
+    <string name="Quality_Info_Book">Quality Info Book</string>
+    <string name="Quality_Info_Page">Quality Info Page</string>
 </resources>

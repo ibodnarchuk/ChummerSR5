@@ -45,7 +45,7 @@ public class SkillTableRow {
 
     public void updateKarma() {
         if (rootView != null) {
-            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karmaCounter);
+            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
             karmaCounterTxtView.setText(String.valueOf(ShadowrunCharacter.getKarma()));
         }
     }
@@ -54,11 +54,11 @@ public class SkillTableRow {
         if (rootView != null) {
             TextView freeSkillsTxtView = null;
             if (counterID == ChummerConstants.counters.activeSkills) {
-                freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeSkillsCounter);
+                freeSkillsTxtView = (TextView) rootView.findViewById(R.id.fragment_activeskill_freeSkills_Counter);
             } else if (counterID == ChummerConstants.counters.knowledgeSkills) {
-                freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeKnowledgeCounter);
+                freeSkillsTxtView = (TextView) rootView.findViewById(R.id.fragment_knowledgeskill_freeKnowledge_Counter);
             } else if (counterID == ChummerConstants.counters.languageSkills) {
-                freeSkillsTxtView = (TextView) rootView.findViewById(R.id.freeLanguageCounter);
+                freeSkillsTxtView = (TextView) rootView.findViewById(R.id.fragment_knowledgeskill_freeLanguage_Counter);
             }
 
             freeSkillsTxtView.setText(String.valueOf(getSkillCounter()));
@@ -480,7 +480,7 @@ public class SkillTableRow {
             // Only find it once
             if (skillData.getGroupName() != null && skillGroup == null) {
                 // Grab and find all the skillsgroups
-                TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillGroupsTableLayout);
+                TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.fragment_activeskill_SkillGroups_TableLayout);
                 // Loop through all the skills and either disable or enable
                 for (int i = 0; i < SkillsTableLayout.getChildCount(); i++) {
                     TableRow temp = (TableRow) SkillsTableLayout.getChildAt(i);
@@ -579,7 +579,7 @@ public class SkillTableRow {
                 }
 
                 // Find the skills highlighted earlier
-                TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.SkillsTableLayout);
+                TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.fragment_activeskill_Skills_TableLayout);
                 for (int i = 0; i < SkillsTableLayout.getChildCount(); i++) {
                     TableRow temp = (TableRow) SkillsTableLayout.getChildAt(i);
 

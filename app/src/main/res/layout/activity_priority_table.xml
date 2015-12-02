@@ -9,7 +9,7 @@
     >
 
     <TextView
-        android:id="@+id/MetaTypeTextViewLogo"
+        android:id="@+id/activity_priority_table_MetaType_txtView_Logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,7 +19,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/NewCharacterButtonDone"
+        android:id="@+id/activity_priority_table_NewCharacter_Button_Done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -28,21 +28,21 @@
         android:text="@string/buttonDone" />
 
     <ScrollView
-        android:id="@+id/scrollView1"
+        android:id="@+id/activity_priority_table_scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/MetaTypeTextViewLogo"
+        android:layout_below="@+id/activity_priority_table_MetaType_txtView_Logo"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
         >
 
         <GridLayout
-            android:id="@+id/MetaTypeGridLayout"
+            android:id="@+id/activity_priority_table_MetaTypeGridLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/MetaTypePriorityA"
+                android:id="@+id/activity_priority_table_MetaTypePriorityA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -53,27 +53,27 @@
                 android:text="@string/priorityA" />
 
             <RadioGroup
-                android:id="@+id/MetaTypeRadioGroupA"
+                android:id="@+id/activity_priority_table_MetaTypeRadioGroupA"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/AttributeRadioGroupA"
+                android:id="@+id/activity_priority_table_AttributeRadioGroupA"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/MagicRadioGroupA"
+                android:id="@+id/activity_priority_table_MagicRadioGroupA"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/SkillRadioGroupA"
+                android:id="@+id/activity_priority_table_SkillRadioGroupA"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/ResourceRadioGroupA"
+                android:id="@+id/activity_priority_table_ResourceRadioGroupA"
                 android:layout_gravity="start"/>
 
             <TextView
-                android:id="@+id/MetaTypePriorityB"
+                android:id="@+id/activity_priority_table_MetaTypePriorityB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -82,27 +82,27 @@
                 android:text="@string/priorityB" />
 
             <RadioGroup
-                android:id="@+id/MetaTypeRadioGroupB"
+                android:id="@+id/activity_priority_table_MetaTypeRadioGroupB"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/AttributeRadioGroupB"
+                android:id="@+id/activity_priority_table_AttributeRadioGroupB"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/MagicRadioGroupB"
+                android:id="@+id/activity_priority_table_MagicRadioGroupB"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/SkillRadioGroupB"
+                android:id="@+id/activity_priority_table_SkillRadioGroupB"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/ResourceRadioGroupB"
+                android:id="@+id/activity_priority_table_ResourceRadioGroupB"
                 android:layout_gravity="start"/>
 
             <TextView
-                android:id="@+id/MetaTypePriorityC"
+                android:id="@+id/activity_priority_table_MetaTypePriorityC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -111,27 +111,27 @@
                 android:text="@string/priorityC" />
 
             <RadioGroup
-                android:id="@+id/MetaTypeRadioGroupC"
+                android:id="@+id/activity_priority_table_MetaTypeRadioGroupC"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/AttributeRadioGroupC"
+                android:id="@+id/activity_priority_table_AttributeRadioGroupC"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/MagicRadioGroupC"
+                android:id="@+id/activity_priority_table_MagicRadioGroupC"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/SkillRadioGroupC"
+                android:id="@+id/activity_priority_table_SkillRadioGroupC"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/ResourceRadioGroupC"
+                android:id="@+id/activity_priority_table_ResourceRadioGroupC"
                 android:layout_gravity="start"/>
 
             <TextView
-                android:id="@+id/MetaTypePriorityD"
+                android:id="@+id/activity_priority_table_MetaTypePriorityD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -140,27 +140,27 @@
                 android:text="@string/priorityD" />
 
             <RadioGroup
-                android:id="@+id/MetaTypeRadioGroupD"
+                android:id="@+id/activity_priority_table_MetaTypeRadioGroupD"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/AttributeRadioGroupD"
+                android:id="@+id/activity_priority_table_AttributeRadioGroupD"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/MagicRadioGroupD"
+                android:id="@+id/activity_priority_table_MagicRadioGroupD"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/SkillRadioGroupD"
+                android:id="@+id/activity_priority_table_SkillRadioGroupD"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/ResourceRadioGroupD"
+                android:id="@+id/activity_priority_table_ResourceRadioGroupD"
                 android:layout_gravity="start"/>
 
             <TextView
-                android:id="@+id/MetaTypePriorityE"
+                android:id="@+id/activity_priority_table_MetaTypePriorityE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -169,23 +169,23 @@
                 android:text="@string/priorityE" />
 
             <RadioGroup
-                android:id="@+id/MetaTypeRadioGroupE"
+                android:id="@+id/activity_priority_table_MetaTypeRadioGroupE"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/AttributeRadioGroupE"
+                android:id="@+id/activity_priority_table_AttributeRadioGroupE"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/MagicRadioGroupE"
+                android:id="@+id/activity_priority_table_MagicRadioGroupE"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/SkillRadioGroupE"
+                android:id="@+id/activity_priority_table_SkillRadioGroupE"
                 android:layout_gravity="start"/>
 
             <RadioGroup
-                android:id="@+id/ResourceRadioGroupE"
+                android:id="@+id/activity_priority_table_ResourceRadioGroupE"
                 android:layout_gravity="start"/>
         </GridLayout>
 

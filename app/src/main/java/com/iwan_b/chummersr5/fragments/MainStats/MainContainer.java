@@ -17,7 +17,7 @@ public class MainContainer extends Fragment {
 
 	public static void updateKarma() {
 		if (rootView != null) {
-			TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karmaCounter);
+			TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
 			karmaCounterTxtView.setText(ShadowrunCharacter.getKarma() + " Karma");
 		}
 	}
@@ -32,7 +32,7 @@ public class MainContainer extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		rootView = inflater.inflate(R.layout.newcharacterinput, container, false);
+		rootView = inflater.inflate(R.layout.fragment_mainstats_main, container, false);
 
 		updateKarma();
 
@@ -62,9 +62,9 @@ public class MainContainer extends Fragment {
 		dataBundle.putBoolean("isPositive", false);
 		negativeQuals.setArguments(dataBundle);
 
-		fragmentTransaction.add(R.id.attributeFragment, attrFragment);
-		fragmentTransaction.add(R.id.positiveQualitiesFragment, positiveQuals);
-		fragmentTransaction.add(R.id.NegativeQualitiesFragment, negativeQuals);
+		fragmentTransaction.add(R.id.fragment_mainstats_main_attribute_Fragment, attrFragment);
+		fragmentTransaction.add(R.id.fragment_mainstats_main_positiveQualities_Fragment, positiveQuals);
+		fragmentTransaction.add(R.id.fragment_mainstats_main_NegativeQualities_Fragment, negativeQuals);
 		fragmentTransaction.commit();
 
 		return rootView;

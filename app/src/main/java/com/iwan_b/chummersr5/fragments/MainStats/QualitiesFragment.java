@@ -65,7 +65,7 @@ public class QualitiesFragment extends Fragment {
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-		viewFragment = inflater.inflate(R.layout.qualitiesfragment, container, false);
+		viewFragment = inflater.inflate(R.layout.fragment_mainstats_qualities, container, false);
 
 		final Bundle bundleData = getArguments();
 
@@ -74,7 +74,7 @@ public class QualitiesFragment extends Fragment {
 
 		allQualities = readQualitiesXML(xmlFileLocation);
 
-		final ListView listViewOfQualities = (ListView) viewFragment.findViewById(R.id.qualityListView);
+		final ListView listViewOfQualities = (ListView) viewFragment.findViewById(R.id.fragment_mainstats_qualities_quality_ListView);
 
 		// Get and set all the current qualities
 		// Test to see if the array is empty or not.
@@ -471,18 +471,18 @@ public class QualitiesFragment extends Fragment {
 
 				LayoutInflater inflater = getActivity().getLayoutInflater();
 
-				View dialogView = inflater.inflate(R.layout.qualityinfo, parent, false);
+				View dialogView = inflater.inflate(R.layout.fragment_mainstats_qualities_display, parent, false);
 
-				final TextView infoname = (TextView) dialogView.findViewById(R.id.qualityinfoname);
-				final TextView infocost = (TextView) dialogView.findViewById(R.id.qualityinfocost);
-				final TextView infosummary = (TextView) dialogView.findViewById(R.id.qualityinfosummary);
-				final TextView infobook = (TextView) dialogView.findViewById(R.id.qualityinfobook);
-				final TextView infopage = (TextView) dialogView.findViewById(R.id.qualityinfopage);
+				final TextView infoname = (TextView) dialogView.findViewById(R.id.fragment_mainstats_qualities_display_infoname);
+				final TextView infocost = (TextView) dialogView.findViewById(R.id.fragment_mainstats_qualities_display_infocost_txtview);
+				final TextView infosummary = (TextView) dialogView.findViewById(R.id.fragment_mainstats_qualities_display_info_summary);
+				final TextView infobook = (TextView) dialogView.findViewById(R.id.fragment_mainstats_qualities_display_infobook);
+				final TextView infopage = (TextView) dialogView.findViewById(R.id.fragment_mainstats_qualities_display_infopage);
 
-				radioGroupForCostListLayout = (RadioGroup) dialogView.findViewById(R.id.qualityradiocostgroup);
+				radioGroupForCostListLayout = (RadioGroup) dialogView.findViewById(R.id.fragment_mainstats_qualities_display_radiocostgroup);
 
 				// Extra info goes here
-				LinearLayout extraInfoLayout = (LinearLayout) dialogView.findViewById(R.id.qualityinfoextrabuttons);
+				LinearLayout extraInfoLayout = (LinearLayout) dialogView.findViewById(R.id.fragment_mainstats_qualities_display_info_extrabuttons);
 
 				// ----------------------------------------------------------------------------------
 				// Extra info goes here

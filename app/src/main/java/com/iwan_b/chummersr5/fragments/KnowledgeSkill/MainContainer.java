@@ -44,18 +44,18 @@ public class MainContainer  extends Fragment {
     }
 
     private void updateFreeKnowledgeCounter() {
-        TextView freeKnowledgeSkillTxt = (TextView) rootView.findViewById(R.id.freeKnowledgeCounter);
+        TextView freeKnowledgeSkillTxt = (TextView) rootView.findViewById(R.id.fragment_knowledgeskill_freeKnowledge_Counter);
         freeKnowledgeSkillTxt.setText(String.valueOf(FreeCounters.getCounters().getFreeKnowledgeSkills()));
     }
 
     private void updateFreeLanguageCounter() {
-        TextView freeLanguageSkillTxt = (TextView) rootView.findViewById(R.id.freeLanguageCounter);
+        TextView freeLanguageSkillTxt = (TextView) rootView.findViewById(R.id.fragment_knowledgeskill_freeLanguage_Counter);
         freeLanguageSkillTxt.setText(String.valueOf(FreeCounters.getCounters().getFreeLanguageSkills()));
     }
 
     public static void updateKarma() {
         if (rootView != null) {
-            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karmaCounter);
+            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
             karmaCounterTxtView.setText(String.valueOf(ShadowrunCharacter.getKarma()));
         }
     }
@@ -68,7 +68,7 @@ public class MainContainer  extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.knowledgeskillsfragment, container, false);
+        rootView = inflater.inflate(R.layout.fragment_knowledgeskill, container, false);
 
         int intu = ShadowrunCharacter.getCharacter().getAttributes().getIntu();
         int log = ShadowrunCharacter.getCharacter().getAttributes().getLog();
@@ -80,7 +80,7 @@ public class MainContainer  extends Fragment {
         FreeCounters.getCounters().setFreeLanguageSkills(6);
 
         updateCounters();
-        TableLayout knowledgeSkillLayout = (TableLayout) rootView.findViewById(R.id.knowledgeSkillsTableLayout);
+        TableLayout knowledgeSkillLayout = (TableLayout) rootView.findViewById(R.id.fragment_knowledgeskill_knowledgeSkillsGroup_TableLayout);
 
         TableRow newTableRow = new TableRow(rootView.getContext());
         newTableRow.setGravity(Gravity.CENTER_VERTICAL);
@@ -97,7 +97,7 @@ public class MainContainer  extends Fragment {
         newTableRow.addView(addKnowledgeSkillButtonListener);
         knowledgeSkillLayout.addView(newTableRow);
 
-        TableLayout languageSkillLayout = (TableLayout) rootView.findViewById(R.id.languageSkillsTableLayout);
+        TableLayout languageSkillLayout = (TableLayout) rootView.findViewById(R.id.fragment_knowledgeskill_languageSkills_TableLayout);
 
         newTableRow = new TableRow(rootView.getContext());
         newTableRow.setGravity(Gravity.CENTER_VERTICAL);
@@ -159,7 +159,7 @@ public class MainContainer  extends Fragment {
 
                     SkillTableRow genSkillTableRow = new SkillTableRow(rootView, null, ChummerConstants.counters.languageSkills, false);
 
-                    TableLayout knowledgeSkillLayout = (TableLayout) rootView.findViewById(R.id.languageSkillsTableLayout);
+                    TableLayout knowledgeSkillLayout = (TableLayout) rootView.findViewById(R.id.fragment_knowledgeskill_languageSkills_TableLayout);
 
                     knowledgeSkillLayout.addView(genSkillTableRow.createRow(newSkill), knowledgeSkillLayout.getChildCount() - 1);
                 }
@@ -260,7 +260,7 @@ public class MainContainer  extends Fragment {
 
                     SkillTableRow genSkillTableRow = new SkillTableRow(rootView, null, ChummerConstants.counters.knowledgeSkills, false);
 
-                    TableLayout knowledgeSkillLayout = (TableLayout) rootView.findViewById(R.id.knowledgeSkillsTableLayout);
+                    TableLayout knowledgeSkillLayout = (TableLayout) rootView.findViewById(R.id.fragment_knowledgeskill_knowledgeSkillsGroup_TableLayout);
 
                     knowledgeSkillLayout.addView(genSkillTableRow.createRow(newSkill), knowledgeSkillLayout.getChildCount() - 1);
                 }
