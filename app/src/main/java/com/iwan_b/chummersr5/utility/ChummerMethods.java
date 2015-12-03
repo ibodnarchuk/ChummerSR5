@@ -3,6 +3,11 @@ package com.iwan_b.chummersr5.utility;
 import android.app.Activity;
 import android.widget.Toast;
 
+import com.iwan_b.chummersr5.data.Modifier;
+import com.iwan_b.chummersr5.data.ShadowrunCharacter;
+
+import java.util.ArrayList;
+
 public class ChummerMethods {
 
     public final static void displayToast(final Activity activity, final String message) {
@@ -34,5 +39,27 @@ public class ChummerMethods {
         return (intu + log) * 2;
     }
 
+    /**
+     * Adds modifiers to the ShadowrunCharacter. Any duplicate modifiers are
+     * added instead of overwritten.
+     *
+     * @param mods The Arraylist of mods to add
+     */
+    public final static void addModstoChar(final ArrayList<Modifier> mods, final ShadowrunCharacter character) {
+        if (mods != null) {
+            for (Modifier m : mods) {
+                addModstoChar(m, character);
+            }
+        }
+    }
 
+    public final static void addModstoChar(final Modifier m, final ShadowrunCharacter character) {
+        if (character.getModifiers().containsKey(m.getName())) {
+            character.getModifiers().get(m.getName()).add(m);
+        } else {
+            ArrayList<Modifier> temp = new ArrayList<>();
+            temp.add(m);
+            character.getModifiers().put(m.getName(), temp);
+        }
+    }
 }

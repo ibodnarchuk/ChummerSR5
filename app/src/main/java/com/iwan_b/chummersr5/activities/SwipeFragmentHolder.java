@@ -1,6 +1,5 @@
 package com.iwan_b.chummersr5.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,9 +10,10 @@ import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.adapter.TabsPagerAdapter;
 import com.iwan_b.chummersr5.data.Attribute;
 import com.iwan_b.chummersr5.data.Modifier;
-import com.iwan_b.chummersr5.data.PriorityTable;
+import com.iwan_b.chummersr5.data.PriorityCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
+import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -21,14 +21,8 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-
-import static com.iwan_b.chummersr5.data.PriorityCounters.getCounters;
 
 public class SwipeFragmentHolder extends AppCompatActivity {
-
-    private ShadowrunCharacter newCharacter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,24 +42,9 @@ public class SwipeFragmentHolder extends AppCompatActivity {
 
 
     private void buildChar() {
-        newCharacter = ShadowrunCharacter.getCharacter();
+        ShadowrunCharacter newCharacter = ShadowrunCharacter.getCharacter();
 
-        Intent intent = getIntent();
-
-        // TODO Why pass this as an intent when the getCounters could be a singleton...
-        getCounters().setMeta((PriorityTable) intent.getSerializableExtra("meta"));
-        getCounters().setAttr((PriorityTable) intent.getSerializableExtra("attr"));
-        getCounters().setMagic((PriorityTable) intent.getSerializableExtra("magic"));
-        getCounters().setSkill((PriorityTable) intent.getSerializableExtra("skill"));
-        getCounters().setRes((PriorityTable) intent.getSerializableExtra("res"));
-
-        addModstoChar(getCounters().getMeta().getMods());
-        addModstoChar(getCounters().getAttr().getMods());
-        addModstoChar(getCounters().getMagic().getMods());
-        addModstoChar(getCounters().getSkill().getMods());
-        addModstoChar(getCounters().getRes().getMods());
-
-        String metastring = getCounters().getMeta().getMetaTypeName();
+        String metastring = PriorityCounters.getCounters().getMeta().getMetaTypeName();
 
         // TODO make a metatype class
         final Attribute attrs = readXML("metatypes/" + metastring + ".xml");
@@ -76,42 +55,17 @@ public class SwipeFragmentHolder extends AppCompatActivity {
         attrs.setMaxRes(6);
 
         // Test if they are mundane or not
-        if (getCounters().getMagic().getStats() != 0) {
+        if (PriorityCounters.getCounters().getMagic().getStats() != 0) {
             // Find out if they are a mage or technomancer
-            if (getCounters().getMagic().getMagicType().equalsIgnoreCase("magic")) {
-                attrs.setBaseMagic((int) getCounters().getMagic().getStats());
+            if (PriorityCounters.getCounters().getMagic().getMagicType().equalsIgnoreCase("magic")) {
+                attrs.setBaseMagic((int) PriorityCounters.getCounters().getMagic().getStats());
             } else {
-                attrs.setBaseRes((int) getCounters().getMagic().getStats());
+                attrs.setBaseRes((int) PriorityCounters.getCounters().getMagic().getStats());
             }
         }
 
         newCharacter.setAttributes(attrs);
         Log.i(ChummerConstants.TAG, newCharacter.toString());
-    }
-
-    /**
-     * Adds modifiers to the ShadowrunCharacter. Any duplicate modifiers are
-     * added instead of overwritten.
-     *
-     * @param mods The Arraylist of mods to add
-     */
-    private void addModstoChar(final ArrayList<Modifier> mods) {
-        if (mods != null) {
-            for (Modifier m : mods) {
-                addModstoChar(m);
-            }
-        }
-    }
-
-    private void addModstoChar(final Modifier m) {
-        // Log.i(ChummerConstants.TAG, m.getName());
-        if (newCharacter.getModifiers().containsKey(m.getName())) {
-            newCharacter.getModifiers().get(m.getName()).add(m);
-        } else {
-            ArrayList<Modifier> temp = new ArrayList<>();
-            temp.add(m);
-            newCharacter.getModifiers().put(m.getName(), temp);
-        }
     }
 
     private Attribute parseXML(final XmlPullParser parser) throws XmlPullParserException, IOException {
@@ -279,7 +233,7 @@ public class SwipeFragmentHolder extends AppCompatActivity {
                     name = parser.getName();
 
                     if (name.equalsIgnoreCase("mod")) {
-                        addModstoChar(m);
+                        ChummerMethods.addModstoChar(m, ShadowrunCharacter.getCharacter());
                         m = null;
                         mod = false;
                     }

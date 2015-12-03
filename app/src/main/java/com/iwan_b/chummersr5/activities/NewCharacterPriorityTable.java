@@ -14,8 +14,11 @@ import android.widget.Toast;
 
 import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.Modifier;
+import com.iwan_b.chummersr5.data.PriorityCounters;
 import com.iwan_b.chummersr5.data.PriorityTable;
+import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
+import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -155,18 +158,21 @@ public class NewCharacterPriorityTable extends Activity {
                             R.id.activity_priority_table_ResourceRadioGroupC, R.id.activity_priority_table_ResourceRadioGroupD, R.id.activity_priority_table_ResourceRadioGroupE);
 
                     Intent i = new Intent(NewCharacterPriorityTable.this, SwipeFragmentHolder.class);
-                    // add all the different data
-                    Bundle mBundle = new Bundle();
 
-                    mBundle.putSerializable("meta", metaTable.get(metaIndex));
-                    mBundle.putSerializable("attr", attrTable.get(attrIndex));
-                    mBundle.putSerializable("magic", magicTable.get(magicIndex));
-                    mBundle.putSerializable("skill", skillTable.get(skillIndex));
-                    mBundle.putSerializable("res", resTable.get(resIndex));
+                    PriorityCounters.getCounters().setMeta(metaTable.get(metaIndex));
+                    PriorityCounters.getCounters().setAttr(attrTable.get(attrIndex));
+                    PriorityCounters.getCounters().setMagic(magicTable.get(magicIndex));
+                    PriorityCounters.getCounters().setSkill(skillTable.get(skillIndex));
+                    PriorityCounters.getCounters().setRes(resTable.get(resIndex));
+
+                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getMeta().getMods(), ShadowrunCharacter.getCharacter());
+                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getAttr().getMods(), ShadowrunCharacter.getCharacter());
+                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getMagic().getMods(), ShadowrunCharacter.getCharacter());
+                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getSkill().getMods(), ShadowrunCharacter.getCharacter());
+                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getRes().getMods(), ShadowrunCharacter.getCharacter());
+
                     // TODO get the karma from an xml file.
-                    mBundle.putInt("karma", ChummerConstants.startingKarma);
-
-                    i.putExtras(mBundle);
+                    ShadowrunCharacter.setKarma(ChummerConstants.startingKarma);
 
                     startActivity(i);
                 } else {
