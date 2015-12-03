@@ -52,7 +52,7 @@ public class SwipeFragmentHolder extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        // TODO Why pass this as an intent when the getCounters should be a singleton...
+        // TODO Why pass this as an intent when the getCounters could be a singleton...
         getCounters().setMeta((PriorityTable) intent.getSerializableExtra("meta"));
         getCounters().setAttr((PriorityTable) intent.getSerializableExtra("attr"));
         getCounters().setMagic((PriorityTable) intent.getSerializableExtra("magic"));

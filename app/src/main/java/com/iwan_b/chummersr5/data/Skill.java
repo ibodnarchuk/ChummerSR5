@@ -160,7 +160,6 @@ public class Skill implements Comparable<Skill>{
         this.isDefaultable = isDefaultable;
     }
 
-    // TODO make this compareTo More thorough
     @Override
     public int compareTo(Skill another) {
         final int BEFORE = -1;

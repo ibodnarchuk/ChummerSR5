@@ -20,6 +20,10 @@ public class ChummerConstants {
         title,attr,sub,lvl,add,extra,spinner
     }
 
+    public enum extra{
+        spec
+    }
+
     public enum counters{
         activeSkills,activeGroupSkills,knowledgeSkills,languageSkills
     }

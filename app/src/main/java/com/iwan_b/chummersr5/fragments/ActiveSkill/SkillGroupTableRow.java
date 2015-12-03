@@ -199,8 +199,7 @@ public class SkillGroupTableRow {
                     LinearLayout specTxtView = (LinearLayout) temp.getChildAt(ChummerConstants.tableLayout.extra.ordinal());
 
                     if (specTxtView.getChildCount() != 0) {
-                        // TODO change the 0 to an enum
-                        TextView allSpecs = (TextView) specTxtView.getChildAt(0);
+                        TextView allSpecs = (TextView) specTxtView.getChildAt(ChummerConstants.extra.spec.ordinal());
                         if(!allSpecs.getText().equals("")){
                             return true;
                         }
@@ -238,6 +237,7 @@ public class SkillGroupTableRow {
 
                     ArrayList<Integer> pointHistory = new ArrayList<>();
 
+                    // TODO maybe change this, instead of using a gettag, use a singleton.
                     if (skillValue != null && skillValue.getTag() != null) {
                         pointHistory = (ArrayList<Integer>) skillValue.getTag();
                     }

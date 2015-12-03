@@ -265,8 +265,8 @@ public class NewCharacterPriorityTable extends Activity {
     private void addOnClickListeners(final int mainRadioGroupID, ArrayList<Integer> sameRankGroupID, ArrayList<Integer> sameRadioGroupID) {
         final RadioGroup radioGroup = (RadioGroup) findViewById(mainRadioGroupID);
 
-        final ArrayList<Integer> sameGroup = (ArrayList<Integer>) sameRadioGroupID.clone();
-        final ArrayList<Integer> sameRankGroup = (ArrayList<Integer>) sameRankGroupID.clone();
+        final ArrayList<Integer> sameGroup = new ArrayList<>(sameRadioGroupID);
+        final ArrayList<Integer> sameRankGroup = new ArrayList<>(sameRankGroupID);
 
         radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
