@@ -11,63 +11,80 @@ import android.widget.TextView;
 
 import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 
-public class MainContainer extends Fragment {
-	private static View rootView;
+import java.util.ArrayList;
 
-	public static void updateKarma() {
-		if (rootView != null) {
-			TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
-			karmaCounterTxtView.setText(ShadowrunCharacter.getKarma() + " Karma");
-		}
-	}
+public class MainContainer extends Fragment implements UpdateInterface{
+    private static View rootView;
 
-	public static Fragment newInstance(int index) {
-		MainContainer main = new MainContainer();
-		Bundle args = new Bundle();
-		args.putInt("index", index);
-		main.setArguments(args);
-		return main;
-	}
+    private ArrayList<UpdateInterface> childrenToUpdate = new ArrayList<>();
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		rootView = inflater.inflate(R.layout.fragment_mainstats_main, container, false);
+    public static void updateKarma() {
+        if (rootView != null) {
+            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
+            karmaCounterTxtView.setText(ShadowrunCharacter.getKarma() + " Karma");
+        }
+    }
 
-		updateKarma();
+    public static Fragment newInstance() {
+        MainContainer main = new MainContainer();
+        return main;
+    }
 
-		// TODO figure this out later
-		// // However, if we're being restored from a previous state,
-		// // then we don't need to do anything and should return or else
-		// // we could end up with overlapping fragments.
-		// if (savedInstanceState != null) {
-		// return;
-		// }
+    @Override
+    public void update() {
+        updateKarma();
+        for(UpdateInterface child : childrenToUpdate){
+            child.update();
+        }
+    }
 
-		FragmentManager fragmentManager = getFragmentManager();
-		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    @Override
+    public void updateParent() {}
 
-		AttributeFragment attrFragment = new AttributeFragment();
-		QualitiesFragment positiveQuals = new QualitiesFragment();
-		QualitiesFragment negativeQuals = new QualitiesFragment();
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_mainstats_main, container, false);
+        updateKarma();
 
-		Bundle dataBundle = new Bundle();
+        // TODO figure this out later
+        // However, if we're being restored from a previous state,
+        // then we don't need to do anything and should return or else
+        // we could end up with overlapping fragments.
+//        if (savedInstanceState != null) {
+//            Log.i(ChummerConstants.TAG, "Saved instance was called!");
+//        }
 
-		dataBundle.putString("FileLocation", "qualities/positive.xml");
-		dataBundle.putBoolean("isPositive", true);
-		positiveQuals.setArguments(dataBundle);
 
-		dataBundle = new Bundle();
-		dataBundle.putString("FileLocation", "qualities/negative.xml");
-		dataBundle.putBoolean("isPositive", false);
-		negativeQuals.setArguments(dataBundle);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-		fragmentTransaction.add(R.id.fragment_mainstats_main_attribute_Fragment, attrFragment);
-		fragmentTransaction.add(R.id.fragment_mainstats_main_positiveQualities_Fragment, positiveQuals);
-		fragmentTransaction.add(R.id.fragment_mainstats_main_NegativeQualities_Fragment, negativeQuals);
-		fragmentTransaction.commit();
+        AttributeFragment attrFragment = AttributeFragment.newInstance(this);
+        QualitiesFragment positiveQuals = QualitiesFragment.newInstance(this);
+        QualitiesFragment negativeQuals = QualitiesFragment.newInstance(this);
 
-		return rootView;
-	}
+        childrenToUpdate.add(attrFragment);
+        childrenToUpdate.add(positiveQuals);
+        childrenToUpdate.add(negativeQuals);
+
+        Bundle dataBundle = new Bundle();
+
+        dataBundle.putString("FileLocation", "qualities/positive.xml");
+        dataBundle.putBoolean("isPositive", true);
+        positiveQuals.setArguments(dataBundle);
+
+        dataBundle = new Bundle();
+        dataBundle.putString("FileLocation", "qualities/negative.xml");
+        dataBundle.putBoolean("isPositive", false);
+        negativeQuals.setArguments(dataBundle);
+
+        fragmentTransaction.add(R.id.fragment_mainstats_main_attribute_Fragment, attrFragment);
+        fragmentTransaction.add(R.id.fragment_mainstats_main_positiveQualities_Fragment, positiveQuals);
+        fragmentTransaction.add(R.id.fragment_mainstats_main_NegativeQualities_Fragment, negativeQuals);
+        fragmentTransaction.commit();
+
+        return rootView;
+    }
 
 }

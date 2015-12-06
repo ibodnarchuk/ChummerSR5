@@ -21,15 +21,25 @@ import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.PriorityCounters;
 import com.iwan_b.chummersr5.data.Quality;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerXML;
 
 import java.util.ArrayList;
 
-public class AttributeFragment extends Fragment {
+public class AttributeFragment extends Fragment implements UpdateInterface {
 	// Whether the max attribute was used
 	private boolean maxAttributeUsed = false;
 	private View rootView;
+
+
+	private MainContainer parentContainer;
+
+	public static AttributeFragment newInstance(MainContainer main) {
+		AttributeFragment f = new AttributeFragment();
+		f.parentContainer = main;
+		return f;
+	}
 
 	private void updateCounters() {
 		TextView attrTextViewCounter = (TextView) rootView.findViewById(R.id.fragment_mainstats_attribute_Priority_Counter);
@@ -40,6 +50,14 @@ public class AttributeFragment extends Fragment {
 
 		MainContainer.updateKarma();
 	}
+
+    @Override
+    public void update() {
+    }
+
+    @Override
+    public void updateParent() {
+    }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +76,7 @@ public class AttributeFragment extends Fragment {
 
 		// Loop through each attribute and create a row for them
 		for (final String attrName : attributes) {
+			// TODO figure out if it is better to create the rows here, or elsewhere.
 			TableRow newTableRow = new TableRow(rootView.getContext());
 			newTableRow.setGravity(Gravity.CENTER_VERTICAL);
 
@@ -187,7 +206,7 @@ public class AttributeFragment extends Fragment {
 		return rootView;
 	}
 
-	private class AttributeOnClickListener implements OnClickListener {
+    private class AttributeOnClickListener implements OnClickListener {
 		// Which textfield to modify
 		private TextView attrDisplayTxtView;
 		// Whether to add or subtract

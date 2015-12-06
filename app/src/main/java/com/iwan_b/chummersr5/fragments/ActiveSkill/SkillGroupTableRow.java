@@ -82,7 +82,7 @@ public class SkillGroupTableRow {
         newTableRow.addView(subButton, ChummerConstants.tableLayout.sub.ordinal());
         newTableRow.addView(skillGroupLvlTxtView, ChummerConstants.tableLayout.lvl.ordinal());
         newTableRow.addView(addButton, ChummerConstants.tableLayout.add.ordinal());
-        newTableRow.addView(extraInfo, ChummerConstants.tableLayout.extra.ordinal());
+//        newTableRow.addView(extraInfo, ChummerConstants.tableLayout.extra.ordinal());
 
         subButton.setOnClickListener(new SkillGroupOnClickListener(sGroup, skillGroupLvlTxtView, extraInfo, false));
         addButton.setOnClickListener(new SkillGroupOnClickListener(sGroup, skillGroupLvlTxtView, extraInfo, true));

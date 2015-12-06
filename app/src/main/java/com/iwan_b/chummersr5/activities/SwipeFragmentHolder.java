@@ -12,6 +12,7 @@ import com.iwan_b.chummersr5.data.Attribute;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.PriorityCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
 
@@ -32,8 +33,29 @@ public class SwipeFragmentHolder extends AppCompatActivity {
         setContentView(R.layout.activity_swipe_fragmentholder);
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
+        final ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        // TODO this might not be the best thing to hardcode. Although I suppose the application should be light in usage anyways.
+        pager.setOffscreenPageLimit(TabsPagerAdapter.tabs.length);
+
+        final TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
+
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                UpdateInterface fragment = (UpdateInterface) adapter.instantiateItem(pager, position);
+                if (fragment != null) {
+                    fragment.update();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
 
         pager.setAdapter(adapter);
         tabs.setupWithViewPager(pager);
@@ -65,7 +87,7 @@ public class SwipeFragmentHolder extends AppCompatActivity {
         }
 
         newCharacter.setAttributes(attrs);
-        Log.i(ChummerConstants.TAG, newCharacter.toString());
+//        Log.i(ChummerConstants.TAG, newCharacter.toString());
     }
 
     private Attribute parseXML(final XmlPullParser parser) throws XmlPullParserException, IOException {

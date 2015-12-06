@@ -21,7 +21,6 @@ public class ShadowrunCharacter implements Serializable {
     private Map<String, ArrayList<Modifier>> modifiers;
 
     private ShadowrunCharacter() {
-//        modifiers = new HashMap<String, ArrayList<Modifier>>();
         modifiers = new HashMap<>();
         setPositiveQualities(new ArrayList<Quality>());
         setNegativeQualities(new ArrayList<Quality>());

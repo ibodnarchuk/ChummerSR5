@@ -15,15 +15,14 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public Fragment getItem(int index) {
-
 		switch (index) {
 		case 0:
 			// Top Rated fragment activity
-			return com.iwan_b.chummersr5.fragments.MainStats.MainContainer.newInstance(index);
+			return com.iwan_b.chummersr5.fragments.MainStats.MainContainer.newInstance();
 		case 1:
-			return com.iwan_b.chummersr5.fragments.ActiveSkill.MainContainer.newInstance(index);
+			return com.iwan_b.chummersr5.fragments.ActiveSkill.MainContainer.newInstance();
 		case 2:
-			return com.iwan_b.chummersr5.fragments.KnowledgeSkill.MainContainer.newInstance(index);
+			return com.iwan_b.chummersr5.fragments.KnowledgeSkill.MainContainer.newInstance();
 		}
 
 		return null;

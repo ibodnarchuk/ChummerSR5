@@ -21,20 +21,23 @@ import android.widget.Toast;
 
 import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.FreeCounters;
+import com.iwan_b.chummersr5.data.Modifier;
+import com.iwan_b.chummersr5.data.Quality;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import java.util.ArrayList;
 
-public class SkillTableRow {
+public class SkillTableRow implements UpdateInterface{
     // TODO maybe make this into a method that they can call and get...
     private static ArrayList<Skill> skillsAvailable;
     private final View rootView;
     private final ChummerConstants.counters counterID;
     private final boolean isActiveSkill;
-
+    private ArrayList<SkillOnClickListener> updates = new ArrayList<>();
 
     public SkillTableRow(final View rootView, final ArrayList<Skill> skillsAvailable, ChummerConstants.counters counterID, boolean isActiveSkill) {
         this.rootView = rootView;
@@ -154,13 +157,32 @@ public class SkillTableRow {
         newTableRow.addView(subButton, ChummerConstants.tableLayout.sub.ordinal());
         newTableRow.addView(skillValueTxtView, ChummerConstants.tableLayout.lvl.ordinal());
         newTableRow.addView(addButton, ChummerConstants.tableLayout.add.ordinal());
-        newTableRow.addView(extraInfo, ChummerConstants.tableLayout.extra.ordinal());
         newTableRow.addView(spinner, ChummerConstants.tableLayout.spinner.ordinal());
+        newTableRow.addView(extraInfo, ChummerConstants.tableLayout.extra.ordinal());
 
-        subButton.setOnClickListener(new SkillOnClickListener(skill, skillValueTxtView, extraInfo, false));
-        addButton.setOnClickListener(new SkillOnClickListener(skill, skillValueTxtView, extraInfo, true));
+        SkillOnClickListener sub = new SkillOnClickListener(skill, skillValueTxtView, extraInfo, false);
+        SkillOnClickListener add = new SkillOnClickListener(skill, skillValueTxtView, extraInfo, true);
+
+
+        updates.add(sub);
+        updates.add(add);
+
+        subButton.setOnClickListener(sub);
+        addButton.setOnClickListener(add);
 
         return newTableRow;
+    }
+
+    @Override
+    public void update() {
+        for(SkillOnClickListener temp : updates){
+            temp.getMods();
+        }
+    }
+
+    @Override
+    public void updateParent() {
+
     }
 
     private class SpecOnClickListener implements AdapterView.OnItemSelectedListener {
@@ -371,7 +393,6 @@ public class SkillTableRow {
                 builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(rootView.getContext(), "Negative button called", Toast.LENGTH_SHORT).show();
                         parent.setSelection(0);
                     }
                 });
@@ -380,7 +401,6 @@ public class SkillTableRow {
                 builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
-                        Toast.makeText(rootView.getContext(), "OnCancelListener was called", Toast.LENGTH_SHORT).show();
                         parent.setSelection(0);
                     }
                 });
@@ -465,6 +485,40 @@ public class SkillTableRow {
         private TableRow skillGroup;
         private ArrayList<TableRow> skillsTableRowGroup;
 
+        public int getMods() {
+            int max_attr_mod = 0;
+
+            TextView exceptionalSkill;
+            // Set the current extraInfo blank
+            if(extraInfo.getChildCount() < 2){
+                exceptionalSkill = new TextView(rootView.getContext());
+            } else {
+                exceptionalSkill = (TextView) extraInfo.getChildAt(1);
+            }
+
+            exceptionalSkill.setText("");
+
+            if (ShadowrunCharacter.getCharacter().getModifiers().containsKey("max_skill_" + skillData.getSkillName())) {
+                for (Modifier m : ShadowrunCharacter.getCharacter().getModifiers().get("max_skill_" + skillData.getSkillName())) {
+                    max_attr_mod += m.getAmount();
+                }
+            }
+
+            for (Quality q : ShadowrunCharacter.getCharacter().getPositiveQualities()) {
+                for (Modifier m : q.getMods()) {
+                    if (m.getName().equalsIgnoreCase("max_skill_" + skillData.getSkillName())) {
+                        max_attr_mod += m.getAmount();
+                        exceptionalSkill.setText(q.getName());
+                    }
+                }
+            }
+
+            int currentRating = Integer.valueOf(skillLvlTxtView.getText().toString());
+            skillLvlTxtView.setText(String.valueOf(currentRating));
+            extraInfo.addView(exceptionalSkill, 1);
+
+            return max_attr_mod;
+        }
 
         public SkillOnClickListener(final Skill skillData, final TextView skillLvlTxtView, final LinearLayout extraInfo,
                                     final boolean isAddition) {

@@ -17,7 +17,7 @@ public class ChummerConstants {
     public final static int freeSkillGroupLevel = -4;
 
     public enum tableLayout{
-        title,attr,sub,lvl,add,extra,spinner
+        title,attr,sub,lvl,add,spinner,extra
     }
 
     public enum extra{

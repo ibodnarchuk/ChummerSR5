@@ -26,20 +26,18 @@ import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
 import com.iwan_b.chummersr5.fragments.ActiveSkill.SkillTableRow;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import java.util.ArrayList;
 
 
-public class MainContainer  extends Fragment {
+public class MainContainer  extends Fragment implements UpdateInterface{
     private static View rootView;
 
-    public static Fragment newInstance(int index) {
+    public static Fragment newInstance() {
         MainContainer main = new MainContainer();
-        Bundle args = new Bundle();
-        args.putInt("index", index);
-        main.setArguments(args);
         return main;
     }
 
@@ -65,6 +63,18 @@ public class MainContainer  extends Fragment {
         updateFreeLanguageCounter();
         updateKarma();
     }
+
+
+    @Override
+    public void update() {
+        updateCounters();
+    }
+
+    @Override
+    public void updateParent() {
+
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

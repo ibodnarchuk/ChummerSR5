@@ -35,12 +35,13 @@
     <quality>
         <name>Aptitude</name>
         <costlist>14</costlist>
+        <list>Skills.xml</list>
         <mod>
-            <name></name>
-            <amount></amount>
-            <book></book>
-            <page></page>
-            <summary></summary>
+            <name>max_skill_(list)</name>
+            <amount>1</amount>
+            <book>sr12</book>
+            <page>321</page>
+            <summary>Test summary</summary>
         </mod>
         <summary></summary>
         <book>SR5</book>
