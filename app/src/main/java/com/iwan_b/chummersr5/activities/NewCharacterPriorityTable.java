@@ -13,6 +13,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
 import com.iwan_b.chummersr5.R;
+import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.PriorityCounters;
 import com.iwan_b.chummersr5.data.PriorityTable;
@@ -164,6 +165,10 @@ public class NewCharacterPriorityTable extends Activity {
                     PriorityCounters.getCounters().setMagic(magicTable.get(magicIndex));
                     PriorityCounters.getCounters().setSkill(skillTable.get(skillIndex));
                     PriorityCounters.getCounters().setRes(resTable.get(resIndex));
+
+                    // Set the initial display counters
+                    FreeCounters.getCounters().setFreeAttributes((int) PriorityCounters.getCounters().getAttr().getStats());
+                    FreeCounters.getCounters().setFreeSpecAttributes((int) PriorityCounters.getCounters().getMeta().getStats());
 
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getMeta().getMods(), ShadowrunCharacter.getCharacter());
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getAttr().getMods(), ShadowrunCharacter.getCharacter());

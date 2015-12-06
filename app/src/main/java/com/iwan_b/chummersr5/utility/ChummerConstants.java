@@ -15,6 +15,7 @@ public class ChummerConstants {
     public final static int skillGroupPointUsed = -2;
     public final static int freeSkillLevel = -3;
     public final static int freeSkillGroupLevel = -4;
+    public final static int attrPointUsed = -5;
 
     public enum tableLayout{
         title,attr,sub,lvl,add,spinner,extra
