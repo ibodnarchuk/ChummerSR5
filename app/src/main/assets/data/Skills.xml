@@ -1,31 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data>Ambidextrous</data>
-<data>Analytical Mind</data>
-<data>Aptitude</data>
-<data>Astral Chameleon</data>
-<data>Bilingual</data>
-<data>Blandness</data>
-<data>Catlike</data>
-<data>Codeslinger</data>
-<data>Double-Jointed</data>
-<data>Exceptional Attribute</data>
-<data>First Impression</data>
-<data>Focused Concentration</data>
-<data>Gearhead</data>
-<data>Guts</data>
-<data>High Pain Tolerance</data>
-<data>Home Ground</data>
-<data>Human-looking</data>
-<data>Indomitable</data>
-<data>Juryrigger</data>
-<data>Lucky</data>
-<data>Magic Resistance</data>
-<data>Mentor Spirit</data>
-<data>Natural Athlete</data>
-<data>Photographic Memory</data>
-<data>Quick Healer</data>
-<data>Resistance to Pathogens</data>
-<data>Resistance to Toxins</data>
-<data>Spirit Affinity</data>
-<data>Toughness</data>
-<data>Will to Live</data>
+<data>Archery</data>
+<data>Automatics</data>
+<data>Blades</data>
+<data>Clubs</data>
+<data>Heavy Weapons</data>
+<data>Longarms</data>
+<data>Pistols</data>
+<data>Throwing Weapons</data>
+<data>Unarmed Combat</data>
+<data>Disguise</data>
+<data>Running</data>
+<data>Survival</data>
+<data>Alchemy</data>
+<data>Compiling</data>
+<data>Diving</data>
+<data>Escape Artist</data>
+<data>Free-Fall</data>
+<data>Gymnastics</data>
+<data>Palming</data>
+<data>Perception</data>
+<data>Running</data>
+<data>Sneaking</data>
+<data>Swimming</data>
+<data>Tracking</data>
+<data>Con</data>
+<data>Etiquette</data>
+<data>Impresonation</data>
+<data>Instruction</data>
+<data>Intimidation</data>
+<data>Leadership</data>
+<data>Negotiation</data>
+<data>Performance</data>
+<data>Arcana</data>
+<data>Artificing</data>
+<data>Assensing</data>
+<data>Astral Combat</data>
+<data>Banishing</data>
+<data>Binding</data>
+<data>Counterspelling</data>
+<data>Disenchanting</data>
+<data>Ritual Spellcasting</data>
+<data>Spellcasting</data>
+<data>Summoning</data>
+<data>Compiling</data>
+<data>Decompiling</data>
+<data>Registering</data>
+<data>Aeronautics Mechanic</data>
+<data>Animal Handling</data>
+<data>Armorer</data>
+<data>Artisan</data>
+<data>Automotive Mechanic</data>
+<data>Biotechnology</data>
+<data>Chemistry</data>
+<data>Computer</data>
+<data>Cybercombat</data>
+<data>Cybertechnology</data>
+<data>Demolitions</data>
+<data>Electronic Warefare</data>
+<data>First Aid</data>
+<data>Forgery</data>
+<data>Hacking</data>
+<data>Hardware</data>
+<data>Industrial Mechanic</data>
+<data>Locksmith</data>
+<data>Medicine</data>
+<data>Nautical Mechanic</data>
+<data>Navigation</data>
+<data>Software</data>
+<data>Gunnery</data>
+<data>Pilot Aerospace</data>
+<data>Pilot Aircraft</data>
+<data>Pilot Walker</data>
+<data>Pilot Ground Craft</data>
+<data>Pilot Watercraft</data>

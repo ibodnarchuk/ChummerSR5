@@ -37,7 +37,7 @@ public class SkillTableRow implements UpdateInterface{
     private final View rootView;
     private final ChummerConstants.counters counterID;
     private final boolean isActiveSkill;
-    private ArrayList<SkillOnClickListener> updates = new ArrayList<>();
+    private ArrayList<SkillOnClickListener> childrenToUpdate = new ArrayList<>();
 
     public SkillTableRow(final View rootView, final ArrayList<Skill> skillsAvailable, ChummerConstants.counters counterID, boolean isActiveSkill) {
         this.rootView = rootView;
@@ -164,8 +164,8 @@ public class SkillTableRow implements UpdateInterface{
         SkillOnClickListener add = new SkillOnClickListener(skill, skillValueTxtView, extraInfo, true);
 
 
-        updates.add(sub);
-        updates.add(add);
+        childrenToUpdate.add(sub);
+        childrenToUpdate.add(add);
 
         subButton.setOnClickListener(sub);
         addButton.setOnClickListener(add);
@@ -175,15 +175,13 @@ public class SkillTableRow implements UpdateInterface{
 
     @Override
     public void update() {
-        for(SkillOnClickListener temp : updates){
-            temp.getMods();
+        for(SkillOnClickListener temp : childrenToUpdate){
+            temp.update();
         }
     }
 
     @Override
-    public void updateParent() {
-
-    }
+    public void updateParent() {}
 
     private class SpecOnClickListener implements AdapterView.OnItemSelectedListener {
         private LinearLayout extraInfo;
@@ -205,6 +203,12 @@ public class SkillTableRow implements UpdateInterface{
                     Integer skillCounter = getSkillCounter();
 
                     TextView specTxtView = (TextView) extraInfo.getChildAt(0);
+
+                    TextView skillMod = (TextView) extraInfo.getChildAt(1);
+                    TableRow.LayoutParams lp = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+                    lp.setMargins(5, 0, 0, 0);
+                    skillMod.setLayoutParams(lp);
+
                     String allStrings = specTxtView.getText().toString();
 
                     ArrayList<Integer> pointHistory = new ArrayList<>();
@@ -236,6 +240,7 @@ public class SkillTableRow implements UpdateInterface{
                     extraInfo.removeAllViews();
                     specTxtView.setText(allStrings);
                     extraInfo.addView(specTxtView);
+                    extraInfo.addView(skillMod);
 
                     if (customStringOutput.contains("Custom:")) {
                         // Add the custom string to the list of possible outputs
@@ -270,9 +275,18 @@ public class SkillTableRow implements UpdateInterface{
                     Integer skillCounter = getSkillCounter();
 
                     TextView specTxtView = new TextView(rootView.getContext());
+                    TextView skillMod = new TextView(rootView.getContext());
+
                     if (extraInfo.getChildCount() != 0) {
                         specTxtView = (TextView) extraInfo.getChildAt(0);
+                        if(extraInfo.getChildCount() == 2){
+                            skillMod = (TextView) extraInfo.getChildAt(1);
+                        }
                     }
+
+                    TableRow.LayoutParams lp = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+                    lp.setMargins(5, 0, 0, 0);
+                    skillMod.setLayoutParams(lp);
 
                     TextView newOutput = new TextView(rootView.getContext());
 
@@ -303,6 +317,7 @@ public class SkillTableRow implements UpdateInterface{
 
                             extraInfo.removeAllViews();
                             extraInfo.addView(newOutput);
+                            extraInfo.addView(skillMod);
                         } else {
                             if (karmaUnused >= 7) {
                                 karmaUnused -= 7;
@@ -328,6 +343,7 @@ public class SkillTableRow implements UpdateInterface{
                         newOutput.setTag(pointHistory);
                         extraInfo.removeAllViews();
                         extraInfo.addView(newOutput);
+                        extraInfo.addView(skillMod);
                         ShadowrunCharacter.setKarma(karmaUnused);
                         updateKarma();
                         setSkillCounter(skillCounter);
@@ -485,18 +501,47 @@ public class SkillTableRow implements UpdateInterface{
         private TableRow skillGroup;
         private ArrayList<TableRow> skillsTableRowGroup;
 
-        public int getMods() {
+        public void update() {
             int max_attr_mod = 0;
 
-            TextView exceptionalSkill;
+            TextView skillMods;
+            TextView skillSpec;
             // Set the current extraInfo blank
             if(extraInfo.getChildCount() < 2){
-                exceptionalSkill = new TextView(rootView.getContext());
+                skillMods = new TextView(rootView.getContext());
+                if(extraInfo.getChildCount() != 0){
+                    skillSpec = (TextView) extraInfo.getChildAt(0);
+                } else{
+                    skillSpec = new TextView(rootView.getContext());
+                }
+
             } else {
-                exceptionalSkill = (TextView) extraInfo.getChildAt(1);
+                skillSpec = (TextView) extraInfo.getChildAt(0);
+                skillMods = (TextView) extraInfo.getChildAt(1);
             }
 
-            exceptionalSkill.setText("");
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(5, 0, 0, 0);
+            skillMods.setLayoutParams(lp);
+            skillMods.setText("");
+
+            for (Quality q : ShadowrunCharacter.getCharacter().getPositiveQualities()) {
+                for (Modifier m : q.getMods()) {
+                    if (m.getName().equalsIgnoreCase("max_skill_" + skillData.getSkillName())) {
+                        skillMods.setText(q.getName());
+                    }
+                }
+            }
+
+            int currentRating = Integer.valueOf(skillLvlTxtView.getText().toString());
+            skillLvlTxtView.setText(String.valueOf(currentRating));
+            extraInfo.removeAllViews();
+            extraInfo.addView(skillSpec);
+            extraInfo.addView(skillMods);
+        }
+
+        public int getMods() {
+            int max_attr_mod = 0;
 
             if (ShadowrunCharacter.getCharacter().getModifiers().containsKey("max_skill_" + skillData.getSkillName())) {
                 for (Modifier m : ShadowrunCharacter.getCharacter().getModifiers().get("max_skill_" + skillData.getSkillName())) {
@@ -508,14 +553,9 @@ public class SkillTableRow implements UpdateInterface{
                 for (Modifier m : q.getMods()) {
                     if (m.getName().equalsIgnoreCase("max_skill_" + skillData.getSkillName())) {
                         max_attr_mod += m.getAmount();
-                        exceptionalSkill.setText(q.getName());
                     }
                 }
             }
-
-            int currentRating = Integer.valueOf(skillLvlTxtView.getText().toString());
-            skillLvlTxtView.setText(String.valueOf(currentRating));
-            extraInfo.addView(exceptionalSkill, 1);
 
             return max_attr_mod;
         }
@@ -668,7 +708,7 @@ public class SkillTableRow implements UpdateInterface{
                 pointHistory = (ArrayList<Integer>) skillLvlTxtView.getTag();
             }
 
-            int max_skill_mod = 0;
+            int max_skill_mod = getMods();
 
             if (isAddition) {
                 if (currentRating < maxSkill + max_skill_mod) {
