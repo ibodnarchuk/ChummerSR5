@@ -13,6 +13,8 @@ public class FreeCounters {
     private int freeAttributes;
     private int freeSpecAttributes;
 
+    private int freeSpells;
+
     private FreeCounters() {
     }
 
@@ -69,5 +71,13 @@ public class FreeCounters {
 
     public void setFreeSpecAttributes(int freeSpecAttributes) {
         this.freeSpecAttributes = freeSpecAttributes;
+    }
+
+    public int getFreeSpells() {
+        return freeSpells;
+    }
+
+    public void setFreeSpells(int freeSpells) {
+        this.freeSpells = freeSpells;
     }
 }

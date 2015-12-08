@@ -17,6 +17,7 @@ public class ShadowrunCharacter implements Serializable {
     private Attribute attributes;
     private ArrayList<Quality> positiveQualities;
     private ArrayList<Quality> negativeQualities;
+    private ArrayList<Spell> spells;
 
     private Map<String, ArrayList<Modifier>> modifiers;
 
@@ -74,10 +75,22 @@ public class ShadowrunCharacter implements Serializable {
         this.positiveQualities = positiveQualities;
     }
 
-    @Override
-    public String toString() {
-        return "ShadowrunCharacter [attributes=" + attributes + ", positiveQualities=" + positiveQualities
-                + ", negativeQualities=" + negativeQualities + ", modifiers=" + modifiers + "]";
+    public ArrayList<Spell> getSpells() {
+        return spells;
     }
 
+    public void setSpells(final ArrayList<Spell> spells) {
+        this.spells = spells;
+    }
+
+    @Override
+    public String toString() {
+        return "ShadowrunCharacter{" +
+                "attributes=" + attributes +
+                ", positiveQualities=" + positiveQualities +
+                ", negativeQualities=" + negativeQualities +
+                ", spells=" + spells +
+                ", modifiers=" + modifiers +
+                '}';
+    }
 }

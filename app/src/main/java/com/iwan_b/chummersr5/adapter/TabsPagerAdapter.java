@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
 	// Tab titles
-	public static final String[] tabs = { "Attributes", "Active Skills", "Knowledge Skills"};
+	public static final String[] tabs = { "Attributes", "Magic", "Active Skills", "Knowledge Skills"};
 
 	public TabsPagerAdapter(FragmentManager fm) {
 		super(fm);
@@ -20,8 +20,10 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 			// Top Rated fragment activity
 			return com.iwan_b.chummersr5.fragments.MainStats.MainContainer.newInstance();
 		case 1:
-			return com.iwan_b.chummersr5.fragments.ActiveSkill.MainContainer.newInstance();
+			return com.iwan_b.chummersr5.fragments.Magic.MainContainer.newInstance();
 		case 2:
+			return com.iwan_b.chummersr5.fragments.ActiveSkill.MainContainer.newInstance();
+		case 3:
 			return com.iwan_b.chummersr5.fragments.KnowledgeSkill.MainContainer.newInstance();
 		}
 

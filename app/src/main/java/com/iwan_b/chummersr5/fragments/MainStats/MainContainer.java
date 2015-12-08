@@ -11,14 +11,14 @@ import android.widget.TextView;
 
 import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
+import com.iwan_b.chummersr5.fragments.FragmentUtil.UpdateInterfaceTemp;
 
 import java.util.ArrayList;
 
-public class MainContainer extends Fragment implements UpdateInterface{
+public class MainContainer extends Fragment implements UpdateInterfaceTemp {
     private static View rootView;
 
-    private ArrayList<UpdateInterface> childrenToUpdate = new ArrayList<>();
+    private ArrayList<UpdateInterfaceTemp> childrenToUpdate = new ArrayList<>();
 
     public static void updateKarma() {
         if (rootView != null) {
@@ -35,7 +35,7 @@ public class MainContainer extends Fragment implements UpdateInterface{
     @Override
     public void update() {
         updateKarma();
-        for(UpdateInterface child : childrenToUpdate){
+        for(UpdateInterfaceTemp child : childrenToUpdate){
             child.update();
         }
     }

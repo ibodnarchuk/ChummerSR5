@@ -25,7 +25,7 @@ import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
+import com.iwan_b.chummersr5.fragments.FragmentUtil.UpdateInterfaceTemp;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerXML;
 
@@ -38,8 +38,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainContainer extends Fragment implements UpdateInterface {
+public class MainContainer extends Fragment implements UpdateInterfaceTemp {
     private static View rootView;
+    private ArrayList<SkillTableRow> childrenToUpdate = new ArrayList<>();
 
     public static Fragment newInstance() {
         MainContainer main = new MainContainer();
@@ -73,6 +74,9 @@ public class MainContainer extends Fragment implements UpdateInterface {
     @Override
     public void update() {
         updateCounters();
+        for(SkillTableRow child : childrenToUpdate){
+            child.update();
+        }
     }
 
     @Override
@@ -111,7 +115,6 @@ public class MainContainer extends Fragment implements UpdateInterface {
         Collections.sort(allSkills);
 
         TableLayout SkillsTableLayout = (TableLayout) rootView.findViewById(R.id.fragment_activeskill_Skills_TableLayout);
-        SkillTableRow genSkillTableRow = new SkillTableRow(SkillsTableLayout.getRootView(), allSkills, ChummerConstants.counters.activeSkills, true);
 
         ArrayList<String> skillGroup = new ArrayList<>();
 
@@ -130,6 +133,10 @@ public class MainContainer extends Fragment implements UpdateInterface {
                     }
                 }
             }
+
+            SkillTableRow genSkillTableRow = new SkillTableRow(SkillsTableLayout.getRootView(), allSkills, ChummerConstants.counters.activeSkills, true);
+
+            childrenToUpdate.add(genSkillTableRow);
 
             if (currentSkill.getMagicOnly() && ShadowrunCharacter.getCharacter().getAttributes().getBaseMagic() > 0) {
                 SkillsTableLayout.addView(genSkillTableRow.createRow(currentSkill));

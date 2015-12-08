@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spells>
+    <!--<spell>-->
+        <!--<name></name>-->
+        <!--<categories></categories>-->
+        <!--<type></type>-->
+        <!--<range></range>-->
+        <!--<damage></damage>-->
+        <!--<duration></duration>-->
+        <!--<drain></drain>-->
+        <!--<summary></summary>-->
+        <!--<book></book>-->
+        <!--<page></page>-->
+    <!--</spell>-->
+
+    <spell>
+        <name>Acid Stream</name>
+        <categories>Indirect, Elemental</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-3</drain>
+        <summary>Basic summary of the spell</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </spell>
+
+    <spell>
+        <name>Toxic Wave</name>
+        <categories>Indirect, Elemental</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-1</drain>
+        <summary>Basic summary of the spell</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </spell>
+
+    <spell>
+        <name>Punch</name>
+        <categories>Indirect</categories>
+        <type>P</type>
+        <range>T</range>
+        <damage>S</damage>
+        <duration>I</duration>
+        <drain>-6</drain>
+        <summary>Basic summary of the spell</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </spell>
+
+    <spell>
+        <name>Clout</name>
+        <categories>Indirect</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <damage>S</damage>
+        <duration>I</duration>
+        <drain>-3</drain>
+        <summary>Basic summary of the spell</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </spell>
+
+    <spell>
+        <name>Blast</name>
+        <categories>Indirect</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <damage>S</damage>
+        <duration>I</duration>
+        
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Death Touch</name>
+        <categories>Direct</categories>
+        <type>M</type>
+        <range>T</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-6</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Manabolt</name>
+        <categories>Direct</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Manaball</name>
+        <categories>Direct</categories>
+        <type>M</type>
+        <range>LOS(A)</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Flamethrower</name>
+        <categories>Indirect,Elemental</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Fireball</name>
+        <categories>Indirect,Elemental</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Lightning Bolt</name>
+        <categories>Indirect,Elemental</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Ball Lightning</name>
+        <categories>Indirect,Elemental</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Shatter</name>
+        <categories>Direct</categories>
+        <type>P</type>
+        <range>T</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-6</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Powerbolt</name>
+        <categories>Direct</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Powerball</name>
+        <categories>Direct</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <damage>P</damage>
+        <duration>I</duration>
+        
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Knockout</name>
+        <categories>Direct</categories>
+        <type>M</type>
+        <range>T</range>
+        <damage>S</damage>
+        <duration>I</duration>
+        <drain>-6</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Stunbolt</name>
+        <categories>Direct</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <damage>S</damage>
+        <duration>I</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Stunball</name>
+        <categories>Direct</categories>
+        <type>M</type>
+        <range>LOS(A)</range>
+        <damage>S</damage>
+        <duration>I</duration>
+        
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Analyze Device</name>
+        <categories>Active,Directional</categories>
+        <type>P</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Analyze Magic</name>
+        <categories>Active,Magic</categories>
+        <type>P</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Analyze Truth</name>
+        <categories>Active,Directional</categories>
+        <type>M</type>
+        <range>T</range>
+        <damage></damage>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Clairaudience</name>
+        <categories>Passive,Directional</categories>
+        <type>M</type>
+        <range>T</range>
+        <damage></damage>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Clairvoyance</name>
+        <categories>Passive,Directional</categories>
+        <type>M</type>
+        <range>T</range>
+        <damage></damage>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Combat Sense</name>
+        <categories>Active,Psychic</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect Enemies</name>
+        <categories>Active,Area</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect Enemies, Extended</name>
+        <categories>Active, Extended Area</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect Individual</name>
+        <categories>Active, Area</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect Life</name>
+        <categories>Active, Area</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect Life, Extended</name>
+        <categories>Active, Extended Area</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect [Life Form]</name>
+        <categories>Active, Area</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect [Life Form], Extended</name>
+        <categories>Active, Extended Area</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect Magic</name>
+        <categories>Active, Area</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect Magic, Extended</name>
+        <categories>Active, Extended Area</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detect [Object]</name>
+        <categories>Active, Area</categories>
+        <type>P</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Mindlink</name>
+        <categories>Active, Psychic</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Mind Probe</name>
+        <categories>Active, Directional</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Antidote</name>
+        <type>M</type>
+        <range>T</range>
+        <duration>P</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Cure Disease</name>
+        <categories>Essence</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>P</duration>
+        <drain>-4</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Decrease [Attribute]</name>
+        <categories>Essence</categories>
+        <type>P</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Detox</name>
+        <type>M</type>
+        <range>T</range>
+        <duration>P</duration>
+        <drain>-6</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Heal</name>
+        <categories>Essence</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>P</duration>
+        <drain>-4</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Increase [Attribute]</name>
+        <categories>Essence</categories>
+        <type>P</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Increase Reflexes</name>
+        <categories>Essence</categories>
+        <type>P</type>
+        <range>T</range>
+        <duration>S</duration>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Oxygenate</name>
+        <type>P</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-5</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Prophylaxis</name>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-4</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <!-- TODO figure out how to make the drain work-->
+    <!--<spell>-->
+        <!--<name>Resist Pain</name>-->
+        <!--<type>M</type>-->
+        <!--<range>T</range>-->
+        <!--<duration>P</duration>-->
+        <!--<drain>(Damage Value) - 6</drain>-->
+        <!--<summary></summary>-->
+        <!--<book></book>-->
+        <!--<page></page>-->
+    <!--</spell>-->
+
+    <spell>
+        <name>Stabilize</name>
+        <type>M</type>
+        <range>T</range>
+        <duration>P</duration>
+        <drain>-4</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Agony</name>
+        <categories>Realistic, Single-sense</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-4</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Mass Agony</name>
+        <categories>Realistic, Single-sense</categories>
+        <type>M</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Bugs</name>
+        <categories>Realistic, Multi-sense</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Swarm</name>
+        <categories>Realistic, Multi-sense</categories>
+        <type>M</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Confusion</name>
+        <categories>Realistic, Multi-sense</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Mass Confusion</name>
+        <categories>Realistic, Multi-sense, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Entertainment</name>
+        <categories>Obvious, Multi-Sense, Area</categories>
+        <type>M</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Trid Entertainment</name>
+        <categories>Obvious, Multi-sense, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Invisibility</name>
+        <categories>Realistic, Single-sense</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Improved Invisibility</name>
+        <categories>Realistic, Single-sense</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Mask</name>
+        <categories>Realistic, Multi-sense</categories>
+        <type>M</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Physical Mask</name>
+        <categories>Realistic, Multi-sense</categories>
+        <type>P</type>
+        <range>T</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Phantasm</name>
+        <categories>Realistic, Multi-sense, Area</categories>
+        <type>M</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Trid Phantasm</name>
+        <categories>Realistic, Multi-sense, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Hush</name>
+        <categories>Realistic, Single-sense, Area</categories>
+        <type>M</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Silence</name>
+        <categories>Realistic, Single-sense, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Stealth</name>
+        <categories>Realistic, Single-sense</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Animate</name>
+        <categories>Physical</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Mass Animate</name>
+        <categories>Physical, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Armor</name>
+        <categories>Physical</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Control Actions</name>
+        <categories>Mental</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Mob Control</name>
+        <categories>Mental, Area</categories>
+        <type>M</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Control Thoughts</name>
+        <categories>Mental</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Mob Mind</name>
+        <categories>Mental, Area</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Fling</name>
+        <categories>Physical, Damaging</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <duration>I</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Ice Sheet</name>
+        <categories>Environmental, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>I</duration>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Ignite</name>
+        <categories>Physical</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <duration>P</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Influence</name>
+        <categories>Mental</categories>
+        <type>M</type>
+        <range>LOS</range>
+        <duration>P</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Levitate</name>
+        <categories>Physical</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Light</name>
+        <categories>Environmental, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-4</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Magic Fingers</name>
+        <categories>Physical</categories>
+        <type>P</type>
+        <range>LOS</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Mana Barrier</name>
+        <categories>Environmental, Area</categories>
+        <type>M</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Physical Barrier</name>
+        <categories>Environmental, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-1</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Poltergeist</name>
+        <categories>Environmental, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-2</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+    <spell>
+        <name>Shadow</name>
+        <categories>Environmental, Area</categories>
+        <type>P</type>
+        <range>LOS(A)</range>
+        <duration>S</duration>
+        <drain>-3</drain>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </spell>
+
+</spells>

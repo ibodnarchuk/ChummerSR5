@@ -170,6 +170,13 @@ public class NewCharacterPriorityTable extends Activity {
                     FreeCounters.getCounters().setFreeAttributes((int) PriorityCounters.getCounters().getAttr().getStats());
                     FreeCounters.getCounters().setFreeSpecAttributes((int) PriorityCounters.getCounters().getMeta().getStats());
 
+                    FreeCounters.getCounters().setFreeSpells(0);
+                    for (Modifier m : PriorityCounters.getCounters().getMagic().getMods()) {
+                        if (m.getName().equalsIgnoreCase("free_spells")) {
+                            FreeCounters.getCounters().setFreeSpells((int) m.getAmount());
+                        }
+                    }
+
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getMeta().getMods(), ShadowrunCharacter.getCharacter());
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getAttr().getMods(), ShadowrunCharacter.getCharacter());
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getMagic().getMods(), ShadowrunCharacter.getCharacter());
