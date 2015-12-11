@@ -31,7 +31,7 @@ import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.Quality;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
-import com.iwan_b.chummersr5.fragments.FragmentUtil.UpdateInterfaceTemp;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
 import com.iwan_b.chummersr5.utility.ChummerXML;
@@ -45,7 +45,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class QualitiesFragment extends Fragment implements UpdateInterfaceTemp {
+public class QualitiesFragment extends Fragment implements UpdateInterface {
     private View viewFragment;
 
     // All the qualities that can be manipulated.

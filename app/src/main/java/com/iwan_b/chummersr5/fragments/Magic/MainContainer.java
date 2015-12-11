@@ -22,7 +22,7 @@ import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Spell;
-import com.iwan_b.chummersr5.fragments.FragmentUtil.UpdateInterfaceTemp;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -33,10 +33,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class MainContainer extends Fragment implements UpdateInterfaceTemp {
+
+public class MainContainer extends Fragment implements UpdateInterface {
     private static View rootView;
 
-    private ArrayList<UpdateInterfaceTemp> childrenToUpdate = new ArrayList<>();
+    private ArrayList<UpdateInterface> childrenToUpdate = new ArrayList<>();
     private ArrayList<Spell> allSpells = new ArrayList<>();
     private ArrayList<String> displayedSpells = new ArrayList<>();
     private ArrayList<Integer> pointHistory = new ArrayList<>();
@@ -50,7 +51,7 @@ public class MainContainer extends Fragment implements UpdateInterfaceTemp {
     @Override
     public void update() {
         updateCounters();
-        for (UpdateInterfaceTemp child : childrenToUpdate) {
+        for (UpdateInterface child : childrenToUpdate) {
             child.update();
         }
     }

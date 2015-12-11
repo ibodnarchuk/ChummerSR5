@@ -25,13 +25,13 @@ import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.Quality;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
-import com.iwan_b.chummersr5.fragments.FragmentUtil.UpdateInterfaceTemp;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import java.util.ArrayList;
 
-public class SkillTableRow implements UpdateInterfaceTemp {
+public class SkillTableRow implements UpdateInterface {
     // TODO maybe make this into a method that they can call and get...
     private static ArrayList<Skill> skillsAvailable;
     private final View rootView;

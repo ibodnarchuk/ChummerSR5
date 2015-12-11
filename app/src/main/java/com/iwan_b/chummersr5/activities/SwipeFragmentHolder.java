@@ -12,7 +12,7 @@ import com.iwan_b.chummersr5.data.Attribute;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.PriorityCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
-import com.iwan_b.chummersr5.fragments.FragmentUtil.UpdateInterfaceTemp;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
 
@@ -46,7 +46,7 @@ public class SwipeFragmentHolder extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                UpdateInterfaceTemp fragment = (UpdateInterfaceTemp) adapter.instantiateItem(pager, position);
+               UpdateInterface fragment = (UpdateInterface) adapter.instantiateItem(pager, position);
                 if (fragment != null) {
                     fragment.update();
                 }
