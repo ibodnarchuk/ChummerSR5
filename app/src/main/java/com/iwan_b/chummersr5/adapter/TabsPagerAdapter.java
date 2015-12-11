@@ -4,40 +4,35 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
+
+import java.util.ArrayList;
+
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
-	// Tab titles
-	public static final String[] tabs = { "Attributes", "Magic", "Active Skills", "Knowledge Skills"};
+    // Tab titles
+    private static String[] tabs;
+    private static ArrayList<FactoryMethod> tabsToDisplay;
 
-	public TabsPagerAdapter(FragmentManager fm) {
-		super(fm);
-	}
+    public TabsPagerAdapter(FragmentManager fm, String[] tabs, ArrayList<FactoryMethod> tabsToDisplay) {
+        super(fm);
+        TabsPagerAdapter.tabs = tabs;
+        TabsPagerAdapter.tabsToDisplay = tabsToDisplay;
+    }
 
-	@Override
-	public Fragment getItem(int index) {
-		switch (index) {
-		case 0:
-			// Top Rated fragment activity
-			return com.iwan_b.chummersr5.fragments.MainStats.MainContainer.newInstance();
-		case 1:
-			return com.iwan_b.chummersr5.fragments.Magic.MainContainer.newInstance();
-		case 2:
-			return com.iwan_b.chummersr5.fragments.ActiveSkill.MainContainer.newInstance();
-		case 3:
-			return com.iwan_b.chummersr5.fragments.KnowledgeSkill.MainContainer.newInstance();
-		}
+    @Override
+    public Fragment getItem(int index) {
+        return tabsToDisplay.get(index).newInstance();
+    }
 
-		return null;
-	}
+    @Override
+    public int getCount() {
+        // get item count - equal to number of tabs
+        return tabs.length;
+    }
 
-	@Override
-	public int getCount() {
-		// get item count - equal to number of tabs
-		return tabs.length;
-	}
-
-	@Override
-	public CharSequence getPageTitle(int position) {
-		return tabs[position];
-	}
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return tabs[position];
+    }
 }

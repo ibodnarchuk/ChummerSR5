@@ -12,6 +12,7 @@ import com.iwan_b.chummersr5.data.Attribute;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.PriorityCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
@@ -22,6 +23,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class SwipeFragmentHolder extends AppCompatActivity {
     @Override
@@ -34,10 +36,18 @@ public class SwipeFragmentHolder extends AppCompatActivity {
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         final ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        // TODO this might not be the best thing to hardcode. Although I suppose the application should be light in usage anyways.
-        pager.setOffscreenPageLimit(TabsPagerAdapter.tabs.length);
 
-        final TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
+        String[] listOfTabs = { "Attributes", "Magic", "Active Skills", "Knowledge Skills"};
+        ArrayList<FactoryMethod> tabsToCall = new ArrayList<>();
+        tabsToCall.add(new com.iwan_b.chummersr5.fragments.MainStats.MainContainer());
+        tabsToCall.add(new com.iwan_b.chummersr5.fragments.Magic.MainContainer());
+        tabsToCall.add(new com.iwan_b.chummersr5.fragments.ActiveSkill.MainContainer());
+        tabsToCall.add(new com.iwan_b.chummersr5.fragments.KnowledgeSkill.MainContainer());
+
+        // TODO this might not be the best thing to hardcode. Although I suppose the application should be light in usage anyways.
+        pager.setOffscreenPageLimit(listOfTabs.length);
+
+        final TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager(), listOfTabs, tabsToCall);
 
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

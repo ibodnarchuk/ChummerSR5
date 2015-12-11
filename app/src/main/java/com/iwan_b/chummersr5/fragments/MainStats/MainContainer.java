@@ -11,11 +11,12 @@ import android.widget.TextView;
 
 import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 
 import java.util.ArrayList;
 
-public class MainContainer extends Fragment implements UpdateInterface {
+public class MainContainer extends Fragment implements UpdateInterface, FactoryMethod {
     private static View rootView;
 
     private ArrayList<UpdateInterface> childrenToUpdate = new ArrayList<>();
@@ -27,7 +28,8 @@ public class MainContainer extends Fragment implements UpdateInterface {
         }
     }
 
-    public static Fragment newInstance() {
+    @Override
+    public Fragment newInstance() {
         MainContainer main = new MainContainer();
         return main;
     }

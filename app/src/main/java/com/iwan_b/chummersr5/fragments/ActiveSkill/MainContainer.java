@@ -25,6 +25,7 @@ import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerXML;
@@ -38,20 +39,20 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainContainer extends Fragment implements UpdateInterface {
+public class MainContainer extends Fragment implements UpdateInterface, FactoryMethod {
     private static View rootView;
     private ArrayList<SkillTableRow> childrenToUpdate = new ArrayList<>();
-
-    public static Fragment newInstance() {
-        MainContainer main = new MainContainer();
-        return main;
-    }
 
     public static void updateKarma() {
         if (rootView != null) {
             TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
             karmaCounterTxtView.setText(String.valueOf(ShadowrunCharacter.getKarma()));
         }
+    }
+
+    public Fragment newInstance() {
+        MainContainer main = new MainContainer();
+        return main;
     }
 
     private void updateFreeSkillCounter(final Integer skillCounter) {
@@ -74,7 +75,7 @@ public class MainContainer extends Fragment implements UpdateInterface {
     @Override
     public void update() {
         updateCounters();
-        for(SkillTableRow child : childrenToUpdate){
+        for (SkillTableRow child : childrenToUpdate) {
             child.update();
         }
     }
@@ -334,7 +335,7 @@ public class MainContainer extends Fragment implements UpdateInterface {
             builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                        createActiveSkillRow(userNameInput, attrSpinner);
+                    createActiveSkillRow(userNameInput, attrSpinner);
                 }
             });
 
@@ -353,7 +354,7 @@ public class MainContainer extends Fragment implements UpdateInterface {
             builder.show();
         }
 
-        private void createActiveSkillRow(EditText userNameInput, Spinner attrSpinner){
+        private void createActiveSkillRow(EditText userNameInput, Spinner attrSpinner) {
             Skill newSkill = new Skill();
 
             newSkill.setSkillName("Custom: " + userNameInput.getText().toString());

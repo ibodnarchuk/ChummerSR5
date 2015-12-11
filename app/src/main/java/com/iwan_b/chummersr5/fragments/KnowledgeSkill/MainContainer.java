@@ -26,6 +26,7 @@ import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
 import com.iwan_b.chummersr5.fragments.ActiveSkill.SkillTableRow;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
@@ -33,10 +34,17 @@ import com.iwan_b.chummersr5.utility.ChummerMethods;
 import java.util.ArrayList;
 
 
-public class MainContainer  extends Fragment implements UpdateInterface {
+public class MainContainer extends Fragment implements UpdateInterface, FactoryMethod {
     private static View rootView;
 
-    public static Fragment newInstance() {
+    public static void updateKarma() {
+        if (rootView != null) {
+            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
+            karmaCounterTxtView.setText(String.valueOf(ShadowrunCharacter.getKarma()));
+        }
+    }
+
+    public Fragment newInstance() {
         MainContainer main = new MainContainer();
         return main;
     }
@@ -49,13 +57,6 @@ public class MainContainer  extends Fragment implements UpdateInterface {
     private void updateFreeLanguageCounter() {
         TextView freeLanguageSkillTxt = (TextView) rootView.findViewById(R.id.fragment_knowledgeskill_freeLanguage_Counter);
         freeLanguageSkillTxt.setText(String.valueOf(FreeCounters.getCounters().getFreeLanguageSkills()));
-    }
-
-    public static void updateKarma() {
-        if (rootView != null) {
-            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
-            karmaCounterTxtView.setText(String.valueOf(ShadowrunCharacter.getKarma()));
-        }
     }
 
     private void updateCounters() {
@@ -130,7 +131,7 @@ public class MainContainer  extends Fragment implements UpdateInterface {
 
     private class addLanguageSkillButtonListener implements View.OnClickListener {
         private AlertDialog dialog;
-        
+
         @Override
         public void onClick(View v) {
             AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
@@ -141,7 +142,8 @@ public class MainContainer  extends Fragment implements UpdateInterface {
             LanguageName.setHint("Enter your Language skill");
             LanguageName.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -153,7 +155,8 @@ public class MainContainer  extends Fragment implements UpdateInterface {
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {}
+                public void afterTextChanged(Editable s) {
+                }
             });
 
             builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -213,7 +216,8 @@ public class MainContainer  extends Fragment implements UpdateInterface {
             knowledgeName.setLayoutParams(usernameParams);
             knowledgeName.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -225,7 +229,8 @@ public class MainContainer  extends Fragment implements UpdateInterface {
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {}
+                public void afterTextChanged(Editable s) {
+                }
             });
             linearLayoutContainer.addView(knowledgeName);
 

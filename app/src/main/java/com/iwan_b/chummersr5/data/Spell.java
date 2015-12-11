@@ -17,6 +17,52 @@ public class Spell {
     // Summary of the skill
     private String summary;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Spell)) return false;
+
+        Spell spell = (Spell) o;
+
+        if (getDrain() != spell.getDrain()) return false;
+        if (getName() != null ? !getName().equals(spell.getName()) : spell.getName() != null)
+            return false;
+        if (getCategory() != null ? !getCategory().equals(spell.getCategory()) : spell.getCategory() != null)
+            return false;
+        if (getType() != null ? !getType().equals(spell.getType()) : spell.getType() != null)
+            return false;
+        if (getRange() != null ? !getRange().equals(spell.getRange()) : spell.getRange() != null)
+            return false;
+        if (getDamage() != null ? !getDamage().equals(spell.getDamage()) : spell.getDamage() != null)
+            return false;
+        if (getDuration() != null ? !getDuration().equals(spell.getDuration()) : spell.getDuration() != null)
+            return false;
+        if (getUserTextInputString() != null ? !getUserTextInputString().equals(spell.getUserTextInputString()) : spell.getUserTextInputString() != null)
+            return false;
+        if (getBook() != null ? !getBook().equals(spell.getBook()) : spell.getBook() != null)
+            return false;
+        if (getPage() != null ? !getPage().equals(spell.getPage()) : spell.getPage() != null)
+            return false;
+        return !(getSummary() != null ? !getSummary().equals(spell.getSummary()) : spell.getSummary() != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = 31 * result + (getCategory() != null ? getCategory().hashCode() : 0);
+        result = 31 * result + (getType() != null ? getType().hashCode() : 0);
+        result = 31 * result + (getRange() != null ? getRange().hashCode() : 0);
+        result = 31 * result + (getDamage() != null ? getDamage().hashCode() : 0);
+        result = 31 * result + (getDuration() != null ? getDuration().hashCode() : 0);
+        result = 31 * result + getDrain();
+        result = 31 * result + (getUserTextInputString() != null ? getUserTextInputString().hashCode() : 0);
+        result = 31 * result + (getBook() != null ? getBook().hashCode() : 0);
+        result = 31 * result + (getPage() != null ? getPage().hashCode() : 0);
+        result = 31 * result + (getSummary() != null ? getSummary().hashCode() : 0);
+        return result;
+    }
+
     public Spell(Spell s) {
         this.name = s.name;
         this.category = s.category;

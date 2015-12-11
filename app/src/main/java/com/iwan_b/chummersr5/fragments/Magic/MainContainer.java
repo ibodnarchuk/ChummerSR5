@@ -22,6 +22,7 @@ import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Spell;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 
@@ -34,16 +35,17 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 
-public class MainContainer extends Fragment implements UpdateInterface {
+public class MainContainer extends Fragment implements UpdateInterface, FactoryMethod {
     private static View rootView;
 
     private ArrayList<UpdateInterface> childrenToUpdate = new ArrayList<>();
     private ArrayList<Spell> allSpells = new ArrayList<>();
-    private ArrayList<String> displayedSpells = new ArrayList<>();
+    private ArrayList<Spell> displayedSpells = new ArrayList<>();
     private ArrayList<Integer> pointHistory = new ArrayList<>();
-    private ArrayAdapter<String> spellAdapter;
+    private SpellArrayAdapter spellAdapter;
 
-    public static Fragment newInstance() {
+    @Override
+    public Fragment newInstance() {
         MainContainer main = new MainContainer();
         return main;
     }
@@ -91,7 +93,7 @@ public class MainContainer extends Fragment implements UpdateInterface {
 
         displayedSpells = new ArrayList<>();
 
-        spellAdapter = new ArrayAdapter<>(getActivity().getBaseContext(),
+        spellAdapter = new SpellArrayAdapter(getActivity().getBaseContext(),
                 android.R.layout.simple_list_item_1, displayedSpells);
 
         // Set the footerview to be the add qualities button
@@ -129,7 +131,7 @@ public class MainContainer extends Fragment implements UpdateInterface {
 
             pointHistory.add(pointsUsed);
 
-            displayedSpells.add(newSpell.getName());
+            displayedSpells.add(newSpell);
             spellAdapter.notifyDataSetChanged();
         }
     }
@@ -146,7 +148,8 @@ public class MainContainer extends Fragment implements UpdateInterface {
             ShadowrunCharacter.getCharacter().setSpells(spells);
 
             for (int i = 0; i < displayedSpells.size(); i++) {
-                if (displayedSpells.get(i) == spellSelected.getName()) {
+                // TODO implement this
+                if (displayedSpells.get(i).getName() == spellSelected.getName()) {
                     int pHistory = pointHistory.get(i);
 
                     if (pHistory == ChummerConstants.freeSpellUsed) {
@@ -288,19 +291,20 @@ public class MainContainer extends Fragment implements UpdateInterface {
 
             final ListView listOfSpells = new ListView(getActivity().getBaseContext());
 
-            final ArrayList<String> listData = new ArrayList<>();
+            final ArrayList<Spell> listData = new ArrayList<>();
 
             // Remove duplicates from the list of qualities they can take.
             for (final Spell s : allSpells) {
                 // TODO make this more dynamic
-                if (!displayedSpells.contains(s.getName())) {
-                    listData.add(s.getName());
+                if (!displayedSpells.contains(s)) {
+                    listData.add(s);
                 }
 
             }
 
-            final ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity().getBaseContext(),
+            final ArrayAdapter<Spell> adapter = new SpellArrayAdapter(getActivity().getBaseContext(),
                     android.R.layout.simple_list_item_1, listData);
+
 
             listOfSpells.setAdapter(adapter);
 
@@ -337,15 +341,15 @@ public class MainContainer extends Fragment implements UpdateInterface {
 
         @Override
         public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
-            final String item = (String) parent.getItemAtPosition(position);
+            final Spell item = (Spell) parent.getItemAtPosition(position);
 
             Log.i(ChummerConstants.TAG, "onItemClick was: " + item);
 
             spellSelected = null;
             if (add) {
-                spellSelected = getNewSpell(item);
+                spellSelected = getNewSpell(item.getName());
             } else {
-                spellSelected = getCurrentSpell(item);
+                spellSelected = getCurrentSpell(item.getName());
             }
 
             if (spellSelected == null) {
@@ -393,7 +397,7 @@ public class MainContainer extends Fragment implements UpdateInterface {
                 LinearLayout extraInfoLayout = (LinearLayout) dialogView.findViewById(R.id.fragment_magic_main_spell_display_extrainfo);
 
                 // If the quality allows for user input
-                if (item.split("\\[").length > 1) {
+                if (item.getName().split("\\[").length > 1) {
                     userInputEditText = new EditText(view.getContext());
                     if (!add) {
                         userInputEditText.setText(spellSelected.getUserTextInputString());
