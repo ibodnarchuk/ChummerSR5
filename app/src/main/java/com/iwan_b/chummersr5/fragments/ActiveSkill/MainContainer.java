@@ -25,7 +25,7 @@ import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethodInterface;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerXML;
@@ -39,7 +39,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainContainer extends Fragment implements UpdateInterface, FactoryMethod {
+public class MainContainer extends Fragment implements UpdateInterface, FactoryMethodInterface {
     private static View rootView;
     private ArrayList<SkillTableRow> childrenToUpdate = new ArrayList<>();
 

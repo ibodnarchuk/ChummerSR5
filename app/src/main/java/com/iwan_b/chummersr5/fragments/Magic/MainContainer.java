@@ -22,7 +22,7 @@ import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Spell;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethodInterface;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 
@@ -35,7 +35,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 
-public class MainContainer extends Fragment implements UpdateInterface, FactoryMethod {
+public class MainContainer extends Fragment implements UpdateInterface, FactoryMethodInterface {
     private static View rootView;
 
     private ArrayList<UpdateInterface> childrenToUpdate = new ArrayList<>();

@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethodInterface;
 
 import java.util.ArrayList;
 
@@ -12,9 +12,9 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
     // Tab titles
     private static String[] tabs;
-    private static ArrayList<FactoryMethod> tabsToDisplay;
+    private static ArrayList<FactoryMethodInterface> tabsToDisplay;
 
-    public TabsPagerAdapter(FragmentManager fm, String[] tabs, ArrayList<FactoryMethod> tabsToDisplay) {
+    public TabsPagerAdapter(FragmentManager fm, String[] tabs, ArrayList<FactoryMethodInterface> tabsToDisplay) {
         super(fm);
         TabsPagerAdapter.tabs = tabs;
         TabsPagerAdapter.tabsToDisplay = tabsToDisplay;

@@ -12,7 +12,7 @@ import com.iwan_b.chummersr5.data.Attribute;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.PriorityCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethodInterface;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
@@ -38,7 +38,7 @@ public class SwipeFragmentHolder extends AppCompatActivity {
         final ViewPager pager = (ViewPager) findViewById(R.id.pager);
 
         String[] listOfTabs = { "Attributes", "Magic", "Active Skills", "Knowledge Skills"};
-        ArrayList<FactoryMethod> tabsToCall = new ArrayList<>();
+        ArrayList<FactoryMethodInterface> tabsToCall = new ArrayList<>();
         tabsToCall.add(new com.iwan_b.chummersr5.fragments.MainStats.MainContainer());
         tabsToCall.add(new com.iwan_b.chummersr5.fragments.Magic.MainContainer());
         tabsToCall.add(new com.iwan_b.chummersr5.fragments.ActiveSkill.MainContainer());

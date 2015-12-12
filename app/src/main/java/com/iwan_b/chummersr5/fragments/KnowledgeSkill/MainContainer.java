@@ -26,7 +26,7 @@ import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
 import com.iwan_b.chummersr5.fragments.ActiveSkill.SkillTableRow;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethod;
+import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethodInterface;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
@@ -34,7 +34,7 @@ import com.iwan_b.chummersr5.utility.ChummerMethods;
 import java.util.ArrayList;
 
 
-public class MainContainer extends Fragment implements UpdateInterface, FactoryMethod {
+public class MainContainer extends Fragment implements UpdateInterface, FactoryMethodInterface {
     private static View rootView;
 
     public static void updateKarma() {
