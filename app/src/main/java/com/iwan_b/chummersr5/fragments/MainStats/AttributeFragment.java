@@ -152,7 +152,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                     spec = true;
                     break;
                 case "magic":
-                    if (ShadowrunCharacter.getCharacter().getUserType() < ChummerConstants.userType.magician.ordinal()) {
+                    if (ShadowrunCharacter.getCharacter().getUserType() >= ChummerConstants.userType.magician.ordinal()) {
                         baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseMagic();
                         maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxMagic();
                         attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
