@@ -166,22 +166,24 @@ public class NewCharacterPriorityTable extends Activity {
                     PriorityCounters.getCounters().setSkill(skillTable.get(skillIndex));
                     PriorityCounters.getCounters().setRes(resTable.get(resIndex));
 
-                    // Set the initial display counters
-                    FreeCounters.getCounters().setFreeAttributes((int) PriorityCounters.getCounters().getAttr().getStats());
-                    FreeCounters.getCounters().setFreeSpecAttributes((int) PriorityCounters.getCounters().getMeta().getStats());
-
-                    FreeCounters.getCounters().setFreeSpells(0);
-                    for (Modifier m : PriorityCounters.getCounters().getMagic().getMods()) {
-                        if (m.getName().equalsIgnoreCase("free_spells")) {
-                            FreeCounters.getCounters().setFreeSpells((int) m.getAmount());
-                        }
-                    }
-
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getMeta().getMods(), ShadowrunCharacter.getCharacter());
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getAttr().getMods(), ShadowrunCharacter.getCharacter());
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getMagic().getMods(), ShadowrunCharacter.getCharacter());
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getSkill().getMods(), ShadowrunCharacter.getCharacter());
                     ChummerMethods.addModstoChar(PriorityCounters.getCounters().getRes().getMods(), ShadowrunCharacter.getCharacter());
+
+                    // Set the initial display counters
+                    FreeCounters.getCounters().setFreeAttributes((int) PriorityCounters.getCounters().getAttr().getStats());
+                    FreeCounters.getCounters().setFreeSpecAttributes((int) PriorityCounters.getCounters().getMeta().getStats());
+
+                    if(PriorityCounters.getCounters().getMagic() != null && PriorityCounters.getCounters().getMagic().getMods() != null) {
+                        FreeCounters.getCounters().setFreeSpells(0);
+                        for (Modifier m : PriorityCounters.getCounters().getMagic().getMods()) {
+                            if (m.getName().equalsIgnoreCase("free_spells")) {
+                                FreeCounters.getCounters().setFreeSpells((int) m.getAmount());
+                            }
+                        }
+                    }
 
                     // TODO get the karma from an xml file.
                     ShadowrunCharacter.setKarma(ChummerConstants.startingKarma);

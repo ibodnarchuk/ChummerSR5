@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rituals>
+    <!--<ritual>-->
+        <!--<name></name>-->
+        <!--<categories></categories>-->
+        <!--<summary></summary>-->
+        <!--<book></book>-->
+        <!--<page></page>-->
+    <!--</ritual>-->
+
+    <ritual>
+        <name>Curse</name>
+        <categories>Material Link, Spell</categories>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ritual>
+
+    <ritual>
+        <name>Prodigal Spell</name>
+        <categories>Spell, Spotter</categories>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ritual>
+
+    <ritual>
+        <name>Remote Sensing</name>
+        <categories>Spell, Spotter</categories>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ritual>
+
+    <ritual>
+        <name>Ward</name>
+        <categories>Anchored</categories>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ritual>
+
+    <ritual>
+        <name>Circle of Protection</name>
+        <categories>Anchored</categories>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ritual>
+
+    <ritual>
+        <name>Circle of Healing</name>
+        <categories>Anchored, Spell</categories>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ritual>
+
+    <ritual>
+        <name>Renascence</name>
+        <categories>Anchored, Spell</categories>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ritual>
+
+    <ritual>
+        <name>Watcher</name>
+        <categories>Minion</categories>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ritual>
+
+    <ritual>
+        <name>Homunculus</name>
+        <categories>Minion</categories>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ritual>
+</rituals>

@@ -7,7 +7,48 @@
         android:id="@+id/fragment_magic_main_spells_listview"
         android:layout_width="200dp"
         android:layout_height="match_parent"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="#b6b6b6"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/fragment_magic_main_spells_listview"
+        android:layout_toEndOf="@+id/fragment_magic_main_spells_listview"
+        android:id="@+id/view" />
+
+    <ListView
+        android:id="@+id/fragment_magic_main_rituals_listview"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/view"
+        android:layout_toEndOf="@+id/view" />
+
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="#b6b6b6"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/fragment_magic_main_rituals_listview"
+        android:layout_toEndOf="@+id/fragment_magic_main_rituals_listview"
+        android:id="@+id/view2" />
+
+    <ListView
+        android:id="@+id/fragment_magic_main_alchemy_listview"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/fragment_magic_main_rituals_listview"
+        android:layout_toEndOf="@+id/fragment_magic_main_rituals_listview" />
 
     <TextView
         android:id="@+id/fragment_magic_main_free_spells_counter"

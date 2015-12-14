@@ -1,6 +1,5 @@
 package com.iwan_b.chummersr5.fragments.Magic;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +7,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.iwan_b.chummersr5.data.Spell;
+import com.iwan_b.chummersr5.data.Ritual;
 
 import java.util.ArrayList;
 
-public class SpellArrayAdapter extends ArrayAdapter<Spell> {
+public class RitualArrayAdapter extends ArrayAdapter<Ritual> {
     private final Context context;
-    private final ArrayList<Spell> values;
+    private final ArrayList<Ritual> values;
 
-    public SpellArrayAdapter(Context context, int textViewResourceId, ArrayList<Spell> items) {
+    public RitualArrayAdapter(Context context, int textViewResourceId, ArrayList<Ritual> items) {
         super(context, textViewResourceId, items);
         this.context = context;
         this.values = items;
@@ -41,14 +40,14 @@ public class SpellArrayAdapter extends ArrayAdapter<Spell> {
 
         // fill data
         ViewHolder holder = (ViewHolder) rowView.getTag();
-        Spell s = values.get(position);
-        holder.text.setText(s.getName());
+        Ritual r = values.get(position);
+        holder.text.setText(r.getName());
 
         return rowView;
     }
 
     @Override
-    public Spell getItem(int position) {
+    public Ritual getItem(int position) {
         return values.get(position);
     }
 }

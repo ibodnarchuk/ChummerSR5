@@ -18,7 +18,8 @@ public class ShadowrunCharacter implements Serializable {
     private ArrayList<Quality> positiveQualities;
     private ArrayList<Quality> negativeQualities;
     private ArrayList<Spell> spells;
-
+    private ArrayList<Ritual> rituals;
+    private ArrayList<Spell> alchemyFormulas;
     private Map<String, ArrayList<Modifier>> modifiers;
 
     private ShadowrunCharacter() {
@@ -41,6 +42,22 @@ public class ShadowrunCharacter implements Serializable {
 
     public static void setKarma(final int karma) {
         ShadowrunCharacter.karma = karma;
+    }
+
+    public ArrayList<Spell> getAlchemyFormulas() {
+        return alchemyFormulas;
+    }
+
+    public void setAlchemyFormulas(ArrayList<Spell> alchemyFormulas) {
+        this.alchemyFormulas = alchemyFormulas;
+    }
+
+    public ArrayList<Ritual> getRituals() {
+        return rituals;
+    }
+
+    public void setRituals(ArrayList<Ritual> rituals) {
+        this.rituals = rituals;
     }
 
     public Attribute getAttributes() {
@@ -90,6 +107,8 @@ public class ShadowrunCharacter implements Serializable {
                 ", positiveQualities=" + positiveQualities +
                 ", negativeQualities=" + negativeQualities +
                 ", spells=" + spells +
+                ", rituals=" + rituals +
+                ", alchemyFormulas=" + alchemyFormulas +
                 ", modifiers=" + modifiers +
                 '}';
     }

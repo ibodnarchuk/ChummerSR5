@@ -37,17 +37,27 @@ public class SwipeFragmentHolder extends AppCompatActivity {
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         final ViewPager pager = (ViewPager) findViewById(R.id.pager);
 
-        String[] listOfTabs = { "Attributes", "Magic", "Active Skills", "Knowledge Skills"};
+        ArrayList<String> listOfTabs = new ArrayList<>();
+
         ArrayList<FactoryMethodInterface> tabsToCall = new ArrayList<>();
+        listOfTabs.add("Attributes");
         tabsToCall.add(new com.iwan_b.chummersr5.fragments.MainStats.MainContainer());
-        tabsToCall.add(new com.iwan_b.chummersr5.fragments.Magic.MainContainer());
+
+        if(ShadowrunCharacter.getCharacter().getAttributes().getBaseMagic() > 0) {
+            listOfTabs.add("Magic");
+            tabsToCall.add(new com.iwan_b.chummersr5.fragments.Magic.MainContainer());
+        }
+
+        listOfTabs.add("Active Skills");
         tabsToCall.add(new com.iwan_b.chummersr5.fragments.ActiveSkill.MainContainer());
+
+        listOfTabs.add("Knowledge Skills");
         tabsToCall.add(new com.iwan_b.chummersr5.fragments.KnowledgeSkill.MainContainer());
 
         // TODO this might not be the best thing to hardcode. Although I suppose the application should be light in usage anyways.
-        pager.setOffscreenPageLimit(listOfTabs.length);
+        pager.setOffscreenPageLimit(listOfTabs.size());
 
-        final TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager(), listOfTabs, tabsToCall);
+        final TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager(), listOfTabs.toArray(new String[listOfTabs.size()]), tabsToCall);
 
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -56,7 +66,7 @@ public class SwipeFragmentHolder extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-               UpdateInterface fragment = (UpdateInterface) adapter.instantiateItem(pager, position);
+                UpdateInterface fragment = (UpdateInterface) adapter.instantiateItem(pager, position);
                 if (fragment != null) {
                     fragment.update();
                 }
