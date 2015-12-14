@@ -13,9 +13,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
 import com.iwan_b.chummersr5.R;
+import com.iwan_b.chummersr5.data.Attribute;
 import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.Modifier;
-import com.iwan_b.chummersr5.data.PriorityCounters;
 import com.iwan_b.chummersr5.data.PriorityTable;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
@@ -160,30 +160,29 @@ public class NewCharacterPriorityTable extends Activity {
 
                     Intent i = new Intent(NewCharacterPriorityTable.this, SwipeFragmentHolder.class);
 
-                    PriorityCounters.getCounters().setMeta(metaTable.get(metaIndex));
-                    PriorityCounters.getCounters().setAttr(attrTable.get(attrIndex));
-                    PriorityCounters.getCounters().setMagic(magicTable.get(magicIndex));
-                    PriorityCounters.getCounters().setSkill(skillTable.get(skillIndex));
-                    PriorityCounters.getCounters().setRes(resTable.get(resIndex));
 
-                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getMeta().getMods(), ShadowrunCharacter.getCharacter());
-                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getAttr().getMods(), ShadowrunCharacter.getCharacter());
-                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getMagic().getMods(), ShadowrunCharacter.getCharacter());
-                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getSkill().getMods(), ShadowrunCharacter.getCharacter());
-                    ChummerMethods.addModstoChar(PriorityCounters.getCounters().getRes().getMods(), ShadowrunCharacter.getCharacter());
+                    ChummerMethods.addModstoChar(metaTable.get(metaIndex).getMods(), ShadowrunCharacter.getCharacter());
+                    ChummerMethods.addModstoChar(attrTable.get(attrIndex).getMods(), ShadowrunCharacter.getCharacter());
+                    ChummerMethods.addModstoChar(magicTable.get(magicIndex).getMods(), ShadowrunCharacter.getCharacter());
+                    ChummerMethods.addModstoChar(skillTable.get(skillIndex).getMods(), ShadowrunCharacter.getCharacter());
+                    ChummerMethods.addModstoChar(resTable.get(resIndex).getMods(), ShadowrunCharacter.getCharacter());
+
+                    setUserType(magicIndex);
 
                     // Set the initial display counters
-                    FreeCounters.getCounters().setFreeAttributes((int) PriorityCounters.getCounters().getAttr().getStats());
-                    FreeCounters.getCounters().setFreeSpecAttributes((int) PriorityCounters.getCounters().getMeta().getStats());
+                    FreeCounters.getCounters().setFreeAttributes((int) attrTable.get(attrIndex).getStats());
+                    FreeCounters.getCounters().setFreeSpecAttributes((int) metaTable.get(metaIndex).getStats());
 
-                    if(PriorityCounters.getCounters().getMagic() != null && PriorityCounters.getCounters().getMagic().getMods() != null) {
+                    if (ShadowrunCharacter.getCharacter().getUserType() >= ChummerConstants.userType.magician.ordinal()) {
                         FreeCounters.getCounters().setFreeSpells(0);
-                        for (Modifier m : PriorityCounters.getCounters().getMagic().getMods()) {
+                        for (Modifier m : magicTable.get(magicIndex).getMods()) {
                             if (m.getName().equalsIgnoreCase("free_spells")) {
                                 FreeCounters.getCounters().setFreeSpells((int) m.getAmount());
                             }
                         }
                     }
+
+                    buildChar(metaIndex, magicIndex);
 
                     // TODO get the karma from an xml file.
                     ShadowrunCharacter.setKarma(ChummerConstants.startingKarma);
@@ -196,6 +195,31 @@ public class NewCharacterPriorityTable extends Activity {
                 }
             }
         });
+
+    }
+
+    private void setUserType(int magicIndex) {
+        switch (magicTable.get(magicIndex).getUserType().toLowerCase()) {
+            // TODO hardcoded
+            case "mundane":
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.mundane.ordinal());
+                break;
+            case "technomancer":
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.technomancer.ordinal());
+                break;
+            case "adept":
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.adept.ordinal());
+                break;
+            case "magician":
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.magician.ordinal());
+                break;
+            case "aspected_magician":
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.aspected_magician.ordinal());
+                break;
+            case "mystic_adept":
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.mystic_adept.ordinal());
+                break;
+        }
 
     }
 
@@ -750,8 +774,8 @@ public class NewCharacterPriorityTable extends Activity {
                                 case "metatype":
                                     currentAttribute.setMetaTypeName(parser.nextText());
                                     break;
-                                case "magictype":
-                                    currentAttribute.setMagicType(parser.nextText());
+                                case "usertype":
+                                    currentAttribute.setUserType(parser.nextText());
                                     break;
                             }
                         }
@@ -787,4 +811,236 @@ public class NewCharacterPriorityTable extends Activity {
 
         return Attributes;
     }
+
+
+    private void buildChar(int metaIndex, int magicIndex) {
+        ShadowrunCharacter newCharacter = ShadowrunCharacter.getCharacter();
+
+        String metastring = metaTable.get(metaIndex).getMetaTypeName();
+
+        // TODO make a metatype class
+        final Attribute attrs = readAttributeXML("metatypes/" + metastring + ".xml");
+
+        attrs.setBaseMagic(0);
+        attrs.setBaseRes(0);
+        attrs.setMaxMagic(6);
+        attrs.setMaxRes(6);
+
+        // Test if they are mundane or not
+        if (newCharacter.getUserType() >= ChummerConstants.userType.magician.ordinal()) {
+            attrs.setBaseMagic((int) magicTable.get(magicIndex).getStats());
+            attrs.setMagic((int) magicTable.get(magicIndex).getStats());
+        } else if (newCharacter.getUserType() == ChummerConstants.userType.technomancer.ordinal()) {
+            attrs.setBaseRes((int) magicTable.get(magicIndex).getStats());
+            attrs.setRes((int) magicTable.get(magicIndex).getStats());
+        }
+
+        newCharacter.setAttributes(attrs);
+    }
+
+    private Attribute parseAttributeXML(final XmlPullParser parser) throws XmlPullParserException, IOException {
+        Attribute attr = null;
+        Modifier m = null;
+        boolean mod = false;
+
+        int eventType = parser.getEventType();
+        // TODO change all the hardcoded xml properties used further down
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            String name;
+            switch (eventType) {
+                case XmlPullParser.START_DOCUMENT:
+                    name = parser.getName();
+                    // Log.i(ChummerConstants.TAG, "START_DOCUMENT " + name);
+                    break;
+                case XmlPullParser.START_TAG:
+                    name = parser.getName();
+                    if (name.equalsIgnoreCase("metatype")) {
+                        attr = new Attribute();
+
+                        int attCount = parser.getAttributeCount();
+                        // TODO example of how to get the string
+                        String p = getString(R.string.type);
+                    } else if (attr != null) {
+                        if (name.equalsIgnoreCase("mod")) {
+                            m = new Modifier();
+                            mod = true;
+                        }
+
+                        if (mod) {
+                            switch (name.toLowerCase()) {
+                                case "name":
+                                    m.setName(parser.nextText());
+                                    break;
+                                case "amount":
+                                    Integer i;
+                                    // TODO figure if this is the best place. Currently
+                                    // throws an error if the user doesn't put anything
+                                    // between the brackets in the xml file
+                                    try {
+                                        i = Integer.valueOf(parser.nextText());
+                                    } catch (NumberFormatException e) {
+                                        i = 0;
+                                    }
+                                    m.setAmount(i);
+                                    break;
+                                case "displaytext":
+                                    m.setDisplayText(parser.nextText());
+                                    break;
+                                case "summary":
+                                    m.setSummary(parser.nextText());
+                                    break;
+                                case "book":
+                                    m.setBook(parser.nextText());
+                                    break;
+                                case "page":
+                                    m.setPage(parser.nextText());
+                                    break;
+                            }
+
+                        } else {
+                            String s = parser.nextText();
+                            Integer i;
+
+                            switch (name.toLowerCase()) {
+                                case "race":
+                                    attr.setRace(s);
+                                    break;
+                            /* Base stats and starting stats */
+                                case "basebody":
+                                    i = Integer.valueOf(s);
+                                    attr.setBaseBody(i);
+                                    attr.setBody(i);
+                                    break;
+                                case "baseagi":
+                                    i = Integer.valueOf(s);
+                                    attr.setBaseAgi(i);
+                                    attr.setAgi(i);
+                                    break;
+                                case "baserea":
+                                    i = Integer.valueOf(s);
+                                    attr.setBaseRea(i);
+                                    attr.setRea(i);
+                                    break;
+                                case "basestr":
+                                    i = Integer.valueOf(s);
+                                    attr.setBaseStr(i);
+                                    attr.setStr(i);
+                                    break;
+                                case "basewil":
+                                    i = Integer.valueOf(s);
+                                    attr.setBaseWil(i);
+                                    attr.setWil(i);
+                                    break;
+                                case "baselog":
+                                    i = Integer.valueOf(s);
+                                    attr.setBaseLog(i);
+                                    attr.setLog(i);
+                                    break;
+                                case "baseintu":
+                                    i = Integer.valueOf(s);
+                                    attr.setBaseInt(i);
+                                    attr.setIntu(i);
+                                    break;
+                                case "basecha":
+                                    i = Integer.valueOf(s);
+                                    attr.setBaseCha(i);
+                                    attr.setCha(i);
+                                    break;
+                                case "baseedge":
+                                    i = Integer.valueOf(s);
+                                    attr.setBaseEdge(i);
+                                    attr.setEdge(i);
+                                    break;
+                            /* Max Stats here */
+                                case "maxbody":
+                                    i = Integer.valueOf(s);
+                                    attr.setMaxBody(i);
+                                    break;
+                                case "maxagi":
+                                    i = Integer.valueOf(s);
+                                    attr.setMaxAgi(i);
+                                    break;
+                                case "maxrea":
+                                    i = Integer.valueOf(s);
+                                    attr.setMaxRea(i);
+                                    break;
+                                case "maxstr":
+                                    i = Integer.valueOf(s);
+                                    attr.setMaxStr(i);
+                                    break;
+                                case "maxwil":
+                                    i = Integer.valueOf(s);
+                                    attr.setMaxWil(i);
+                                    break;
+                                case "maxlog":
+                                    i = Integer.valueOf(s);
+                                    attr.setMaxLog(i);
+                                    break;
+                                case "maxintu":
+                                    i = Integer.valueOf(s);
+                                    attr.setMaxInt(i);
+                                    break;
+                                case "maxcha":
+                                    i = Integer.valueOf(s);
+                                    attr.setMaxCha(i);
+                                    break;
+                                case "maxedge":
+                                    i = Integer.valueOf(s);
+                                    attr.setMaxEdge(i);
+                                    break;
+                                case "ess":
+                                    i = Integer.valueOf(s);
+                                    attr.setEss(i);
+                                    break;
+                            }
+
+                        }
+
+                    }
+                    // Log.i(ChummerConstants.TAG, "START_TAG " + name);
+                    break;
+                case XmlPullParser.END_TAG:
+                    name = parser.getName();
+
+                    if (name.equalsIgnoreCase("mod")) {
+                        ChummerMethods.addModstoChar(m, ShadowrunCharacter.getCharacter());
+                        m = null;
+                        mod = false;
+                    }
+                    if (name.equalsIgnoreCase("metatype")) {
+                        return attr;
+                    }
+
+                    // Log.i(ChummerConstants.TAG, "END_TAG " + name);
+            }
+
+            eventType = parser.next();
+        }
+
+        return attr;
+    }
+
+    private Attribute readAttributeXML(final String fileLocation) {
+        Attribute attr = null;
+        try {
+            XmlPullParserFactory pullParserFactory;
+
+            pullParserFactory = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = pullParserFactory.newPullParser();
+
+            InputStream in_s = getApplicationContext().getAssets().open(fileLocation);
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            parser.setInput(in_s, null);
+
+            attr = parseAttributeXML(parser);
+
+        } catch (XmlPullParserException e) {
+            Log.d(ChummerConstants.TAG, "XmlPullParserException: " + e.getMessage());
+        } catch (IOException e) {
+            Log.d(ChummerConstants.TAG, "IOException: " + e.getMessage());
+        }
+
+        return attr;
+    }
+
 }

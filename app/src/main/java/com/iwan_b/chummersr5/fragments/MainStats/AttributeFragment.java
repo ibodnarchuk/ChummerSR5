@@ -152,9 +152,9 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                     spec = true;
                     break;
                 case "magic":
-                    baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseMagic();
-                    maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxMagic();
-                    if (baseStat > 0) {
+                    if (ShadowrunCharacter.getCharacter().getUserType() < ChummerConstants.userType.magician.ordinal()) {
+                        baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseMagic();
+                        maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxMagic();
                         attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
                     } else {
                         // Skip and not add to the table
@@ -163,9 +163,9 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                     spec = true;
                     break;
                 case "technomancer":
-                    baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseRes();
-                    maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxRes();
-                    if (baseStat > 0) {
+                    if (ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.technomancer.ordinal()) {
+                        baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseRes();
+                        maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxRes();
                         attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
                     } else {
                         // Skip and not add to the table

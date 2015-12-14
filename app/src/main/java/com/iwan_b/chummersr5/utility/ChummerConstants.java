@@ -18,15 +18,19 @@ public class ChummerConstants {
     public final static int attrPointUsed = -5;
     public final static int freeSpellUsed = -6;
 
-    public enum tableLayout{
-        title,attr,sub,lvl,add,spinner,extra
+    public enum userType {
+        mundane, technomancer, adept, magician, aspected_magician, mystic_adept
     }
 
-    public enum extra{
+    public enum tableLayout {
+        title, attr, sub, lvl, add, spinner, extra
+    }
+
+    public enum extra {
         spec
     }
 
-    public enum counters{
-        activeSkills,activeGroupSkills,knowledgeSkills,languageSkills
+    public enum counters {
+        activeSkills, activeGroupSkills, knowledgeSkills, languageSkills
     }
 }

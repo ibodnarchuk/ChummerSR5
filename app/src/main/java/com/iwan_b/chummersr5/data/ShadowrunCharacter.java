@@ -17,6 +17,7 @@ public class ShadowrunCharacter implements Serializable {
     private Attribute attributes;
     private ArrayList<Quality> positiveQualities;
     private ArrayList<Quality> negativeQualities;
+    private int userType;
     private ArrayList<Spell> spells;
     private ArrayList<Ritual> rituals;
     private ArrayList<Spell> alchemyFormulas;
@@ -111,5 +112,13 @@ public class ShadowrunCharacter implements Serializable {
                 ", alchemyFormulas=" + alchemyFormulas +
                 ", modifiers=" + modifiers +
                 '}';
+    }
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
     }
 }

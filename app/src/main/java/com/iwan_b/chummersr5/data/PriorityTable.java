@@ -23,7 +23,15 @@ public class PriorityTable implements Serializable {
     private String page;
 
     private String metaTypeName;
-    private String magicType;
+    private String userType;
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 
     public String getBook() {
         return book;
@@ -41,13 +49,6 @@ public class PriorityTable implements Serializable {
         this.displayText = displayText;
     }
 
-    public String getMagicType() {
-        return magicType;
-    }
-
-    public void setMagicType(String magicType) {
-        this.magicType = magicType;
-    }
 
     public String getMetaTypeName() {
         return metaTypeName;
@@ -102,7 +103,7 @@ public class PriorityTable implements Serializable {
         return "PriorityTable [priority=" + priority + ", displayText="
                 + displayText + ", stats=" + stats + ", mods=" + mods
                 + ", summary=" + summary + ", book=" + book + ", page=" + page
-                + ", metaTypeName=" + metaTypeName + ", magicType=" + magicType
+                + ", metaTypeName=" + metaTypeName + ", magicType=" + userType
                 + "]";
     }
 
