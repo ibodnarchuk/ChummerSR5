@@ -18,8 +18,15 @@ public class ChummerConstants {
     public final static int attrPointUsed = -5;
     public final static int freeSpellUsed = -6;
 
+    /**
+     * What type of character the user has. This is in the specific order to group types.
+     * 0 = Mundane
+     * 1 = Technomancer
+     * 2-3 = Adept powers are accessible
+     * 3+ = Spells are available.
+     */
     public enum userType {
-        mundane, technomancer, adept, magician, aspected_magician, mystic_adept
+        mundane, technomancer, adept, mystic_adept, magician, aspected_magician
     }
 
     public enum tableLayout {

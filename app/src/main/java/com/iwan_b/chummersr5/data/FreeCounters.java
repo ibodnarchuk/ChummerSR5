@@ -12,8 +12,8 @@ public class FreeCounters {
     private int freeLanguageSkills;
     private int freeAttributes;
     private int freeSpecAttributes;
-
     private int freeSpells;
+    private float powerPoints;
 
     private FreeCounters() {
     }
@@ -79,5 +79,13 @@ public class FreeCounters {
 
     public void setFreeSpells(int freeSpells) {
         this.freeSpells = freeSpells;
+    }
+
+    public float getPowerPoints() {
+        return powerPoints;
+    }
+
+    public void setPowerPoints(float powerPoints) {
+        this.powerPoints = powerPoints;
     }
 }

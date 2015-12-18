@@ -17,10 +17,11 @@ public class ShadowrunCharacter implements Serializable {
     private Attribute attributes;
     private ArrayList<Quality> positiveQualities;
     private ArrayList<Quality> negativeQualities;
-    private int userType;
+    private ChummerConstants.userType userType;
     private ArrayList<Spell> spells;
     private ArrayList<Ritual> rituals;
     private ArrayList<Spell> alchemyFormulas;
+    private ArrayList<AdeptPower> adeptPowers;
     private Map<String, ArrayList<Modifier>> modifiers;
 
     private ShadowrunCharacter() {
@@ -43,6 +44,14 @@ public class ShadowrunCharacter implements Serializable {
 
     public static void setKarma(final int karma) {
         ShadowrunCharacter.karma = karma;
+    }
+
+    public ArrayList<AdeptPower> getAdeptPowers() {
+        return adeptPowers;
+    }
+
+    public void setAdeptPowers(ArrayList<AdeptPower> adeptPowers) {
+        this.adeptPowers = adeptPowers;
     }
 
     public ArrayList<Spell> getAlchemyFormulas() {
@@ -107,18 +116,20 @@ public class ShadowrunCharacter implements Serializable {
                 "attributes=" + attributes +
                 ", positiveQualities=" + positiveQualities +
                 ", negativeQualities=" + negativeQualities +
+                ", userType=" + userType +
                 ", spells=" + spells +
                 ", rituals=" + rituals +
                 ", alchemyFormulas=" + alchemyFormulas +
+                ", adeptPowers=" + adeptPowers +
                 ", modifiers=" + modifiers +
                 '}';
     }
 
-    public int getUserType() {
+    public ChummerConstants.userType getUserType() {
         return userType;
     }
 
-    public void setUserType(int userType) {
+    public void setUserType(ChummerConstants.userType userType) {
         this.userType = userType;
     }
 }

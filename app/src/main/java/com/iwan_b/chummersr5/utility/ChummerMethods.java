@@ -39,6 +39,23 @@ public class ChummerMethods {
         return (intu + log) * 2;
     }
 
+    public final static boolean isCharAdept(ShadowrunCharacter character) {
+        return character.getUserType() == ChummerConstants.userType.adept || character.getUserType() == ChummerConstants.userType.mystic_adept;
+    }
+
+    public final static boolean isCharMage(ShadowrunCharacter character) {
+        return character.getUserType() == ChummerConstants.userType.mystic_adept || character.getUserType() == ChummerConstants.userType.magician ||
+                character.getUserType() == ChummerConstants.userType.aspected_magician;
+    }
+
+    public final static boolean isCharMagic(ShadowrunCharacter character) {
+        return character.getUserType().ordinal() >= ChummerConstants.userType.adept.ordinal();
+    }
+
+    public static boolean isCharTechnomancer(ShadowrunCharacter character) {
+        return character.getUserType() == ChummerConstants.userType.technomancer;
+    }
+
     /**
      * Adds modifiers to the ShadowrunCharacter. Any duplicate modifiers are
      * added instead of overwritten.

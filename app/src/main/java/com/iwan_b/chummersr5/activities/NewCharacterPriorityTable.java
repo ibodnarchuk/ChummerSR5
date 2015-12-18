@@ -173,7 +173,7 @@ public class NewCharacterPriorityTable extends Activity {
                     FreeCounters.getCounters().setFreeAttributes((int) attrTable.get(attrIndex).getStats());
                     FreeCounters.getCounters().setFreeSpecAttributes((int) metaTable.get(metaIndex).getStats());
 
-                    if (ShadowrunCharacter.getCharacter().getUserType() >= ChummerConstants.userType.magician.ordinal()) {
+                    if (ShadowrunCharacter.getCharacter().getUserType().ordinal() >= ChummerConstants.userType.mystic_adept.ordinal()) {
                         FreeCounters.getCounters().setFreeSpells(0);
                         for (Modifier m : magicTable.get(magicIndex).getMods()) {
                             if (m.getName().equalsIgnoreCase("free_spells")) {
@@ -202,22 +202,22 @@ public class NewCharacterPriorityTable extends Activity {
         switch (magicTable.get(magicIndex).getUserType().toLowerCase()) {
             // TODO hardcoded
             case "mundane":
-                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.mundane.ordinal());
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.mundane);
                 break;
             case "technomancer":
-                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.technomancer.ordinal());
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.technomancer);
                 break;
             case "adept":
-                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.adept.ordinal());
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.adept);
                 break;
             case "magician":
-                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.magician.ordinal());
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.magician);
                 break;
             case "aspected_magician":
-                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.aspected_magician.ordinal());
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.aspected_magician);
                 break;
             case "mystic_adept":
-                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.mystic_adept.ordinal());
+                ShadowrunCharacter.getCharacter().setUserType(ChummerConstants.userType.mystic_adept);
                 break;
         }
 
@@ -827,12 +827,15 @@ public class NewCharacterPriorityTable extends Activity {
         attrs.setMaxRes(6);
 
         // Test if they are mundane or not
-        if (newCharacter.getUserType() >= ChummerConstants.userType.magician.ordinal()) {
-            attrs.setBaseMagic((int) magicTable.get(magicIndex).getStats());
-            attrs.setMagic((int) magicTable.get(magicIndex).getStats());
-        } else if (newCharacter.getUserType() == ChummerConstants.userType.technomancer.ordinal()) {
-            attrs.setBaseRes((int) magicTable.get(magicIndex).getStats());
-            attrs.setRes((int) magicTable.get(magicIndex).getStats());
+        if (ChummerMethods.isCharMagic(ShadowrunCharacter.getCharacter())) {
+            int attrLvl = (int) magicTable.get(magicIndex).getStats();
+            attrs.setBaseMagic(attrLvl);
+            attrs.setMagic(attrLvl);
+            FreeCounters.getCounters().setPowerPoints(attrLvl);
+        } else if (ChummerMethods.isCharTechnomancer(ShadowrunCharacter.getCharacter())) {
+            int attrLvl = (int) magicTable.get(magicIndex).getStats();
+            attrs.setBaseRes(attrLvl);
+            attrs.setRes(attrLvl);
         }
 
         newCharacter.setAttributes(attrs);

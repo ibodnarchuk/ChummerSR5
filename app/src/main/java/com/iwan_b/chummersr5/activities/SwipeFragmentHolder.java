@@ -30,9 +30,15 @@ public class SwipeFragmentHolder extends AppCompatActivity {
         listOfTabs.add("Attributes");
         tabsToCall.add(new com.iwan_b.chummersr5.fragments.MainStats.MainContainer());
 
-        if (ShadowrunCharacter.getCharacter().getUserType() >= ChummerConstants.userType.magician.ordinal()) {
+        if (ShadowrunCharacter.getCharacter().getUserType().ordinal() >= ChummerConstants.userType.mystic_adept.ordinal()) {
             listOfTabs.add("Magic");
             tabsToCall.add(new com.iwan_b.chummersr5.fragments.Magic.MainContainer());
+        }
+
+        if (ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.adept ||
+                ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.mystic_adept) {
+            listOfTabs.add("Adept");
+            tabsToCall.add(new com.iwan_b.chummersr5.fragments.Adept.MainContainer());
         }
 
         listOfTabs.add("Active Skills");

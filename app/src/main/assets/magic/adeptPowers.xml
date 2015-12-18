@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<powers>
+    <!--<power>-->
+        <!--<name></name>-->
+        <!--<costlist></costlist>-->
+        <!--<activation></activation>-->
+        <!--<list></list>-->
+        <!--<singular></singular>-->
+            <!--<mod>-->
+                <!--<name></name>-->
+                <!--<amount></amount>-->
+                <!--<book></book>-->
+                <!--<page></page>-->
+                <!--<summary></summary>-->
+            <!--</mod>-->
+        <!--<summary></summary>-->
+        <!--<book></book>-->
+        <!--<page></page>-->
+    <!--</power>-->
+
+    <power>
+        <name>Adrenaline Boost</name>
+        <costlist>.25</costlist>
+        <activation>true</activation>
+        <summary>Basic summary of Adrenaline Boost</summary>
+        <book>SR5</book>
+        <page>3214</page>
+    </power>
+
+    <power>
+        <name>Astral Perception</name>
+        <costlist>1</costlist>
+        <activation>true</activation>
+        <singular>true</singular>
+        <summary>Another Summary list</summary>
+        <book>SR2</book>
+        <page>4321</page>
+    </power>
+
+    <power>
+        <name>Attribute Boost</name>
+        <costlist>.25</costlist>
+        <activation>true</activation>
+        <list>Attributes.xml</list>
+        <summary>Test Summary Info</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </power>
+
+    <power>
+        <name>Combat Sense</name>
+        <costlist>.5</costlist>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Critical Strike</name>
+        <costlist>.5</costlist>
+        <list>Skills.xml</list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Danger Sense</name>
+        <costlist>.25</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Enhanced Perception</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Enhanced Accuracy</name>
+        <costlist>.25</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Improved Ability</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Improved Physical Attribute</name>
+        <costlist>1</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Improved Potential</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Improved Reflexes</name>
+        <costlist>1.5,2.5,3.5</costlist>
+        <singular>true</singular>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Improved Sense</name>
+        <costlist>.25</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Killing Hands</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Kinesics</name>
+        <costlist>.25</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Light Body</name>
+        <costlist>.25</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Missle Parry</name>
+        <costlist>.25</costlist>
+        <activation>true</activation>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Mystic Armor</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Natural Immunity</name>
+        <costlist>.25</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Pain Resistance</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Rapid Healing</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Spell Resistance</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Traceless Walk</name>
+        <costlist>1</costlist>
+        <list></list>
+        <singular>true</singular>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Voice Control</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+
+    <power>
+        <name>Wall Running</name>
+        <costlist>.5</costlist>
+        <list></list>
+        <singular>true</singular>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </power>
+</powers>

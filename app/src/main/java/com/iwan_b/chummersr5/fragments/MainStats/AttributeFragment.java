@@ -152,7 +152,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                     spec = true;
                     break;
                 case "magic":
-                    if (ShadowrunCharacter.getCharacter().getUserType() >= ChummerConstants.userType.magician.ordinal()) {
+                    if (ShadowrunCharacter.getCharacter().getUserType().ordinal() >= ChummerConstants.userType.mystic_adept.ordinal()) {
                         baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseMagic();
                         maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxMagic();
                         attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
@@ -163,7 +163,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                     spec = true;
                     break;
                 case "technomancer":
-                    if (ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.technomancer.ordinal()) {
+                    if (ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.technomancer) {
                         baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseRes();
                         maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxRes();
                         attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
@@ -324,6 +324,14 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                     break;
                 case "magic":
                     ShadowrunCharacter.getCharacter().getAttributes().setMagic(rating);
+
+                    Float powerPoints = FreeCounters.getCounters().getPowerPoints();
+                    if (isAddition) {
+                        powerPoints++;
+                    } else {
+                        powerPoints--;
+                    }
+                    FreeCounters.getCounters().setPowerPoints(powerPoints);
                     break;
             }
         }
@@ -386,6 +394,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                             currentRating++;
                             attrCounter--;
                             pointHistory.add(ChummerConstants.attrPointUsed);
+                            setCurrentRating(currentRating);
                         } else {
                             // See if they have enough karma to buy the next rating
                             if ((currentRating + 1) * 5 <= karmaUnused) {
@@ -394,6 +403,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                                 karmaUnused -= (currentRating + 1) * 5;
 
                                 currentRating++;
+                                setCurrentRating(currentRating);
                             }
                         }
                     } else {
@@ -403,6 +413,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                                 currentRating++;
                                 attrCounter--;
                                 pointHistory.add(ChummerConstants.attrPointUsed);
+                                setCurrentRating(currentRating);
                             } else {
                                 // See if they have enough karma to buy the next rating
                                 if ((currentRating + 1) * 5 <= karmaUnused) {
@@ -411,6 +422,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                                     karmaUnused -= (currentRating + 1) * 5;
 
                                     currentRating++;
+                                    setCurrentRating(currentRating);
                                 }
 
                             }
@@ -437,6 +449,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                     }
                     currentRating--;
                     pointHistory.remove(pointHistory.size() - 1);
+                    setCurrentRating(currentRating);
                 }
             }
 
@@ -448,8 +461,6 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
             } else {
                 FreeCounters.getCounters().setFreeAttributes(attrCounter);
             }
-
-            setCurrentRating(currentRating);
 
             ShadowrunCharacter.setKarma(karmaUnused);
             updateCounters();

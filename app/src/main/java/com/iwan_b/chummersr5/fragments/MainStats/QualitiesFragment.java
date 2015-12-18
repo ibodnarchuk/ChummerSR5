@@ -680,8 +680,7 @@ public class QualitiesFragment extends Fragment implements UpdateInterface {
                 // If the user has a cost list display it
                 ArrayList<Integer> costList = new ArrayList<>();
                 for (final String costy : qualitySelected.getCostList().split(",")) {
-                    // try to add the integer. The user could have entered poor
-                    // xml.
+                    // try to add the integer. The user could have entered poor xml.
                     try {
                         costList.add(Integer.valueOf(costy));
                     } catch (NumberFormatException e) {
