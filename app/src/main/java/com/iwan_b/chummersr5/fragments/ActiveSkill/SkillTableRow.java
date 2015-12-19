@@ -94,43 +94,27 @@ public class SkillTableRow implements UpdateInterface {
         newTableRow.setGravity(Gravity.CENTER_VERTICAL);
 
         // TODO maybe change this to a layout xml file
-        final TextView titleTxtView = new TextView(rootView.getContext());
-        final TextView attrTxtView = new TextView(rootView.getContext());
-        final Button subButton = new Button(rootView.getContext());
-        final TextView skillValueTxtView = new TextView(rootView.getContext());
-        final Button addButton = new Button(rootView.getContext());
+        final TextView titleTxtView = ChummerMethods.genTxtView(rootView.getContext(), skill.getSkillName());
+        final TextView attrTxtView = ChummerMethods.genTxtView(rootView.getContext(), skill.getAttrName());
+        final Button subButton = ChummerMethods.genButton(rootView.getContext(), "-");
+        final TextView skillValueTxtView = ChummerMethods.genTxtView(rootView.getContext(), String.valueOf(skill.getRating()));
+        final Button addButton =  ChummerMethods.genButton(rootView.getContext(), "+");
         final LinearLayout extraInfo = new LinearLayout(rootView.getContext());
         final Spinner spinner = new Spinner(rootView.getContext());
 
-        // Title of the attribute
-        titleTxtView.setText(skill.getSkillName());
         TableRow.LayoutParams lp = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         lp.setMargins(0, 0, 5, 0);
         titleTxtView.setLayoutParams(lp);
 
         // Title of the attribute
-        attrTxtView.setText(skill.getAttrName());
-//        attrTxtView.setLayoutParams(lp);
-
-        // Subtract Button
-        subButton.setText("-");
-        TableRow.LayoutParams lp2 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        subButton.setLayoutParams(lp2);
+        attrTxtView.setLayoutParams(lp);
 
         // Value of skill
         TableRow.LayoutParams lp3 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         lp3.setMargins(20, 20, 20, 20);
         skillValueTxtView.setLayoutParams(lp3);
-        // TODO change the hardcoded values
-        skillValueTxtView.setText(String.valueOf(skill.getRating()));
         skillValueTxtView.setGravity(1);
         skillValueTxtView.setMinWidth(50);
-
-        // Addition Button
-        addButton.setText("+");
-        TableRow.LayoutParams lp4 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        addButton.setLayoutParams(lp4);
-
 
         //selected item will look like a spinner set from XML
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_spinner_item);

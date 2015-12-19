@@ -831,7 +831,9 @@ public class NewCharacterPriorityTable extends Activity {
             int attrLvl = (int) magicTable.get(magicIndex).getStats();
             attrs.setBaseMagic(attrLvl);
             attrs.setMagic(attrLvl);
-            FreeCounters.getCounters().setPowerPoints(attrLvl);
+            if(ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.adept) {
+                FreeCounters.getCounters().setPowerPoints(attrLvl);
+            }
         } else if (ChummerMethods.isCharTechnomancer(ShadowrunCharacter.getCharacter())) {
             int attrLvl = (int) magicTable.get(magicIndex).getStats();
             attrs.setBaseRes(attrLvl);

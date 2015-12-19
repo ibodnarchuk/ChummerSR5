@@ -1,6 +1,11 @@
 package com.iwan_b.chummersr5.utility;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
+import android.widget.Button;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iwan_b.chummersr5.data.Modifier;
@@ -78,5 +83,21 @@ public class ChummerMethods {
             temp.add(m);
             character.getModifiers().put(m.getName(), temp);
         }
+    }
+
+    public final static Button genButton(Context context, String text) {
+        final Button newButton = new Button(context);
+        newButton.setText(text);
+
+        TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        newButton.setLayoutParams(layoutParams);
+
+        return newButton;
+    }
+
+    public static TextView genTxtView(Context context, String text) {
+        final TextView newTextView = new TextView(context);
+        newTextView.setText(text);
+        return newTextView;
     }
 }

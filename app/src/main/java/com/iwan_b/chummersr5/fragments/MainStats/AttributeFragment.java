@@ -21,6 +21,7 @@ import com.iwan_b.chummersr5.data.Quality;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
+import com.iwan_b.chummersr5.utility.ChummerMethods;
 import com.iwan_b.chummersr5.utility.ChummerXML;
 
 import java.util.ArrayList;
@@ -77,11 +78,11 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
             TableRow newTableRow = new TableRow(rootView.getContext());
             newTableRow.setGravity(Gravity.CENTER_VERTICAL);
 
-            TextView titleTxtView = new TextView(rootView.getContext());
-            Button subButton = new Button(rootView.getContext());
-            TextView attrDisplayTxtView = new TextView(rootView.getContext());
-            Button addButton = new Button(rootView.getContext());
-            TextView extraInfo = new TextView(rootView.getContext());
+            TextView titleTxtView = ChummerMethods.genTxtView(rootView.getContext(), attrName);
+            Button subButton = ChummerMethods.genButton(rootView.getContext(), "-");
+            TextView attrDisplayTxtView = null;
+            Button addButton = ChummerMethods.genButton(rootView.getContext(), "+");
+            TextView extraInfo = ChummerMethods.genTxtView(rootView.getContext(), "");
 
             // Default stats
             int baseStat = ChummerConstants.baseStat;
@@ -89,18 +90,12 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
             boolean spec = false;
 
             // Title of the attribute
-            titleTxtView.setText(attrName);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             lp.setMargins(0, 0, 5, 0);
             titleTxtView.setLayoutParams(lp);
             newTableRow.addView(titleTxtView);
 
             // Subtract Button
-            subButton.setText("-");
-            TableRow.LayoutParams lp2 = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            subButton.setLayoutParams(lp2);
-            newTableRow.addView(subButton);
-
 
             Resources res = getResources();
 
@@ -108,54 +103,54 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                 case "body":
                     baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseBody();
                     maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxBody();
-                    attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                    attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     break;
                 case "agility":
                     baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseAgi();
                     maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxAgi();
-                    attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                    attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     break;
                 case "reaction":
                     baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseRea();
                     maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxRea();
-                    attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                    attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     break;
                 case "strength":
                     baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseStr();
                     maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxStr();
-                    attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                    attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     break;
                 case "will":
                     baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseWil();
                     maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxWil();
-                    attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                    attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     break;
                 case "logic":
                     baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseLog();
                     maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxLog();
-                    attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                    attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     break;
                 case "intuition":
                     baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseInt();
                     maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxInt();
-                    attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                    attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     break;
                 case "charisma":
                     baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseCha();
                     maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxCha();
-                    attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                    attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     break;
                 case "edge":
                     baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseEdge();
                     maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxEdge();
-                    attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                    attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     spec = true;
                     break;
                 case "magic":
-                    if (ShadowrunCharacter.getCharacter().getUserType().ordinal() >= ChummerConstants.userType.mystic_adept.ordinal()) {
+                    if (ChummerMethods.isCharMagic(ShadowrunCharacter.getCharacter())) {
                         baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseMagic();
                         maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxMagic();
-                        attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                        attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     } else {
                         // Skip and not add to the table
                         continue;
@@ -163,10 +158,10 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                     spec = true;
                     break;
                 case "technomancer":
-                    if (ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.technomancer) {
+                    if (ChummerMethods.isCharTechnomancer(ShadowrunCharacter.getCharacter())) {
                         baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseRes();
                         maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxRes();
-                        attrDisplayTxtView.setText(res.getString(R.string.attrText, baseStat, maxStat));
+                        attrDisplayTxtView = ChummerMethods.genTxtView(rootView.getContext(), res.getString(R.string.attrText, baseStat, maxStat));
                     } else {
                         // Skip and not add to the table
                         continue;
@@ -183,13 +178,9 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
             newTableRow.addView(attrDisplayTxtView);
 
             // Addition Button
-            addButton.setText("+");
-            TableRow.LayoutParams lp4 = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            addButton.setLayoutParams(lp4);
             newTableRow.addView(addButton);
 
             // Extra Info
-            extraInfo.setText("");
             newTableRow.addView(extraInfo);
 
             // The amount used for each row
@@ -325,13 +316,15 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                 case "magic":
                     ShadowrunCharacter.getCharacter().getAttributes().setMagic(rating);
 
-                    Float powerPoints = FreeCounters.getCounters().getPowerPoints();
-                    if (isAddition) {
-                        powerPoints++;
-                    } else {
-                        powerPoints--;
+                    if (ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.adept) {
+                        Float powerPoints = FreeCounters.getCounters().getPowerPoints();
+                        if (isAddition) {
+                            powerPoints++;
+                        } else {
+                            powerPoints--;
+                        }
+                        FreeCounters.getCounters().setPowerPoints(powerPoints);
                     }
-                    FreeCounters.getCounters().setPowerPoints(powerPoints);
                     break;
             }
         }

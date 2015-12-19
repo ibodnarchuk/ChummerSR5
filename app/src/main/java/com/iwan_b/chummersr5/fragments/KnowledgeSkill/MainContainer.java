@@ -95,8 +95,6 @@ public class MainContainer extends Fragment implements UpdateInterface, FactoryM
 
         TableRow newTableRow = new TableRow(rootView.getContext());
         newTableRow.setGravity(Gravity.CENTER_VERTICAL);
-        newTableRow = new TableRow(rootView.getContext());
-        newTableRow.setGravity(Gravity.CENTER_VERTICAL);
 
         final Button addKnowledgeSkillButtonListener = new Button(rootView.getContext());
         addKnowledgeSkillButtonListener.setText("Add Knowledge Skill");
@@ -110,8 +108,6 @@ public class MainContainer extends Fragment implements UpdateInterface, FactoryM
 
         TableLayout languageSkillLayout = (TableLayout) rootView.findViewById(R.id.fragment_knowledgeskill_languageSkills_TableLayout);
 
-        newTableRow = new TableRow(rootView.getContext());
-        newTableRow.setGravity(Gravity.CENTER_VERTICAL);
         newTableRow = new TableRow(rootView.getContext());
         newTableRow.setGravity(Gravity.CENTER_VERTICAL);
 

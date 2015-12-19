@@ -15,6 +15,7 @@ import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.data.Skill;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
+import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import java.util.ArrayList;
 
@@ -45,22 +46,16 @@ public class SkillGroupTableRow {
         TableRow newTableRow = new TableRow(rootView.getContext());
         newTableRow.setGravity(Gravity.CENTER_VERTICAL);
 
-        final TextView titleTxtView = new TextView(rootView.getContext());
-        final Button subButton = new Button(rootView.getContext());
-        final TextView skillGroupLvlTxtView = new TextView(rootView.getContext());
-        final Button addButton = new Button(rootView.getContext());
+        final TextView titleTxtView = ChummerMethods.genTxtView(rootView.getContext(), sGroup);
+        final Button subButton = ChummerMethods.genButton(rootView.getContext(), "-");
+        final TextView skillGroupLvlTxtView = ChummerMethods.genTxtView(rootView.getContext(), "0");
+        final Button addButton = ChummerMethods.genButton(rootView.getContext(), "+");
         final LinearLayout extraInfo = new LinearLayout(rootView.getContext());
 
         // Title of the attribute
-        titleTxtView.setText(sGroup);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         lp.setMargins(0, 0, 5, 0);
         titleTxtView.setLayoutParams(lp);
-
-        // Subtract Button
-        subButton.setText("-");
-        TableRow.LayoutParams lp2 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        subButton.setLayoutParams(lp2);
 
         // Skill Group Level
         TableRow.LayoutParams lp3 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
@@ -68,21 +63,14 @@ public class SkillGroupTableRow {
 
         skillGroupLvlTxtView.setLayoutParams(lp3);
         // TODO change the hardcoded values
-        skillGroupLvlTxtView.setText("0");
         skillGroupLvlTxtView.setGravity(1);
         skillGroupLvlTxtView.setMinWidth(50);
-
-        // Addition Button
-        addButton.setText("+");
-        TableRow.LayoutParams lp4 = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        addButton.setLayoutParams(lp4);
 
         newTableRow.addView(titleTxtView, ChummerConstants.tableLayout.title.ordinal());
         newTableRow.addView(new TextView(rootView.getContext()), ChummerConstants.tableLayout.attr.ordinal());
         newTableRow.addView(subButton, ChummerConstants.tableLayout.sub.ordinal());
         newTableRow.addView(skillGroupLvlTxtView, ChummerConstants.tableLayout.lvl.ordinal());
         newTableRow.addView(addButton, ChummerConstants.tableLayout.add.ordinal());
-//        newTableRow.addView(extraInfo, ChummerConstants.tableLayout.extra.ordinal());
 
         subButton.setOnClickListener(new SkillGroupOnClickListener(sGroup, skillGroupLvlTxtView, extraInfo, false));
         addButton.setOnClickListener(new SkillGroupOnClickListener(sGroup, skillGroupLvlTxtView, extraInfo, true));
@@ -200,7 +188,7 @@ public class SkillGroupTableRow {
 
                     if (specTxtView.getChildCount() != 0) {
                         TextView allSpecs = (TextView) specTxtView.getChildAt(ChummerConstants.extra.spec.ordinal());
-                        if(!allSpecs.getText().equals("")){
+                        if (!allSpecs.getText().equals("")) {
                             return true;
                         }
                     }
@@ -299,10 +287,10 @@ public class SkillGroupTableRow {
 
                         // Use the free skills first, then karma
                         if (groupSkillCounter > 0 && !skillRowsUsedKarma() && !pointHistory.contains(ChummerConstants.freeSkillGroupLevel) && !wasKarmaUsed(skillGroupDisplayTxtView)) {
-                                currentRating++;
-                                groupSkillCounter--;
-                                pointHistory.add(ChummerConstants.skillGroupPointUsed);
-                                toggleSkillsByGroup(currentRating);
+                            currentRating++;
+                            groupSkillCounter--;
+                            pointHistory.add(ChummerConstants.skillGroupPointUsed);
+                            toggleSkillsByGroup(currentRating);
                         } else {
                             // Forumula for karma needed to advance to next level is: (New Rating x 5)
                             if ((currentRating + 1) * 5 <= karmaUnused) {
@@ -350,11 +338,11 @@ public class SkillGroupTableRow {
                 updateGroupSkillCounter();
                 updateKarma();
             } else {
-                if (!areSkillRowsEqual()){
+                if (!areSkillRowsEqual()) {
                     Toast.makeText(rootView.getContext(), "Make the individual skills the same level.", Toast.LENGTH_SHORT).show();
                 }
 
-                if(skillRowsHaveSpec()){
+                if (skillRowsHaveSpec()) {
                     Toast.makeText(rootView.getContext(), "A skill contains a specialization.", Toast.LENGTH_SHORT).show();
                 }
             }
