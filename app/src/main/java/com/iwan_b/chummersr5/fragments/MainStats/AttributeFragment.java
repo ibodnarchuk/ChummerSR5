@@ -96,6 +96,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
             newTableRow.addView(titleTxtView);
 
             // Subtract Button
+            newTableRow.addView(subButton);
 
             Resources res = getResources();
 
@@ -157,7 +158,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                     }
                     spec = true;
                     break;
-                case "technomancer":
+                case "resonance":
                     if (ChummerMethods.isCharTechnomancer(ShadowrunCharacter.getCharacter())) {
                         baseStat = ShadowrunCharacter.getCharacter().getAttributes().getBaseRes();
                         maxStat = ShadowrunCharacter.getCharacter().getAttributes().getMaxRes();
