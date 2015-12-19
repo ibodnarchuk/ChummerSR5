@@ -32,6 +32,7 @@ import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethodInterface;
 import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
+import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -48,7 +49,6 @@ public class MainContainer extends Fragment implements UpdateInterface, FactoryM
 
     private ArrayList<AdeptPower> allAdaptPowers = new ArrayList<>();
     private ArrayList<AdeptPower> displayedAdeptPowers = new ArrayList<>();
-    private ArrayList<Integer> pointHistoryForSpells = new ArrayList<>();
     private AdeptPowerArrayAdapter AdeptPowerArrayAdapter;
 
     @Override
@@ -69,14 +69,22 @@ public class MainContainer extends Fragment implements UpdateInterface, FactoryM
     public void updateParent() {
     }
 
+    public void updateKarma() {
+        if (rootView != null) {
+            TextView karmaCounterTxtView = (TextView) rootView.findViewById(R.id.karma_counter);
+            karmaCounterTxtView.setText(String.valueOf(ShadowrunCharacter.getKarma()));
+        }
+    }
+
     public void updatePowerPointCounter() {
         if (rootView != null) {
-            TextView powerCounterTxtView = (TextView) rootView.findViewById(R.id.fragment_magic_main_free_power_point_counter);
+            TextView powerCounterTxtView = (TextView) rootView.findViewById(R.id.fragment_adept_main_free_power_point_counter);
             powerCounterTxtView.setText(String.valueOf(FreeCounters.getCounters().getPowerPoints()));
         }
     }
 
     public void updateCounters() {
+        updateKarma();
         updatePowerPointCounter();
     }
 
@@ -88,7 +96,9 @@ public class MainContainer extends Fragment implements UpdateInterface, FactoryM
 
         updateCounters();
 
-        ListView listViewOfAdeptPowers = (ListView) rootView.findViewById(R.id.fragment_magic_main_adept_listview);
+        toggleBuyPowerPoints();
+
+        ListView listViewOfAdeptPowers = (ListView) rootView.findViewById(R.id.fragment_adept_main_adept_listview);
 
         displayedAdeptPowers = new ArrayList<>();
 
@@ -115,6 +125,75 @@ public class MainContainer extends Fragment implements UpdateInterface, FactoryM
         listViewOfAdeptPowers.setOnItemClickListener(new AdeptPowerInfoDialog(null, false));
 
         return rootView;
+    }
+
+    private void toggleBuyPowerPoints(){
+        if(ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.mystic_adept) {
+            final LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.fragment_adept_main_mystic_adept_container);
+
+            final TextView label = ChummerMethods.genTxtView(rootView.getContext(),"Power Points: ");
+            final Button subButton = ChummerMethods.genButton(rootView.getContext(), "-");
+            final TextView rating = ChummerMethods.genTxtView(rootView.getContext(), String.valueOf(FreeCounters.getCounters().getPowerPoints()));
+            final Button addButton = ChummerMethods.genButton(rootView.getContext(), "+");
+
+            TableRow.LayoutParams labelRatingLayoutParams = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+            labelRatingLayoutParams.setMargins(0, 0, 5, 0);
+            label.setLayoutParams(labelRatingLayoutParams);
+
+            TableRow.LayoutParams ratingLayoutParams = new TableRow.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+            ratingLayoutParams.setMargins(20, 0, 20, 0);
+            rating.setLayoutParams(ratingLayoutParams);
+            rating.setGravity(1);
+            rating.setMinWidth(50);
+
+            subButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    float currentRating = Float.valueOf(rating.getText().toString());
+
+                    Float powerPoints = FreeCounters.getCounters().getPowerPoints();
+                    int karmaUnused = ShadowrunCharacter.getKarma();
+                    if (currentRating - 1 >= 0 && powerPoints - 1 >= 0) {
+                        powerPoints--;
+                        karmaUnused += 2;
+                        currentRating--;
+
+                        rating.setText(String.valueOf(currentRating));
+
+                        FreeCounters.getCounters().setPowerPoints(powerPoints);
+                        ShadowrunCharacter.setKarma(karmaUnused);
+                        updateCounters();
+                    }
+                }
+            });
+
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    float currentRating = Float.valueOf(rating.getText().toString());
+
+                    Float powerPoints = FreeCounters.getCounters().getPowerPoints();
+                    int karmaUnused = ShadowrunCharacter.getKarma();
+
+                    if (powerPoints + 1 <= ShadowrunCharacter.getCharacter().getAttributes().getMagic() &&
+                            currentRating + 1 <= ShadowrunCharacter.getCharacter().getAttributes().getMagic()) {
+                        powerPoints++;
+                        karmaUnused -= 2;
+                        currentRating++;
+                        rating.setText(String.valueOf(currentRating));
+
+                        FreeCounters.getCounters().setPowerPoints(powerPoints);
+                        ShadowrunCharacter.setKarma(karmaUnused);
+                        updateCounters();
+                    }
+                }
+            });
+
+            layout.addView(label);
+            layout.addView(subButton);
+            layout.addView(rating);
+            layout.addView(addButton);
+        }
     }
 
     private AdeptPower getNewAdeptPower(final String adeptName) {
