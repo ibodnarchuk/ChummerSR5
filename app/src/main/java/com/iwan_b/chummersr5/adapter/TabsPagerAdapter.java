@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethodInterface;
+import com.iwan_b.chummersr5.fragments.FragmentUtil.FactoryMethodInterface;
 
 import java.util.ArrayList;
 

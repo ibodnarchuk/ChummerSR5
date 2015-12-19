@@ -29,8 +29,8 @@ import com.iwan_b.chummersr5.data.AdeptPower;
 import com.iwan_b.chummersr5.data.FreeCounters;
 import com.iwan_b.chummersr5.data.Modifier;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethodInterface;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
+import com.iwan_b.chummersr5.fragments.FragmentUtil.FactoryMethodInterface;
+import com.iwan_b.chummersr5.fragments.FragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 import com.iwan_b.chummersr5.utility.ChummerMethods;
 

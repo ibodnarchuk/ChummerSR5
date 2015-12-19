@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.iwan_b.chummersr5.R;
 import com.iwan_b.chummersr5.adapter.TabsPagerAdapter;
 import com.iwan_b.chummersr5.data.ShadowrunCharacter;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.FactoryMethodInterface;
-import com.iwan_b.chummersr5.fragments.fragmentUtil.UpdateInterface;
+import com.iwan_b.chummersr5.fragments.FragmentUtil.FactoryMethodInterface;
+import com.iwan_b.chummersr5.fragments.FragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
 
 import java.util.ArrayList;
