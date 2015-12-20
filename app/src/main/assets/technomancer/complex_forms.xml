@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<complexforms>
+    <!--<complexform>-->
+        <!--<name></name>-->
+        <!--<target></target>-->
+        <!--<duration></duration>-->
+        <!--<fading></fading>-->
+        <!--<list></list>-->
+        <!--<summary></summary>-->
+        <!--<book></book>-->
+        <!--<page></page>-->
+    <!--</complexform>-->
+
+    <complexform>
+        <name>Cleaner</name>
+        <target>Persona</target>
+        <duration>S</duration>
+        <fading>1</fading>
+        <summary>Summary example</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </complexform>
+
+    <complexform>
+        <name>Diffusion of [Matrix Attribute]</name>
+        <target>Device</target>
+        <duration>S</duration>
+        <fading>1</fading>
+        <list>attributes.xml</list>
+        <summary>Another example of summary</summary>
+        <book>SR5</book>
+        <page>123</page>
+    </complexform>
+
+    <complexform>
+        <name>Editor</name>
+        <target>File</target>
+        <duration>P</duration>
+        <fading>2</fading>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Infusion of [Matrix Attribute]</name>
+        <target>Device</target>
+        <duration>S</duration>
+        <fading>1</fading>
+        <list>attributes.xml</list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Static Veil</name>
+        <target>Persona</target>
+        <duration>S</duration>
+        <fading>-1</fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Pulse Storm</name>
+        <target>Persona</target>
+        <duration>I</duration>
+        <fading></fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Puppeteer</name>
+        <target>Device</target>
+        <duration>I</duration>
+        <fading>4</fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Resonance Channel</name>
+        <target>Device</target>
+        <duration>S</duration>
+        <fading>-1</fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Resonance Spike</name>
+        <target>Device</target>
+        <duration>I</duration>
+        <fading></fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Resonance Veil</name>
+        <target>Device</target>
+        <duration>S</duration>
+        <fading>-1</fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Static Bomb</name>
+        <target>Self</target>
+        <duration>I</duration>
+        <fading>2</fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Stitches</name>
+        <target>Sprite</target>
+        <duration>P</duration>
+        <fading>-2</fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Transcendent Grid</name>
+        <target>Self</target>
+        <duration>I</duration>
+        <fading>-3</fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+    <complexform>
+        <name>Tattletale</name>
+        <target>Persona</target>
+        <duration>P</duration>
+        <fading>-2</fading>
+        <list></list>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </complexform>
+
+</complexforms>

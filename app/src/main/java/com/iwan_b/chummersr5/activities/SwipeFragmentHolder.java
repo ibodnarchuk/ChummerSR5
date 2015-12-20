@@ -11,6 +11,7 @@ import com.iwan_b.chummersr5.data.ShadowrunCharacter;
 import com.iwan_b.chummersr5.fragments.FragmentUtil.FactoryMethodInterface;
 import com.iwan_b.chummersr5.fragments.FragmentUtil.UpdateInterface;
 import com.iwan_b.chummersr5.utility.ChummerConstants;
+import com.iwan_b.chummersr5.utility.ChummerMethods;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,11 @@ public class SwipeFragmentHolder extends AppCompatActivity {
                 ShadowrunCharacter.getCharacter().getUserType() == ChummerConstants.userType.mystic_adept) {
             listOfTabs.add("Adept");
             tabsToCall.add(new com.iwan_b.chummersr5.fragments.Adept.MainContainer());
+        }
+
+        if (ChummerMethods.isCharTechnomancer(ShadowrunCharacter.getCharacter())){
+            listOfTabs.add("Technomancer");
+            tabsToCall.add(new com.iwan_b.chummersr5.fragments.Technomancer.MainContainer());
         }
 
         listOfTabs.add("Active Skills");

@@ -14,6 +14,7 @@ public class FreeCounters {
     private int freeSpecAttributes;
     private int freeSpells;
     private float powerPoints;
+    private int freeComplexForms;
 
     private FreeCounters() {
     }
@@ -23,6 +24,14 @@ public class FreeCounters {
             instance = new FreeCounters();
         }
         return instance;
+    }
+
+    public int getFreeComplexForms() {
+        return freeComplexForms;
+    }
+
+    public void setFreeComplexForms(int freeComplexForms) {
+        this.freeComplexForms = freeComplexForms;
     }
 
     public int getFreeKnowledgeSkills() {
@@ -88,4 +97,5 @@ public class FreeCounters {
     public void setPowerPoints(float powerPoints) {
         this.powerPoints = powerPoints;
     }
+
 }

@@ -93,11 +93,11 @@ public class NewCharacterPriorityTable extends Activity {
         RadioGroup attRadioGroupB = (RadioGroup) findViewById(R.id.activity_priority_table_AttributeRadioGroupB);
         ((RadioButton) attRadioGroupB.getChildAt(0)).setChecked(true);
 
-        RadioGroup magRadioGroupC = (RadioGroup) findViewById(R.id.activity_priority_table_MagicRadioGroupC);
-        ((RadioButton) magRadioGroupC.getChildAt(0)).setChecked(true);
+        RadioGroup magRadioGroupA = (RadioGroup) findViewById(R.id.activity_priority_table_MagicRadioGroupA);
+        ((RadioButton) magRadioGroupA.getChildAt(2)).setChecked(true);
 
-        RadioGroup skillRadioGroupA = (RadioGroup) findViewById(R.id.activity_priority_table_SkillRadioGroupA);
-        ((RadioButton) skillRadioGroupA.getChildAt(0)).setChecked(true);
+        RadioGroup skillRadioGroupC = (RadioGroup) findViewById(R.id.activity_priority_table_SkillRadioGroupC);
+        ((RadioButton) skillRadioGroupC.getChildAt(0)).setChecked(true);
 
         RadioGroup resourceRadioGroupE = (RadioGroup) findViewById(R.id.activity_priority_table_ResourceRadioGroupE);
         ((RadioButton) resourceRadioGroupE.getChildAt(0)).setChecked(true);
@@ -178,6 +178,15 @@ public class NewCharacterPriorityTable extends Activity {
                         for (Modifier m : magicTable.get(magicIndex).getMods()) {
                             if (m.getName().equalsIgnoreCase("free_spells")) {
                                 FreeCounters.getCounters().setFreeSpells((int) m.getAmount());
+                            }
+                        }
+                    }
+
+                    if (ChummerMethods.isCharTechnomancer(ShadowrunCharacter.getCharacter())) {
+                        FreeCounters.getCounters().setFreeComplexForms(0);
+                        for (Modifier m : magicTable.get(magicIndex).getMods()) {
+                            if (m.getName().equalsIgnoreCase("complex_forms")) {
+                                FreeCounters.getCounters().setFreeComplexForms((int) m.getAmount());
                             }
                         }
                     }

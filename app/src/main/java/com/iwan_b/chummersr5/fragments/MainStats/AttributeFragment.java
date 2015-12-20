@@ -246,7 +246,9 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
         public void update() {
             int max_attr_mod = getMods();
 
-            maxAttributeUsed = getCurrentRating() == maxAttr + max_attr_mod;
+            if(!isSpec) {
+                maxAttributeUsed = getCurrentRating() == maxAttr + max_attr_mod;
+            }
 
             // Update the displays with all the new stuff.
             attrDisplayTxtView.setText(getResources().getString(R.string.attrText, getCurrentRating(), (maxAttr + max_attr_mod)));
@@ -422,7 +424,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                             }
                         }
 
-                        if (currentRating == maxAttr + max_attr_mod) {
+                        if (currentRating == maxAttr + max_attr_mod && !isSpec) {
                             maxAttributeUsed = true;
                         }
                     }

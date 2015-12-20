@@ -22,6 +22,7 @@ public class ShadowrunCharacter implements Serializable {
     private ArrayList<Ritual> rituals;
     private ArrayList<Spell> alchemyFormulas;
     private ArrayList<AdeptPower> adeptPowers;
+    private ArrayList<ComplexForm> complexForms;
     private Map<String, ArrayList<Modifier>> modifiers;
 
     private ShadowrunCharacter() {
@@ -44,6 +45,22 @@ public class ShadowrunCharacter implements Serializable {
 
     public static void setKarma(final int karma) {
         ShadowrunCharacter.karma = karma;
+    }
+
+    @Override
+    public String toString() {
+        return "ShadowrunCharacter{" +
+                "attributes=" + attributes +
+                ", positiveQualities=" + positiveQualities +
+                ", negativeQualities=" + negativeQualities +
+                ", userType=" + userType +
+                ", spells=" + spells +
+                ", rituals=" + rituals +
+                ", alchemyFormulas=" + alchemyFormulas +
+                ", adeptPowers=" + adeptPowers +
+                ", complexForms=" + complexForms +
+                ", modifiers=" + modifiers +
+                '}';
     }
 
     public ArrayList<AdeptPower> getAdeptPowers() {
@@ -110,26 +127,19 @@ public class ShadowrunCharacter implements Serializable {
         this.spells = spells;
     }
 
-    @Override
-    public String toString() {
-        return "ShadowrunCharacter{" +
-                "attributes=" + attributes +
-                ", positiveQualities=" + positiveQualities +
-                ", negativeQualities=" + negativeQualities +
-                ", userType=" + userType +
-                ", spells=" + spells +
-                ", rituals=" + rituals +
-                ", alchemyFormulas=" + alchemyFormulas +
-                ", adeptPowers=" + adeptPowers +
-                ", modifiers=" + modifiers +
-                '}';
-    }
-
     public ChummerConstants.userType getUserType() {
         return userType;
     }
 
     public void setUserType(ChummerConstants.userType userType) {
         this.userType = userType;
+    }
+
+    public ArrayList<ComplexForm> getComplexForms() {
+        return complexForms;
+    }
+
+    public void setComplexForms(ArrayList<ComplexForm> complexForms) {
+        this.complexForms = complexForms;
     }
 }
