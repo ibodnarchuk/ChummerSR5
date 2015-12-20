@@ -1,4 +1,4 @@
-package com.iwan_b.chummersr5.fragments.FragmentUtilTest;
+package com.iwan_b.chummersr5.fragments.FragmentUtilTest2;
 
 public interface UpdateInterface {
     /**
