@@ -422,7 +422,7 @@ public class AttributeFragment extends Fragment implements UpdateInterface {
                             }
                         }
 
-                        if (currentRating == maxAttr + max_attr_mod) {
+                        if (currentRating == maxAttr + max_attr_mod && !isSpec) {
                             maxAttributeUsed = true;
                         }
                     }
