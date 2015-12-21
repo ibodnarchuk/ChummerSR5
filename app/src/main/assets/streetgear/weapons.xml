@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<weapons>
+    <!--<weapon>-->
+        <!--<type></type>-->
+        <!--<name></name>-->
+        <!--<accuracy></accuracy>-->
+        <!--<reach></reach>-->
+        <!--<damage></damage>-->
+        <!--<ap></ap>-->
+        <!--<avail></avail>-->
+        <!--<cost></cost>-->
+        <!--<mode></mode>-->
+        <!--<recoil></recoil>-->
+        <!--<ammo></ammo>-->
+        <!--<summary></summary>-->
+        <!--<book></book>-->
+        <!--<page></page>-->
+    <!--</weapon>-->
+
+    <weapon>
+        <type>Blades</type>
+        <name>Combat Axe</name>
+        <accuracy>4</accuracy>
+        <reach>2</reach>
+        <damage>(STR + 5)P</damage>
+        <ap>-4</ap>
+        <avail>12R</avail>
+        <cost>4000</cost>
+        <mode></mode>
+        <recoil></recoil>
+        <summary>Test Summary</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </weapon>
+
+    <weapon>
+        <type>Blades</type>
+        <name>Combat Knife</name>
+        <accuracy>6</accuracy>
+        <reach></reach>
+        <damage>(STR + 2)P</damage>
+        <ap>-3</ap>
+        <avail>4</avail>
+        <cost>300</cost>
+        <mode></mode>
+        <recoil></recoil>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Blades</type>
+        <name>Sword</name>
+        <accuracy>6</accuracy>
+        <reach>1</reach>
+        <damage>(STR + 3)P</damage>
+        <ap>-2</ap>
+        <avail>5R</avail>
+        <cost>500</cost>
+        <mode></mode>
+        <recoil></recoil>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Clubs</type>
+        <name>Club</name>
+        <accuracy>4</accuracy>
+        <reach>1</reach>
+        <damage>(STR + 3)P</damage>
+        <ap></ap>
+        <avail></avail>
+        <cost>30</cost>
+        <mode></mode>
+        <recoil></recoil>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Clubs</type>
+        <name>Sap</name>
+        <accuracy>5</accuracy>
+        <reach></reach>
+        <damage>(STR + 2)P</damage>
+        <ap></ap>
+        <avail>3</avail>
+        <cost>30</cost>
+        <mode></mode>
+        <recoil></recoil>
+        <summary>Test Summary</summary>
+        <book>dsa</book>
+        <page>qwe</page>
+    </weapon>
+
+    <weapon>
+        <type>Other</type>
+        <name>Monofilament Whipe</name>
+        <accuracy>Physical</accuracy>
+        <reach></reach>
+        <damage>(STR + 1)P</damage>
+        <ap></ap>
+        <avail>12F</avail>
+        <cost>10000</cost>
+        <mode></mode>
+        <recoil></recoil>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Tasers</type>
+        <name>Defiance EX Shocker</name>
+        <accuracy>4</accuracy>
+        <reach></reach>
+        <damage>9S(e)</damage>
+        <ap>-5</ap>
+        <avail></avail>
+        <cost>250</cost>
+        <mode>SS</mode>
+        <recoil></recoil>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Hold-Outs</type>
+        <name>Fichetti Tiffani Needler</name>
+        <accuracy>5</accuracy>
+        <reach></reach>
+        <damage>8P(f)</damage>
+        <ap>5</ap>
+        <avail>5R</avail>
+        <cost>1000</cost>
+        <mode>SA</mode>
+        <recoil></recoil>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Light Pistols</type>
+        <name>Ares Light Fire 75</name>
+        <accuracy>6(8)</accuracy>
+        <reach></reach>
+        <damage>6P</damage>
+        <ap></ap>
+        <avail>6F</avail>
+        <cost>1250</cost>
+        <mode>SA</mode>
+        <ammo>16(c)</ammo>
+        <recoil></recoil>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Light Pistols</type>
+        <name>Taurus Omni-6</name>
+        <accuracy>5(6)</accuracy>
+        <reach></reach>
+        <damage>6P/7P</damage>
+        <ap>0/-1</ap>
+        <avail>3R</avail>
+        <cost>300</cost>
+        <mode>SA/SS</mode>
+        <ammo>6(cy)</ammo>
+        <recoil></recoil>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Heavy Pistols</type>
+        <name>Ares Viper Silvergun</name>
+        <accuracy>4</accuracy>
+        <reach></reach>
+        <damage>9p(f)</damage>
+        <ap>4</ap>
+        <avail>8F</avail>
+        <cost>380</cost>
+        <ammo>30(c)</ammo>
+        <mode>SA/BF</mode>
+        <recoil></recoil>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Machine Pistols</type>
+        <name>Steyr TMP</name>
+        <accuracy>4</accuracy>
+        <damage>7P</damage>
+        <ap></ap>
+        <mode>SA/BF/FA</mode>
+        <recoil></recoil>
+        <ammo>30(c)</ammo>
+        <avail>8R</avail>
+        <cost>350</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Submachine Guns</type>
+        <name>FN P93 Praetor</name>
+        <accuracy>6</accuracy>
+        <damage>8P</damage>
+        <ap></ap>
+        <mode>SA/BF/FA</mode>
+        <recoil>1(2)</recoil>
+        <ammo>50(c)</ammo>
+        <avail>11F</avail>
+        <cost>900</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Submachine Guns</type>
+        <name>Uzi IV</name>
+        <accuracy>4(5)</accuracy>
+        <damage>7P</damage>
+        <ap></ap>
+        <mode>BF</mode>
+        <recoil>1</recoil>
+        <ammo>24(c)</ammo>
+        <avail>4R</avail>
+        <cost>450</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Assault Rifles</type>
+        <name>Yamaha Raiden</name>
+        <accuracy>6(8)</accuracy>
+        <damage>11P</damage>
+        <ap>-2</ap>
+        <mode>BF/FA</mode>
+        <recoil>1</recoil>
+        <ammo>60(c)</ammo>
+        <avail>14F</avail>
+        <cost>2600</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Sniper Rifles</type>
+        <name>Ranger Arms SM-5</name>
+        <accuracy>8</accuracy>
+        <damage>14p</damage>
+        <ap>-5</ap>
+        <mode>SA</mode>
+        <recoil>1</recoil>
+        <ammo>15(c)</ammo>
+        <avail>16F</avail>
+        <cost>28000</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Shotguns</type>
+        <name>Enfield AS-7</name>
+        <accuracy>4(5)</accuracy>
+        <damage>13p</damage>
+        <ap>-1</ap>
+        <mode>SA/BF</mode>
+        <recoil></recoil>
+        <ammo>10(c) or 24(d)</ammo>
+        <avail>12F</avail>
+        <cost>1100</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Special Weapons</type>
+        <name>Ares S-3 Super Squirt</name>
+        <accuracy>3</accuracy>
+        <damage>Chemical</damage>
+        <ap></ap>
+        <mode>SA</mode>
+        <recoil></recoil>
+        <ammo>20(C)</ammo>
+        <avail>7R</avail>
+        <cost>950</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Machine Guns</type>
+        <name>Ingram Valiant</name>
+        <accuracy>5(6)</accuracy>
+        <damage>9P</damage>
+        <ap>-2</ap>
+        <mode>BF/FA</mode>
+        <recoil>2(3)</recoil>
+        <ammo>50(c) or 100(belt)</ammo>
+        <avail>12F</avail>
+        <cost>5800</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Machine Guns</type>
+        <name>RPK HMG</name>
+        <accuracy>5</accuracy>
+        <damage>12P</damage>
+        <ap>-4</ap>
+        <mode>FA</mode>
+        <recoil>6</recoil>
+        <ammo>50(c) or 100(belt)</ammo>
+        <avail>16F</avail>
+        <cost>16300</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Cannons/Launchers</type>
+        <name>Ares Antioch-2</name>
+        <accuracy>4(6)</accuracy>
+        <damage>Grenade</damage>
+        <ap></ap>
+        <mode>SS</mode>
+        <recoil></recoil>
+        <ammo>8(m)</ammo>
+        <avail>8F</avail>
+        <cost>3200</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Cannons/Launchers</type>
+        <name>Aztechnology Striker</name>
+        <accuracy>5</accuracy>
+        <damage>Missile</damage>
+        <ap></ap>
+        <mode>SS</mode>
+        <recoil></recoil>
+        <ammo>1(ml)</ammo>
+        <avail>10F</avail>
+        <cost>1200</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+</weapons>

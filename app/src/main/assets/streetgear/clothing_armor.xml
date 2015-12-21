@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<clothing_armor>
+    <!--<item>-->
+        <!--<name></name>-->
+        <!--<armor_rating></armor_rating>-->
+        <!--<avail></avail>-->
+        <!--<cost></cost>-->
+        <!--<summary></summary>-->
+        <!--<book></book>-->
+        <!--<page></page>-->
+    <!--</item>-->
+
+    <item>
+        <name>Clothing</name>
+        <armor_rating></armor_rating>
+        <avail></avail>
+        <cost>20-100000</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </item>
+
+    <item>
+        <name>Actioneer Business Clothes</name>
+        <armor_rating>8</armor_rating>
+        <avail>8</avail>
+        <cost>1500</cost>
+        <summary>Test Summary</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </item>
+
+    <item>
+        <name>Armor Jacket</name>
+        <armor_rating>12</armor_rating>
+        <avail>2</avail>
+        <cost>1000</cost>
+        <summary>Another Summary</summary>
+        <book>Sr1</book>
+        <page>12345</page>
+    </item>
+
+    <item>
+        <name>Full Body armor</name>
+        <armor_rating>15</armor_rating>
+        <avail>14R</avail>
+        <cost>2000</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </item>
+
+    <item>
+        <name>Urban Explorer Jumpsuit</name>
+        <armor_rating>9</armor_rating>
+        <avail>8</avail>
+        <cost>650</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </item>
+</clothing_armor>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ammotypes>
+    <!--<ammo>-->
+        <!--<type></type>-->
+        <!--<name></name>-->
+        <!--<damage></damage>-->
+        <!--<ap></ap>-->
+        <!--<blast></blast>-->
+        <!--<avail></avail>-->
+        <!--<cost></cost>-->
+        <!--<summary></summary>-->
+        <!--<book></book>-->
+        <!--<page></page>-->
+    <!--</ammo>-->
+
+    <ammo>
+        <type>Ammo, Per 10 Shots</type>
+        <name>APDS</name>
+        <damage></damage>
+        <ap>-4</ap>
+        <avail>12F</avail>
+        <cost>120</cost>
+        <summary>Test Summary</summary>
+        <book>SR5</book>
+        <page>123</page>
+    </ammo>
+
+    <ammo>
+        <type>Ammo, Per 10 Shots</type>
+        <name>Explosive Rounds</name>
+        <damage>1</damage>
+        <ap>-2</ap>
+        <avail>9F</avail>
+        <cost>80</cost>
+        <summary>Other Test Summary</summary>
+        <book>SR4</book>
+        <page>321</page>
+    </ammo>
+
+    <ammo>
+        <type>Ammo, Per 10 Shots</type>
+        <name>Gel Rounds</name>
+        <damage>0S</damage>
+        <ap>+1</ap>
+        <avail>2R</avail>
+        <cost>25</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Ammo, Per 10 Shots</type>
+        <name>Stick-n-shock</name>
+        <damage>-2S(e)</damage>
+        <ap>-5</ap>
+        <avail>6R</avail>
+        <cost>80</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Ammo, Per 10 Shots</type>
+        <name>Injection Darts</name>
+        <damage></damage>
+        <ap></ap>
+        <avail>4R</avail>
+        <cost>75</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Ammo, Per 10 Shots</type>
+        <name>Tracer</name>
+        <damage></damage>
+        <ap></ap>
+        <avail>6R</avail>
+        <cost>60</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Ammo, Per 10 Shots</type>
+        <name>Hollow Points</name>
+        <damage>1</damage>
+        <ap>2</ap>
+        <avail>4F</avail>
+        <cost>70</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Ammo, Per 10 Shots</type>
+        <name>Regular Ammo</name>
+        <damage></damage>
+        <ap></ap>
+        <avail>2R</avail>
+        <cost>20</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Grenades</type>
+        <name>Flash-bang</name>
+        <damage>10S</damage>
+        <ap>-4</ap>
+        <blast>10m Radius</blast>
+        <avail>6R</avail>
+        <cost>100</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Grenades</type>
+        <name>High Explosives</name>
+        <damage>16P</damage>
+        <ap>-2</ap>
+        <blast>-2/m</blast>
+        <avail>11F</avail>
+        <cost>100</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Grenades</type>
+        <name>Fragmentation</name>
+        <damage>18P(f)</damage>
+        <ap>5</ap>
+        <blast>-1/m</blast>
+        <avail>11F</avail>
+        <cost>100</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Grenades</type>
+        <name>Flash-pak</name>
+        <damage>Special</damage>
+        <ap></ap>
+        <blast>Special</blast>
+        <avail>4</avail>
+        <cost>125</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Rockets</type>
+        <name>Anti-vehicle</name>
+        <damage>24p</damage>
+        <ap>-4/-10</ap>
+        <blast>-4/m</blast>
+        <avail>18F</avail>
+        <cost>2800</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Rockets</type>
+        <name>Fragmentation</name>
+        <damage>23P(f)</damage>
+        <ap>5</ap>
+        <blast>-1/m</blast>
+        <avail>12F</avail>
+        <cost>2000</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+    <ammo>
+        <type>Missiles</type>
+        <name>As Rocket</name>
+        <damage>As Rocket</damage>
+        <ap>As Rocket</ap>
+        <blast>As Rocket</blast>
+        <avail>+4</avail>
+        <cost>+sensor rating x 500</cost>
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </ammo>
+
+</ammotypes>
