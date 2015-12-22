@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<street_gear>
+    <!-- TODO figure out how to add capacity items -->
+    <!--<gear>-->
+        <!--<type></type>-->
+        <!--<name></name>-->
+        <!--<rating></rating>-->
+        <!--<min_rating></min_rating>-->
+        <!--<max_rating></max_rating>-->
+
+        <!--<avail></avail>-->
+        <!--<avail_is_rating></avail_is_rating>-->
+        <!--<avail_mult></avail_mult>-->
+        <!--<avail_type></avail_type>-->
+
+        <!--<cost_rating_mult></cost_rating_mult>-->
+        <!--<cost></cost>-->
+
+        <!--<summary></summary>-->
+        <!--<book></book>-->
+        <!--<page></page>-->
+    <!--</gear>-->
+
+    <gear>
+        <type>Commlinks</type>
+        <name>Meta Link</name>
+        <rating>1</rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <avail>2</avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult></cost_rating_mult>
+        <cost>100</cost>
+
+        <summary>Test Summary 321</summary>
+        <book>SR5</book>
+        <page>123</page>
+    </gear>
+
+    <gear>
+        <type>Commlinks</type>
+        <name>Fairlight Caliban</name>
+        <rating>7</rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <avail>14</avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult></cost_rating_mult>
+        <cost>8000</cost>
+
+        <summary>Summary Example</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </gear>
+
+    <gear>
+        <type>Accessories</type>
+        <name>AR Gloves</name>
+        <rating>3</rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <avail></avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult></cost_rating_mult>
+        <cost>150</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Accessories</type>
+        <name>Simrig</name>
+        <rating>3</rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <avail>12</avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult></cost_rating_mult>
+        <cost>1000</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>RFID Tags</type>
+        <name>Security Tags</name>
+        <rating>2</rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <avail>5</avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult></cost_rating_mult>
+        <cost>40</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>RFID Tags</type>
+        <name>Stealth Tags</name>
+        <rating>3</rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <avail>7</avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type>R</avail_type>
+
+        <cost_rating_mult></cost_rating_mult>
+        <cost>10</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Communications</type>
+        <name>Bug Scanner</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>6</max_rating>
+
+        <avail></avail>
+        <avail_is_rating>true</avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type>R</avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>100</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Communications</type>
+        <name>Jammer, area</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>6</max_rating>
+
+        <avail></avail>
+        <avail_is_rating>true</avail_is_rating>
+        <avail_mult>3</avail_mult>
+        <avail_type>F</avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>200</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Communications</type>
+        <name>White Noise Generator</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>6</max_rating>
+
+        <avail></avail>
+        <avail_is_rating>true</avail_is_rating>
+        <avail_mult>2</avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>50</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Software</type>
+        <name>Agent</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>3</max_rating>
+
+        <avail></avail>
+        <avail_is_rating>true</avail_is_rating>
+        <avail_mult>3</avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>1000</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Software</type>
+        <name>Agent</name>
+        <rating></rating>
+        <min_rating>4</min_rating>
+        <max_rating>6</max_rating>
+
+        <avail></avail>
+        <avail_is_rating>true</avail_is_rating>
+        <avail_mult>3</avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>2000</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Software</type>
+        <name>Tutorsoft</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>6</max_rating>
+
+        <avail></avail>
+        <avail_is_rating>true</avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>400</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Skillsofts</type>
+        <name>Activesofts</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>6</max_rating>
+
+        <avail>8</avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>5000</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Skillsofts</type>
+        <name>Linguasofts</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>6</max_rating>
+
+        <avail>2</avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>1000</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Identification</type>
+        <name>Fake SIN</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>6</max_rating>
+
+        <avail></avail>
+        <avail_is_rating>true</avail_is_rating>
+        <avail_mult>3</avail_mult>
+        <avail_type>F</avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>2500</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Identification</type>
+        <name>Fake License</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>6</max_rating>
+
+        <avail></avail>
+        <avail_is_rating>true</avail_is_rating>
+        <avail_mult>3</avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult>true</cost_rating_mult>
+        <cost>200</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Tools</type>
+        <name>Kit</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <avail></avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult></cost_rating_mult>
+        <cost>500</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+
+    <gear>
+        <type>Tools</type>
+        <name>Facility</name>
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <avail>12</avail>
+        <avail_is_rating></avail_is_rating>
+        <avail_mult></avail_mult>
+        <avail_type></avail_type>
+
+        <cost_rating_mult></cost_rating_mult>
+        <cost>50000</cost>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </gear>
+</street_gear>
