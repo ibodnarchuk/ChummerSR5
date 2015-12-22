@@ -2,10 +2,7 @@ package com.iwan_b.chummersr5.data;
 
 import java.util.ArrayList;
 
-public class Quality {
-    // Name of the quality
-    private String name;
-
+public class Quality extends GeneralInfo {
     // How much the quality costs
     private int cost = 0;
     // The list of all possible costs for the quality
@@ -36,15 +33,6 @@ public class Quality {
     // E.g. Exceptional Attribute (Body)
     private String additionalName;
 
-    // Which book is it in
-    private String book;
-
-    // What page to find the reference
-    private String page;
-
-    // Summary of the quality
-    private String summary;
-
     // Whether only magic can take this quality
     private Boolean magicOnly = false;
     // Whether only technomancers can take this quality
@@ -52,30 +40,26 @@ public class Quality {
     // Whether only mundane characters can take this quality
     private Boolean mundaneOnly = false;
 
-    public Quality(final Quality copyQuality) {
-        super();
-        this.name = copyQuality.name;
-        this.cost = copyQuality.cost;
-        this.costList = copyQuality.costList;
-        this.costListData = copyQuality.costListData;
-        this.rating = copyQuality.rating;
-        this.maxRating = copyQuality.maxRating;
-        this.userTextInput = copyQuality.userTextInput;
-        this.userTextInputString = copyQuality.userTextInputString;
-        this.list = copyQuality.list;
-        this.spinnerListDataDisplay = copyQuality.spinnerListDataDisplay;
-        this.spinnerItem = copyQuality.spinnerItem;
-        this.additionalName = copyQuality.additionalName;
-        this.book = copyQuality.book;
-        this.page = copyQuality.page;
-        this.summary = copyQuality.summary;
-        this.magicOnly = copyQuality.magicOnly;
-        this.technomancerOnly = copyQuality.technomancerOnly;
-        this.mundaneOnly = copyQuality.mundaneOnly;
+    public Quality(final Quality copy) {
+        super(copy);
+        this.cost = copy.cost;
+        this.costList = copy.costList;
+        this.costListData = copy.costListData;
+        this.rating = copy.rating;
+        this.maxRating = copy.maxRating;
+        this.userTextInput = copy.userTextInput;
+        this.userTextInputString = copy.userTextInputString;
+        this.list = copy.list;
+        this.spinnerListDataDisplay = copy.spinnerListDataDisplay;
+        this.spinnerItem = copy.spinnerItem;
+        this.additionalName = copy.additionalName;
+        this.magicOnly = copy.magicOnly;
+        this.technomancerOnly = copy.technomancerOnly;
+        this.mundaneOnly = copy.mundaneOnly;
 
-        this.mods = new ArrayList<>(copyQuality.mods.size());
+        this.mods = new ArrayList<>(copy.mods.size());
 
-        for (Modifier m : copyQuality.mods) {
+        for (Modifier m : copy.mods) {
             this.mods.add(new Modifier(m));
         }
 
@@ -91,14 +75,6 @@ public class Quality {
 
     public final void setAdditionalName(final String additionalName) {
         this.additionalName = additionalName;
-    }
-
-    public final String getBook() {
-        return book;
-    }
-
-    public final void setBook(final String book) {
-        this.book = book;
     }
 
     public final int getCost() {
@@ -165,22 +141,6 @@ public class Quality {
         this.mundaneOnly = mundaneOnly;
     }
 
-    public final String getName() {
-        return name;
-    }
-
-    public final void setName(final String name) {
-        this.name = name;
-    }
-
-    public final String getPage() {
-        return page;
-    }
-
-    public final void setPage(final String page) {
-        this.page = page;
-    }
-
     public int getRating() {
         return rating;
     }
@@ -203,14 +163,6 @@ public class Quality {
 
     public void setSpinnerListDataDisplay(final String spinnerListData) {
         this.spinnerListDataDisplay = spinnerListData;
-    }
-
-    public final String getSummary() {
-        return summary;
-    }
-
-    public final void setSummary(final String summary) {
-        this.summary = summary;
     }
 
     public Boolean getTechnomancerOnly() {
@@ -238,133 +190,80 @@ public class Quality {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Quality)) return false;
+        if (!super.equals(o)) return false;
+
+        Quality quality = (Quality) o;
+
+        if (getCost() != quality.getCost()) return false;
+        if (getRating() != quality.getRating()) return false;
+        if (getMaxRating() != quality.getMaxRating()) return false;
+        if (isUserTextInput() != quality.isUserTextInput()) return false;
+        if (getCostList() != null ? !getCostList().equals(quality.getCostList()) : quality.getCostList() != null)
+            return false;
+        if (getCostListData() != null ? !getCostListData().equals(quality.getCostListData()) : quality.getCostListData() != null)
+            return false;
+        if (getUserTextInputString() != null ? !getUserTextInputString().equals(quality.getUserTextInputString()) : quality.getUserTextInputString() != null)
+            return false;
+        if (getList() != null ? !getList().equals(quality.getList()) : quality.getList() != null)
+            return false;
+        if (getSpinnerListDataDisplay() != null ? !getSpinnerListDataDisplay().equals(quality.getSpinnerListDataDisplay()) : quality.getSpinnerListDataDisplay() != null)
+            return false;
+        if (getSpinnerItem() != null ? !getSpinnerItem().equals(quality.getSpinnerItem()) : quality.getSpinnerItem() != null)
+            return false;
+        if (getMods() != null ? !getMods().equals(quality.getMods()) : quality.getMods() != null)
+            return false;
+        if (getAdditionalName() != null ? !getAdditionalName().equals(quality.getAdditionalName()) : quality.getAdditionalName() != null)
+            return false;
+        if (getMagicOnly() != null ? !getMagicOnly().equals(quality.getMagicOnly()) : quality.getMagicOnly() != null)
+            return false;
+        if (getTechnomancerOnly() != null ? !getTechnomancerOnly().equals(quality.getTechnomancerOnly()) : quality.getTechnomancerOnly() != null)
+            return false;
+        return !(getMundaneOnly() != null ? !getMundaneOnly().equals(quality.getMundaneOnly()) : quality.getMundaneOnly() != null);
+
+    }
+
+    @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((additionalName == null) ? 0 : additionalName.hashCode());
-        result = prime * result + ((book == null) ? 0 : book.hashCode());
-        result = prime * result + cost;
-        result = prime * result + ((costList == null) ? 0 : costList.hashCode());
-        result = prime * result + ((costListData == null) ? 0 : costListData.hashCode());
-        result = prime * result + ((list == null) ? 0 : list.hashCode());
-        result = prime * result + ((magicOnly == null) ? 0 : magicOnly.hashCode());
-        result = prime * result + maxRating;
-        result = prime * result + ((mods == null) ? 0 : mods.hashCode());
-        result = prime * result + ((mundaneOnly == null) ? 0 : mundaneOnly.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((page == null) ? 0 : page.hashCode());
-        result = prime * result + rating;
-        result = prime * result + ((spinnerItem == null) ? 0 : spinnerItem.hashCode());
-        result = prime * result + ((spinnerListDataDisplay == null) ? 0 : spinnerListDataDisplay.hashCode());
-        result = prime * result + ((summary == null) ? 0 : summary.hashCode());
-        result = prime * result + ((technomancerOnly == null) ? 0 : technomancerOnly.hashCode());
-        result = prime * result + (userTextInput ? 1231 : 1237);
-        result = prime * result + ((userTextInputString == null) ? 0 : userTextInputString.hashCode());
+        int result = super.hashCode();
+        result = 31 * result + getCost();
+        result = 31 * result + (getCostList() != null ? getCostList().hashCode() : 0);
+        result = 31 * result + (getCostListData() != null ? getCostListData().hashCode() : 0);
+        result = 31 * result + getRating();
+        result = 31 * result + getMaxRating();
+        result = 31 * result + (isUserTextInput() ? 1 : 0);
+        result = 31 * result + (getUserTextInputString() != null ? getUserTextInputString().hashCode() : 0);
+        result = 31 * result + (getList() != null ? getList().hashCode() : 0);
+        result = 31 * result + (getSpinnerListDataDisplay() != null ? getSpinnerListDataDisplay().hashCode() : 0);
+        result = 31 * result + (getSpinnerItem() != null ? getSpinnerItem().hashCode() : 0);
+        result = 31 * result + (getMods() != null ? getMods().hashCode() : 0);
+        result = 31 * result + (getAdditionalName() != null ? getAdditionalName().hashCode() : 0);
+        result = 31 * result + (getMagicOnly() != null ? getMagicOnly().hashCode() : 0);
+        result = 31 * result + (getTechnomancerOnly() != null ? getTechnomancerOnly().hashCode() : 0);
+        result = 31 * result + (getMundaneOnly() != null ? getMundaneOnly().hashCode() : 0);
         return result;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Quality other = (Quality) obj;
-        if (additionalName == null) {
-            if (other.additionalName != null)
-                return false;
-        } else if (!additionalName.equals(other.additionalName))
-            return false;
-        if (book == null) {
-            if (other.book != null)
-                return false;
-        } else if (!book.equals(other.book))
-            return false;
-        if (cost != other.cost)
-            return false;
-        if (costList == null) {
-            if (other.costList != null)
-                return false;
-        } else if (!costList.equals(other.costList))
-            return false;
-        if (costListData == null) {
-            if (other.costListData != null)
-                return false;
-        } else if (!costListData.equals(other.costListData))
-            return false;
-        if (list == null) {
-            if (other.list != null)
-                return false;
-        } else if (!list.equals(other.list))
-            return false;
-        if (magicOnly == null) {
-            if (other.magicOnly != null)
-                return false;
-        } else if (!magicOnly.equals(other.magicOnly))
-            return false;
-        if (maxRating != other.maxRating)
-            return false;
-        if (mods == null) {
-            if (other.mods != null)
-                return false;
-        } else if (!mods.equals(other.mods))
-            return false;
-        if (mundaneOnly == null) {
-            if (other.mundaneOnly != null)
-                return false;
-        } else if (!mundaneOnly.equals(other.mundaneOnly))
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (page == null) {
-            if (other.page != null)
-                return false;
-        } else if (!page.equals(other.page))
-            return false;
-        if (rating != other.rating)
-            return false;
-        if (spinnerItem == null) {
-            if (other.spinnerItem != null)
-                return false;
-        } else if (!spinnerItem.equals(other.spinnerItem))
-            return false;
-        if (spinnerListDataDisplay == null) {
-            if (other.spinnerListDataDisplay != null)
-                return false;
-        } else if (!spinnerListDataDisplay.equals(other.spinnerListDataDisplay))
-            return false;
-        if (summary == null) {
-            if (other.summary != null)
-                return false;
-        } else if (!summary.equals(other.summary))
-            return false;
-        if (technomancerOnly == null) {
-            if (other.technomancerOnly != null)
-                return false;
-        } else if (!technomancerOnly.equals(other.technomancerOnly))
-            return false;
-        if (userTextInput != other.userTextInput)
-            return false;
-        if (userTextInputString == null) {
-            if (other.userTextInputString != null)
-                return false;
-        } else if (!userTextInputString.equals(other.userTextInputString))
-            return false;
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "Quality [name=" + name + ", cost=" + cost + ", costList=" + costList + ", costListData=" + costListData
-                + ", rating=" + rating + ", maxRating=" + maxRating + ", userTextInput=" + userTextInput
-                + ", userTextInputString=" + userTextInputString + ", list=" + list + ", spinnerListDataDisplay="
-                + spinnerListDataDisplay + ", spinnerItem=" + spinnerItem + ", mods=" + mods + ", additionalName="
-                + additionalName + ", book=" + book + ", page=" + page + ", summary=" + summary + ", magicOnly=" + magicOnly
-                + ", technomancerOnly=" + technomancerOnly + ", mundaneOnly=" + mundaneOnly + "]";
+        return super.toString() + "Quality{" +
+                "cost=" + cost +
+                ", costList='" + costList + '\'' +
+                ", costListData='" + costListData + '\'' +
+                ", rating=" + rating +
+                ", maxRating=" + maxRating +
+                ", userTextInput=" + userTextInput +
+                ", userTextInputString='" + userTextInputString + '\'' +
+                ", list='" + list + '\'' +
+                ", spinnerListDataDisplay='" + spinnerListDataDisplay + '\'' +
+                ", spinnerItem='" + spinnerItem + '\'' +
+                ", mods=" + mods +
+                ", additionalName='" + additionalName + '\'' +
+                ", magicOnly=" + magicOnly +
+                ", technomancerOnly=" + technomancerOnly +
+                ", mundaneOnly=" + mundaneOnly +
+                '}';
     }
 }

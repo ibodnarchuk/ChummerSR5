@@ -2,7 +2,7 @@ package com.iwan_b.chummersr5.data;
 
 import java.util.ArrayList;
 
-public class Skill implements Comparable<Skill>{
+public class Skill extends GeneralInfo implements Comparable<Skill>{
     private String skillName;
     private int rating;
     // The string the user inputs
@@ -23,38 +23,10 @@ public class Skill implements Comparable<Skill>{
     // Defaultable
     private boolean isDefaultable;
 
-    // Which book is it in
-    private String book;
-
-    // What page to find the reference
-    private String page;
-
-    // Summary of the skill
-    private String summary;
-
     // Whether only magic can take this quality
     private Boolean magicOnly = false;
     // Whether only technomancers can take this quality
     private Boolean technomancerOnly = false;
-
-    @Override
-    public String toString() {
-        return "Skill{" +
-                "name='" + skillName + '\'' +
-                ", rating=" + rating +
-                ", userTextInputString='" + userTextInputString + '\'' +
-                ", attrName='" + attrName + '\'' +
-                ", groupName='" + groupName + '\'' +
-                ", spec=" + spec +
-                ", selectedSpec=" + selectedSpec +
-                ", isDefaultable=" + isDefaultable +
-                ", book='" + book + '\'' +
-                ", page='" + page + '\'' +
-                ", summary='" + summary + '\'' +
-                ", magicOnly=" + magicOnly +
-                ", technomancerOnly=" + technomancerOnly +
-                '}';
-    }
 
     public String getSkillName() {
         return skillName;
@@ -78,30 +50,6 @@ public class Skill implements Comparable<Skill>{
 
     public void setUserTextInputString(final String userTextInputString) {
         this.userTextInputString = userTextInputString;
-    }
-
-    public String getBook() {
-        return book;
-    }
-
-    public void setBook(final String book) {
-        this.book = book;
-    }
-
-    public String getPage() {
-        return page;
-    }
-
-    public void setPage(final String page) {
-        this.page = page;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(final String summary) {
-        this.summary = summary;
     }
 
     public Boolean getMagicOnly() {
@@ -158,6 +106,22 @@ public class Skill implements Comparable<Skill>{
 
     public void setIsDefaultable(boolean isDefaultable) {
         this.isDefaultable = isDefaultable;
+    }
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "skillName='" + skillName + '\'' +
+                ", rating=" + rating +
+                ", userTextInputString='" + userTextInputString + '\'' +
+                ", attrName='" + attrName + '\'' +
+                ", groupName='" + groupName + '\'' +
+                ", spec=" + spec +
+                ", selectedSpec=" + selectedSpec +
+                ", isDefaultable=" + isDefaultable +
+                ", magicOnly=" + magicOnly +
+                ", technomancerOnly=" + technomancerOnly +
+                '}';
     }
 
     @Override

@@ -1,73 +1,41 @@
 package com.iwan_b.chummersr5.data;
 
 
-public class Ritual {
-    private String name;
+public class Ritual extends GeneralInfo {
     private String category;
-    // Which book is it in
-    private String book;
-    // What page to find the reference
-    private String page;
-    // Summary of the skill
-    private String summary;
 
     public Ritual() {
+        super();
     }
 
     public Ritual(Ritual copy) {
-        this.name = copy.name;
+        super(copy);
         this.category = copy.category;
-        this.book = copy.book;
-        this.page = copy.page;
-        this.summary = copy.summary;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Ritual{" +
+                "category='" + category + '\'' +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Ritual)) return false;
+        if (!super.equals(o)) return false;
 
         Ritual ritual = (Ritual) o;
 
-        if (getName() != null ? !getName().equals(ritual.getName()) : ritual.getName() != null)
-            return false;
-        if (getCategory() != null ? !getCategory().equals(ritual.getCategory()) : ritual.getCategory() != null)
-            return false;
-        if (getBook() != null ? !getBook().equals(ritual.getBook()) : ritual.getBook() != null)
-            return false;
-        if (getPage() != null ? !getPage().equals(ritual.getPage()) : ritual.getPage() != null)
-            return false;
-        return !(getSummary() != null ? !getSummary().equals(ritual.getSummary()) : ritual.getSummary() != null);
-
-    }
-
-    @Override
-    public String toString() {
-        return "Ritual{" +
-                "name='" + name + '\'' +
-                ", category='" + category + '\'' +
-                ", book='" + book + '\'' +
-                ", page='" + page + '\'' +
-                ", summary='" + summary + '\'' +
-                '}';
+        return !(getCategory() != null ? !getCategory().equals(ritual.getCategory()) : ritual.getCategory() != null);
     }
 
     @Override
     public int hashCode() {
-        int result = getName() != null ? getName().hashCode() : 0;
+        int result = super.hashCode();
         result = 31 * result + (getCategory() != null ? getCategory().hashCode() : 0);
-        result = 31 * result + (getBook() != null ? getBook().hashCode() : 0);
-        result = 31 * result + (getPage() != null ? getPage().hashCode() : 0);
-        result = 31 * result + (getSummary() != null ? getSummary().hashCode() : 0);
         return result;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getCategory() {
@@ -78,27 +46,4 @@ public class Ritual {
         this.category = category;
     }
 
-    public String getBook() {
-        return book;
-    }
-
-    public void setBook(String book) {
-        this.book = book;
-    }
-
-    public String getPage() {
-        return page;
-    }
-
-    public void setPage(String page) {
-        this.page = page;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
 }

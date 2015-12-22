@@ -1,27 +1,21 @@
 package com.iwan_b.chummersr5.data;
 
-public class ComplexForm {
-    private String name;
+public class ComplexForm extends GeneralInfo{
     private String target;
     private String duration;
     private int fading = 0;
     private String list;
-    private String summary;
-    private String book;
-    private String page;
 
     public ComplexForm() {
+        super();
     }
 
     public ComplexForm(ComplexForm copy) {
-        this.name = copy.name;
+        super(copy);
         this.target = copy.target;
         this.duration = copy.duration;
         this.fading = copy.fading;
         this.list = copy.list;
-        this.summary = copy.summary;
-        this.book = copy.book;
-        this.page = copy.page;
     }
 
     @Override
@@ -61,28 +55,6 @@ public class ComplexForm {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "ComplexForm{" +
-                "name='" + name + '\'' +
-                ", target='" + target + '\'' +
-                ", duration='" + duration + '\'' +
-                ", fading=" + fading +
-                ", list='" + list + '\'' +
-                ", summary='" + summary + '\'' +
-                ", book='" + book + '\'' +
-                ", page='" + page + '\'' +
-                '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getTarget() {
         return target;
     }
@@ -115,27 +87,13 @@ public class ComplexForm {
         this.list = list;
     }
 
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public String getBook() {
-        return book;
-    }
-
-    public void setBook(String book) {
-        this.book = book;
-    }
-
-    public String getPage() {
-        return page;
-    }
-
-    public void setPage(String page) {
-        this.page = page;
+    @Override
+    public String toString() {
+        return super.toString() + "ComplexForm{" +
+                "target='" + target + '\'' +
+                ", duration='" + duration + '\'' +
+                ", fading=" + fading +
+                ", list='" + list + '\'' +
+                '}';
     }
 }

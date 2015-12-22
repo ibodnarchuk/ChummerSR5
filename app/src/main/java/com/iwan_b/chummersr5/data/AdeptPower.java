@@ -2,9 +2,7 @@ package com.iwan_b.chummersr5.data;
 
 import java.util.ArrayList;
 
-public class AdeptPower {
-    private String name;
-
+public class AdeptPower extends GeneralInfo {
     private ArrayList<Float> costList;
     // Whether this power requires an activation
     private boolean activation = false;
@@ -19,11 +17,38 @@ public class AdeptPower {
     // The modifiers that are associated with this Adept Power
     private ArrayList<Modifier> mods;
     private String list;
-    private String summary;
-    private String book;
-    private String page;
 
-    public AdeptPower(){}
+
+    public AdeptPower() {
+        super();
+    }
+
+    public AdeptPower(AdeptPower copy) {
+        super(copy);
+
+        this.costList = copy.costList;
+        this.activation = copy.activation;
+        this.activated = copy.activated;
+        this.singular = copy.singular;
+        this.mods = copy.mods;
+        this.list = copy.list;
+        this.rating = copy.rating;
+        this.cost = copy.cost;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "AdeptPower{" +
+                "costList=" + costList +
+                ", activation=" + activation +
+                ", activated=" + activated +
+                ", singular=" + singular +
+                ", cost=" + cost +
+                ", rating=" + rating +
+                ", mods=" + mods +
+                ", list='" + list + '\'' +
+                '}';
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -70,45 +95,6 @@ public class AdeptPower {
         return result;
     }
 
-    public AdeptPower(AdeptPower copy) {
-        this.name = copy.name;
-        this.costList = copy.costList;
-        this.activation = copy.activation;
-        this.activated = copy.activated;
-        this.singular = copy.singular;
-        this.mods = copy.mods;
-        this.list = copy.list;
-        this.summary = copy.summary;
-        this.book = copy.book;
-        this.page = copy.page;
-        this.rating = copy.rating;
-        this.cost = copy.cost;
-    }
-
-    @Override
-    public String toString() {
-        return "AdeptPower{" +
-                "name='" + name + '\'' +
-                ", costList=" + costList +
-                ", activation=" + activation +
-                ", activated=" + activated +
-                ", singular=" + singular +
-                ", mods=" + mods +
-                ", list='" + list + '\'' +
-                ", summary='" + summary + '\'' +
-                ", book='" + book + '\'' +
-                ", page='" + page + '\'' +
-                '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public ArrayList<Float> getCostList() {
         return costList;
     }
@@ -147,30 +133,6 @@ public class AdeptPower {
 
     public void setList(String list) {
         this.list = list;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public String getBook() {
-        return book;
-    }
-
-    public void setBook(String book) {
-        this.book = book;
-    }
-
-    public String getPage() {
-        return page;
-    }
-
-    public void setPage(String page) {
-        this.page = page;
     }
 
     public ArrayList<Modifier> getMods() {
