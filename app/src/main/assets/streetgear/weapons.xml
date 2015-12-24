@@ -3,79 +3,166 @@
     <!--<weapon>-->
         <!--<type></type>-->
         <!--<name></name>-->
-        <!--<accuracy></accuracy>-->
+
+        <!--<accuracy_list></accuracy_list>-->
+        <!--<is_accuracy_physical></is_accuracy_physical>-->
         <!--<reach></reach>-->
-        <!--<damage></damage>-->
-        <!--<ap></ap>-->
+
+        <!--<is_damage_str></is_damage_str>-->
+        <!--<is_damage_rating></is_damage_rating>-->
+        <!--<damage_list></damage_list>-->
+        <!--<damage_type_list></damage_type_list>-->
+        <!--<is_damage_electric></is_damage_electric>-->
+        <!--<is_damage_flechette></is_damage_flechette>-->
+        <!--<ap_list></ap_list>-->
+        <!--<ap_divide_by></ap_divide_by>-->
+
+        <!--<mode_list></mode_list>-->
+
+        <!--<recoil_list></recoil_list>-->
+
+        <!--<ammo_list></ammo_list>-->
+        <!--<ammo_type></ammo_type>-->
+
         <!--<avail></avail>-->
+        <!--<is_avail_rating></is_avail_rating>-->
+        <!--<avail_mult_by></avail_mult_by>-->
+        <!--<avail_add_by></avail_add_by>-->
+        <!--<avail_type></avail_type>-->
+
+        <!--<is_cost_rating_mult></is_cost_rating_mult>-->
         <!--<cost></cost>-->
-        <!--<mode></mode>-->
-        <!--<recoil></recoil>-->
-        <!--<ammo></ammo>-->
+
+        <!--<rating></rating>-->
+        <!--<min_rating></min_rating>-->
+        <!--<max_rating></max_rating>-->
+
         <!--<summary></summary>-->
         <!--<book></book>-->
         <!--<page></page>-->
     <!--</weapon>-->
 
     <weapon>
-        <type>Blades</type>
+        <type>blades</type>
         <name>Combat Axe</name>
-        <accuracy>4</accuracy>
-        <reach>2</reach>
-        <damage>(STR + 5)P</damage>
-        <ap>-4</ap>
-        <avail>12R</avail>
-        <cost>4000</cost>
-        <mode></mode>
-        <recoil></recoil>
-        <summary>Test Summary</summary>
-        <book>SR5</book>
-        <page>321</page>
-    </weapon>
 
-    <weapon>
-        <type>Blades</type>
-        <name>Combat Knife</name>
-        <accuracy>6</accuracy>
-        <reach></reach>
-        <damage>(STR + 2)P</damage>
-        <ap>-3</ap>
-        <avail>4</avail>
-        <cost>300</cost>
-        <mode></mode>
-        <recoil></recoil>
-        <summary></summary>
-        <book></book>
-        <page></page>
+        <accuracy_list>4</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
+        <reach>2</reach>
+
+        <is_damage_str>true</is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>5</damage_list>
+        <damage_type_list>p</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list>-4</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>12</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>R</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>4000</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary>Summary Test</summary>
+        <book>SR5</book>
+        <page>32134</page>
     </weapon>
 
     <weapon>
         <type>Blades</type>
         <name>Sword</name>
-        <accuracy>6</accuracy>
+
+        <accuracy_list>6</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
         <reach>1</reach>
-        <damage>(STR + 3)P</damage>
-        <ap>-2</ap>
-        <avail>5R</avail>
+
+        <is_damage_str>true</is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>3</damage_list>
+        <damage_type_list>p</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list>-2</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>5</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>R</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
         <cost>500</cost>
-        <mode></mode>
-        <recoil></recoil>
-        <summary></summary>
-        <book></book>
-        <page></page>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary>Another test Summary</summary>
+        <book>SR2</book>
+        <page>1234</page>
     </weapon>
 
     <weapon>
         <type>Clubs</type>
-        <name>Club</name>
-        <accuracy>4</accuracy>
+        <name>club</name>
+
+        <accuracy_list>4</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
         <reach>1</reach>
-        <damage>(STR + 3)P</damage>
-        <ap></ap>
+
+        <is_damage_str>true</is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>3</damage_list>
+        <damage_type_list>p</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list></ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
         <avail></avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type></avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
         <cost>30</cost>
-        <mode></mode>
-        <recoil></recoil>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
         <summary></summary>
         <book></book>
         <page></page>
@@ -83,31 +170,334 @@
 
     <weapon>
         <type>Clubs</type>
-        <name>Sap</name>
-        <accuracy>5</accuracy>
-        <reach></reach>
-        <damage>(STR + 2)P</damage>
-        <ap></ap>
-        <avail>3</avail>
-        <cost>30</cost>
-        <mode></mode>
-        <recoil></recoil>
-        <summary>Test Summary</summary>
-        <book>dsa</book>
-        <page>qwe</page>
+        <name>Stun Baton</name>
+
+        <accuracy_list>4</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
+        <reach>1</reach>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>9</damage_list>
+        <damage_type_list>S</damage_type_list>
+        <is_damage_electric>true</is_damage_electric>
+
+        <ap_list></ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>4</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type></avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>350</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
     </weapon>
 
     <weapon>
         <type>Other</type>
-        <name>Monofilament Whipe</name>
-        <accuracy>Physical</accuracy>
+        <name>Knucks</name>
+
+        <accuracy_list></accuracy_list>
+        <is_accuracy_physical>true</is_accuracy_physical>
         <reach></reach>
-        <damage>(STR + 1)P</damage>
-        <ap></ap>
-        <avail>12F</avail>
+
+        <is_damage_str>true</is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>1</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list></ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>2</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>R</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>100</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Other</type>
+        <name>Monofilament whip</name>
+
+        <accuracy_list>5,7</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
+        <reach>2</reach>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>12</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list>-8</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>12</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>F</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
         <cost>10000</cost>
-        <mode></mode>
-        <recoil></recoil>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Bows</type>
+        <name>Bow</name>
+
+        <accuracy_list>6</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
+        <reach></reach>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating>true</is_damage_rating>
+        <damage_list>2</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list>-4</ap_list>
+        <ap_divide_by>true</ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail></avail>
+        <is_avail_rating>true</is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type></avail_type>
+
+        <is_cost_rating_mult>true</is_cost_rating_mult>
+        <cost>100</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating>10</max_rating>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Crossbows</type>
+        <name>Light Crossbow</name>
+
+        <accuracy_list>7</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
+        <reach></reach>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>5</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list>-1</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>2</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type></avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>300</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Crossbows</type>
+        <name>Heavy Crossbow</name>
+
+        <accuracy_list>5</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
+        <reach></reach>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>10</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list>-3</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>8</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>R</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>1000</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Throwing weapons</type>
+        <name>Throwing knife</name>
+
+        <accuracy_list></accuracy_list>
+        <is_accuracy_physical>true</is_accuracy_physical>
+        <reach></reach>
+
+        <is_damage_str>true</is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>1</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list>-1</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>4</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>R</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>25</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+    <weapon>
+        <type>Throwing weapons</type>
+        <name>Throwing Shuriken</name>
+
+        <accuracy_list></accuracy_list>
+        <is_accuracy_physical>true</is_accuracy_physical>
+        <reach></reach>
+
+        <is_damage_str>true</is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>1</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list>-1</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>4</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>R</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>25</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
         <summary></summary>
         <book></book>
         <page></page>
@@ -116,14 +506,82 @@
     <weapon>
         <type>Tasers</type>
         <name>Defiance EX Shocker</name>
-        <accuracy>4</accuracy>
+
+        <accuracy_list>4</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
         <reach></reach>
-        <damage>9S(e)</damage>
-        <ap>-5</ap>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>9</damage_list>
+        <damage_type_list>S</damage_type_list>
+        <is_damage_electric>true</is_damage_electric>
+
+        <ap_list>-5</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list>SS</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>4</ammo_list>
+        <ammo_type>m</ammo_type>
+
         <avail></avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type></avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
         <cost>250</cost>
-        <mode>SS</mode>
-        <recoil></recoil>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Tasers</type>
+        <name>Yamaha Pulsar</name>
+
+        <accuracy_list>5</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
+        <reach></reach>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>7</damage_list>
+        <damage_type_list>S</damage_type_list>
+        <is_damage_electric>true</is_damage_electric>
+
+        <ap_list>-5</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list>SA</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>4</ammo_list>
+        <ammo_type>m</ammo_type>
+
+        <avail></avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type></avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>180</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
         <summary></summary>
         <book></book>
         <page></page>
@@ -132,14 +590,83 @@
     <weapon>
         <type>Hold-Outs</type>
         <name>Fichetti Tiffani Needler</name>
-        <accuracy>5</accuracy>
+
+        <accuracy_list>5</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
         <reach></reach>
-        <damage>8P(f)</damage>
-        <ap>5</ap>
-        <avail>5R</avail>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>8</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+        <is_damage_flechette>true</is_damage_flechette>
+
+        <ap_list>5</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list>SA</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>4</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>5</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>R</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
         <cost>1000</cost>
-        <mode>SA</mode>
-        <recoil></recoil>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
+        <summary></summary>
+        <book></book>
+        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Hold-Outs</type>
+        <name>Walther Palm Pistol</name>
+
+        <accuracy_list>4</accuracy_list>
+        <is_accuracy_physical></is_accuracy_physical>
+        <reach></reach>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating></is_damage_rating>
+        <damage_list>7</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list></ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list>SS,BF</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>2</ammo_list>
+        <ammo_type>b</ammo_type>
+
+        <avail>4</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>R</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>180</cost>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
         <summary></summary>
         <book></book>
         <page></page>
@@ -148,15 +675,36 @@
     <weapon>
         <type>Light Pistols</type>
         <name>Ares Light Fire 75</name>
-        <accuracy>6(8)</accuracy>
-        <reach></reach>
-        <damage>6P</damage>
-        <ap></ap>
-        <avail>6F</avail>
+
+        <accuracy_list>6,8</accuracy_list>
+
+        <damage_list>6</damage_list>
+        <damage_type_list>p</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list></ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list>SA</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>16</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>6</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>F</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
         <cost>1250</cost>
-        <mode>SA</mode>
-        <ammo>16(c)</ammo>
-        <recoil></recoil>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
         <summary></summary>
         <book></book>
         <page></page>
@@ -165,15 +713,35 @@
     <weapon>
         <type>Light Pistols</type>
         <name>Taurus Omni-6</name>
-        <accuracy>5(6)</accuracy>
-        <reach></reach>
-        <damage>6P/7P</damage>
-        <ap>0/-1</ap>
-        <avail>3R</avail>
+
+        <accuracy_list>5,6</accuracy_list>
+
+        <damage_list>6,7</damage_list>
+        <damage_type_list>P,P</damage_type_list>
+
+        <ap_list>0,-1</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list>SA,SS</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>6</ammo_list>
+        <ammo_type>cy</ammo_type>
+
+        <avail>3</avail>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>r</avail_type>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
         <cost>300</cost>
-        <mode>SA/SS</mode>
-        <ammo>6(cy)</ammo>
-        <recoil></recoil>
+
+        <rating></rating>
+        <min_rating></min_rating>
+        <max_rating></max_rating>
+
         <summary></summary>
         <book></book>
         <page></page>
@@ -181,194 +749,448 @@
 
     <weapon>
         <type>Heavy Pistols</type>
+        <name>Ares Predator V</name>
+
+        <accuracy_list>5,7</accuracy_list>
+
+        <damage_list>8</damage_list>
+        <damage_type_list>p</damage_type_list>
+
+        <ap_list>-1</ap_list>
+
+
+        <mode_list>SA</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>15</ammo_list>
+        <ammo_type>C</ammo_type>
+
+        <avail>5</avail>
+        <avail_type>R</avail_type>
+
+        <cost>725</cost>
+    </weapon>
+
+    <weapon>
+        <type>Heavy Pistols</type>
         <name>Ares Viper Silvergun</name>
-        <accuracy>4</accuracy>
-        <reach></reach>
-        <damage>9p(f)</damage>
-        <ap>4</ap>
-        <avail>8F</avail>
+
+        <accuracy_list>4</accuracy_list>
+
+        <damage_list>9</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_flechette>true</is_damage_flechette>
+
+        <ap_list>4</ap_list>
+
+
+        <mode_list>SA,BF</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>30</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>8</avail>
+        <avail_type>F</avail_type>
+
         <cost>380</cost>
-        <ammo>30(c)</ammo>
-        <mode>SA/BF</mode>
-        <recoil></recoil>
-        <summary></summary>
-        <book></book>
-        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Machine Pistols</type>
+        <name>Ares Crusader 2</name>
+
+        <accuracy_list>5,7</accuracy_list>
+
+        <damage_list>7</damage_list>
+        <damage_type_list>p</damage_type_list>
+        <is_damage_flechette></is_damage_flechette>
+
+        <ap_list></ap_list>
+
+
+        <mode_list>SA,BF</mode_list>
+
+        <recoil_list>2</recoil_list>
+
+        <ammo_list>40</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>9</avail>
+        <avail_type>R</avail_type>
+
+        <cost>830</cost>
     </weapon>
 
     <weapon>
         <type>Machine Pistols</type>
         <name>Steyr TMP</name>
-        <accuracy>4</accuracy>
-        <damage>7P</damage>
-        <ap></ap>
-        <mode>SA/BF/FA</mode>
-        <recoil></recoil>
-        <ammo>30(c)</ammo>
-        <avail>8R</avail>
+
+        <accuracy_list>4</accuracy_list>
+
+        <damage_list>7</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_flechette></is_damage_flechette>
+
+        <ap_list></ap_list>
+
+
+        <mode_list>SA,BF,FA</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>30</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>8</avail>
+        <avail_type>R</avail_type>
+
         <cost>350</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
     </weapon>
 
     <weapon>
         <type>Submachine Guns</type>
-        <name>FN P93 Praetor</name>
-        <accuracy>6</accuracy>
-        <damage>8P</damage>
-        <ap></ap>
-        <mode>SA/BF/FA</mode>
-        <recoil>1(2)</recoil>
-        <ammo>50(c)</ammo>
-        <avail>11F</avail>
-        <cost>900</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
+        <name>Colt Cobra TZ-120</name>
+
+        <accuracy_list>4,5</accuracy_list>
+
+        <damage_list>7</damage_list>
+        <damage_type_list>p</damage_type_list>
+        <is_damage_flechette></is_damage_flechette>
+
+        <ap_list></ap_list>
+
+        <mode_list>SA,BF,FA</mode_list>
+
+        <recoil_list>2,3</recoil_list>
+
+        <ammo_list>32</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>5</avail>
+        <avail_type>R</avail_type>
+
+        <cost>660</cost>
     </weapon>
 
     <weapon>
         <type>Submachine Guns</type>
         <name>Uzi IV</name>
-        <accuracy>4(5)</accuracy>
-        <damage>7P</damage>
-        <ap></ap>
-        <mode>BF</mode>
-        <recoil>1</recoil>
-        <ammo>24(c)</ammo>
-        <avail>4R</avail>
+
+        <accuracy_list>4,5</accuracy_list>
+
+        <damage_list>7</damage_list>
+        <damage_type_list>p</damage_type_list>
+        <is_damage_flechette></is_damage_flechette>
+
+        <ap_list></ap_list>
+
+
+        <mode_list>BF</mode_list>
+
+        <recoil_list>1</recoil_list>
+
+        <ammo_list>24</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>4</avail>
+        <avail_type>R</avail_type>
+
         <cost>450</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Assault Rifles</type>
+        <name>AK-97</name>
+
+        <accuracy_list>5</accuracy_list>
+
+        <damage_list>10</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_flechette></is_damage_flechette>
+
+        <ap_list>-2</ap_list>
+
+
+        <mode_list>SA,BF,FA</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>38</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>4</avail>
+        <avail_type>R</avail_type>
+
+        <cost>950</cost>
     </weapon>
 
     <weapon>
         <type>Assault Rifles</type>
         <name>Yamaha Raiden</name>
-        <accuracy>6(8)</accuracy>
-        <damage>11P</damage>
-        <ap>-2</ap>
-        <mode>BF/FA</mode>
-        <recoil>1</recoil>
-        <ammo>60(c)</ammo>
-        <avail>14F</avail>
+
+        <accuracy_list>6,8</accuracy_list>
+
+        <damage_list>11</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_flechette></is_damage_flechette>
+
+        <ap_list>-2</ap_list>
+
+
+        <mode_list>BF,FA</mode_list>
+
+        <recoil_list>1</recoil_list>
+
+        <ammo_list>60</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>14</avail>
+        <avail_type>F</avail_type>
+
         <cost>2600</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
     </weapon>
 
     <weapon>
         <type>Sniper Rifles</type>
-        <name>Ranger Arms SM-5</name>
-        <accuracy>8</accuracy>
-        <damage>14p</damage>
-        <ap>-5</ap>
-        <mode>SA</mode>
-        <recoil>1</recoil>
-        <ammo>15(c)</ammo>
-        <avail>16F</avail>
-        <cost>28000</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
+        <name>Ares Desert Strike</name>
+
+        <accuracy_list>7</accuracy_list>
+
+        <damage_list>13</damage_list>
+        <damage_type_list>p</damage_type_list>
+
+        <ap_list>-4</ap_list>
+
+        <mode_list>SA</mode_list>
+
+        <recoil_list>1</recoil_list>
+
+        <ammo_list>14</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>10</avail>
+        <avail_type>f</avail_type>
+
+        <cost>17500</cost>
+    </weapon>
+
+    <weapon>
+        <type>Sniper Rifles</type>
+        <name>Ruger 100</name>
+
+        <accuracy_list>6</accuracy_list>
+
+        <damage_list>11</damage_list>
+        <damage_type_list>p</damage_type_list>
+
+        <ap_list>-3</ap_list>
+
+        <mode_list>SA</mode_list>
+
+        <recoil_list>1</recoil_list>
+
+        <ammo_list>8</ammo_list>
+        <ammo_type>m</ammo_type>
+
+        <avail>4</avail>
+        <avail_type>R</avail_type>
+
+        <cost>1300</cost>
+    </weapon>
+
+    <weapon>
+        <type>Shotguns</type>
+        <name>Defiance T-250</name>
+
+        <accuracy_list>4</accuracy_list>
+
+        <damage_list>10</damage_list>
+        <damage_type_list>P</damage_type_list>
+
+        <ap_list>-1</ap_list>
+
+        <mode_list>SS,SA</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>5</ammo_list>
+        <ammo_type>m</ammo_type>
+
+        <avail>4</avail>
+        <avail_type>R</avail_type>
+
+        <cost>450</cost>
     </weapon>
 
     <weapon>
         <type>Shotguns</type>
         <name>Enfield AS-7</name>
-        <accuracy>4(5)</accuracy>
-        <damage>13p</damage>
-        <ap>-1</ap>
-        <mode>SA/BF</mode>
-        <recoil></recoil>
-        <ammo>10(c) or 24(d)</ammo>
-        <avail>12F</avail>
+
+        <accuracy_list>4,5</accuracy_list>
+
+        <damage_list>13</damage_list>
+        <damage_type_list>P</damage_type_list>
+
+        <ap_list>-1</ap_list>
+
+        <mode_list>SA,BF</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>10,24</ammo_list>
+        <ammo_type>c,d</ammo_type>
+
+        <avail>12</avail>
+        <avail_type>F</avail_type>
+
         <cost>1100</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
     </weapon>
 
     <weapon>
         <type>Special Weapons</type>
         <name>Ares S-3 Super Squirt</name>
-        <accuracy>3</accuracy>
-        <damage>Chemical</damage>
-        <ap></ap>
-        <mode>SA</mode>
-        <recoil></recoil>
-        <ammo>20(C)</ammo>
-        <avail>7R</avail>
+
+        <accuracy_list>3</accuracy_list>
+
+        <damage_list></damage_list>
+        <damage_type_list></damage_type_list>
+
+        <ap_list></ap_list>
+
+        <mode_list>SA</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>20</ammo_list>
+        <ammo_type>c</ammo_type>
+
+        <avail>7</avail>
+        <avail_type>R</avail_type>
+
         <cost>950</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
+    </weapon>
+
+    <weapon>
+        <type>Special Weapons</type>
+        <name>Fichetti Pain Inducer</name>
+
+        <accuracy_list>3</accuracy_list>
+
+        <damage_list></damage_list>
+        <damage_type_list></damage_type_list>
+
+        <ap_list></ap_list>
+
+        <mode_list>SS</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list></ammo_list>
+        <ammo_type></ammo_type>
+
+        <avail>11</avail>
+        <avail_type>R</avail_type>
+
+        <cost>5000</cost>
     </weapon>
 
     <weapon>
         <type>Machine Guns</type>
         <name>Ingram Valiant</name>
-        <accuracy>5(6)</accuracy>
-        <damage>9P</damage>
-        <ap>-2</ap>
-        <mode>BF/FA</mode>
-        <recoil>2(3)</recoil>
-        <ammo>50(c) or 100(belt)</ammo>
-        <avail>12F</avail>
+
+        <accuracy_list>5,6</accuracy_list>
+
+        <damage_list>9</damage_list>
+        <damage_type_list>p</damage_type_list>
+
+        <ap_list>-2</ap_list>
+
+        <mode_list>BF,FA</mode_list>
+
+        <recoil_list>2,3</recoil_list>
+
+        <ammo_list>50,100</ammo_list>
+        <ammo_type>c,belt</ammo_type>
+
+        <avail>12</avail>
+        <avail_type>F</avail_type>
+
         <cost>5800</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
     </weapon>
 
     <weapon>
         <type>Machine Guns</type>
         <name>RPK HMG</name>
-        <accuracy>5</accuracy>
-        <damage>12P</damage>
-        <ap>-4</ap>
-        <mode>FA</mode>
-        <recoil>6</recoil>
-        <ammo>50(c) or 100(belt)</ammo>
-        <avail>16F</avail>
+
+        <accuracy_list>5</accuracy_list>
+
+        <damage_list>12</damage_list>
+        <damage_type_list>P</damage_type_list>
+
+        <ap_list>-4</ap_list>
+
+        <mode_list>FA</mode_list>
+
+        <recoil_list>6</recoil_list>
+
+        <ammo_list>50,100</ammo_list>
+        <ammo_type>c,belt</ammo_type>
+
+        <avail>16</avail>
+        <avail_type>F</avail_type>
+
         <cost>16300</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
     </weapon>
 
     <weapon>
         <type>Cannons/Launchers</type>
         <name>Ares Antioch-2</name>
-        <accuracy>4(6)</accuracy>
-        <damage>Grenade</damage>
-        <ap></ap>
-        <mode>SS</mode>
-        <recoil></recoil>
-        <ammo>8(m)</ammo>
-        <avail>8F</avail>
+
+        <accuracy_list>4,6</accuracy_list>
+
+        <damage_list></damage_list>
+        <damage_type_list></damage_type_list>
+
+        <ap_list></ap_list>
+
+        <mode_list>SS</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>8</ammo_list>
+        <ammo_type>m</ammo_type>
+
+        <avail>8</avail>
+        <avail_type>F</avail_type>
+
         <cost>3200</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
     </weapon>
 
     <weapon>
-        <type>Cannons/Launchers</type>
+        <type>Cannons/launchers</type>
         <name>Aztechnology Striker</name>
-        <accuracy>5</accuracy>
-        <damage>Missile</damage>
-        <ap></ap>
-        <mode>SS</mode>
-        <recoil></recoil>
-        <ammo>1(ml)</ammo>
-        <avail>10F</avail>
+
+        <accuracy_list>5</accuracy_list>
+
+        <damage_list></damage_list>
+        <damage_type_list></damage_type_list>
+
+        <ap_list></ap_list>
+
+        <mode_list>SS</mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>1</ammo_list>
+        <ammo_type>ml</ammo_type>
+
+        <avail>10</avail>
+        <avail_type>F</avail_type>
+
         <cost>1200</cost>
-        <summary></summary>
-        <book></book>
-        <page></page>
     </weapon>
+
 </weapons>
