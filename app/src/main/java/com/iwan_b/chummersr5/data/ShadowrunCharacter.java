@@ -23,6 +23,7 @@ public class ShadowrunCharacter implements Serializable {
     private ArrayList<Spell> alchemyFormulas;
     private ArrayList<AdeptPower> adeptPowers;
     private ArrayList<ComplexForm> complexForms;
+    private ArrayList<Weapon> weapons;
     private Map<String, ArrayList<Modifier>> modifiers;
 
     private ShadowrunCharacter() {
@@ -59,6 +60,7 @@ public class ShadowrunCharacter implements Serializable {
                 ", alchemyFormulas=" + alchemyFormulas +
                 ", adeptPowers=" + adeptPowers +
                 ", complexForms=" + complexForms +
+                ", weapons=" + weapons +
                 ", modifiers=" + modifiers +
                 '}';
     }
@@ -141,5 +143,13 @@ public class ShadowrunCharacter implements Serializable {
 
     public void setComplexForms(ArrayList<ComplexForm> complexForms) {
         this.complexForms = complexForms;
+    }
+
+    public ArrayList<Weapon> getWeapons() {
+        return weapons;
+    }
+
+    public void setWeapons(ArrayList<Weapon> weapons) {
+        this.weapons = weapons;
     }
 }
