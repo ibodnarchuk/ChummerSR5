@@ -42,7 +42,7 @@ public class SwipeFragmentHolder extends AppCompatActivity {
             tabsToCall.add(new com.iwan_b.chummersr5.fragments.Adept.MainContainer());
         }
 
-        if (ChummerMethods.isCharTechnomancer(ShadowrunCharacter.getCharacter())){
+        if (ChummerMethods.isCharTechnomancer(ShadowrunCharacter.getCharacter())) {
             listOfTabs.add("Technomancer");
             tabsToCall.add(new com.iwan_b.chummersr5.fragments.Technomancer.MainContainer());
         }
@@ -52,6 +52,9 @@ public class SwipeFragmentHolder extends AppCompatActivity {
 
         listOfTabs.add("Knowledge Skills");
         tabsToCall.add(new com.iwan_b.chummersr5.fragments.KnowledgeSkill.MainContainer());
+
+        listOfTabs.add("Weapons");
+        tabsToCall.add(new com.iwan_b.chummersr5.fragments.Weapons.MainContainer());
 
         // TODO this might not be the best thing to hardcode. Although I suppose the application should be light in usage anyways.
         pager.setOffscreenPageLimit(listOfTabs.size());

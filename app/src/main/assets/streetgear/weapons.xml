@@ -43,7 +43,49 @@
     <!--</weapon>-->
 
     <weapon>
-        <type>blades</type>
+        <type>ATest Type</type>
+        <name>ATest Name</name>
+
+        <accuracy_list></accuracy_list>
+        <is_accuracy_physical>true</is_accuracy_physical>
+        <reach></reach>
+
+        <is_damage_str></is_damage_str>
+        <is_damage_rating>true</is_damage_rating>
+        <damage_list>5</damage_list>
+        <damage_type_list>P</damage_type_list>
+        <is_damage_electric></is_damage_electric>
+
+        <ap_list>-1</ap_list>
+        <ap_divide_by></ap_divide_by>
+
+        <mode_list></mode_list>
+
+        <recoil_list></recoil_list>
+
+        <ammo_list>2,4,5</ammo_list>
+        <ammo_type>A,B</ammo_type>
+
+        <avail>4</avail>
+        <is_avail_rating>true</is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+        <avail_add_by></avail_add_by>
+        <avail_type>R</avail_type>
+
+        <is_cost_rating_mult>true</is_cost_rating_mult>
+        <cost>25</cost>
+
+        <rating>1</rating>
+        <min_rating>1</min_rating>
+        <max_rating>10</max_rating>
+
+        <summary>A basic summmary block of text. One that will span. Multiple rows even.I wonder how this. will even all work together?</summary>
+        <book>SR3</book>
+        <page>4325</page>
+    </weapon>
+
+    <weapon>
+        <type>Blades</type>
         <name>Combat Axe</name>
 
         <accuracy_list>4</accuracy_list>
@@ -327,8 +369,8 @@
         <is_cost_rating_mult>true</is_cost_rating_mult>
         <cost>100</cost>
 
-        <rating></rating>
-        <min_rating></min_rating>
+        <rating>1</rating>
+        <min_rating>1</min_rating>
         <max_rating>10</max_rating>
 
         <summary></summary>
@@ -1170,7 +1212,7 @@
     </weapon>
 
     <weapon>
-        <type>Cannons/launchers</type>
+        <type>Cannons/Launchers</type>
         <name>Aztechnology Striker</name>
 
         <accuracy_list>5</accuracy_list>

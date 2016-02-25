@@ -40,4 +40,8 @@ public class ChummerConstants {
     public enum counters {
         activeSkills, activeGroupSkills, knowledgeSkills, languageSkills
     }
+
+    public enum weaponAccessoriesMount {
+        other, topBarrel, barrel, underBarrel
+    }
 }

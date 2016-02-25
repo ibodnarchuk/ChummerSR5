@@ -1,6 +1,11 @@
 package com.iwan_b.chummersr5.data;
 
 
+import android.view.View;
+import android.widget.TextView;
+
+import com.iwan_b.chummersr5.R;
+
 public class GeneralInfo {
     private String name;
 
@@ -85,4 +90,49 @@ public class GeneralInfo {
         this.book = book;
     }
 
+    public boolean parseXML(final String switchId, final String data) {
+        switch (switchId.toLowerCase()) {
+            case "name":
+                this.setName(data);
+                break;
+            case "book":
+                this.setBook(data);
+                break;
+            case "page":
+                this.setPage(data);
+                break;
+            case "summary":
+                this.setSummary(data);
+                break;
+            default:
+                // Could not find anything so return false
+                return false;
+        }
+        return true;
+    }
+
+    public View displayView(View view) {
+        final TextView nameTxtView = (TextView) view.findViewById(R.id.name_textview);
+        final TextView summaryTxtView = (TextView) view.findViewById(R.id.summary_textView);
+        final TextView bookTxtView = (TextView) view.findViewById(R.id.book_textView);
+        final TextView pageTxtView = (TextView) view.findViewById(R.id.page_textView);
+
+        if (nameTxtView != null) {
+            nameTxtView.setText(name);
+        }
+
+        if (summaryTxtView != null) {
+            summaryTxtView.setText(summary);
+        }
+
+        if (bookTxtView != null) {
+            bookTxtView.setText(book);
+        }
+
+        if (pageTxtView != null) {
+            pageTxtView.setText(page);
+        }
+
+        return view;
+    }
 }

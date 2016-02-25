@@ -13,7 +13,7 @@ public class ShadowrunCharacter implements Serializable {
     private static ShadowrunCharacter charInstance;
 
     private static int karma = ChummerConstants.startingKarma;
-
+    private int nyuen;
     private Attribute attributes;
     private ArrayList<Quality> positiveQualities;
     private ArrayList<Quality> negativeQualities;
@@ -25,7 +25,6 @@ public class ShadowrunCharacter implements Serializable {
     private ArrayList<ComplexForm> complexForms;
     private ArrayList<Weapon> weapons;
     private Map<String, ArrayList<Modifier>> modifiers;
-
     private ShadowrunCharacter() {
         modifiers = new HashMap<>();
         setPositiveQualities(new ArrayList<Quality>());
@@ -48,10 +47,19 @@ public class ShadowrunCharacter implements Serializable {
         ShadowrunCharacter.karma = karma;
     }
 
+    public int getNyuen() {
+        return nyuen;
+    }
+
+    public void setNyuen(int nyuen) {
+        this.nyuen = nyuen;
+    }
+
     @Override
     public String toString() {
         return "ShadowrunCharacter{" +
-                "attributes=" + attributes +
+                "nyuen=" + nyuen +
+                ", attributes=" + attributes +
                 ", positiveQualities=" + positiveQualities +
                 ", negativeQualities=" + negativeQualities +
                 ", userType=" + userType +

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/type_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Type"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/name_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/type_textview"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_accuracy_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/name_textview"
+            android:text="Accuracy"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_accuracy_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_accuracy_title_textview"
+            android:text="Accuracy_text" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_reach_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/fragment_weapons_weapon_display_accuracy_title_textview"
+            android:layout_centerHorizontal="true"
+            android:text="Reach"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_reach_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_weapons_weapon_display_reach_title_textview"
+            android:layout_centerHorizontal="true"
+            android:text="Reach_text" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_damage_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/fragment_weapons_weapon_display_accuracy_title_textview"
+            android:text="Damage"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_damage_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_damage_title_textview"
+            android:text="Damage_text" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_ap_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_accuracy_textview"
+            android:text="AP"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_ap_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_ap_title_textview"
+            android:text="AP_text" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_mode_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_weapons_weapon_display_reach_textview"
+            android:layout_centerHorizontal="true"
+            android:text="Mode"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_mode_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_weapons_weapon_display_mode_title_textview"
+            android:layout_centerHorizontal="true"
+            android:text="Mode_text" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_recoil_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_damage_textview"
+            android:text="Recoil"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_recoil_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_recoil_title_textview"
+            android:text="Recoil_text" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_ammo_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_ap_textview"
+            android:text="Ammo"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:id="@+id/fragment_weapons_weapon_display_ammo_linearview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_ammo_title_textview"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/avail_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_weapons_weapon_display_mode_textview"
+            android:layout_centerHorizontal="true"
+            android:text="Avail"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/avail_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/avail_title_textview"
+            android:layout_centerHorizontal="true"
+            android:text="Avail_text" />
+
+        <TextView
+            android:id="@+id/cost_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_recoil_textview"
+            android:text="Cost"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/cost_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:minEms="5"
+            android:gravity="right"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/cost_title_textview"
+            android:text="Cost_text"
+            />
+
+        <LinearLayout
+            android:id="@+id/rating_linearview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cost_textview"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_top_barrel_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_ammo_linearview"
+            android:text="Top Barrel Mount"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:id="@+id/fragment_weapons_weapon_display_top_barrel_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_weapons_weapon_display_top_barrel_title_textview"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_barrel_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_top_barrel_linearLayout"
+            android:text="Barrel Mount"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:id="@+id/fragment_weapons_weapon_display_barrel_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_weapons_weapon_display_barrel_title_textview"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_bottom_barrel_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_barrel_linearLayout"
+            android:text="Bottom Barrel Mount"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:id="@+id/fragment_weapons_weapon_display_bottom_barrel_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_weapons_weapon_display_bottom_barrel_title_textview"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/fragment_weapons_weapon_display_other_accessory_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weapon_display_bottom_barrel_linearLayout"
+            android:text="Other Weapon Accessories"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:id="@+id/fragment_weapons_weapon_display_other_accessory_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_weapons_weapon_display_other_accessory_title_textview"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/summary_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_weapons_weapon_display_other_accessory_linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="Summary" />
+
+        <TextView
+            android:id="@+id/page_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Page" />
+
+        <TextView
+            android:id="@+id/book_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/page_textView"
+            android:layout_toStartOf="@+id/page_textView"
+            android:text="Book" />
+
+    </RelativeLayout>
+</ScrollView>

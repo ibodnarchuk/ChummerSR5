@@ -93,14 +93,14 @@ public class NewCharacterPriorityTable extends Activity {
         RadioGroup attRadioGroupB = (RadioGroup) findViewById(R.id.activity_priority_table_AttributeRadioGroupB);
         ((RadioButton) attRadioGroupB.getChildAt(0)).setChecked(true);
 
-        RadioGroup magRadioGroupA = (RadioGroup) findViewById(R.id.activity_priority_table_MagicRadioGroupA);
-        ((RadioButton) magRadioGroupA.getChildAt(2)).setChecked(true);
+        RadioGroup magRadioGroupE = (RadioGroup) findViewById(R.id.activity_priority_table_MagicRadioGroupE);
+        ((RadioButton) magRadioGroupE.getChildAt(0)).setChecked(true);
 
         RadioGroup skillRadioGroupC = (RadioGroup) findViewById(R.id.activity_priority_table_SkillRadioGroupC);
         ((RadioButton) skillRadioGroupC.getChildAt(0)).setChecked(true);
 
-        RadioGroup resourceRadioGroupE = (RadioGroup) findViewById(R.id.activity_priority_table_ResourceRadioGroupE);
-        ((RadioButton) resourceRadioGroupE.getChildAt(0)).setChecked(true);
+        RadioGroup resourceRadioGroupA = (RadioGroup) findViewById(R.id.activity_priority_table_ResourceRadioGroupA);
+        ((RadioButton) resourceRadioGroupA.getChildAt(0)).setChecked(true);
 
         doneButton.setOnClickListener(new OnClickListener() {
 
@@ -172,6 +172,9 @@ public class NewCharacterPriorityTable extends Activity {
                     // Set the initial display counters
                     FreeCounters.getCounters().setFreeAttributes((int) attrTable.get(attrIndex).getStats());
                     FreeCounters.getCounters().setFreeSpecAttributes((int) metaTable.get(metaIndex).getStats());
+                    FreeCounters.getCounters().setKarmaUsedForNuyen(0);
+
+                    ShadowrunCharacter.getCharacter().setNyuen((int) resTable.get(resIndex).getStats());
 
                     if (ShadowrunCharacter.getCharacter().getUserType().ordinal() >= ChummerConstants.userType.mystic_adept.ordinal()) {
                         FreeCounters.getCounters().setFreeSpells(0);

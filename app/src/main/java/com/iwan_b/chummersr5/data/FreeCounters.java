@@ -15,6 +15,7 @@ public class FreeCounters {
     private int freeSpells;
     private float powerPoints;
     private int freeComplexForms;
+    private int KarmaUsedForNuyen;
 
     private FreeCounters() {
     }
@@ -98,4 +99,11 @@ public class FreeCounters {
         this.powerPoints = powerPoints;
     }
 
+    public int getKarmaUsedForNuyen() {
+        return KarmaUsedForNuyen;
+    }
+
+    public void setKarmaUsedForNuyen(int karmaUsedForNuyen) {
+        KarmaUsedForNuyen = karmaUsedForNuyen;
+    }
 }

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp"
+    android:fillViewport="false">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/fragment_weapons_weaponaccessory_display_mount_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Weapon Mount"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/name_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/fragment_weapons_weaponaccessory_display_mount_textview"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+        <TextView
+            android:id="@+id/avail_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avail"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_below="@+id/name_textview"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/avail_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avail_text"
+            android:layout_below="@+id/avail_title_textview"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <TextView
+            android:id="@+id/cost_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_below="@+id/name_textview"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/cost_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:text="Cost_text"
+            android:layout_below="@+id/cost_title_textview"
+            android:layout_centerHorizontal="true" />
+
+
+        <LinearLayout
+            android:id="@+id/rating_linearview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/name_textview"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/summary_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Summary"
+            android:layout_below="@+id/cost_textview"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/page_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Page" />
+
+        <TextView
+            android:id="@+id/book_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/page_textView"
+            android:layout_toStartOf="@+id/page_textView"
+            android:text="Book" />
+    </RelativeLayout>
+</ScrollView>

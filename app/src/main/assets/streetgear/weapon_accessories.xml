@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessories>
+    <!--<accessory>-->
+    <!--<name></name>-->
+    <!--<mount></mount>-->
+
+    <!--<mod>-->
+    <!--<name></name>-->
+    <!--<amount></amount>-->
+    <!--<displaytext></displaytext>-->
+    <!--<book></book>-->
+    <!--<page></page>-->
+    <!--<summary></summary>-->
+    <!--</mod>-->
+
+    <!--<avail></avail>-->
+    <!--<avail_type></avail_type>-->
+    <!--<is_avail_rating></is_avail_rating>-->
+    <!--<avail_mult_by></avail_mult_by>-->
+
+    <!--<is_cost_rating_mult></is_cost_rating_mult>-->
+    <!--<cost></cost>-->
+
+    <!--<rating></rating>-->
+
+    <!--<summary></summary>-->
+    <!--<book></book>-->
+    <!--<page></page>-->
+    <!--</accessory>-->
+
+    <accessory>
+        <name>Imaging scope</name>
+        <mount>top</mount>
+
+        <avail>2</avail>
+        <avail_type></avail_type>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>300</cost>
+
+        <rating></rating>
+
+        <summary>A basic test summary sentence for weapon accessory.</summary>
+        <book>SR43</book>
+        <page>135</page>
+    </accessory>
+
+    <accessory>
+        <name>Airburst Link</name>
+        <mount></mount>
+
+        <avail>6</avail>
+        <avail_type>R</avail_type>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>600</cost>
+
+        <rating></rating>
+
+        <summary>A basic summary of the airburst link</summary>
+        <book>SR5</book>
+        <page>321</page>
+    </accessory>
+
+    <accessory>
+        <name>Bipod</name>
+        <mount>under</mount>
+
+        <avail>2</avail>
+        <avail_type></avail_type>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>200</cost>
+
+        <rating></rating>
+
+        <summary>A basic test summary sentence for weapon accessory.</summary>
+        <book>SR2</book>
+        <page>321</page>
+    </accessory>
+
+    <accessory>
+        <name>Gas-vent system</name>
+        <mount>barrel</mount>
+
+        <avail></avail>
+        <avail_type>R</avail_type>
+        <is_avail_rating>true</is_avail_rating>
+        <avail_mult_by>3</avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost></cost>
+
+        <rating>1</rating>
+        <min_rating>1</min_rating>
+        <max_rating>3</max_rating>
+
+        <summary>A basic test summary sentence for weapon accessory.</summary>
+        <book>SR1</book>
+        <page>231</page>
+    </accessory>
+
+    <accessory>
+        <name>Gyro mount</name>
+        <mount>under</mount>
+
+        <avail>7</avail>
+        <avail_type></avail_type>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>1400</cost>
+
+        <rating></rating>
+
+        <summary>A basic test summary sentence for weapon accessory.</summary>
+        <book>SR2</book>
+        <page>7645</page>
+    </accessory>
+
+    <accessory>
+        <name>laser sight</name>
+        <mount>top</mount>
+
+        <avail>2</avail>
+        <avail_type></avail_type>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>125</cost>
+
+        <rating></rating>
+
+        <summary>A basic test summary sentence for weapon accessory.</summary>
+        <book>SR3</book>
+        <page>089</page>
+    </accessory>
+    <accessory>
+        <name>laser sight</name>
+        <mount>under</mount>
+
+        <avail>2</avail>
+        <avail_type></avail_type>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>125</cost>
+
+        <rating></rating>
+
+        <summary>A basic test summary sentence for weapon accessory.</summary>
+        <book>SR4</book>
+        <page>987</page>
+    </accessory>
+
+    <accessory>
+        <name>Periscope</name>
+        <mount>top</mount>
+
+        <avail>3</avail>
+        <avail_type></avail_type>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>70</cost>
+
+        <rating></rating>
+
+        <summary>A basic test summary sentence for weapon accessory.</summary>
+        <book>SR5</book>
+        <page>654</page>
+    </accessory>
+
+    <accessory>
+        <name>Shock pad</name>
+        <mount></mount>
+
+        <avail>2</avail>
+        <avail_type></avail_type>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>50</cost>
+
+        <rating></rating>
+
+        <summary>A basic test summary sentence for weapon accessory.</summary>
+        <book>SR6</book>
+        <page>543</page>
+    </accessory>
+
+    <accessory>
+        <name>Speed loader</name>
+        <mount></mount>
+
+        <avail>2</avail>
+        <avail_type></avail_type>
+        <is_avail_rating></is_avail_rating>
+        <avail_mult_by></avail_mult_by>
+
+        <is_cost_rating_mult></is_cost_rating_mult>
+        <cost>25</cost>
+
+        <rating></rating>
+
+        <summary>A basic test summary sentence for weapon accessory.</summary>
+        <book>SR7</book>
+        <page>321</page>
+    </accessory>
+
+</accessories>
